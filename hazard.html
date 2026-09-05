@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">                                  <!-- read text as UTF-8 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">  <!-- fit a phone -->
+<title>Community hazard reporting prototype | Lifeline</title>
+<meta name="description" content="See how Lifeline's community hazard prototype combines nearby reports of the same street problem into one clearer ticket.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#101112">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lifeline">
+<meta property="og:title" content="Community hazard reporting prototype | Lifeline">
+<meta property="og:description" content="A browser-based experiment for merging duplicate community street-hazard reports.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">  <!-- map styles -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>          <!-- map program -->
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="tool" data-page="hazard">
+
+<main class="shell">
+<section class="page-hero">
+    <a class="back-home" href="index.html">← Main dashboard</a>
+    <p class="eyebrow">Support tool</p>
+    <h1>Help your community notice a street hazard.</h1>
+    <p class="lede">Share what you found. When neighbours report the same problem nearby, the prototype brings those reports together into one clearer ticket.</p>
+</section>
+
+<div class="split">
+    <div class="panel">
+    <!-- Left column: the form. -->
+
+        <label for="cat">What is wrong</label>
+        <!-- "for" ties the label to the field, so a tap on the words
+             opens the drop-down and a screen reader speaks them. -->
+
+        <select id="cat">
+            <option value="pothole">Pothole</option>
+            <!-- value is the code word; the text is for the person. -->
+            <option value="light">Street light out</option>
+            <option value="sidewalk">Blocked sidewalk</option>
+            <option value="dumping">Illegal dumping</option>
+            <option value="signal">Signal fault</option>
+        </select>
+
+        <label for="desc">Anything to add</label>
+        <textarea id="desc" rows="3"></textarea>
+        <!-- Free text. Three lines tall. -->
+
+        <label for="photo">Photo</label>
+        <input type="file" id="photo" accept="image/*" capture="environment">
+        <!-- accept limits the picker to pictures.
+             capture="environment" asks a phone for the back camera. -->
+
+        <p class="meta" id="where">Place: not set. Tap the map or use your position.</p>
+        <!-- The script rewrites this line when a place is chosen. -->
+
+        <button id="gps">Use my position</button>
+        <button id="send">Send report</button>
+        <div id="msg"></div>
+        <!-- Empty. The answer after a send goes here. -->
+    </div>
+
+    <div>
+        <div id="map"></div>
+        <ul id="list"></ul>
+        <!-- The ticket list, under the map. -->
+    </div>
+</div>
+
+<script>
+const MERGE_M = 60;
+/* The merge distance in metres. This one number is the policy of the
+   whole app. A city with big blocks may want 100. */
+
+const KEY = "hazards.v1";
+/* Name of the storage drawer. */
+
+let reports = JSON.parse(localStorage.getItem(KEY) || "[]");
+/* Load every report ever sent from this browser. "[]" means: if the
+   drawer is empty, start with an empty list. */
+
+let place = null;
+/* The point the user has chosen. Null until they tap or use GPS. */
+
+let pin = null;
+/* The marker that shows that point. We keep it so we can move it. */
+
+const map = L.map("map").setView([47.6205, -122.34], 13);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    { attribution: "&copy; OpenStreetMap" }).addTo(map);
+/* Same two lines as file 1: build the map, then fetch the pictures. */
+
+const layer = L.layerGroup().addTo(map);
+/* A bag for the ticket circles. One call empties the bag, instead of
+   removing each circle by hand. */
+
+map.on("click", e => setPlace(e.latlng.lat, e.latlng.lng, "map tap"));
+/* A tap anywhere on the map sets the place. "e" carries the point the
+   user touched. */
+
+function setPlace(lat, lon, how) {
+/* One door for all three ways to choose a place: map tap, phone GPS,
+   or (with a server) the GPS data inside the photo. */
+
+    place = { lat: lat, lon: lon };
+    /* Remember it. */
+
+    if (pin)
+        map.removeLayer(pin);
+    /* Take the old marker off, so there is never more than one. */
+
+    pin = L.marker([lat, lon]).addTo(map);
+    /* Drop the new marker. */
+
+    document.getElementById("where").textContent =
+        "Place set by " + how + ": " + lat.toFixed(5) + ", " + lon.toFixed(5);
+    /* Tell the user where and how. Five decimals is about one metre;
+       more digits are noise. */
+}
+
+function metres(a, b) {
+/* Distance in metres. Same haversine as file 1. */
+    const R = 6371000;
+    const dLat = (b.lat - a.lat) * Math.PI / 180;
+    const dLon = (b.lon - a.lon) * Math.PI / 180;
+    const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) *
+        Math.cos(b.lat * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(s));
+}
+
+function say(text, bad) {
+/* Put one message in the box under the buttons. */
+
+    document.getElementById("msg").innerHTML =
+        "<div class='note" + (bad ? " bad" : "") + "'>" + text + "</div>";
+    /* If "bad" is true, add the class that makes the box red. */
+}
+
+function findTicket(cat, point) {
+/* The heart of the app: is this fault already known?
+   Answer: the ticket number of the nearest report of the same type
+   within 60 m, or null if there is none. */
+
+    let best = null;
+    /* The winner so far. */
+
+    let bestD = MERGE_M;
+    /* The distance to beat. It starts at the merge radius, so anything
+       farther than 60 m can never win. */
+
+    reports.forEach(r => {
+        if (r.cat !== cat)
+            return;
+        /* A pothole never merges with a broken light. "return" here
+           means "skip this one", not "stop". */
+
+        const d = metres(point, r);
+        if (d <= bestD) {
+            bestD = d;
+            /* Raise the bar. */
+
+            best = r.ticket;
+            /* Keep the ticket, not the report. Many reports share one
+               ticket, and the ticket is what city staff work on. */
+        }
+    });
+
+    return best;
+}
+
+document.getElementById("gps").onclick = () => {
+    navigator.geolocation.getCurrentPosition(p => {
+        setPlace(p.coords.latitude, p.coords.longitude, "phone GPS");
+        map.setView([p.coords.latitude, p.coords.longitude], 17);
+        /* Zoom 17 is close enough to see which side of the street. */
+    }, () => say("Position refused. Tap the map instead.", true));
+    /* The second function runs if the user says no, or if GPS fails.
+       Always give a way forward; never leave a dead end. */
+};
+
+document.getElementById("send").onclick = () => {
+    if (!place) {
+        say("Set the place first.", true);
+        return;
+        /* Stop here. A report with no place is of no use to anybody. */
+    }
+
+    const cat = document.getElementById("cat").value;
+    /* Which fault type. */
+
+    let ticket = findTicket(cat, place);
+    /* Look for a near twin. */
+
+    const isNew = ticket === null;
+    /* Remember the answer before we change "ticket". */
+
+    if (isNew)
+        ticket = Date.now();
+    /* No twin, so open a ticket. The clock in milliseconds makes a
+       number that never repeats, which is enough for a demo. */
+
+    reports.push({
+        ticket: ticket,
+        /* Every report of the same fault carries the same ticket. That
+           single field is the whole merge. */
+
+        cat: cat,
+        lat: place.lat,
+        lon: place.lon,
+        desc: document.getElementById("desc").value,
+        photo: document.getElementById("photo").files.length > 0,
+        /* Only true or false. The picture itself stays on the phone,
+           because there is no server to hold it. */
+
+        at: new Date().toISOString()
+        /* The time, in a form that sorts correctly as text. */
+    });
+
+    localStorage.setItem(KEY, JSON.stringify(reports));
+    /* Save the whole list back to the drawer. */
+
+    const count = reports.filter(r => r.ticket === ticket).length;
+    /* How many reports this ticket now holds. */
+
+    if (isNew)
+        say("New ticket opened.");
+    else
+        say("This fault is already known. The ticket now holds " + count + " reports.");
+    /* This sentence is the moment that sells the app to a judge. */
+
+    document.getElementById("desc").value = "";
+    /* Clear the note, ready for the next report. */
+
+    draw();
+};
+
+function draw() {
+/* Turn many reports into few tickets, then paint them. */
+
+    const groups = {};
+    /* An object used as a set of pigeonholes: ticket number -> totals. */
+
+    reports.forEach(r => {
+        if (!groups[r.ticket])
+            groups[r.ticket] = { cat: r.cat, lat: 0, lon: 0, n: 0, desc: "", photos: 0 };
+        /* First report of this ticket: open an empty pigeonhole. */
+
+        const g = groups[r.ticket];
+        g.n += 1;
+        /* Count it. */
+
+        g.lat += r.lat;
+        g.lon += r.lon;
+        /* Add up the positions now; divide later to get the middle. */
+
+        if (r.desc && !g.desc)
+            g.desc = r.desc;
+        /* Keep the first note only, so the row stays one line. */
+
+        if (r.photo)
+            g.photos += 1;
+    });
+
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+    layer.clearLayers();
+    /* Wipe the old rows and the old circles. */
+
+    const rows = Object.values(groups).sort((a, b) => b.n - a.n);
+    /* Object.values throws the keys away and keeps the pigeonholes.
+       b.n - a.n sorts big first, so the worst fault is at the top. */
+
+    rows.forEach(g => {
+        g.lat = g.lat / g.n;
+        g.lon = g.lon / g.n;
+        /* The ticket sits at the mean of its reports. Ten persons who
+           point at the same pothole from ten angles give a better
+           position than any one of them alone. */
+
+        const li = document.createElement("li");
+        li.className = g.n >= 3 ? "many" : (g.n === 2 ? "two" : "");
+        /* Three or more: red. Two: orange. One: grey. */
+
+        const badge = document.createElement("span");
+        badge.className = "count";
+        badge.textContent = g.n;
+        const nameEl = document.createElement("b");
+        nameEl.textContent = g.cat;
+        const metaEl = document.createElement("div");
+        metaEl.className = "meta";
+        metaEl.textContent = (g.desc || "no note") + ", " + g.photos + " photo(s)";
+        li.append(badge, " ", nameEl, metaEl);
+        /* textContent, not innerHTML: text a participant types can never
+           become markup on the page. */
+        /* The badge shows the count, so the size of the problem is the
+           first thing a reader sees. */
+
+        li.onclick = () => map.setView([g.lat, g.lon], 17);
+        list.appendChild(li);
+
+        L.circleMarker([g.lat, g.lon],
+            { radius: 6 + Math.min(g.n, 8) * 2, color: "#ffffff", fillOpacity: 0.28 })
+            .addTo(layer).bindPopup(g.n + " report(s) of " + g.cat);
+        /* The circle grows with the count. Math.min stops one hot spot
+           from covering the map. */
+    });
+}
+
+draw();
+/* First paint. */
+</script>
+</main>
+<script src="nav.js"></script>
+<script src="sound.js"></script>
+</body>
+</html>

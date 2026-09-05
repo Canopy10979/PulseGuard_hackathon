@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nearby emergency-care route | Lifeline</title>
+    <meta
+      name="description"
+      content="Use the Lifeline prototype to find a walking route to nearby emergency care, with a timed check-in and a clearly labelled 911 option."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#101112" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lifeline" />
+    <meta property="og:title" content="Nearby emergency-care route | Lifeline" />
+    <meta property="og:description" content="A prototype route finder for nearby emergency care, designed around a human check-in." />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- The same two stylesheets, in the same order, as the dashboard.
+         Nothing on this page has a look of its own. -->
+    <link rel="stylesheet" href="site.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* The map takes the place the dashboard gives to its bar chart, so
+         it gets the same box: same height, same corner, same border. */
+      #map {
+        height: 150px;
+        margin-bottom: 4px;
+        border-radius: 16px;
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+    </style>
+  </head>
+  <body data-page="safewalk">
+    <main>
+      <section class="hero container" id="overview">
+        <div class="hero-copy">
+          <a class="back-home" href="index.html">← Main dashboard</a>
+          <p class="eyebrow">Overdose emergency response</p>
+          <h1>Find your way to nearby emergency care.</h1>
+          <p class="lede">
+            Tell us where to search and the prototype will help you look for nearby care.
+            You choose when to share a location, begin a route, or open the 911 option.
+          </p>
+
+          <div class="hero-actions">
+            <button class="secondary-btn" id="start" type="button">Start walk</button>
+            <button class="secondary-btn" id="arrived" type="button">I arrived</button>
+            <button class="primary-btn emergency-btn" id="help" type="button">I need help</button>
+          </div>
+
+          <ul class="mini-stats">
+            <li>
+              <strong id="statState">Not started</strong>
+              <span>current state</span>
+            </li>
+            <li>
+              <strong id="statEta">&mdash;</strong>
+              <span>expected by</span>
+            </li>
+            <li>
+              <strong id="statSignal">&mdash;</strong>
+              <span>last signal</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-panel">
+          <div class="signal-card">
+            <div class="signal-header">
+              <span class="signal-label">Walk status</span>
+              <span class="signal-pill high" id="statePill">Not started</span>
+            </div>
+
+            <div class="signal-number" id="minutesLeft">&ndash;&ndash;</div>
+            <div class="signal-subtitle" id="state">No walk running.</div>
+
+            <div id="map"></div>
+
+            <div class="signal-footer">
+              <div>
+                <small>Position</small>
+                <strong id="footPos">Unknown</strong>
+              </div>
+              <div>
+                <small>Route to EMT</small>
+                <strong id="footRoute">Not opened</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container metrics" id="setup">
+        <article class="metric-card accent-blue">
+          <div class="card-kicker">Who is walking</div>
+          <h3>Your details</h3>
+          <label for="name">Your name</label>
+          <input type="text" id="name" value="Sam" />
+          <label for="zip">Your ZIP code</label>
+          <input type="text" id="zip" inputmode="numeric" maxlength="5" placeholder="98052" />
+          <p class="microcopy">
+            The ZIP is used to search for nearby EMTs. Leave it empty and your GPS position is
+            used instead. It stays in this browser.
+          </p>
+        </article>
+
+        <article class="metric-card accent-amber">
+          <div class="card-kicker">The walk</div>
+          <h3>Where and how long</h3>
+          <label for="dest">Where you go</label>
+          <input type="text" id="dest" value="Home, 3rd and Pine" />
+          <label for="mins">Minutes the walk takes</label>
+          <input type="number" id="mins" value="15" min="1" max="240" />
+          <p class="microcopy">
+            Five minutes after that time, with no answer, this page turns red.
+          </p>
+        </article>
+
+        <article class="metric-card accent-red">
+          <div class="card-kicker">If it goes wrong</div>
+          <h3>Emergency</h3>
+          <p>
+            The help button opens the Washington 911 information site and puts a dial button on
+            this page. Nothing here contacts anybody by itself.
+          </p>
+          <a class="primary-btn emergency-btn" href="tel:911">Call 911</a>
+          <div id="routeBox"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="nav.js"></script>
+    <script>
+/* ---------- settings ---------- */
+
+const GRACE_S = 300;             /* five minutes late before the alarm */
+const KEY = "walk.v1";
+const ZIP_KEY = "od.zip.v1";
+const EMT_QUERY = "EMTs within a one-mile radius of ";
+const WA_911 = "https://911info.wa.gov";
+
+let walk = JSON.parse(localStorage.getItem(KEY) || "null");
+let dot = null;
+let pinger = null;
+
+/* ---------- map ---------- */
+/* The map comes from a CDN. If that fails, the buttons must still work,
+   so the whole script does not stop at this line. */
+
+let map = null;
+
+if (typeof L !== "undefined") {
+    map = L.map("map").setView([47.6205, -122.34], 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        { attribution: "&copy; OpenStreetMap" }).addTo(map);
+}
+else {
+    const box = document.getElementById("map");
+    box.style.display = "grid";
+    box.style.placeItems = "center";
+    box.textContent = "Map unavailable";
+}
+
+/* ---------- small helpers ---------- */
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+function save() {
+    localStorage.setItem(KEY, JSON.stringify(walk));
+}
+
+function clock(ms) {
+    return new Date(ms).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+}
+
+function setRouteBox(text, bad) {
+    const box = $("routeBox");
+    box.className = bad ? "note bad" : "note";
+    box.textContent = text;
+}
+
+/* ---------- the EMT search ---------- */
+
+const savedZip = localStorage.getItem(ZIP_KEY);
+if (savedZip)
+    $("zip").value = savedZip;
+
+function whereToSearch() {
+    /* A ZIP reads clearly in the Google Maps search box, so it comes
+       first. The last GPS position is the fallback. */
+    const zip = $("zip").value.trim();
+
+    if (/^\d{5}$/.test(zip)) {
+        localStorage.setItem(ZIP_KEY, zip);
+        return zip;
+    }
+
+    if (walk && walk.lat)
+        return walk.lat.toFixed(5) + ", " + walk.lon.toFixed(5);
+
+    return null;
+}
+
+function emtSearchUrl(where) {
+    return "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(EMT_QUERY + where);
+    /* encodeURIComponent turns the spaces and the comma into characters a
+       URL can carry. Without it the link breaks at the first space. */
+}
+
+function openEmtSearch() {
+    const where = whereToSearch();
+
+    if (!where) {
+        setRouteBox("Type your ZIP code, or allow location, so the search knows where to look.", true);
+        $("footRoute").textContent = "No ZIP";
+        return null;
+    }
+
+    const url = emtSearchUrl(where);
+    window.open(url, "_blank", "noopener");
+    /* noopener stops the new tab from reaching back into this page. */
+    return url;
+}
+
+/* ---------- position ---------- */
+
+function ping() {
+    if (!walk || walk.state !== "walking")
+        return;
+    /* Tracking stops the moment the need ends. */
+
+    navigator.geolocation.getCurrentPosition(p => {
+        walk.lat = p.coords.latitude;
+        walk.lon = p.coords.longitude;
+        walk.seen = Date.now();
+        save();
+        show();
+
+        if (!map)
+            return;
+
+        if (dot)
+            map.removeLayer(dot);
+
+        dot = L.circleMarker([walk.lat, walk.lon],
+            { radius: 9, color: "#ffffff", fillOpacity: 0.85 }).addTo(map);
+        map.setView([walk.lat, walk.lon], 15);
+    }, () => show(), { enableHighAccuracy: true, timeout: 8000 });
+}
+
+/* ---------- the one place that paints the state ---------- */
+
+function show() {
+    const pill = $("statePill");
+    const box = $("state");
+
+    if (!walk) {
+        pill.textContent = "Not started";
+        pill.className = "signal-pill";
+        box.textContent = "No walk running.";
+        $("minutesLeft").textContent = "––";
+        $("statState").textContent = "Not started";
+        return;
+    }
+
+    const lateBy = Math.round((Date.now() - walk.eta) / 1000);
+    const left = Math.max(0, Math.ceil(-lateBy / 60));
+
+    $("statEta").textContent = clock(walk.eta);
+    $("statSignal").textContent = walk.seen ? clock(walk.seen) : "—";
+    $("footPos").textContent = walk.lat
+        ? walk.lat.toFixed(3) + ", " + walk.lon.toFixed(3)
+        : "Unknown";
+
+    if (walk.state === "arrived") {
+        pill.textContent = "Arrived";
+        pill.className = "signal-pill";
+        $("minutesLeft").textContent = "OK";
+        $("statState").textContent = "Arrived";
+        box.textContent = walk.who + " arrived safely at " + walk.dest + ".";
+        return;
+    }
+
+    if (walk.state === "help") {
+        pill.textContent = "Help asked for";
+        pill.className = "signal-pill high";
+        $("minutesLeft").textContent = "911";
+        $("statState").textContent = "Help asked for";
+        box.textContent = "Help asked for by " + walk.who + ". Call 911, then call them.";
+        return;
+    }
+
+    if (lateBy > GRACE_S) {
+        pill.textContent = "Late";
+        pill.className = "signal-pill high";
+        $("minutesLeft").textContent = Math.round(lateBy / 60) + "m";
+        $("statState").textContent = "Late";
+        box.textContent = Math.round(lateBy / 60) + " min late. Call " + walk.who + " now.";
+        return;
+    }
+
+    pill.textContent = "Walking";
+    pill.className = "signal-pill";
+    $("minutesLeft").textContent = left + "m";
+    $("statState").textContent = "Walking";
+    box.textContent = walk.who + " walks to " + walk.dest + ". Expected by " + clock(walk.eta) + ".";
+}
+
+/* ---------- buttons ---------- */
+
+$("start").onclick = () => {
+    const mins = parseInt($("mins").value) || 15;
+
+    walk = {
+        who: $("name").value,
+        dest: $("dest").value,
+        eta: Date.now() + mins * 60000,
+        /* Store the moment, not the length, so a reload cannot restart
+           the clock. */
+        state: "walking",
+        lat: null,
+        lon: null,
+        seen: null
+    };
+
+    save();
+    ping();
+
+    if (pinger)
+        clearInterval(pinger);
+
+    pinger = setInterval(ping, 30000);
+    show();
+
+    const url = openEmtSearch();
+    if (url) {
+        $("footRoute").textContent = "Opened";
+        const box = $("routeBox");
+        box.className = "note";
+        box.textContent = "Route to the nearest EMT opened in a new tab. ";
+
+        const again = document.createElement("a");
+        again.href = url;
+        again.target = "_blank";
+        again.rel = "noopener";
+        again.textContent = "Open it again";
+        box.appendChild(again);
+        /* A pop-up blocker must never be the reason help is late, so the
+           link stays on the page as well. */
+    }
+};
+
+$("arrived").onclick = () => {
+    if (!walk)
+        return;
+
+    walk.state = "arrived";
+    save();
+    show();
+};
+
+$("help").onclick = () => {
+    if (walk) {
+        walk.state = "help";
+        save();
+    }
+    /* The help button works with no walk running. An emergency does not
+       wait for a form to be filled in. */
+
+    window.open(WA_911, "_blank", "noopener");
+
+    const box = $("routeBox");
+    box.className = "note bad";
+    box.textContent = "";
+
+    const line = document.createElement("div");
+    line.textContent = "Washington 911 information opened in a new tab.";
+    box.appendChild(line);
+
+    const call = document.createElement("a");
+    call.className = "primary-btn emergency-btn";
+    call.href = "tel:911";
+    call.textContent = "Call 911 now";
+    box.appendChild(call);
+    /* A web page does not dial. On a phone this link does. */
+
+    const info = document.createElement("a");
+    info.href = WA_911;
+    info.target = "_blank";
+    info.rel = "noopener";
+    info.textContent = "911info.wa.gov";
+    box.appendChild(info);
+
+    show();
+};
+
+/* ---------- start ---------- */
+
+setInterval(show, 5000);
+/* Repaint every five seconds, even when nothing happens. This is what
+   makes the card turn red by itself. */
+
+show();
+
+if (walk && walk.state === "walking")
+    pinger = setInterval(ping, 30000);
+    </script>
+    <script src="sound.js"></script>
+  </body>
+</html>

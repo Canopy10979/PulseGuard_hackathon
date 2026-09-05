@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find nearby AEDs and support sites | Lifeline</title>
+<meta name="description" content="Use the Lifeline support prototype to find nearby AEDs, shelters, and hydrants from your current location.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#101112">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lifeline">
+<meta property="og:title" content="Find nearby AEDs and support sites | Lifeline">
+<meta property="og:description" content="A location-based public-safety support tool using illustrative places.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="tool" data-page="shelters">
+<main class="shell">
+<section class="page-hero">
+    <a class="back-home" href="index.html">← Main dashboard</a>
+    <p class="eyebrow">Support tool</p>
+    <h1>Find nearby equipment and support.</h1>
+    <p class="lede">Share your location when you are ready, then compare nearby AEDs, shelters, and other support points. Listed places are illustrative, not a verified emergency register.</p>
+</section>
+<div class="split">
+    <div>
+        <div class="panel">
+            <label for="kind">Show</label>
+            <select id="kind">
+                <option value="aed" selected>Defibrillators (AED)</option>
+                <option value="shelter">Shelters</option>
+                <option value="hydrant">Hydrants</option>
+                <option value="all">Everything</option>
+            </select>
+            <button id="locate">Share my location</button>
+            <div id="msg"></div>
+        </div>
+        <ul class="rows" id="list"></ul>
+    </div>
+    <div id="map"></div>
+</div>
+<script>
+const SEED = [
+    { id: 1, kind: "shelter", name: "Community centre north hall", lat: 47.6608, lon: -122.3145,
+      status: "open", cap: 180, occ: 42, pets: true },
+    { id: 2, kind: "shelter", name: "Riverside high school gym", lat: 47.6155, lon: -122.3300,
+      status: "limited", cap: 250, occ: 231, pets: false },
+    { id: 3, kind: "shelter", name: "Fairground pavilion", lat: 47.6740, lon: -122.3860,
+      status: "full", cap: 120, occ: 120, pets: true },
+    { id: 4, kind: "shelter", name: "Eastside community hall", lat: 47.6740, lon: -122.1215,
+      status: "open", cap: 90, occ: 31, pets: false },
+    { id: 5, kind: "aed", name: "Transit station west lobby", lat: 47.6205, lon: -122.3493 },
+    { id: 6, kind: "aed", name: "City hall ground floor", lat: 47.6035, lon: -122.3300 },
+    { id: 7, kind: "aed", name: "Ferry terminal gate 2", lat: 47.6025, lon: -122.3390 },
+    { id: 8, kind: "aed", name: "Public library main desk", lat: 47.6067, lon: -122.3325 },
+    { id: 9, kind: "aed", name: "University hospital entrance", lat: 47.6500, lon: -122.3080 },
+    { id: 10, kind: "aed", name: "Shopping centre food court", lat: 47.6710, lon: -122.1180 },
+    { id: 11, kind: "aed", name: "Community pool reception", lat: 47.6820, lon: -122.1290 },
+    { id: 12, kind: "aed", name: "High school gym entrance", lat: 47.6640, lon: -122.1420 },
+    { id: 13, kind: "aed", name: "Park and ride, level 1", lat: 47.6395, lon: -122.1290 },
+    { id: 14, kind: "hydrant", name: "Hydrant 4412, Pine and 5th", lat: 47.6115, lon: -122.3355 }
+];
+/* Every place above is invented for the demonstration. Before this page
+   is shown as fact, replace the list with verified AED locations from the
+   building owners or the county register. */
+
+const NEAREST = 5;
+const KEY = "shelters.v2";
+let assets = JSON.parse(localStorage.getItem(KEY) || "null") || SEED;
+let me = null;
+let markers = [];
+
+/* If the map CDN is blocked, the list must still work. Without this
+   guard one failed script killed every button on the page. */
+let map = null;
+
+if (typeof L !== "undefined") {
+    map = L.map("map").setView([47.6205, -122.34], 12);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        { attribution: "&copy; OpenStreetMap" }).addTo(map);
+}
+else {
+    const box = document.getElementById("map");
+    box.style.display = "grid";
+    box.style.placeItems = "center";
+    box.textContent = "The map could not load. The list below still works.";
+}
+
+function save() {
+    localStorage.setItem(KEY, JSON.stringify(assets));
+}
+
+function metres(a, b) {
+    const R = 6371000;
+    const dLat = (b.lat - a.lat) * Math.PI / 180;
+    const dLon = (b.lon - a.lon) * Math.PI / 180;
+    const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) *
+        Math.cos(b.lat * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(s));
+}
+
+function words(row) {
+    if (row.kind !== "shelter")
+        return row.kind === "aed" ? "Defibrillator" : "Hydrant";
+    const map = { open: "Open", limited: "Few beds left", full: "Full", closed: "Closed" };
+    return "Shelter, " + (map[row.status] || row.status);
+}
+
+function next(status) {
+    const order = ["open", "limited", "full", "closed"];
+    return order[(order.indexOf(status) + 1) % order.length];
+}
+
+function say(text, bad) {
+    const box = document.getElementById("msg");
+    box.className = bad ? "note bad" : "note";
+    box.textContent = text;
+}
+
+function routeUrl(row) {
+    /* Walking directions from where the person stands to the place they
+       tapped. Without a position, Google Maps still shows the place. */
+    const to = row.lat + "," + row.lon;
+    let url = "https://www.google.com/maps/dir/?api=1&destination=" +
+        encodeURIComponent(to) + "&travelmode=walking";
+
+    if (me)
+        url += "&origin=" + encodeURIComponent(me.lat + "," + me.lon);
+
+    return url;
+}
+
+function draw() {
+    const kind = document.getElementById("kind").value;
+    let rows = assets.slice();
+
+    if (kind !== "all")
+        rows = rows.filter(r => r.kind === kind);
+
+    if (me) {
+        rows.sort((a, b) => metres(me, a) - metres(me, b));
+        rows = rows.slice(0, NEAREST);
+        /* Only the five nearest. A list of everything in the county helps
+           nobody who is standing next to a person who has collapsed. */
+    }
+    else
+        rows = rows.slice(0, NEAREST);
+
+    if (map) {
+        markers.forEach(m => map.removeLayer(m));
+        markers = [];
+    }
+
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    rows.forEach((row, i) => {
+        const li = document.createElement("li");
+        li.className = row.status || "";
+
+        let text = words(row);
+        if (row.cap)
+            text += ", " + (row.cap - row.occ) + " of " + row.cap + " places free";
+        if (me)
+            text += ", " + Math.round(metres(me, row)) + " m away";
+        else
+            text += ", distance unknown";
+
+        const title = document.createElement("b");
+        title.textContent = (i + 1) + ". " + row.name;
+
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = text;
+
+        const route = document.createElement("a");
+        route.href = routeUrl(row);
+        route.target = "_blank";
+        route.rel = "noopener";
+        route.textContent = "Walking route";
+        route.onclick = ev => ev.stopPropagation();
+        /* Without stopPropagation the click would also fall through to the
+           row and move the map under the new tab. */
+
+        li.append(title, meta, route);
+        /* textContent, not innerHTML: a place name can never become
+           markup on the page. */
+
+        li.onclick = () => {
+            if (map)
+                map.setView([row.lat, row.lon], 16);
+
+            if (row.kind === "shelter") {
+                row.status = next(row.status);
+                save();
+                draw();
+            }
+        };
+
+        list.appendChild(li);
+
+        if (!map)
+            return;
+
+        /* Grey ramp on the map too: dark is quiet, white is urgent. */
+        const colour = { open: "#4a4a4a", limited: "#9a9a9a", full: "#ffffff" }[row.status] || "#ffffff";
+        const m = L.circleMarker([row.lat, row.lon],
+            { radius: row.kind === "shelter" ? 10 : 7, color: colour, fillOpacity: 0.7 })
+            .addTo(map).bindPopup(row.name + " — " + text);
+        markers.push(m);
+    });
+}
+
+document.getElementById("kind").onchange = draw;
+
+function useLocation(fromButton) {
+    if (!navigator.geolocation) {
+        say("This browser gives no position. The list below is not sorted by distance.", true);
+        return;
+    }
+
+    say("Asking for your location…");
+
+    navigator.geolocation.getCurrentPosition(p => {
+        me = { lat: p.coords.latitude, lon: p.coords.longitude };
+
+        if (map) {
+            L.marker([me.lat, me.lon]).addTo(map).bindPopup("You are here");
+            map.setView([me.lat, me.lon], 13);
+        }
+
+        say("Showing the " + NEAREST + " nearest, closest first. Accuracy about " +
+            Math.round(p.coords.accuracy) + " m.");
+        draw();
+    }, () => {
+        say("Location refused, so these are not the nearest to you. Press the button to try again.", true);
+        if (fromButton)
+            return;
+    }, { enableHighAccuracy: true, timeout: 10000 });
+}
+
+document.getElementById("locate").onclick = () => useLocation(true);
+
+/* ---------- start ---------- */
+
+say("Share your location to see the " + NEAREST + " nearest places to you.");
+draw();
+useLocation(false);
+/* Asked once when the page opens. The browser shows its own prompt, so
+   the person still chooses, and the page works either way. */
+</script>
+</main>
+<script src="nav.js"></script>
+<script src="sound.js"></script>
+</body>
+</html>

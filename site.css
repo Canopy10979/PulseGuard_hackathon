@@ -1,0 +1,876 @@
+/* PulseGuard — one design system for the whole site.
+ *
+ * Before this file the dashboard was dark navy and the detection page was
+ * light green, so the two looked like different products. Everything now
+ * uses the dark theme of the dashboard, and every page loads this file
+ * first. styles.css still holds the dashboard-only pieces.
+ */
+
+:root {
+    --bg: #000000;
+    --bg-alt: #0a0a0a;
+    --card: #0d0d0d;
+    --line: rgba(255, 255, 255, 0.18);
+    --text: #ffffff;
+    --muted: #9a9a9a;
+    /* Black and white. What used to be red, amber, blue and green is now
+       a step on one grey ramp, so state is carried by weight, position
+       and inversion instead of hue. */
+    --red: #ffffff;
+    --amber: #bdbdbd;
+    --blue: #ffffff;
+    --green: #7d7d7d;
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    /* The one exception. It marks a life-safety action and nothing else.
+       Set it to #ffffff if you want no colour at all. */
+    --emergency: #ff3b30;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", system-ui, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 24%),
+        linear-gradient(180deg, #000000 0%, #0a0a0a 55%, #000000 100%);
+    background-attachment: fixed;
+    color: var(--text);
+}
+
+a {
+    color: var(--blue);
+}
+
+.container {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+}
+
+/* ---------- the one navigation ---------- */
+/* nav.js writes this on every page, so a link is added in one place and
+   appears everywhere. */
+
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+
+.site-nav .inner {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 12px 0;
+    flex-wrap: wrap;
+}
+
+.site-nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.site-nav .brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.site-nav .groups {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+.site-nav .group {
+    display: grid;
+    gap: 2px;
+}
+
+.site-nav .group-name {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.75;
+    /* The category name above its links. This is what turns six loose
+       pages into a site with a shape. */
+}
+
+.site-nav .group-links {
+    display: flex;
+    gap: 14px;
+}
+
+.site-nav a.link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
+
+.site-nav a.link:hover {
+    color: var(--text);
+}
+
+.site-nav a.link.active {
+    color: var(--text);
+    border-bottom-color: var(--blue);
+    /* Where am I. Without it, six similar pages feel like one page that
+       will not load. */
+}
+
+.mute {
+    margin-left: 12px;
+    padding: 4px 11px;
+    font-size: 0.72rem;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    cursor: pointer;
+}
+
+/* ---------- shared page parts ---------- */
+
+.shell {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.page-hero {
+    padding: 54px 0 26px;
+    max-width: 760px;
+}
+
+.back-home {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 14px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.back-home:hover {
+    color: var(--text);
+}
+
+.page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    margin: 0 0 16px;
+}
+
+.eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--blue);
+    margin: 0 0 10px;
+}
+
+.lede {
+    font-size: 1.06rem;
+    color: var(--muted);
+}
+
+.muted, .microcopy, small {
+    color: var(--muted);
+}
+
+.microcopy {
+    font-size: 0.78rem;
+}
+
+.disclaimer {
+    margin-top: 16px;
+    padding: 13px 15px;
+    border-left: 3px solid #ffffff;
+    border-radius: 0 12px 12px 0;
+    background: rgba(255, 255, 255, 0.07);
+    font-size: 0.9rem;
+    /* The honest line about what the prototype is not. It lives on the
+       page, not only in the pitch. */
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.card h2 {
+    margin: 0 0 12px;
+    font-size: 1.35rem;
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 18px;
+}
+
+.info {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 26px;
+}
+
+.steps {
+    display: flex;
+    gap: 18px;
+}
+
+.steps > div {
+    flex: 1;
+}
+
+.steps b {
+    color: var(--blue);
+    font-size: 0.78rem;
+}
+
+.steps p {
+    font-size: 0.86rem;
+    color: var(--muted);
+}
+
+.steps strong {
+    color: var(--text);
+}
+
+.metrics {
+    display: flex;
+    gap: 12px;
+    margin: 18px 0 20px;
+}
+
+.metrics div {
+    flex: 1;
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+}
+
+.metrics span, .metrics strong {
+    display: block;
+    font-size: 0.74rem;
+}
+
+.metrics span {
+    color: var(--muted);
+}
+
+/* ---------- controls ---------- */
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 16px 0 6px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(7, 19, 28, 0.6);
+    color: var(--text);
+    font: inherit;
+}
+
+.button, button {
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 12px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background: rgba(148, 163, 184, 0.16);
+    color: var(--text);
+}
+
+.button.primary, button.primary {
+    background: #ffffff;
+    color: #000000;
+}
+
+.button.danger, button.danger {
+    background: var(--emergency);
+    color: #ffffff;
+}
+
+.button:focus-visible, button:focus-visible, a:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 2px;
+    /* Keyboard users must see where they are. */
+}
+
+.switch input {
+    display: none;
+}
+
+.switch span {
+    display: block;
+    width: 48px;
+    height: 27px;
+    border-radius: 20px;
+    background: rgba(148, 163, 184, 0.35);
+    padding: 3px;
+}
+
+.switch span:after {
+    content: "";
+    display: block;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: #fff;
+    transition: 0.2s;
+}
+
+.switch input:checked + span {
+    background: var(--green);
+}
+
+.switch input:checked + span:after {
+    transform: translateX(21px);
+}
+
+/* ---------- detection page pieces ---------- */
+
+.mode-banner {
+    margin: 18px 0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.mode-banner.bad {
+    border-color: #ffffff;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    /* Simulation mode must be unmistakable from the back of a room. */
+}
+
+.monitor-state {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 16px;
+    border-radius: 14px;
+    margin: 20px 0;
+}
+
+.monitor-state.off {
+    background: rgba(148, 163, 184, 0.1);
+}
+
+.monitor-state small {
+    display: block;
+    color: var(--muted);
+}
+
+.pulse {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.1);
+}
+
+.monitor-state.off .pulse {
+    background: #8899a6;
+    box-shadow: none;
+}
+
+.signal-list {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.signal {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    border-left: 5px solid rgba(148, 163, 184, 0.35);
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.signal.on {
+    border-left-color: #ffffff;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.confidence-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+}
+
+.confidence-row strong {
+    font-size: 1.7rem;
+}
+
+.prepared-text {
+    margin: 12px 0;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(148, 163, 184, 0.12);
+    font-size: 0.86rem;
+    text-align: left;
+}
+
+body[data-page="detect"] .alert-panel {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 19, 28, 0.85);
+    place-items: center;
+    padding: 20px;
+    z-index: 60;
+}
+
+body[data-page="detect"] .alert-panel.open {
+    display: grid;
+}
+
+body[data-page="detect"] .alert-box {
+    max-width: 440px;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 30px;
+}
+
+body[data-page="detect"] .alert-icon {
+    margin: 0 auto 14px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #000000;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+body[data-page="detect"] .countdown {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 12px;
+    margin: 18px 0;
+}
+
+body[data-page="detect"] .alert-box .button {
+    width: 100%;
+    display: block;
+}
+
+/* ---------- tables ---------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    font-size: 0.9rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--line);
+    font-variant-numeric: tabular-nums;
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+/* ---------- the category grid on the home page ---------- */
+
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.cat-card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.cat-card:hover {
+    border-color: var(--blue);
+}
+
+.cat-card h3 {
+    margin: 6px 0 8px;
+    font-size: 1.1rem;
+}
+
+.cat-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.tag.core {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+}
+
+.tag.context {
+    background: rgba(255, 255, 255, 0.08);
+    color: #d0d0d0;
+}
+
+.tag.trial {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #bdbdbd;
+    /* Supporting experiments are labelled, not hidden. A judge should
+       never wonder which pages are the pitch. */
+}
+
+/* ---------- map and tool pages ---------- */
+
+#map {
+    height: 440px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    margin-top: 16px;
+}
+
+body.tool .split {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 18px;
+    align-items: start;
+    margin-top: 18px;
+}
+
+body.tool .panel {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 20px;
+}
+
+body.tool ul.rows {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+}
+
+body.tool ul.rows li {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 5px solid rgba(148, 163, 184, 0.4);
+    border-radius: 14px;
+    padding: 11px 13px;
+    margin-bottom: 9px;
+    cursor: pointer;
+}
+
+/* Three steps of grey, dark to white, so a row still reads at a glance:
+   quiet is dark, urgent is white. */
+body.tool li.open, body.tool li.arrived { border-left-color: #4a4a4a; }
+body.tool li.limited, body.tool li.two { border-left-color: #9a9a9a; }
+body.tool li.full, body.tool li.many, body.tool li.help { border-left-color: #ffffff; }
+
+.meta {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.count {
+    display: inline-block;
+    min-width: 24px;
+    text-align: center;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 6px;
+    padding: 0 6px;
+    font-variant-numeric: tabular-nums;
+}
+
+.note, .state {
+    margin-top: 12px;
+    padding: 11px 13px;
+    border-left: 4px solid #6f6f6f;
+    border-radius: 0 10px 10px 0;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.88rem;
+}
+
+.note.bad, .state.late {
+    border-left-color: #ffffff;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 700;
+}
+
+.note.bad a, .state.late a {
+    color: #000000;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+    padding: 28px 0 60px;
+}
+
+.site-footer .inner {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 22px;
+}
+
+.site-footer h4 {
+    margin: 0 0 8px;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.site-footer a {
+    display: block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    padding: 2px 0;
+}
+
+.site-footer a:hover {
+    color: var(--text);
+}
+
+.site-footer .fine {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 0.76rem;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+}
+
+/* ---------- narrow screens ---------- */
+
+@media (max-width: 860px) {
+    .grid, .info, body.tool .split {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        display: block;
+    }
+
+    .steps > div {
+        margin: 14px 0;
+    }
+
+    .site-nav .groups {
+        margin-left: 0;
+        width: 100%;
+        gap: 16px;
+    }
+
+    #map {
+        height: 320px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+.button.warn, button.warn {
+    background: var(--emergency);
+    color: #ffffff;
+    /* The tool pages call the danger button "warn". Same meaning, so it
+       gets the same look rather than a second rule to remember. */
+}
+
+/* The dashboard uses its own button classes; they are links now, so they
+   must not carry a link underline. */
+.primary-btn, .secondary-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The one coloured element in the site. A 911 action must not look like
+   every other white button on the page. Change --emergency to #ffffff
+   for pure black and white. */
+.emergency-btn, .primary-btn.emergency-btn {
+    /* Two selectors, because styles.css loads later and its plain
+       .primary-btn rule would otherwise win on order. */
+    background: var(--emergency);
+    color: #ffffff;
+    border: 0;
+}
+
+/* Editorial dark mode: the calm, readable character of a public reference work. */
+:root {
+    --bg: #101112;
+    --bg-alt: #161819;
+    --card: #191b1d;
+    --line: #3a3d40;
+    --text: #eaecf0;
+    --muted: #b4b8bd;
+    --blue: #79b8ff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top left, rgba(121,184,255,.045), transparent 26%),
+                linear-gradient(180deg, #101112 0%, #151718 55%, #101112 100%);
+}
+
+h1, h2, h3, .site-nav .brand {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    letter-spacing: -.018em;
+}
+
+p, li { max-width: 72ch; }
+a { text-underline-offset: .16em; }
+.site-nav { background: rgba(16,17,18,.94); }
+.site-nav .brand { font-weight: 600; }
+.site-nav .brand-mark { border-radius: 3px; background: transparent; color: var(--text); border: 1px solid var(--muted); }
+.card, .cat-card, body.tool .panel, body.tool ul.rows li { border-radius: 4px; box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+
+.skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .7rem 1rem; background: var(--text); color: var(--bg); }
+.skip-link:focus { top: 1rem; }
+
+/* Knowledge-page layout inspired by Wikimedia's dark reading experience. */
+:root {
+    --bg: #101418;
+    --bg-alt: #101418;
+    --card: #202122;
+    --line: #54595d;
+    --text: #eaecf0;
+    --muted: #c8ccd1;
+    --blue: #6ea8fe;
+}
+
+body { background: var(--bg); background-attachment: initial; }
+.container, .shell, .site-nav .inner, .site-footer .inner { width: min(960px, calc(100% - 40px)); }
+.site-nav { position: relative; background: #101418; backdrop-filter: none; }
+.site-nav .inner { padding: 16px 0 12px; gap: 28px; }
+.site-nav .groups { gap: 14px; }
+.site-nav .group-name { display: none; }
+.site-nav a.link { font-size: .82rem; border-bottom-width: 1px; }
+.site-nav .brand { font-size: 1.18rem; }
+.site-nav .brand-mark { width: 34px; height: 34px; font-family: Georgia, serif; }
+
+.page-hero { padding: 40px 0 16px; max-width: 780px; }
+.page-hero h1, .hero-copy h1 {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.12;
+}
+.lede { color: var(--muted); font-size: 1rem; }
+.eyebrow { color: var(--muted); letter-spacing: .08em; font-size: .68rem; }
+.back-home { color: var(--blue); font-weight: 400; }
+
+.card, body.tool .panel, body.tool ul.rows li, .cat-card {
+    background: #202122;
+    border-color: var(--line);
+    border-radius: 2px;
+    box-shadow: none;
+}
+.card + .card { margin-top: 16px; }
+.card h2 { padding-bottom: 5px; border-bottom: 1px solid #383b3e; }
+.button, button, input, select, textarea { border-radius: 2px; }
+.button.primary, button.primary { background: #3366cc; color: white; }
+.disclaimer, .note, .state { background: #27292d; border-radius: 0; }
+.site-footer { margin-top: 56px; padding-top: 22px; }
+.site-footer .fine { line-height: 1.6; }
+
+@media (max-width: 860px) {
+    .site-nav .groups { overflow-x: auto; flex-wrap: nowrap; width: 100%; padding-bottom: 4px; }
+    .site-nav .inner { display: grid; }
+    .mute { margin: 0; justify-self: start; }
+}

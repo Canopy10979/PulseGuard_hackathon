@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lifeline | Collapse warning demo</title>
+  <meta name="description" content="Try Lifeline's browser-based collapse-warning demo and see how motion, stillness, a human check-in, and a trusted contact work together.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#101112">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lifeline">
+  <meta property="og:title" content="Lifeline collapse-warning demo">
+  <meta property="og:description" content="An explainable public-safety prototype that asks before preparing an alert.">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body data-page="detect">
+  <main class="shell">
+
+
+    <section class="page-hero">
+      <a class="back-home" href="index.html">← Main dashboard</a>
+      <p class="eyebrow">Prototype</p>
+      <h1>Lifeline checks in before preparing an alert.</h1>
+      <p class="lede">
+        If your phone notices a sudden movement followed by stillness, Lifeline asks a simple
+        question: are you okay? Only then can it prepare a message for someone you trust.
+      </p>
+      <p class="disclaimer">
+        This is a hackathon prototype, not a medical device. It does not detect an overdose, it does
+        not monitor breathing, and it never calls 911. A person must read the prepared message and act.
+        In an emergency, call 911 first.
+      </p>
+    </section>
+
+    <div id="modeBanner" class="mode-banner">Sensors off.</div>
+
+    <section class="grid">
+
+      <article class="card detector">
+        <div class="card-head">
+          <div>
+            <p class="eyebrow">Detection</p>
+            <h2>Motion sensors</h2>
+          </div>
+          <label class="switch">
+            <input id="monitorToggle" type="checkbox">
+            <span></span>
+          </label>
+        </div>
+
+        <div id="monitorState" class="monitor-state off">
+          <span class="pulse"></span>
+          <div>
+            <strong id="stateTitle">Sensors off</strong>
+            <small id="stateNote">Turn them on before you rely on this.</small>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div><span>GPS</span><strong id="gpsStatus">Not checked</strong></div>
+          <div><span>Signals</span><strong id="signalTally">0 of 2 needed</strong></div>
+          <div><span>Last check</span><strong id="lastCheck">—</strong></div>
+        </div>
+
+        <button id="simulateBtn" class="button secondary" type="button">Run simulation</button>
+        <p class="microcopy">
+          The simulation feeds made-up signals into the same rule the sensors use. The banner above
+          says which mode you are in.
+        </p>
+      </article>
+
+      <article class="card settings">
+        <p class="eyebrow">Response plan</p>
+        <h2>Who gets the message</h2>
+        <p class="muted">
+          The message goes to one person you choose. It is written for you and opened in your own
+          messaging app; Lifeline has no server and sends nothing by itself.
+        </p>
+
+        <label for="contactName">Contact name</label>
+        <input id="contactName" placeholder="Alex">
+
+        <label for="contactPhone">Contact number</label>
+        <input id="contactPhone" type="tel" placeholder="+1 555 0100" autocomplete="tel">
+
+        <button id="saveContact" class="button secondary" type="button">Save contact</button>
+        <p id="contactNote" class="microcopy">Kept in this browser only. Nothing is uploaded.</p>
+
+        <button id="locationBtn" class="button primary" type="button">Check my location</button>
+        <p id="locationText" class="microcopy">Location is only requested when you ask for it.</p>
+      </article>
+
+    </section>
+
+    <section class="card info">
+      <div>
+        <p class="eyebrow">Why it fired</p>
+        <h2>Explainable confidence</h2>
+        <p class="muted">
+          Two signals are needed before the countdown starts. One signal alone could be a dropped
+          phone, so it never raises an alarm. Each signal is listed with the points it adds.
+        </p>
+      </div>
+
+      <ul id="signalList" class="signal-list"></ul>
+
+      <div class="confidence-row">
+        <span>Confidence</span>
+        <strong id="confidence">0 %</strong>
+      </div>
+    </section>
+
+    <section class="card info">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2>From movement to help</h2>
+      </div>
+      <div class="steps">
+        <div><b>01</b><p><strong>Detect</strong><br>A sudden movement above 2.5 g starts the check.</p></div>
+        <div><b>02</b><p><strong>Confirm</strong><br>A tilt or eight seconds of stillness adds a second signal.</p></div>
+        <div><b>03</b><p><strong>Ask</strong><br>A twenty second countdown gives you time to cancel.</p></div>
+        <div><b>04</b><p><strong>Prepare</strong><br>No answer, so a message with your position is written for your contact.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="alertPanel" class="alert-panel" aria-hidden="true">
+    <div class="alert-box">
+      <div class="alert-icon">!</div>
+      <p class="eyebrow">Possible emergency</p>
+      <h2 id="alertTitle">Are you okay?</h2>
+      <p>A sudden movement and a second signal were detected.</p>
+      <div class="countdown">Checking in for <strong id="countdown">20</strong>s</div>
+      <button id="okayBtn" class="button primary" type="button">I am okay</button>
+      <button id="notifyBtn" class="button danger" type="button">Prepare the message now</button>
+      <div id="preparedBox"></div>
+      <small>For a life-threatening emergency, call 911.</small>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+  <script src="app.js"></script>
+  <script src="sound.js"></script>
+</body>
+</html>

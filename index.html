@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lifeline | Help when someone cannot ask</title>
+  <meta name="description" content="Lifeline is a King County hackathon prototype that checks for possible life-threatening unresponsiveness and helps a person reach human support.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#101418">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lifeline">
+  <meta property="og:title" content="Lifeline | Help when someone cannot ask">
+  <meta property="og:description" content="A transparent emergency-support prototype for possible life-threatening unresponsiveness.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="home">
+  <main>
+    <section class="hero container lifeline-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Hackathon prototype · King County, Washington</p>
+        <h1>Help for the moment someone cannot ask.</h1>
+        <p class="lede">Lifeline looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>
+        <p class="disclaimer">Lifeline does not diagnose an overdose. This browser demo reads motion and orientation only; it does not monitor breathing, run in the background, or call anyone automatically.</p>
+      </div>
+      <aside class="status-card" aria-labelledby="status-title">
+        <span class="status-dot" aria-hidden="true"></span>
+        <p class="eyebrow">Current status</p>
+        <h2 id="status-title">Protection is off</h2>
+        <p>Open the demo and choose when to start monitoring.</p>
+        <a class="primary-btn" href="fall-detection.html">Start monitoring demo</a>
+      </aside>
+    </section>
+
+    <section class="container emergency-choice" aria-labelledby="help-title">
+      <div class="section-heading compact-heading"><div><p class="eyebrow">Choose what is happening</p><h2 id="help-title">What do you need right now?</h2></div></div>
+      <div class="choice-grid">
+        <article class="choice-card danger-choice"><p class="card-kicker">Immediate danger</p><h3>I need help</h3><p>If you may have overdosed, cannot breathe normally, or feel seriously unwell, call 911.</p><a class="primary-btn emergency-btn" href="tel:911">Call 911</a></article>
+        <article class="choice-card"><p class="card-kicker">Bystander</p><h3>Help someone else</h3><p>If they cannot wake or are not breathing normally, call 911 now. You do not need to identify the substance first.</p><a class="secondary-btn" href="tel:911">Call 911 for them</a></article>
+        <article class="choice-card"><p class="card-kicker">Medication or poisoning</p><h3>I am not sure what was taken</h3><p>For a possible poisoning in the United States, Poison Help connects you with a local poison center.</p><a class="secondary-btn" href="tel:18002221222">Call Poison Help</a><small>1-800-222-1222</small></article>
+      </div>
+    </section>
+
+    <section class="container how-it-works" aria-labelledby="sequence-title">
+      <p class="eyebrow">Current prototype sequence</p>
+      <h2 id="sequence-title">One signal is not enough.</h2>
+      <ol class="sequence-list">
+        <li><strong>Notice</strong><span>A sudden movement is detected.</span></li>
+        <li><strong>Verify</strong><span>Stillness or a major orientation change adds a second signal.</span></li>
+        <li><strong>Ask</strong><span>The phone asks, “Are you okay?” and starts a cancelable countdown.</span></li>
+        <li><strong>Prepare</strong><span>If there is no answer, the demo prepares a message for a trusted contact.</span></li>
+      </ol>
+      <p class="microcopy">Future breathing, smartwatch, scheduled, and always-on modes are concepts only and are not implemented in this website.</p>
+    </section>
+
+    <section class="container drive-sober" aria-labelledby="drive-title">
+      <p class="eyebrow">Before driving</p>
+      <h2 id="drive-title">If a substance may affect you, leave the keys behind.</h2>
+      <p class="lede">Alcohol, cannabis, illegal drugs, and some prescription or over-the-counter medicines can slow judgment, coordination, or reaction time. Plan a sober ride before using an impairing substance.</p>
+      <div class="local-facts">
+        <p><strong>King County roads:</strong> the county's 2024 report counted 110 DUI-involved collisions in the road system it covers, including seven fatal collisions.</p>
+        <p><strong>Local response:</strong> Seattle operates a DUI squad for suspected alcohol- or drug-impaired driving, while Kent's DUI Court combines supervision with substance-use treatment.</p>
+      </div>
+      <div class="source-links" aria-label="Official sources">
+        <a href="https://dol.wa.gov/driver-licenses-and-permits/driver-training-and-testing/driver-guides/washington-state-driver-guide-text-only">Washington Driver Guide</a>
+        <a href="https://cdn.kingcounty.gov/-/media/king-county/depts/local-services/roads/plans-reports/2024kingcountycollisiondatareport.pdf">King County 2024 Collision Report</a>
+        <a href="https://seattle.gov/police/about-us/about-policing/traffic-enforcement">Seattle Police traffic enforcement</a>
+        <a href="https://www.kentwa.gov/departments/municipal-court/dui-court">Kent DUI Court</a>
+        <a href="https://poisonhelp.hrsa.gov/about-us">Poison Help</a>
+      </div>
+    </section>
+
+    <section class="container account-section" id="account" aria-labelledby="account-title">
+      <div class="account-copy">
+        <p class="eyebrow">Optional account</p>
+        <h2 id="account-title">Keep your setup close.</h2>
+        <p>Account access is not connected in this prototype.</p>
+      </div>
+      <div class="auth-card">
+        <div class="auth-tabs" role="tablist" aria-label="Account options">
+          <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-auth-tab="login">Log in</button>
+          <button class="auth-tab" id="signup-tab" type="button" role="tab" aria-selected="false" aria-controls="signup-form" data-auth-tab="signup">Sign up</button>
+        </div>
+
+        <form class="auth-form" id="login-form" aria-labelledby="login-tab">
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" autocomplete="email" required>
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          <button class="primary" type="submit">Log in</button>
+        </form>
+
+        <form class="auth-form" id="signup-form" aria-labelledby="signup-tab" hidden>
+          <label for="signup-name">Name</label>
+          <input id="signup-name" name="name" type="text" autocomplete="name" required>
+          <label for="signup-email">Email</label>
+          <input id="signup-email" name="email" type="email" autocomplete="email" required>
+          <label for="signup-password">Password</label>
+          <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+          <button class="primary" type="submit">Create account</button>
+        </form>
+        <p class="auth-status" id="auth-status" aria-live="polite">Nothing is sent or saved.</p>
+      </div>
+    </section>
+
+    <section class="container limits-link"><h2>Built to be questioned.</h2><p>See exactly what works, what stays on your device, and what remains unproven.</p><a href="about.html">Read the method and limits</a></section>
+  </main>
+  <script src="nav.js"></script>
+  <script src="sound.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
