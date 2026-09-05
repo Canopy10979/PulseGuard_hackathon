@@ -16,6 +16,7 @@ const IMPACT_MS2 = 25;        /* about 2.5 g. Walking peaks near 15. */
 const STILL_MS2 = 1.5;        /* how far from rest still counts as "not moving" */
 const STILL_MS = 8000;        /* how long that stillness must last */
 const COUNTDOWN_S = 20;       /* seconds to answer before the alert is prepared */
+const DROP_ALARM_S = 10;      /* alarm length after a hard phone drop */
 const MIN_SIGNALS = 2;        /* one signal alone never raises an alarm */
 const CONTACT_KEY = "pulseguard.contact.v1";
 
@@ -39,6 +40,8 @@ let stillSince = null;
 let lastTilt = { beta: null, gamma: null };
 let timer = null;
 let place = null;
+let dropAlarmTimer = null;
+let dropAlarmActive = false;
 
 /* ---------- small helpers ---------- */
 
@@ -66,8 +69,66 @@ function fire(key) {
     /* Each signal counts once per event, however many times it repeats. */
 
     fired[key] = true;
+    if (key === "impact")
+        startDropAlarm();
     drawSignals();
     check();
+}
+
+function startDropAlarm() {
+    if (dropAlarmActive)
+        return;
+
+    dropAlarmActive = true;
+    const panel = $("#dropAlarm");
+    const audio = $("#alarmSound");
+    let left = DROP_ALARM_S;
+    panel.classList.add("open");
+    panel.setAttribute("aria-hidden", "false");
+    $("#alarmCountdown").textContent = left;
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+
+    dropAlarmTimer = setInterval(() => {
+        left -= 1;
+        $("#alarmCountdown").textContent = left;
+        if (left <= 0)
+            stopDropAlarm();
+    }, 1000);
+}
+
+function stopDropAlarm() {
+    if (!dropAlarmActive)
+        return;
+
+    clearInterval(dropAlarmTimer);
+    dropAlarmTimer = null;
+    dropAlarmActive = false;
+    const audio = $("#alarmSound");
+    audio.pause();
+    audio.currentTime = 0;
+    $("#dropAlarm").classList.remove("open");
+    $("#dropAlarm").setAttribute("aria-hidden", "true");
+    $("#careDialog").showModal();
+}
+
+function openNearbyCare() {
+    const status = $("#careStatus");
+    if (!navigator.geolocation) {
+        status.textContent = "Location is unavailable on this device.";
+        return;
+    }
+
+    status.textContent = "Checking location...";
+    navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        const query = encodeURIComponent("emergency medical services near " + lat + "," + lon);
+        window.open("https://www.google.com/maps/search/?api=1&query=" + query, "_blank", "noopener");
+        $("#careDialog").close();
+    }, () => {
+        status.textContent = "Allow location access to open the nearby-care map.";
+    });
 }
 
 function clearSignals() {
@@ -102,6 +163,10 @@ function check() {
     if (timer)
         return;
     /* A countdown is already running. */
+
+    if (dropAlarmActive)
+        return;
+    /* Nearby-care options appear only after the ten-second alarm ends or is stopped. */
 
     if (!$("#monitorToggle").checked)
         return;
@@ -360,6 +425,9 @@ $("#saveContact").addEventListener("click", () => {
 
 $("#okayBtn").addEventListener("click", closeAlert);
 $("#notifyBtn").addEventListener("click", prepareAlert);
+$("#stopAlarmBtn").addEventListener("click", stopDropAlarm);
+$("#openCareBtn").addEventListener("click", openNearbyCare);
+$("#closeCareBtn").addEventListener("click", () => $("#careDialog").close());
 
 /* ---------- start ---------- */
 

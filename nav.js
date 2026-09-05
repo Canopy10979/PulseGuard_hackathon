@@ -18,7 +18,7 @@ const SITE = [
     {
         group: "Detect",
         items: [
-            { id: "detect", href: "fall-detection.html", label: "Monitoring demo" }
+            { id: "detect", href: "fall-detection.html", label: "Drop tracker" }
         ]
     },
     {

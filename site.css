@@ -886,6 +886,10 @@ body { background: var(--bg); background-attachment: initial; }
 .card h2 { padding-bottom: 5px; border-bottom: 1px solid #383b3e; }
 .button, button, input, select, textarea { border-radius: 2px; }
 .button.primary, button.primary { background: #3366cc; color: white; }
+.care-dialog { width: min(430px, calc(100% - 32px)); padding: 24px; background: #202122; color: var(--text); border: 1px solid var(--line); }
+.care-dialog::backdrop { background: rgba(0, 0, 0, .72); }
+.care-dialog h2 { margin-top: 0; }
+.care-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .disclaimer, .note, .state { background: #27292d; border-radius: 0; }
 .site-footer { margin-top: 56px; padding-top: 22px; }
 .site-footer .fine { line-height: 1.6; }

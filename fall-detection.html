@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lifeline | Collapse warning demo</title>
-  <meta name="description" content="Try Lifeline's browser-based collapse-warning demo and see how motion, stillness, a human check-in, and a trusted contact work together.">
+  <title>Lifeline | Phone drop tracker</title>
+  <meta name="description" content="Use Lifeline's phone drop tracker to sound a ten-second alarm and find nearby emergency care.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#101112">
   <meta property="og:type" content="website">
@@ -20,11 +20,8 @@
     <section class="page-hero">
       <a class="back-home" href="index.html">← Main dashboard</a>
       <p class="eyebrow">Prototype</p>
-      <h1>Lifeline checks in before preparing an alert.</h1>
-      <p class="lede">
-        If your phone notices a sudden movement followed by stillness, Lifeline asks a simple
-        question: are you okay? Only then can it prepare a message for someone you trust.
-      </p>
+      <h1>Phone drop tracker</h1>
+      <p class="lede">A hard drop sounds an alarm for ten seconds. Stop it to see nearby emergency care.</p>
       <p class="disclaimer">
         This is a hackathon prototype, not a medical device. It does not detect an overdose, it does
         not monitor breathing, and it never calls 911. A person must read the prepared message and act.
@@ -40,7 +37,7 @@
         <div class="card-head">
           <div>
             <p class="eyebrow">Detection</p>
-            <h2>Motion sensors</h2>
+            <h2>Drop sensor</h2>
           </div>
           <label class="switch">
             <input id="monitorToggle" type="checkbox">
@@ -62,11 +59,8 @@
           <div><span>Last check</span><strong id="lastCheck">—</strong></div>
         </div>
 
-        <button id="simulateBtn" class="button secondary" type="button">Run simulation</button>
-        <p class="microcopy">
-          The simulation feeds made-up signals into the same rule the sensors use. The banner above
-          says which mode you are in.
-        </p>
+        <button id="simulateBtn" class="button secondary" type="button">Test the alarm</button>
+        <p class="microcopy">Use this button on a computer. On a phone, turn on the sensor.</p>
       </article>
 
       <article class="card settings">
@@ -124,6 +118,27 @@
     </section>
 
   </main>
+
+  <div id="dropAlarm" class="alert-panel" aria-hidden="true">
+    <div class="alert-box">
+      <p class="eyebrow">Phone drop detected</p>
+      <h2>Alarm sounding</h2>
+      <p>Stopping automatically in <strong id="alarmCountdown">10</strong>s.</p>
+      <button id="stopAlarmBtn" class="button danger" type="button">Stop</button>
+    </div>
+  </div>
+
+  <dialog id="careDialog" class="care-dialog">
+    <h2>Open nearby emergency care?</h2>
+    <p>Your location is requested only after you choose to continue.</p>
+    <div class="care-actions">
+      <button id="openCareBtn" class="button primary" type="button">Open map</button>
+      <button id="closeCareBtn" class="button secondary" type="button">Not now</button>
+    </div>
+    <p id="careStatus" class="microcopy"></p>
+  </dialog>
+
+  <audio id="alarmSound" src="click.mp3" preload="auto" loop></audio>
 
   <div id="alertPanel" class="alert-panel" aria-hidden="true">
     <div class="alert-box">
