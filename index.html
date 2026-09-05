@@ -71,13 +71,12 @@
       </div>
     </section>
 
-    <section class="container account-section" id="account" aria-labelledby="account-title">
-      <div class="account-copy">
-        <p class="eyebrow">Optional account</p>
-        <h2 id="account-title">Keep your setup close.</h2>
-        <p>Account access is not connected in this prototype.</p>
-      </div>
+    <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="account-title">
       <div class="auth-card">
+        <div class="auth-heading">
+          <h2 id="account-title">Account</h2>
+          <button class="auth-close" type="button" aria-label="Close account window">×</button>
+        </div>
         <div class="auth-tabs" role="tablist" aria-label="Account options">
           <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-auth-tab="login">Log in</button>
           <button class="auth-tab" id="signup-tab" type="button" role="tab" aria-selected="false" aria-controls="signup-form" data-auth-tab="signup">Sign up</button>
@@ -102,9 +101,7 @@
         </form>
         <p class="auth-status" id="auth-status" aria-live="polite">Nothing is sent or saved.</p>
       </div>
-    </section>
-
-    <section class="container limits-link"><h2>Built to be questioned.</h2><p>See exactly what works, what stays on your device, and what remains unproven.</p><a href="about.html">Read the method and limits</a></section>
+    </dialog>
   </main>
   <script src="nav.js"></script>
   <script src="sound.js"></script>

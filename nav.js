@@ -95,6 +95,21 @@ function buildNav() {
     });
 
     inner.appendChild(groups);
+
+    const account = document.createElement("div");
+    account.className = "nav-account";
+
+    const login = document.createElement("a");
+    login.href = "index.html#login";
+    login.textContent = "Log in";
+
+    const signup = document.createElement("a");
+    signup.className = "signup-link";
+    signup.href = "index.html#signup";
+    signup.textContent = "Sign up";
+
+    account.append(login, signup);
+    inner.appendChild(account);
     nav.appendChild(inner);
     const main = document.querySelector("main");
     if (main && !main.id) main.id = "main-content";
@@ -128,16 +143,6 @@ function buildFooter() {
 
         inner.appendChild(col);
     });
-
-    const fine = document.createElement("div");
-    fine.className = "fine";
-    fine.textContent = "Lifeline is a hackathon prototype. It is not a medical device and it " +
-        "does not detect an overdose. Nothing here contacts emergency services by itself; a 911 " +
-        "call happens only when a person presses the dial button. Figures on this site are " +
-        "illustrative placeholders unless a source and a date are named. In an emergency, call 911.";
-    inner.appendChild(fine);
-    /* The same sentence on every page. One page carrying the warning is
-       not enough when a judge can land on any of them. */
 
     foot.appendChild(inner);
     document.body.appendChild(foot);
