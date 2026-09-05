@@ -31,6 +31,12 @@
 
     <div id="modeBanner" class="mode-banner">Sensors off.</div>
 
+    <section class="card alarm-summary">
+      <p class="eyebrow">Alarm</p>
+      <h2>Warning sound</h2>
+      <p>A detected phone drop plays the warning alarm for ten seconds or until you press Stop.</p>
+    </section>
+
     <section class="grid">
 
       <article class="card detector">
@@ -39,10 +45,6 @@
             <p class="eyebrow">Detection</p>
             <h2>Drop sensor</h2>
           </div>
-          <label class="switch">
-            <input id="monitorToggle" type="checkbox">
-            <span></span>
-          </label>
         </div>
 
         <div id="monitorState" class="monitor-state off">
@@ -59,8 +61,8 @@
           <div><span>Last check</span><strong id="lastCheck">—</strong></div>
         </div>
 
-        <button id="simulateBtn" class="button secondary" type="button">Test the alarm</button>
-        <p class="microcopy">Use this button on a computer. On a phone, turn on the sensor.</p>
+        <button id="armTrackerBtn" class="button primary" type="button">Start tracker</button>
+        <p class="microcopy">The tracker arms five seconds after you press Start.</p>
       </article>
 
       <article class="card settings">
@@ -138,7 +140,7 @@
     <p id="careStatus" class="microcopy"></p>
   </dialog>
 
-  <audio id="alarmSound" src="click.mp3" preload="auto" loop></audio>
+  <audio id="alarmSound" src="warning-alarm.mp3" preload="auto" loop></audio>
 
   <div id="alertPanel" class="alert-panel" aria-hidden="true">
     <div class="alert-box">

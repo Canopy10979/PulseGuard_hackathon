@@ -17,6 +17,7 @@ const STILL_MS2 = 1.5;        /* how far from rest still counts as "not moving" 
 const STILL_MS = 8000;        /* how long that stillness must last */
 const COUNTDOWN_S = 20;       /* seconds to answer before the alert is prepared */
 const DROP_ALARM_S = 10;      /* alarm length after a hard phone drop */
+const ARM_DELAY_S = 5;        /* time to put the phone down after pressing Start */
 const MIN_SIGNALS = 2;        /* one signal alone never raises an alarm */
 const CONTACT_KEY = "pulseguard.contact.v1";
 
@@ -42,6 +43,7 @@ let timer = null;
 let place = null;
 let dropAlarmTimer = null;
 let dropAlarmActive = false;
+let armingTimer = null;
 
 /* ---------- small helpers ---------- */
 
@@ -168,7 +170,7 @@ function check() {
         return;
     /* Nearby-care options appear only after the ten-second alarm ends or is stopped. */
 
-    if (!$("#monitorToggle").checked)
+    if (!sensorsOn)
         return;
 
     if (signalCount() < MIN_SIGNALS)
@@ -261,6 +263,35 @@ function stopSensors() {
     $("#monitorState").className = "monitor-state off";
     $("#stateTitle").textContent = "Sensors off";
     $("#stateNote").textContent = "Turn them on before you rely on this.";
+    $("#armTrackerBtn").disabled = false;
+    $("#armTrackerBtn").textContent = "Start tracker";
+}
+
+function armTracker() {
+    if (sensorsOn) {
+        stopSensors();
+        return;
+    }
+
+    let left = ARM_DELAY_S;
+    const button = $("#armTrackerBtn");
+    button.disabled = true;
+    button.textContent = "Arming in " + left + "s";
+    setMode("Tracker arming. Put the phone where you want it monitored.", false);
+
+    clearInterval(armingTimer);
+    armingTimer = setInterval(() => {
+        left -= 1;
+        button.textContent = "Arming in " + left + "s";
+        if (left <= 0) {
+            clearInterval(armingTimer);
+            armingTimer = null;
+            startSensors().then(() => {
+                button.disabled = false;
+                button.textContent = sensorsOn ? "Stop tracker" : "Start tracker";
+            });
+        }
+    }, 1000);
 }
 
 function setMode(text, bad) {
@@ -389,26 +420,8 @@ function prepareAlert() {
 
 /* ---------- wiring ---------- */
 
-$("#monitorToggle").addEventListener("change", ev => {
-    if (ev.target.checked && !sensorsOn)
-        startSensors();
-    else if (!ev.target.checked)
-        stopSensors();
-});
-
 $("#locationBtn").addEventListener("click", askPlace);
-
-$("#simulateBtn").addEventListener("click", () => {
-    simulated = true;
-    setMode("SIMULATION. No sensor data is being read. Every signal below comes from this button.", true);
-    clearSignals();
-    askPlace();
-    fire("impact");
-    setTimeout(() => fire("orientation"), 700);
-    setTimeout(() => fire("stillness"), 1800);
-    /* The simulation feeds the same signal board and the same rule as
-       the real sensors, so what a judge sees is the real logic. */
-});
+$("#armTrackerBtn").addEventListener("click", armTracker);
 
 $("#saveContact").addEventListener("click", () => {
     const name = $("#contactName").value.trim();

@@ -890,6 +890,9 @@ body { background: var(--bg); background-attachment: initial; }
 .care-dialog::backdrop { background: rgba(0, 0, 0, .72); }
 .care-dialog h2 { margin-top: 0; }
 .care-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.alarm-summary { margin: 18px 0; }
+.alarm-summary h2 { margin: 0 0 6px; }
+.alarm-summary p:last-child { margin-bottom: 0; color: var(--muted); }
 .disclaimer, .note, .state { background: #27292d; border-radius: 0; }
 .site-footer { margin-top: 56px; padding-top: 22px; }
 .site-footer .fine { line-height: 1.6; }

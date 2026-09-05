@@ -9,17 +9,18 @@ OUT = r"C:\Users\rishi\Downloads\public_safety_hackathon_site\PulseGuard_Code_Pr
 
 script = [
     ("What the site does", "Lifeline is a small browser prototype for responding to a possible phone drop. The homepage keeps the main choices visible: open the drop tracker, call 911 in immediate danger, help another person, or contact SAMHSA for substance-use support. The language stays short because someone using a safety tool should not have to search through a sales pitch."),
-    ("How the tracker works", "The tracker reads DeviceMotion data only after the user turns it on. In app.js, IMPACT_MS2 is set to 25, so a hard movement calls startDropAlarm. That function plays click.mp3 on a loop, displays a ten-second countdown, and keeps a large Stop button on screen. stopDropAlarm always pauses and rewinds the audio before showing the next choice."),
+    ("How the tracker works", "The user presses Start tracker, then app.js waits five seconds before it reads DeviceMotion data. This gives the person time to put the phone down. IMPACT_MS2 is set to 25, so a hard movement calls startDropAlarm. That function loops warning-alarm.mp3, displays a ten-second countdown, and keeps a large Stop button on screen."),
     ("Why the map comes second", "The site does not request location when the alarm begins. Only after the alarm stops does careDialog ask whether to open a map. If the user agrees, openNearbyCare requests browser geolocation and opens a Google Maps search for emergency medical services near the returned coordinates. It does not claim to identify or dispatch an EMT."),
-    ("How the files fit together", "fall-detection.html supplies the sensor switch, alarm overlay, audio element, and map dialog. app.js owns the sensor, timer, Stop, and geolocation behavior. nav.js makes the Drop tracker link visible on every page, while site.css keeps the interface plain, readable, responsive, and keyboard-friendly. sound.js handles ordinary interface feedback separately from the ten-second alarm, and auth.js keeps the prototype login and sign-up controls honest by sending and saving nothing."),
+    ("How the files fit together", "fall-detection.html supplies the Start tracker control, alarm overlay, audio element, and map dialog. app.js owns the five-second arming delay, sensor, alarm timer, Stop action, and geolocation behavior. nav.js makes the Drop tracker link visible on every page, while site.css keeps the interface plain and readable. sound.js handles ordinary clicks separately from the warning-alarm MP3."),
 ]
 
 examples = [
     ("app.js", "const DROP_ALARM_S = 10;", "Defines the complete alarm duration."),
+    ("app.js", "const ARM_DELAY_S = 5;", "Waits five seconds before motion monitoring begins."),
     ("app.js", 'if (key === "impact") startDropAlarm();', "Starts the alarm when the impact signal fires."),
     ("app.js", 'audio.pause(); audio.currentTime = 0;', "Stops and resets the MP3 immediately."),
     ("app.js", 'navigator.geolocation.getCurrentPosition(...)', "Requests location only from the later map action."),
-    ("fall-detection.html", '<audio id="alarmSound" src="click.mp3" loop>', "Connects the supplied MP3 to the alarm."),
+    ("fall-detection.html", '<audio id="alarmSound" src="warning-alarm.mp3" loop>', "Connects the supplied warning MP3 to the alarm."),
     ("nav.js", 'label: "Drop tracker"', "Keeps the tracker visible in shared navigation."),
 ]
 
