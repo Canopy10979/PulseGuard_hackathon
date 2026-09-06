@@ -1,64 +1,85 @@
+<!-- Explain: Use the HTML document parsing mode. Create the html structure. Create the head structure. -->
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Explain: Declare page metadata charset="utf-8". Declare page metadata name="viewport" content="width=device-width, initial-scale=1". Create the title structure. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Find nearby AEDs and support sites | Lifeline</title>
-<meta name="description" content="Use the Lifeline support prototype to find nearby AEDs, shelters, and hydrants from your current location.">
+<title>Find nearby AEDs and support sites | Safeguard</title>
+<!-- Explain: Declare page metadata name="description" content="Use the Safeguard support prototype to . Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
+<meta name="description" content="Use the Safeguard support prototype to find nearby AEDs, shelters, and hydrants from your current location.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#101112">
+<!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="Safeguard". Declare page metadata property="og:title" content="Find nearby AEDs and support sites | S. -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Lifeline">
-<meta property="og:title" content="Find nearby AEDs and support sites | Lifeline">
+<meta property="og:site_name" content="Safeguard">
+<meta property="og:title" content="Find nearby AEDs and support sites | Safeguard">
+<!-- Explain: Declare page metadata property="og:description" content="A location-based public-safety s. Load stylesheet https://unpkg.com/leaflet@1.9.4/dist/leaflet.css. -->
 <meta property="og:description" content="A location-based public-safety support tool using illustrative places.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Explain: Load stylesheet site.css. Close head to finish the current structure. Create the body structure. -->
 <link rel="stylesheet" href="site.css">
 </head>
 <body class="tool" data-page="shelters">
+<!-- Explain: Create the main structure. Create the section structure. Add a for ← Main dashboard. -->
 <main class="shell">
 <section class="page-hero">
     <a class="back-home" href="index.html">← Main dashboard</a>
+    <!-- Explain: Add p for Support tool. Add h1 for Find nearby equipment and support. Add p for Share your location when you are ready, then compare nearby AE. -->
     <p class="eyebrow">Support tool</p>
     <h1>Find nearby equipment and support.</h1>
     <p class="lede">Share your location when you are ready, then compare nearby AEDs, shelters, and other support points. Listed places are illustrative, not a verified emergency register.</p>
+<!-- Explain: Close section to finish the current structure. Create the div structure. -->
 </section>
 <div class="split">
     <div>
+        <!-- Explain: Create the div structure. Add label for Show. Create the select region kind. -->
         <div class="panel">
             <label for="kind">Show</label>
             <select id="kind">
+                <!-- Explain: Add option for Defibrillators (AED). Add option for Shelters. Add option for Hydrants. -->
                 <option value="aed" selected>Defibrillators (AED)</option>
                 <option value="shelter">Shelters</option>
                 <option value="hydrant">Hydrants</option>
+                <!-- Explain: Add option for Everything. Close select to finish the current structure. Add button locate for Share my location. -->
                 <option value="all">Everything</option>
             </select>
             <button id="locate">Share my location</button>
+            <!-- Explain: Create the div region msg. Close div to finish the current structure. Create the ul region list. -->
             <div id="msg"></div>
         </div>
         <ul class="rows" id="list"></ul>
+    <!-- Explain: Close div to finish the current structure. Create the div region map. -->
     </div>
     <div id="map"></div>
 </div>
 <script>
+// Explain: Keep SEED as [. Start or continue the collection of structured values. Set the status field to "open", cap: 180, occ: 42, pets: true }.
 const SEED = [
     { id: 1, kind: "shelter", name: "Community centre north hall", lat: 47.6608, lon: -122.3145,
       status: "open", cap: 180, occ: 42, pets: true },
+    // Explain: Start or continue the collection of structured values. Set the status field to "limited", cap: 250, occ: 231, pets: false }.
     { id: 2, kind: "shelter", name: "Riverside high school gym", lat: 47.6155, lon: -122.3300,
       status: "limited", cap: 250, occ: 231, pets: false },
     { id: 3, kind: "shelter", name: "Fairground pavilion", lat: 47.6740, lon: -122.3860,
+      // Explain: Set the status field to "full", cap: 120, occ: 120, pets: true }. Start or continue the collection of structured values. Set the status field to "open", cap: 90, occ: 31, pets: false }.
       status: "full", cap: 120, occ: 120, pets: true },
     { id: 4, kind: "shelter", name: "Eastside community hall", lat: 47.6740, lon: -122.1215,
       status: "open", cap: 90, occ: 31, pets: false },
+    // Explain: Start or continue the collection of structured values.
     { id: 5, kind: "aed", name: "Transit station west lobby", lat: 47.6205, lon: -122.3493 },
     { id: 6, kind: "aed", name: "City hall ground floor", lat: 47.6035, lon: -122.3300 },
     { id: 7, kind: "aed", name: "Ferry terminal gate 2", lat: 47.6025, lon: -122.3390 },
+    // Explain: Start or continue the collection of structured values.
     { id: 8, kind: "aed", name: "Public library main desk", lat: 47.6067, lon: -122.3325 },
     { id: 9, kind: "aed", name: "University hospital entrance", lat: 47.6500, lon: -122.3080 },
     { id: 10, kind: "aed", name: "Shopping centre food court", lat: 47.6710, lon: -122.1180 },
+    // Explain: Start or continue the collection of structured values.
     { id: 11, kind: "aed", name: "Community pool reception", lat: 47.6820, lon: -122.1290 },
     { id: 12, kind: "aed", name: "High school gym entrance", lat: 47.6640, lon: -122.1420 },
     { id: 13, kind: "aed", name: "Park and ride, level 1", lat: 47.6395, lon: -122.1290 },
+    // Explain: Start or continue the collection of structured values. Close the current block or callback. Keep NEAREST as 5.
     { id: 14, kind: "hydrant", name: "Hydrant 4412, Pine and 5th", lat: 47.6115, lon: -122.3355 }
 ];
 /* Every place above is invented for the demonstration. Before this page
@@ -66,9 +87,11 @@ const SEED = [
    building owners or the county register. */
 
 const NEAREST = 5;
+// Explain: Keep KEY as "shelters.v2". Read a saved value from this browser storage. Initialize me as null.
 const KEY = "shelters.v2";
 let assets = JSON.parse(localStorage.getItem(KEY) || "null") || SEED;
 let me = null;
+// Explain: Initialize markers as []. Initialize map as null. Check typeof L !== "undefined".
 let markers = [];
 
 /* If the map CDN is blocked, the list must still work. Without this
@@ -76,109 +99,137 @@ let markers = [];
 let map = null;
 
 if (typeof L !== "undefined") {
+    // Explain: Initialize the map in the named HTML container. Create the map tile layer from the specified image service. Start or continue the collection of structured values.
     map = L.map("map").setView([47.6205, -122.34], 12);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         { attribution: "&copy; OpenStreetMap" }).addTo(map);
+// Explain: Close the current block or callback. Handle the alternative case when the earlier condition fails. Find the HTML element that this code needs to read or update.
 }
 else {
     const box = document.getElementById("map");
+    // Explain: Set box.style.display using "grid". Set box.style.placeItems using "center". Set plain visible text on box.
     box.style.display = "grid";
     box.style.placeItems = "center";
     box.textContent = "The map could not load. The list below still works.";
+// Explain: Close the current block or callback. Define save with inputs none. Save a serialized value in this browser for later visits.
 }
 
 function save() {
     localStorage.setItem(KEY, JSON.stringify(assets));
+// Explain: Close the current block or callback. Define metres with inputs a, b. Keep R as 6371000.
 }
 
 function metres(a, b) {
     const R = 6371000;
+    // Explain: Keep dLat as (b.lat - a.lat) * Math.PI / 180. Keep dLon as (b.lon - a.lon) * Math.PI / 180. Keep s as Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) *.
     const dLat = (b.lat - a.lat) * Math.PI / 180;
     const dLon = (b.lon - a.lon) * Math.PI / 180;
     const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) *
+        // Explain: Call Math.cos with the values shown here. Take the square root to calculate a magnitude or distance term. Close the current block or callback.
         Math.cos(b.lat * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
     return 2 * R * Math.asin(Math.sqrt(s));
 }
 
+// Explain: Define words with inputs row. Check row.kind !== "shelter". Return row.kind === "aed" ? "Defibrillator" : "Hydrant".
 function words(row) {
     if (row.kind !== "shelter")
         return row.kind === "aed" ? "Defibrillator" : "Hydrant";
+    // Explain: Keep map as { open: "Open", limited: "Few beds left", full: "Full", closed. Return "Shelter, " + (map[row.status] || row.status). Close the current block or callback.
     const map = { open: "Open", limited: "Few beds left", full: "Full", closed: "Closed" };
     return "Shelter, " + (map[row.status] || row.status);
 }
 
+// Explain: Define next with inputs status. Keep order as ["open", "limited", "full", "closed"]. Return order[(order.indexOf(status) + 1) % order.length].
 function next(status) {
     const order = ["open", "limited", "full", "closed"];
     return order[(order.indexOf(status) + 1) % order.length];
+// Explain: Close the current block or callback. Define say with inputs text, bad. Find the HTML element that this code needs to read or update.
 }
 
 function say(text, bad) {
     const box = document.getElementById("msg");
+    // Explain: Change the element classes that control its displayed state. Set plain visible text on box. Close the current block or callback.
     box.className = bad ? "note bad" : "note";
     box.textContent = text;
 }
 
+// Explain: Define routeUrl with inputs row. Keep to as row.lat + "," + row.lon. Initialize url as "https://www.google.com/maps/dir/?api=1&destination=" +.
 function routeUrl(row) {
     /* Walking directions from where the person stands to the place they
        tapped. Without a position, Google Maps still shows the place. */
     const to = row.lat + "," + row.lon;
     let url = "https://www.google.com/maps/dir/?api=1&destination=" +
+        // Explain: Encode text so it can be safely included in a URL component. Check me.
         encodeURIComponent(to) + "&travelmode=walking";
 
     if (me)
         url += "&origin=" + encodeURIComponent(me.lat + "," + me.lon);
 
+    // Explain: Return url. Close the current block or callback. Define draw with inputs none.
     return url;
 }
 
 function draw() {
+    // Explain: Find the HTML element that this code needs to read or update. Select a portion of the value without changing the original. Check kind !== "all".
     const kind = document.getElementById("kind").value;
     let rows = assets.slice();
 
     if (kind !== "all")
+        // Explain: Keep only items that satisfy the callback condition. Check me. Reorder the collection using the comparator.
         rows = rows.filter(r => r.kind === kind);
 
     if (me) {
         rows.sort((a, b) => metres(me, a) - metres(me, b));
+        // Explain: Select a portion of the value without changing the original. Close the current block or callback. Handle the alternative case when the earlier condition fails.
         rows = rows.slice(0, NEAREST);
         /* Only the five nearest. A list of everything in the county helps
            nobody who is standing next to a person who has collapsed. */
     }
     else
+        // Explain: Select a portion of the value without changing the original. Check map. Run the callback for each item in the collection.
         rows = rows.slice(0, NEAREST);
 
     if (map) {
         markers.forEach(m => map.removeLayer(m));
+        // Explain: Set markers using []. Close the current block or callback. Find the HTML element that this code needs to read or update.
         markers = [];
     }
 
     const list = document.getElementById("list");
+    // Explain: Clear the previous rendered contents before rebuilding them. Run the callback for each item in the collection. Create a new HTML element for the generated interface.
     list.innerHTML = "";
 
     rows.forEach((row, i) => {
         const li = document.createElement("li");
+        // Explain: Change the element classes that control its displayed state. Initialize text as words(row). Check row.cap.
         li.className = row.status || "";
 
         let text = words(row);
         if (row.cap)
+            // Explain: Update text using ", " + (row.cap - row.occ) + " of " + row.cap + " places . Check me. Update text using ", " + Math.round(metres(me, row)) + " m away".
             text += ", " + (row.cap - row.occ) + " of " + row.cap + " places free";
         if (me)
             text += ", " + Math.round(metres(me, row)) + " m away";
+        // Explain: Handle the alternative case when the earlier condition fails. Update text using ", distance unknown". Create a new HTML element for the generated interface.
         else
             text += ", distance unknown";
 
         const title = document.createElement("b");
+        // Explain: Set plain visible text on title. Create a new HTML element for the generated interface. Change the element classes that control its displayed state.
         title.textContent = (i + 1) + ". " + row.name;
 
         const meta = document.createElement("div");
         meta.className = "meta";
+        // Explain: Set plain visible text on meta. Create a new HTML element for the generated interface. Set route.href using routeUrl(row).
         meta.textContent = text;
 
         const route = document.createElement("a");
         route.href = routeUrl(row);
+        // Explain: Set route.target using "_blank". Set route.rel using "noopener". Set plain visible text on route.
         route.target = "_blank";
         route.rel = "noopener";
         route.textContent = "Walking route";
+        // Explain: Set route.onclick using ev => ev.stopPropagation(). Attach the generated content to its parent element. Set li.onclick using () => {.
         route.onclick = ev => ev.stopPropagation();
         /* Without stopPropagation the click would also fall through to the
            row and move the map under the new tab. */
@@ -188,56 +239,70 @@ function draw() {
            markup on the page. */
 
         li.onclick = () => {
+            // Explain: Check map. Move and scale the map to the selected position or bounds. Check row.kind === "shelter".
             if (map)
                 map.setView([row.lat, row.lon], 16);
 
             if (row.kind === "shelter") {
+                // Explain: Set row.status using next(row.status). Call save with the values shown here. Call draw with the values shown here.
                 row.status = next(row.status);
                 save();
                 draw();
+            // Explain: Close the current block or callback. Attach the generated content to its parent element.
             }
         };
 
         list.appendChild(li);
 
+        // Explain: Check !map. Return from this function. Keep colour as { open: "#4a4a4a", limited: "#9a9a9a", full: "#ffffff" }[row.s.
         if (!map)
             return;
 
         /* Grey ramp on the map too: dark is quiet, white is urgent. */
         const colour = { open: "#4a4a4a", limited: "#9a9a9a", full: "#ffffff" }[row.status] || "#ffffff";
+        // Explain: Create a map circle or marker for the given coordinates. Start or continue the collection of structured values. Call .addTo with the values shown here.
         const m = L.circleMarker([row.lat, row.lon],
             { radius: row.kind === "shelter" ? 10 : 7, color: colour, fillOpacity: 0.7 })
             .addTo(map).bindPopup(row.name + " — " + text);
+        // Explain: Call markers.push with the values shown here. Close the current block or callback.
         markers.push(m);
     });
 }
 
+// Explain: Find the HTML element that this code needs to read or update. Define useLocation with inputs fromButton. Check !navigator.geolocation.
 document.getElementById("kind").onchange = draw;
 
 function useLocation(fromButton) {
     if (!navigator.geolocation) {
+        // Explain: Call say with the values shown here. Return from this function. Close the current block or callback.
         say("This browser gives no position. The list below is not sorted by distance.", true);
         return;
     }
 
+    // Explain: Call say with the values shown here. Request one device location fix with success and failure callbacks. Set me using { lat: p.coords.latitude, lon: p.coords.longitude }.
     say("Asking for your location…");
 
     navigator.geolocation.getCurrentPosition(p => {
         me = { lat: p.coords.latitude, lon: p.coords.longitude };
 
+        // Explain: Check map. Call L.marker with the values shown here. Move and scale the map to the selected position or bounds.
         if (map) {
             L.marker([me.lat, me.lon]).addTo(map).bindPopup("You are here");
             map.setView([me.lat, me.lon], 13);
+        // Explain: Close the current block or callback. Call say with the values shown here. Call Math.round with the values shown here.
         }
 
         say("Showing the " + NEAREST + " nearest, closest first. Accuracy about " +
             Math.round(p.coords.accuracy) + " m.");
+        // Explain: Call draw with the values shown here. Continue the surrounding expression with }, () => {. Call say with the values shown here.
         draw();
     }, () => {
         say("Location refused, so these are not the nearest to you. Press the button to try again.", true);
+        // Explain: Check fromButton. Return from this function. Continue the surrounding expression with }, { enableHighAccuracy: true, timeout: 10000 });.
         if (fromButton)
             return;
     }, { enableHighAccuracy: true, timeout: 10000 });
+// Explain: Close the current block or callback. Find the HTML element that this code needs to read or update. Call say with the values shown here.
 }
 
 document.getElementById("locate").onclick = () => useLocation(true);
@@ -245,13 +310,16 @@ document.getElementById("locate").onclick = () => useLocation(true);
 /* ---------- start ---------- */
 
 say("Share your location to see the " + NEAREST + " nearest places to you.");
+// Explain: Call draw with the values shown here. Call useLocation with the values shown here.
 draw();
 useLocation(false);
 /* Asked once when the page opens. The browser shows its own prompt, so
    the person still chooses, and the page works either way. */
 </script>
+<!-- Explain: Close main to finish the current structure. -->
 </main>
 <script src="nav.js"></script>
 <script src="sound.js"></script>
+<!-- Explain: Close body to finish the current structure. Close html to finish the current structure. -->
 </body>
 </html>

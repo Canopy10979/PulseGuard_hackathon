@@ -5,15 +5,15 @@
   <!-- Explain: Declare page metadata charset="utf-8". Declare page metadata name="viewport" content="width=device-width,initial-scale=1". Create the title structure. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lifeline | Device drop tracker</title>
-  <!-- Explain: Declare page metadata name="description" content="Use Lifeline's phone drop tracker to so. Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
-  <meta name="description" content="Use Lifeline's phone drop tracker to sound a ten-second alarm and find nearby emergency care.">
+  <title>Safeguard | Device drop tracker</title>
+  <!-- Explain: Declare page metadata name="description" content="Use Safeguard's phone drop tracker to s. Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
+  <meta name="description" content="Use Safeguard's phone drop tracker to sound a ten-second alarm and find nearby emergency care.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#101112">
-  <!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="Lifeline". Declare page metadata property="og:title" content="Lifeline collapse-warning demo". -->
+  <!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="Safeguard". Declare page metadata property="og:title" content="Safeguard collapse-warning demo". -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Lifeline">
-  <meta property="og:title" content="Lifeline collapse-warning demo">
+  <meta property="og:site_name" content="Safeguard">
+  <meta property="og:title" content="Safeguard collapse-warning demo">
   <!-- Explain: Declare page metadata property="og:description" content="An explainable public-safety pro. Load stylesheet site.css. Load stylesheet https://unpkg.com/leaflet@1.9.4/dist/leaflet.css. -->
   <meta property="og:description" content="An explainable public-safety prototype that asks before preparing an alert.">
   <link rel="stylesheet" href="site.css">
@@ -29,9 +29,9 @@
     <section class="page-hero">
       <a class="back-home" href="index.html">← Main dashboard</a>
       <p class="eyebrow">Prototype</p>
-      <!-- Explain: Add h1 for Device drop tracker. Add p for After the five-second arming delay, a detected impact sounds t. Close section to finish the current structure. -->
+      <!-- Explain: Add h1 for Device drop tracker. Add p for Start the tracker, give it five seconds to settle, and keep th. Close section to finish the current structure. -->
       <h1>Device drop tracker</h1>
-      <p class="lede">After the five-second arming delay, a detected impact sounds the alarm and refreshes your location on a satellite map.</p>
+      <p class="lede">Start the tracker, give it five seconds to settle, and keep this page open. After a possible drop, we check for recovery and stillness before asking if you are okay.</p>
 
     </section>
 
@@ -40,9 +40,9 @@
 
     <section class="card alarm-summary">
       <p class="eyebrow">Alarm</p>
-      <!-- Explain: Add h2 for Warning sound. Add p for A detected phone drop plays the warning alarm for ten seconds . Close section to finish the current structure. -->
+      <!-- Explain: Add h2 for Warning sound. Add p for A five-second check-in comes before the ten-second warning sou. Close section to finish the current structure. -->
       <h2>Warning sound</h2>
-      <p>A detected phone drop plays the warning alarm for ten seconds or until you press Stop.</p>
+      <p>A five-second check-in comes before the ten-second warning sound. You can cancel the check-in or stop the sound at any time.</p>
     </section>
 
     <!-- Explain: Create the section structure. Create the article structure. Create the div structure. -->
@@ -86,9 +86,9 @@
         <p class="eyebrow">Response plan</p>
         <h2>Who gets the message</h2>
         <p class="muted">
-          <!-- Explain: Display the continuation text The message goes to one person you choose. It is written for you and opened in you. Display the continuation text messaging app; Lifeline has no server and sends nothing by itself. Close p to finish the current structure. -->
+          <!-- Explain: Display the continuation text The message goes to one person you choose. It is written for you and opened in you. Display the continuation text messaging app; Safeguard has no server and sends nothing by itself. Close p to finish the current structure. -->
           The message goes to one person you choose. It is written for you and opened in your own
-          messaging app; Lifeline has no server and sends nothing by itself.
+          messaging app; Safeguard has no server and sends nothing by itself.
         </p>
 
         <!-- Explain: Add label for Contact name. Create an input named contactName with the specified type and constraints. Add label for Contact number. -->
@@ -116,9 +116,9 @@
         <p class="eyebrow">Why it fired</p>
         <h2>Recorded signals</h2>
         <p class="muted">
-          <!-- Explain: Display the continuation text An impact starts the local warning sound. Two motion signals are needed for the se. Display the continuation text responsiveness countdown. The points describe recorded signals, not a medical prob. Close p to finish the current structure. -->
-          An impact starts the local warning sound. Two motion signals are needed for the separate
-          responsiveness countdown. The points describe recorded signals, not a medical probability.
+          <!-- Explain: Display the continuation text A possible impact, recovery check and eight seconds of stillness lead to a five-se. Display the continuation text check-in. The points describe recorded signals, not a medical probability. Close p to finish the current structure. -->
+          A possible impact, recovery check and eight seconds of stillness lead to a five-second
+          check-in. The points describe recorded signals, not a medical probability.
         </p>
       <!-- Explain: Close div to finish the current structure. Create the ul region signalList. Create the div structure. -->
       </div>
@@ -139,86 +139,92 @@
         <p class="eyebrow">How it works</p>
         <h2>From movement to help</h2>
       </div>
-      <!-- Explain: Create the div structure. Create the div structure; Create the b structure; Add p for 01 Detect A sudden movement above 2.5 g starts the check. Create the div structure; Create the b structure; Add p for 02 Confirm A tilt or eight seconds of stillness adds a second . -->
+      <!-- Explain: Create the div structure. Create the div structure; Create the b structure; Add p for 01 Detect A sudden movement above 2.5 g starts the check. Create the div structure; Create the b structure; Add p for 02 Confirm Movement settles, recovery is checked, then eight s. -->
       <div class="steps">
         <div><b>01</b><p><strong>Detect</strong><br>A sudden movement above 2.5 g starts the check.</p></div>
-        <div><b>02</b><p><strong>Confirm</strong><br>A tilt or eight seconds of stillness adds a second signal.</p></div>
-        <!-- Explain: Create the div structure; Create the b structure; Add p for 03 Ask A twenty second countdown gives you time to cancel. Create the div structure; Create the b structure; Add p for 04 Prepare No answer, so a message with your position is writt. Close div to finish the current structure. -->
-        <div><b>03</b><p><strong>Ask</strong><br>A twenty second countdown gives you time to cancel.</p></div>
-        <div><b>04</b><p><strong>Prepare</strong><br>No answer, so a message with your position is written for your contact.</p></div>
+        <div><b>02</b><p><strong>Confirm</strong><br>Movement settles, recovery is checked, then eight seconds of stillness confirms the check-in.</p></div>
+        <!-- Explain: Create the div structure; Create the b structure; Add p for 03 Ask A five-second countdown gives you time to answer. Create the div structure; Create the b structure; Add p for 04 Prepare No answer starts ten seconds of sound and prepares . Close div to finish the current structure. -->
+        <div><b>03</b><p><strong>Ask</strong><br>A five-second countdown gives you time to answer.</p></div>
+        <div><b>04</b><p><strong>Prepare</strong><br>No answer starts ten seconds of sound and prepares a message for your contact.</p></div>
       </div>
     <!-- Explain: Close section to finish the current structure. Create the section structure. Add h2 satelliteTitle for Device location. -->
     </section>
 
     <section class="card location-card" aria-labelledby="satelliteTitle">
       <h2 id="satelliteTitle">Device location</h2>
-      <!-- Explain: Add p mapStatus for Start the tracker or refresh location to display a satellite map. Create the div region satelliteMap. Add a satelliteLink for Open satellite map. -->
+      <!-- Explain: Add p mapStatus for Start the tracker or refresh location to display a satellite map. Add button stopLocationBtn for Stop location and tracker. Add button testAlarmBtn for Test alarm · 5s countdown + 10s sound. -->
       <p id="mapStatus" role="status">Start the tracker or refresh location to display a satellite map.</p>
+      <button id="stopLocationBtn" class="button secondary" type="button">Stop location and tracker</button>
+      <button id="testAlarmBtn" class="button secondary" type="button">Test alarm · 5s countdown + 10s sound</button>
+      <!-- Explain: Create the div region satelliteMap. Add a satelliteLink for Open satellite map. Close section to finish the current structure. -->
       <div id="satelliteMap" role="region" aria-label="Satellite map of the last reported device location"></div>
       <a id="satelliteLink" class="button secondary" target="_blank" rel="noopener" hidden>Open satellite map</a>
     </section>
 
+    <!-- Explain: Create the section structure. Add p for Nearby care. Add h2 careLocatorTitle for Five nearest mapped AEDs. -->
     <section class="card location-card" aria-labelledby="careLocatorTitle">
       <p class="eyebrow">Nearby care</p>
-      <h2 id="careLocatorTitle">AEDs and hospitals</h2>
-      <p class="muted">Use your latest location to list nearby care from Google Maps.</p>
-      <button id="findCareBtn" class="button primary" type="button">Find nearest care</button>
-      <p id="placesStatus" class="microcopy" role="status">Location and Google Maps access are required.</p>
+      <h2 id="careLocatorTitle">Five nearest mapped AEDs</h2>
+      <!-- Explain: Add p for Share your location to see nearby AEDs on the map, ranked by s. Add button findCareBtn for Find nearest AEDs. Add p placesStatus for Results use OpenStreetMap AED records. Access and availability. -->
+      <p class="muted">Share your location to see nearby AEDs on the map, ranked by straight-line distance. Directions open in Google Maps. Your coordinates are sent to the map and AED services to find results.</p>
+      <button id="findCareBtn" class="button primary" type="button">Find nearest AEDs</button>
+      <p id="placesStatus" class="microcopy" role="status">Results use OpenStreetMap AED records. Access and availability may change.</p>
+      <!-- Explain: Create the ol region placesList. Create the div region placesService. Close section to finish the current structure. -->
       <ol id="placesList" class="places-list" aria-live="polite"></ol>
       <div id="placesService" hidden></div>
-    <!-- Explain: Close section to finish the current structure. Close main to finish the current structure. Create the div region dropAlarm. -->
     </section>
+  <!-- Explain: Close main to finish the current structure. Create the div region dropAlarm. Create the div structure. -->
   </main>
 
   <div id="dropAlarm" class="alert-panel" aria-hidden="true">
-    <!-- Explain: Create the div structure. Add p for Device impact detected. Add h2 for Alarm sounding. -->
     <div class="alert-box">
+      <!-- Explain: Add p for Device impact detected. Add h2 for Alarm sounding. Add p for Stopping automatically in 10 s.; Add strong alarmCountdown for Stopping automatically in 10 s. -->
       <p class="eyebrow">Device impact detected</p>
       <h2>Alarm sounding</h2>
-      <!-- Explain: Add p for Stopping automatically in 10 s.; Add strong alarmCountdown for Stopping automatically in 10 s. Add p audioStatus for . Add button retryAudioBtn for Play warning sound. -->
       <p>Stopping automatically in <strong id="alarmCountdown">10</strong>s.</p>
+      <!-- Explain: Add p audioStatus for . Add button retryAudioBtn for Play warning sound. Add button stopAlarmBtn for Stop. -->
       <p id="audioStatus" role="status"></p>
       <button id="retryAudioBtn" class="button secondary" type="button">Play warning sound</button>
-      <!-- Explain: Add button stopAlarmBtn for Stop. Close div to finish the current structure. -->
       <button id="stopAlarmBtn" class="button danger" type="button">Stop</button>
+    <!-- Explain: Close div to finish the current structure. Create the dialog region careDialog. -->
     </div>
   </div>
 
-  <!-- Explain: Create the dialog region careDialog. Add h2 for Open nearby emergency care?. Add p for The satellite map below shows your latest reported location an. -->
   <dialog id="careDialog" class="care-dialog">
+    <!-- Explain: Add h2 for Open nearby emergency care?. Add p for The satellite map below shows your latest reported location an. Create the div structure. -->
     <h2>Open nearby emergency care?</h2>
     <p>The satellite map below shows your latest reported location and its accuracy. Open a search for nearby care when ready.</p>
-    <!-- Explain: Create the div structure. Add button openCareBtn for Open map. Add button closeCareBtn for Not now. -->
     <div class="care-actions">
+      <!-- Explain: Add button openCareBtn for Open map. Add button closeCareBtn for Not now. Close div to finish the current structure. -->
       <button id="openCareBtn" class="button primary" type="button">Open map</button>
       <button id="closeCareBtn" class="button secondary" type="button">Not now</button>
-    <!-- Explain: Close div to finish the current structure. Add p careStatus for . Close dialog to finish the current structure. -->
     </div>
+    <!-- Explain: Add p careStatus for . Close dialog to finish the current structure. Create the audio region alarmSound. -->
     <p id="careStatus" class="microcopy"></p>
   </dialog>
 
-  <!-- Explain: Create the audio region alarmSound. Create the div region alertPanel. Create the div structure. -->
-  <audio id="alarmSound" src="warning-alarm.mp3" preload="auto" loop></audio>
+  <audio id="alarmSound" src="warning-alarm.mp3" preload="auto" playsinline loop></audio>
 
+  <!-- Explain: Create the div region alertPanel. Create the div structure. -->
   <div id="alertPanel" class="alert-panel" aria-hidden="true">
     <div class="alert-box">
-      <!-- Explain: Create the div structure. Add p for Possible emergency. Add h2 alertTitle for Are you okay?. -->
       <div class="alert-icon">!</div>
+      <!-- Explain: Add p for Possible emergency. Add h2 alertTitle for Are you okay?. Add p for A sudden movement and a second signal were detected. -->
       <p class="eyebrow">Possible emergency</p>
       <h2 id="alertTitle">Are you okay?</h2>
-      <!-- Explain: Add p for A sudden movement and a second signal were detected. Create the div structure; Add strong countdown for Checking in for 20 s. Add button okayBtn for I am okay. -->
       <p>A sudden movement and a second signal were detected.</p>
-      <div class="countdown">Checking in for <strong id="countdown">20</strong>s</div>
+      <!-- Explain: Create the div structure; Add strong countdown for Checking in for 5 s. Add button okayBtn for I am okay. Add button notifyBtn for Prepare the message now. -->
+      <div class="countdown">Checking in for <strong id="countdown">5</strong>s</div>
       <button id="okayBtn" class="button primary" type="button">I am okay</button>
-      <!-- Explain: Add button notifyBtn for Prepare the message now. Create the div region preparedBox. Add small for For a life-threatening emergency, call 911. -->
       <button id="notifyBtn" class="button danger" type="button">Prepare the message now</button>
+      <!-- Explain: Create the div region preparedBox. Add small for For a life-threatening emergency, call 911. Close div to finish the current structure. -->
       <div id="preparedBox"></div>
       <small>For a life-threatening emergency, call 911.</small>
-    <!-- Explain: Close div to finish the current structure. -->
     </div>
+  <!-- Explain: Close div to finish the current structure. -->
   </div>
 
-  <script src="config.js"></script>
+
   <script src="nav.js"></script>
   <script src="app.js" defer></script>
   <script src="sound.js"></script>

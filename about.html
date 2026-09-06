@@ -1,105 +1,120 @@
+<!-- Explain: Use the HTML document parsing mode. Create the html structure. Create the head structure. -->
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Explain: Declare page metadata charset="utf-8". Declare page metadata name="viewport" content="width=device-width,initial-scale=1". Create the title structure. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lifeline | Method, sources and limits</title>
-  <meta name="description" content="Read how the Lifeline collapse-warning prototype works, what data it uses, what stays private, and what the project cannot yet do.">
+  <title>Safeguard | Method, sources and limits</title>
+  <!-- Explain: Declare page metadata name="description" content="Read how the Safeguard collapse-warning. Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
+  <meta name="description" content="Read how the Safeguard collapse-warning prototype works, what data it uses, what stays private, and what the project cannot yet do.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#101112">
+  <!-- Explain: Declare page metadata property="og:type" content="article". Declare page metadata property="og:site_name" content="Safeguard". Declare page metadata property="og:title" content="Safeguard method, sources and limits". -->
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Lifeline">
-  <meta property="og:title" content="Lifeline method, sources and limits">
+  <meta property="og:site_name" content="Safeguard">
+  <meta property="og:title" content="Safeguard method, sources and limits">
+  <!-- Explain: Declare page metadata property="og:description" content="A plain-language account of the . Load stylesheet site.css. Close head to finish the current structure. -->
   <meta property="og:description" content="A plain-language account of the prototype's logic, evidence, privacy safeguards, and limitations.">
   <link rel="stylesheet" href="site.css">
 </head>
+<!-- Explain: Create the body structure. Create the main structure. Create the section structure. -->
 <body data-page="about">
   <main class="shell">
 
 
     <section class="page-hero">
+      <!-- Explain: Add a for ← Main dashboard. Add p for Read this before you trust anything on the other pages. Add h1 for What Safeguard can—and cannot—do. -->
       <a class="back-home" href="index.html">← Main dashboard</a>
       <p class="eyebrow">Read this before you trust anything on the other pages</p>
-      <h1>What Lifeline can—and cannot—do.</h1>
+      <h1>What Safeguard can—and cannot—do.</h1>
+      <!-- Explain: Add p for A plain-language account of the prototype’s logic, evidence, p. Close section to finish the current structure. Create the section structure. -->
       <p class="lede">A plain-language account of the prototype’s logic, evidence, privacy safeguards, and unfinished work.</p>
     </section>
 
     <section class="card info">
+      <!-- Explain: Create the div structure; Add p for Honest status What works today; Add h2 for Honest status What works today. Create the ul structure. Add li for Real accelerometer and orientation reading on a phone. -->
       <div><p class="eyebrow">Honest status</p><h2>What works today</h2></div>
       <ul class="signal-list">
         <li class="signal on">Real accelerometer and orientation reading on a phone.</li>
-        <li class="signal on">Two-signal rule before any alarm, to cut false alarms.</li>
-        <li class="signal on">Twenty second countdown with a cancel button.</li>
+        <!-- Explain: Add li for Recovery and stillness checks before the motion-triggered chec. Add li for Five seconds to respond, followed by ten seconds of warning so. Add li for Browser position, with accuracy shown in metres. -->
+        <li class="signal on">Recovery and stillness checks before the motion-triggered check-in.</li>
+        <li class="signal on">Five seconds to respond, followed by ten seconds of warning sound.</li>
         <li class="signal on">Browser position, with accuracy shown in metres.</li>
+        <!-- Explain: Add li for A message written for a contact you saved, opened in your own . Add li for Saved contacts stay in this browser. Maps and AED searches use. Add li for No breathing or pulse sensing. This does not detect an overdose. -->
         <li class="signal on">A message written for a contact you saved, opened in your own app.</li>
-        <li class="signal">No account, no login, no server. Everything stays in the browser.</li>
+        <li class="signal">Saved contacts stay in this browser. Maps and AED searches use third-party services.</li>
         <li class="signal">No breathing or pulse sensing. This does not detect an overdose.</li>
+        <!-- Explain: Add li for No automatic call to 911 and no responder network. Add li for Dashboard figures are illustrative placeholders, not measureme. Close ul to finish the current structure. -->
         <li class="signal">No automatic call to 911 and no responder network.</li>
         <li class="signal">Dashboard figures are illustrative placeholders, not measurements.</li>
       </ul>
+    <!-- Explain: Close section to finish the current structure. Create the section structure. Create the div structure; Add p for Detection How the rule works; Add h2 for Detection How the rule works. -->
     </section>
 
     <section class="card info">
       <div><p class="eyebrow">Detection</p><h2>How the rule works</h2></div>
+      <!-- Explain: Add p for . Display the continuation text A sudden movement above 2.5 g begins a possible drop. After a short settling period,. Display the continuation text we check for recovery and then eight seconds of stillness. Resumed movement cancel. -->
       <p class="muted">
-        A sudden movement above 2.5 g starts a check. That alone does nothing, because a dropped
-        phone gives the same reading. A second signal is needed: a tilt of more than 45 degrees, or
-        eight seconds with almost no movement. Any real movement resets the stillness clock, so a
-        person who gets up again is never reported. Each signal carries points, and the total is
-        shown on screen as a confidence figure, so nothing about the decision is hidden.
+        A sudden movement above 2.5 g begins a possible drop. After a short settling period,
+        we check for recovery and then eight seconds of stillness. Resumed movement cancels the
+        <!-- Explain: Display the continuation text pending event. A five-second check-in lets you answer before ten seconds of warnin. Display the continuation text The displayed points describe recorded signals; they are not a medical probability. Close p to finish the current structure. -->
+        pending event. A five-second check-in lets you answer before ten seconds of warning sound.
+        The displayed points describe recorded signals; they are not a medical probability.
       </p>
+      <!-- Explain: Add p for . Create the code structure. Display the continuation text STILL_MS, COUNTDOWN_S and MIN_SIGNALS. The browser thresholds are adjustable defau. -->
       <p class="microcopy">
         Thresholds live at the top of <code>app.js</code> as named constants: IMPACT_MS2, STILL_MS2,
-        STILL_MS, COUNTDOWN_S and MIN_SIGNALS. They were chosen by hand and tested on
-        [device names]. They are not validated against clinical data.
+        STILL_MS, COUNTDOWN_S and MIN_SIGNALS. The browser thresholds are adjustable defaults. The attached mobile screen did not include
+        <!-- Explain: Display the continuation text its settings file, and these values have not been clinically validated. Close p to finish the current structure. Close section to finish the current structure. -->
+        its settings file, and these values have not been clinically validated.
       </p>
     </section>
 
+    <!-- Explain: Create the section structure. Create the div structure; Add p for Data Sources; Add h2 for Data Sources. Add p for . -->
     <section class="card info">
       <div><p class="eyebrow">Data</p><h2>Sources</h2></div>
       <p class="muted">
-        Nothing on this site is connected to a live source yet. The figures on the dashboard and the
-        zones on the risk map are generated for the demonstration. Fill this table in before any
-        number is presented as fact.
+        <!-- Explain: Display the continuation text The tracker uses your browser’s current location and OpenStreetMap AED records. Display the continuation text It lists up to five mapped AEDs within 10 km, closest first by straight-line dista. Display the continuation text Access and availability may change. Satellite imagery comes from Esri and is not l. -->
+        The tracker uses your browser’s current location and OpenStreetMap AED records.
+        It lists up to five mapped AEDs within 10 km, closest first by straight-line distance.
+        Access and availability may change. Satellite imagery comes from Esri and is not live footage.
+        <!-- Explain: Display the continuation text The older dashboard figures and risk zones remain illustrative. Close p to finish the current structure. Create the table structure. -->
+        The older dashboard figures and risk zones remain illustrative.
       </p>
       <table >
+        <!-- Explain: Create the thead structure; Create the tr structure; Create the th structure. Create the tbody structure. Create the tr structure; Create the td structure; Create the td structure. -->
         <thead><tr><th>Page</th><th>Figure</th><th>Intended source</th><th>Retrieved</th></tr></thead>
         <tbody>
           <tr><td>Dashboard</td><td>Rate per 100k by city</td><td>King County overdose dashboard</td><td>not yet</td></tr>
+          <!-- Explain: Create the tr structure; Create the td structure; Create the td structure. Close tbody to finish the current structure. -->
           <tr><td>Dashboard</td><td>Naloxone kits</td><td>Public Health — Seattle &amp; King County</td><td>not yet</td></tr>
           <tr><td>Risk zones</td><td>Response calls by zone</td><td>King County Medical Examiner / EMS records</td><td>not yet</td></tr>
         </tbody>
+      <!-- Explain: Close table to finish the current structure. Close section to finish the current structure. Create the section structure. -->
       </table>
     </section>
 
     <section class="card info">
+      <!-- Explain: Create the div structure; Add p for Privacy What we hold and where; Add h2 for Privacy What we hold and where. Add p for . Display the continuation text The contact name and number stay in the browser storage of the device, under the key. -->
       <div><p class="eyebrow">Privacy</p><h2>What we hold and where</h2></div>
       <p class="muted">
         The contact name and number stay in the browser storage of the device, under the key
-        <code>pulseguard.contact.v1</code>. Nothing is uploaded, because there is no server. The
-        position is read only when you press the button or when an alert is prepared, and it is never
-        stored. On the risk map, zones are 500 m across and any zone with fewer than five calls is
-        removed, so the map cannot point at one household.
+        <!-- Explain: Create the code structure. Display the continuation text it or leave the page. The marker and accuracy circle show the latest reported fix. Display the continuation text are sent to the AED lookup service, and map tiles are requested from the imagery p. -->
+        <code>pulseguard.contact.v1</code>. Starting location access keeps a watch open until you stop
+        it or leave the page. The marker and accuracy circle show the latest reported fix. Coordinates
+        are sent to the AED lookup service, and map tiles are requested from the imagery provider.
+        <!-- Explain: Display the continuation text Direction links open Google Maps. Safeguard does not upload your saved contact to . Close p to finish the current structure. Close section to finish the current structure. -->
+        Direction links open Google Maps. Safeguard does not upload your saved contact to these services.
       </p>
     </section>
 
-    <section class="card info">
-      <div><p class="eyebrow">Team</p><h2>Who built what, and how</h2></div>
-      <p class="muted">
-        [Name] — detection logic and thresholds.<br>
-        [Name] — dashboard and data labelling.<br>
-        [Name] — risk zones and privacy rules.<br>
-        [Name] — design and presentation.
-      </p>
-      <p class="microcopy">
-        AI assistance: [state plainly which parts were written with an AI assistant, which model, and
-        what the team changed afterwards]. Every member has read the code they are named against and
-        can change it during judging.
-      </p>
-    </section>
 
+
+  <!-- Explain: Close main to finish the current structure. -->
   </main>
 <script src="nav.js"></script>
 <script src="sound.js"></script>
+<!-- Explain: Close body to finish the current structure. Close html to finish the current structure. -->
 </body>
 </html>

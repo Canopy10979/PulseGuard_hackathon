@@ -48,7 +48,7 @@ link is highlighted.
 | Support tools | `safewalk.html` | A timed check-in for a walk home |
 | Support tools | `shelters.html` | Shelters and defibrillators, sorted by distance |
 | Support tools | `hazard.html` | Photo reports that merge when they describe the same fault |
-| About | `about.html` | Method, sources, limits, team and AI disclosure |
+| About | `about.html` | Method, sources and limits |
 
 The three support tools carry an orange "experiment" label in the
 category grid and a red banner at the top of the page, written by
@@ -114,14 +114,19 @@ label on screen.
 - There is no login. A mock sign-in was left out on purpose, because a
   fake one that looks real is worse than none.
 
-## Team and AI disclosure
+## Current Safeguard tracker
 
-- [Name] — detection logic and thresholds.
-- [Name] — dashboard and data labelling.
-- [Name] — risk zones and privacy rules.
-- [Name] — design and presentation.
+The homepage embeds fall-detection.html without replacing the dashboard design.
+The tracker adapts the supplied mobile screen: possible impact, settling,
+recovery, eight seconds of stillness, a five-second check-in, then ten seconds
+of warning-alarm.mp3 playback. The marker popup and Test alarm button offer
+the same check-in as an explicitly labeled demonstration. Stop cancels early.
+The mobile config/settings file was not supplied; browser defaults are named
+at the top of app.js. Accessible motion hardware is required for detection.
 
-AI assistance: [say plainly which parts were written with an AI
-assistant, which tool, and what the team changed afterwards]. Every
-member has read the code they are named against and can change it during
-judging.
+Location uses watchPosition and shows accuracy and freshness. The nearest five
+mapped AEDs within 10 km come from OpenStreetMap via Overpass, ranked by
+straight-line distance. Fewer results stay fewer; availability is not verified.
+No Google API key is needed. Coordinates are sent to the map/AED providers.
+Use HTTPS or localhost, allow location, and keep the page open. Stop location
+and tracker ends the watch and motion session.

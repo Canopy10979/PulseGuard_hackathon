@@ -1,110 +1,165 @@
+<!-- Explain: Use the HTML document parsing mode. Create the html structure. Create the head structure. -->
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Explain: Declare page metadata charset="utf-8". Declare page metadata name="viewport" content="width=device-width,initial-scale=1". Create the title structure. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lifeline | Help when someone cannot ask</title>
-  <meta name="description" content="Lifeline is a King County hackathon prototype that checks for possible life-threatening unresponsiveness and helps a person reach human support.">
+  <title>Safeguard | Help when someone cannot ask</title>
+  <!-- Explain: Declare page metadata name="description" content="Safeguard is a King County hackathon pr. Declare page metadata name="robots" content="index,follow,max-image-preview:large". Declare page metadata name="theme-color" content="#101418". -->
+  <meta name="description" content="Safeguard is a King County hackathon prototype that checks for possible life-threatening unresponsiveness and helps a person reach human support.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#101418">
+  <!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="Safeguard". Declare page metadata property="og:title" content="Safeguard | Help when someone cannot ask". -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Lifeline">
-  <meta property="og:title" content="Lifeline | Help when someone cannot ask">
+  <meta property="og:site_name" content="Safeguard">
+  <meta property="og:title" content="Safeguard | Help when someone cannot ask">
+  <!-- Explain: Declare page metadata property="og:description" content="A transparent emergency-support . Declare page metadata name="twitter:card" content="summary". Load stylesheet site.css. -->
   <meta property="og:description" content="A transparent emergency-support prototype for possible life-threatening unresponsiveness.">
   <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="site.css">
+  <!-- Explain: Load stylesheet styles.css. Close head to finish the current structure. Create the body structure. -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="home">
+  <!-- Explain: Create the main structure. Create the section structure. Create the div structure. -->
   <main>
-    <section class="hero container lifeline-hero">
+    <section class="hero container safeguard-hero">
       <div class="hero-copy">
+        <!-- Explain: Add p for Hackathon prototype · King County, Washington. Add h1 for Help for the moment someone cannot ask. Add p for Safeguard looks for more than one sign of a possible collapse,. -->
         <p class="eyebrow">Hackathon prototype · King County, Washington</p>
         <h1>Help for the moment someone cannot ask.</h1>
-        <p class="lede">Lifeline looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>
-        <p class="disclaimer">Lifeline does not diagnose an overdose. This browser demo reads motion and orientation only; it does not monitor breathing, run in the background, or call anyone automatically.</p>
+        <p class="lede">Safeguard looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>
+        <!-- Explain: Add p for Safeguard does not diagnose an overdose. This browser demo rea. Close div to finish the current structure. Create the aside structure. -->
+        <p class="disclaimer">Safeguard does not diagnose an overdose. This browser demo reads motion and orientation only; it does not monitor breathing, run in the background, or call anyone automatically.</p>
       </div>
       <aside class="status-card" aria-labelledby="status-title">
+        <!-- Explain: Add span for . Add p for Current status. Add h2 status-title for Protection is off. -->
         <span class="status-dot" aria-hidden="true"></span>
         <p class="eyebrow">Current status</p>
         <h2 id="status-title">Protection is off</h2>
+        <!-- Explain: Add p for Open the demo and choose when to start monitoring. Add a for Open drop tracker. Close aside to finish the current structure. -->
         <p>Open the demo and choose when to start monitoring.</p>
-        <a class="primary-btn" href="fall-detection.html">Open drop tracker</a>
+        <a class="primary-btn" href="#live-tracker">Open drop tracker</a>
       </aside>
+    <!-- Explain: Close section to finish the current structure. Create the section structure. Create the div structure; Create the div structure; Add p for Choose what is happening What do you need right now?. -->
     </section>
 
     <section class="container emergency-choice" aria-labelledby="help-title">
       <div class="section-heading compact-heading"><div><p class="eyebrow">Choose what is happening</p><h2 id="help-title">What do you need right now?</h2></div></div>
+      <!-- Explain: Create the div structure. Create the article structure; Add p for Immediate danger I need help If you may have overdosed, cannot...; Add h3 for Immediate danger I need help If you may have overdosed, cannot. Create the article structure; Add p for Bystander Help someone else If they cannot wake or are not bre...; Add h3 for Bystander Help someone else If they cannot wake or are not bre. -->
       <div class="choice-grid">
         <article class="choice-card danger-choice"><p class="card-kicker">Immediate danger</p><h3>I need help</h3><p>If you may have overdosed, cannot breathe normally, or feel seriously unwell, call 911.</p><a class="primary-btn emergency-btn" href="tel:911">Call 911</a></article>
         <article class="choice-card"><p class="card-kicker">Bystander</p><h3>Help someone else</h3><p>If they cannot wake or are not breathing normally, call 911 now. You do not need to identify the substance first.</p><a class="secondary-btn" href="tel:911">Call 911 for them</a></article>
+        <!-- Explain: Create the article structure; Add p for Drug or alcohol support I want help Free, confidential treatme...; Add h3 for Drug or alcohol support I want help Free, confidential treatme. Close div to finish the current structure. Close section to finish the current structure. -->
         <article class="choice-card"><p class="card-kicker">Drug or alcohol support</p><h3>I want help</h3><p>Free, confidential treatment referrals are available 24/7.</p><a class="secondary-btn" href="tel:18006624357">Call the national helpline</a><small>1-800-662-HELP (4357)</small></article>
       </div>
     </section>
 
+    <!-- Explain: Create the section structure. Add p for Current prototype sequence. Add h2 sequence-title for One signal is not enough. -->
     <section class="container how-it-works" aria-labelledby="sequence-title">
       <p class="eyebrow">Current prototype sequence</p>
       <h2 id="sequence-title">One signal is not enough.</h2>
+      <!-- Explain: Create the ol structure. Add li for Notice A sudden movement is detected.; Add strong for Notice A sudden movement is detected.; Add span for Notice A sudden movement is detected. Add li for Verify Stillness or a major orientation change adds a second s...; Add strong for Verify Stillness or a major orientation change adds a second s...; Add span for Verify Stillness or a major orientation change adds a second s. -->
       <ol class="sequence-list">
         <li><strong>Notice</strong><span>A sudden movement is detected.</span></li>
         <li><strong>Verify</strong><span>Stillness or a major orientation change adds a second signal.</span></li>
+        <!-- Explain: Add li for Ask The phone asks, “Are you okay?” and starts a cancelable co...; Add strong for Ask The phone asks, “Are you okay?” and starts a cancelable co...; Add span for Ask The phone asks, “Are you okay?” and starts a cancelable co. Add li for Prepare If there is no answer, the demo prepares a message for...; Add strong for Prepare If there is no answer, the demo prepares a message for...; Add span for Prepare If there is no answer, the demo prepares a message for. Close ol to finish the current structure. -->
         <li><strong>Ask</strong><span>The phone asks, “Are you okay?” and starts a cancelable countdown.</span></li>
         <li><strong>Prepare</strong><span>If there is no answer, the demo prepares a message for a trusted contact.</span></li>
       </ol>
+      <!-- Explain: Add p for Future breathing, smartwatch, scheduled, and always-on modes a. Close section to finish the current structure. Create the section structure. -->
       <p class="microcopy">Future breathing, smartwatch, scheduled, and always-on modes are concepts only and are not implemented in this website.</p>
     </section>
 
     <section class="container drive-sober" aria-labelledby="drive-title">
+      <!-- Explain: Add p for Before driving. Add h2 drive-title for If a substance may affect you, leave the keys behind. Add p for Alcohol, cannabis, illegal drugs, and some prescription or ove. -->
       <p class="eyebrow">Before driving</p>
       <h2 id="drive-title">If a substance may affect you, leave the keys behind.</h2>
       <p class="lede">Alcohol, cannabis, illegal drugs, and some prescription or over-the-counter medicines can slow judgment, coordination, or reaction time. Plan a sober ride before using an impairing substance.</p>
+      <!-- Explain: Create the div structure. Add p for King County roads: the county's 2024 report counted 110 DUI-in...; Add strong for King County roads: the county's 2024 report counted 110 DUI-in. Add p for Local response: Seattle operates a DUI squad for suspected alc...; Add strong for Local response: Seattle operates a DUI squad for suspected alc. -->
       <div class="local-facts">
         <p><strong>King County roads:</strong> the county's 2024 report counted 110 DUI-involved collisions in the road system it covers, including seven fatal collisions.</p>
         <p><strong>Local response:</strong> Seattle operates a DUI squad for suspected alcohol- or drug-impaired driving, while Kent's DUI Court combines supervision with substance-use treatment.</p>
+      <!-- Explain: Close div to finish the current structure. Create the div structure. Add a for Washington Driver Guide. -->
       </div>
       <div class="source-links" aria-label="Official sources">
         <a href="https://dol.wa.gov/driver-licenses-and-permits/driver-training-and-testing/driver-guides/washington-state-driver-guide-text-only">Washington Driver Guide</a>
+        <!-- Explain: Add a for King County 2024 Collision Report. Add a for Seattle Police traffic enforcement. Add a for Kent DUI Court. -->
         <a href="https://cdn.kingcounty.gov/-/media/king-county/depts/local-services/roads/plans-reports/2024kingcountycollisiondatareport.pdf">King County 2024 Collision Report</a>
         <a href="https://seattle.gov/police/about-us/about-policing/traffic-enforcement">Seattle Police traffic enforcement</a>
         <a href="https://www.kentwa.gov/departments/municipal-court/dui-court">Kent DUI Court</a>
+        <!-- Explain: Add a for SAMHSA National Helpline. Close div to finish the current structure. Close section to finish the current structure. -->
         <a href="https://www.samhsa.gov/find-help/helplines">SAMHSA National Helpline</a>
       </div>
     </section>
 
+    <!-- Explain: Create the dialog region auth-dialog. Create the div structure. -->
     <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="account-title">
       <div class="auth-card">
         <div class="auth-heading">
+          <!-- Explain: Add h2 account-title for Account. Add button for ×. Close div to finish the current structure. -->
           <h2 id="account-title">Account</h2>
           <button class="auth-close" type="button" aria-label="Close account window">×</button>
         </div>
+        <!-- Explain: Create the div structure. Add button login-tab for Log in. Add button signup-tab for Sign up. -->
         <div class="auth-tabs" role="tablist" aria-label="Account options">
           <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-auth-tab="login">Log in</button>
           <button class="auth-tab" id="signup-tab" type="button" role="tab" aria-selected="false" aria-controls="signup-form" data-auth-tab="signup">Sign up</button>
+        <!-- Explain: Close div to finish the current structure. Create the form region login-form. Add label for Email. -->
         </div>
 
         <form class="auth-form" id="login-form" aria-labelledby="login-tab">
           <label for="login-email">Email</label>
+          <!-- Explain: Create an input named login-email with the specified type and constraints. Add label for Password. Create an input named login-password with the specified type and constraints. -->
           <input id="login-email" name="email" type="email" autocomplete="email" required>
           <label for="login-password">Password</label>
           <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          <!-- Explain: Add button for Log in. Close form to finish the current structure. Create the form region signup-form. -->
           <button class="primary" type="submit">Log in</button>
         </form>
 
         <form class="auth-form" id="signup-form" aria-labelledby="signup-tab" hidden>
+          <!-- Explain: Add label for Name. Create an input named signup-name with the specified type and constraints. Add label for Email. -->
           <label for="signup-name">Name</label>
           <input id="signup-name" name="name" type="text" autocomplete="name" required>
           <label for="signup-email">Email</label>
+          <!-- Explain: Create an input named signup-email with the specified type and constraints. Add label for Password. Create an input named signup-password with the specified type and constraints. -->
           <input id="signup-email" name="email" type="email" autocomplete="email" required>
           <label for="signup-password">Password</label>
           <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+          <!-- Explain: Add button for Create account. Close form to finish the current structure. Add p auth-status for Nothing is sent or saved. -->
           <button class="primary" type="submit">Create account</button>
         </form>
         <p class="auth-status" id="auth-status" aria-live="polite">Nothing is sent or saved.</p>
+      <!-- Explain: Close div to finish the current structure. Close dialog to finish the current structure. Create the section region live-tracker. -->
       </div>
     </dialog>
+    <section id="live-tracker" class="container" aria-labelledby="live-tracker-title">
+      <!-- Explain: Add p for Here with you. Add h2 live-tracker-title for Your tracker and nearby AEDs. Add p for Start when you are ready. Your position stays visible while th. -->
+      <p class="eyebrow">Here with you</p>
+      <h2 id="live-tracker-title">Your tracker and nearby AEDs</h2>
+      <p>Start when you are ready. Your position stays visible while this page is open.</p>
+      <!-- Explain: Create the iframe structure. Add a for Open the tracker on its own page. Close section to finish the current structure. -->
+      <iframe title="Safeguard live location and motion tracker" src="fall-detection.html?embedded=1" allow="geolocation; accelerometer; gyroscope; autoplay" loading="lazy" style="width:100%;height:900px;border:0;border-radius:16px"></iframe>
+      <a href="fall-detection.html">Open the tracker on its own page</a>
+    </section>
+  <!-- Explain: Close main to finish the current structure. -->
   </main>
   <script src="nav.js"></script>
   <script src="sound.js"></script>
   <script src="auth.js"></script>
+  <script>
+    // Accept size changes only from this page's same-origin tracker frame.
+    // Explain: Connect message to its handler. Find the HTML element that this code needs to read or update. Check event.origin !== location.origin || event.source !== frame.contentWindo.
+    window.addEventListener("message", event => {
+      const frame = document.querySelector("#live-tracker iframe");
+      if (event.origin !== location.origin || event.source !== frame.contentWindow) return;
+      // Explain: Check event.data?.type === "safeguard-tracker-height" && Number.isFinite(even. Set frame.style.height using Math.max(600, Math.min(900, event.data.height)) + "px". Close the current block or callback.
+      if (event.data?.type === "safeguard-tracker-height" && Number.isFinite(event.data.height))
+        frame.style.height = Math.max(600, Math.min(900, event.data.height)) + "px";
+    });
+  </script>
+<!-- Explain: Close body to finish the current structure. Close html to finish the current structure. -->
 </body>
 </html>

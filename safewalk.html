@@ -1,131 +1,169 @@
+<!-- Explain: Use the HTML document parsing mode. Create the html structure. Create the head structure. -->
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Explain: Declare page metadata charset="UTF-8" /. Declare page metadata name="viewport" content="width=device-width, initial-scale=1.0" /. Create the title structure. -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nearby emergency-care route | Lifeline</title>
+    <title>Nearby emergency-care route | Safeguard</title>
+    <!-- Explain: Display the continuation text <meta. Declare page metadata name="robots" content="index,follow" /. Declare page metadata name="theme-color" content="#101112" /. -->
     <meta
       name="description"
-      content="Use the Lifeline prototype to find a walking route to nearby emergency care, with a timed check-in and a clearly labelled 911 option."
+      content="Use the Safeguard prototype to find a walking route to nearby emergency care, with a timed check-in and a clearly labelled 911 option."
     />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#101112" />
+    <!-- Explain: Declare page metadata property="og:type" content="website" /. Declare page metadata property="og:site_name" content="Safeguard" /. Declare page metadata property="og:title" content="Nearby emergency-care route | Safeguar. -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Lifeline" />
-    <meta property="og:title" content="Nearby emergency-care route | Lifeline" />
+    <meta property="og:site_name" content="Safeguard" />
+    <meta property="og:title" content="Nearby emergency-care route | Safeguard" />
+    <!-- Explain: Declare page metadata property="og:description" content="A prototype route finder for nea. Load stylesheet https://unpkg.com/leaflet@1.9.4/dist/leaflet.css. -->
     <meta property="og:description" content="A prototype route finder for nearby emergency care, designed around a human check-in." />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- The same two stylesheets, in the same order, as the dashboard.
          Nothing on this page has a look of its own. -->
+    <!-- Explain: Load stylesheet site.css. Load stylesheet styles.css. -->
     <link rel="stylesheet" href="site.css" />
     <link rel="stylesheet" href="styles.css" />
     <style>
       /* The map takes the place the dashboard gives to its bar chart, so
          it gets the same box: same height, same corner, same border. */
+      /* Explain: Style #map. set height to 150px. set margin bottom to 4px. */
       #map {
         height: 150px;
         margin-bottom: 4px;
+        /* Explain: set corner rounding to 16px. set border appearance to 1px solid rgba(148, 163, 184, 0.12). End this style rule or responsive section. */
         border-radius: 16px;
         border: 1px solid rgba(148, 163, 184, 0.12);
       }
     </style>
+  <!-- Explain: Close head to finish the current structure. Create the body structure. Create the main structure. -->
   </head>
   <body data-page="safewalk">
     <main>
+      <!-- Explain: Create the section region overview. Create the div structure. Add a for ← Main dashboard. -->
       <section class="hero container" id="overview">
         <div class="hero-copy">
           <a class="back-home" href="index.html">← Main dashboard</a>
+          <!-- Explain: Add p for Overdose emergency response. Add h1 for Find your way to nearby emergency care. Add p for . -->
           <p class="eyebrow">Overdose emergency response</p>
           <h1>Find your way to nearby emergency care.</h1>
           <p class="lede">
+            <!-- Explain: Display the continuation text Tell us where to search and the prototype will help you look for nearby care. Display the continuation text You choose when to share a location, begin a route, or open the 911 option. Close p to finish the current structure. -->
             Tell us where to search and the prototype will help you look for nearby care.
             You choose when to share a location, begin a route, or open the 911 option.
           </p>
 
+          <!-- Explain: Create the div structure. Add button start for Start walk. Add button arrived for I arrived. -->
           <div class="hero-actions">
             <button class="secondary-btn" id="start" type="button">Start walk</button>
             <button class="secondary-btn" id="arrived" type="button">I arrived</button>
+            <!-- Explain: Add button help for I need help. Close div to finish the current structure. Create the ul structure. -->
             <button class="primary-btn emergency-btn" id="help" type="button">I need help</button>
           </div>
 
           <ul class="mini-stats">
+            <!-- Explain: Add li for . Add strong statState for Not started. Add span for current state. -->
             <li>
               <strong id="statState">Not started</strong>
               <span>current state</span>
+            <!-- Explain: Close li to finish the current structure. Add li for . Add strong statEta for &mdash;. -->
             </li>
             <li>
               <strong id="statEta">&mdash;</strong>
+              <!-- Explain: Add span for expected by. Close li to finish the current structure. Add li for . -->
               <span>expected by</span>
             </li>
             <li>
+              <!-- Explain: Add strong statSignal for &mdash;. Add span for last signal. Close li to finish the current structure. -->
               <strong id="statSignal">&mdash;</strong>
               <span>last signal</span>
             </li>
+          <!-- Explain: Close ul to finish the current structure. Close div to finish the current structure. Create the div structure. -->
           </ul>
         </div>
 
         <div class="hero-panel">
+          <!-- Explain: Create the div structure. Add span for Walk status. -->
           <div class="signal-card">
             <div class="signal-header">
               <span class="signal-label">Walk status</span>
+              <!-- Explain: Add span statePill for Not started. Close div to finish the current structure. Create the div region minutesLeft. -->
               <span class="signal-pill high" id="statePill">Not started</span>
             </div>
 
             <div class="signal-number" id="minutesLeft">&ndash;&ndash;</div>
+            <!-- Explain: Create the div region state. Create the div region map. Create the div structure. -->
             <div class="signal-subtitle" id="state">No walk running.</div>
 
             <div id="map"></div>
 
             <div class="signal-footer">
+              <!-- Explain: Create the div structure. Add small for Position. Add strong footPos for Unknown. -->
               <div>
                 <small>Position</small>
                 <strong id="footPos">Unknown</strong>
+              <!-- Explain: Close div to finish the current structure. Create the div structure. Add small for Route to EMT. -->
               </div>
               <div>
                 <small>Route to EMT</small>
+                <!-- Explain: Add strong footRoute for Not opened. Close div to finish the current structure. -->
                 <strong id="footRoute">Not opened</strong>
               </div>
             </div>
+          <!-- Explain: Close div to finish the current structure. Close section to finish the current structure. -->
           </div>
         </div>
       </section>
 
+      <!-- Explain: Create the section region setup. Create the article structure. Create the div structure. -->
       <section class="container metrics" id="setup">
         <article class="metric-card accent-blue">
           <div class="card-kicker">Who is walking</div>
+          <!-- Explain: Add h3 for Your details. Add label for Your name. Create an input named name with the specified type and constraints. -->
           <h3>Your details</h3>
           <label for="name">Your name</label>
           <input type="text" id="name" value="Sam" />
+          <!-- Explain: Add label for Your ZIP code. Create an input named zip with the specified type and constraints. Add p for . -->
           <label for="zip">Your ZIP code</label>
           <input type="text" id="zip" inputmode="numeric" maxlength="5" placeholder="98052" />
           <p class="microcopy">
+            <!-- Explain: Display the continuation text The ZIP is used to search for nearby EMTs. Leave it empty and your GPS position is. Display the continuation text used instead. It stays in this browser. Close p to finish the current structure. -->
             The ZIP is used to search for nearby EMTs. Leave it empty and your GPS position is
             used instead. It stays in this browser.
           </p>
+        <!-- Explain: Close article to finish the current structure. Create the article structure. Create the div structure. -->
         </article>
 
         <article class="metric-card accent-amber">
           <div class="card-kicker">The walk</div>
+          <!-- Explain: Add h3 for Where and how long. Add label for Where you go. Create an input named dest with the specified type and constraints. -->
           <h3>Where and how long</h3>
           <label for="dest">Where you go</label>
           <input type="text" id="dest" value="Home, 3rd and Pine" />
+          <!-- Explain: Add label for Minutes the walk takes. Create an input named mins with the specified type and constraints. Add p for . -->
           <label for="mins">Minutes the walk takes</label>
           <input type="number" id="mins" value="15" min="1" max="240" />
           <p class="microcopy">
+            <!-- Explain: Display the continuation text Five minutes after that time, with no answer, this page turns red. Close p to finish the current structure. Close article to finish the current structure. -->
             Five minutes after that time, with no answer, this page turns red.
           </p>
         </article>
 
+        <!-- Explain: Create the article structure. Create the div structure. Add h3 for Emergency. -->
         <article class="metric-card accent-red">
           <div class="card-kicker">If it goes wrong</div>
           <h3>Emergency</h3>
+          <!-- Explain: Add p for . Display the continuation text The help button opens the Washington 911 information site and puts a dial button on. Display the continuation text this page. Nothing here contacts anybody by itself. -->
           <p>
             The help button opens the Washington 911 information site and puts a dial button on
             this page. Nothing here contacts anybody by itself.
+          <!-- Explain: Close p to finish the current structure. Add a for Call 911. Create the div region routeBox. -->
           </p>
           <a class="primary-btn emergency-btn" href="tel:911">Call 911</a>
           <div id="routeBox"></div>
+        <!-- Explain: Close article to finish the current structure. Close section to finish the current structure. Close main to finish the current structure. -->
         </article>
       </section>
     </main>
@@ -134,13 +172,16 @@
     <script>
 /* ---------- settings ---------- */
 
+// Explain: Keep GRACE_S as 300. Keep KEY as "walk.v1". Keep ZIP_KEY as "od.zip.v1".
 const GRACE_S = 300;             /* five minutes late before the alarm */
 const KEY = "walk.v1";
 const ZIP_KEY = "od.zip.v1";
+// Explain: Keep EMT_QUERY as "EMTs within a one-mile radius of ". Keep WA_911 as "https://911info.wa.gov". Read a saved value from this browser storage.
 const EMT_QUERY = "EMTs within a one-mile radius of ";
 const WA_911 = "https://911info.wa.gov";
 
 let walk = JSON.parse(localStorage.getItem(KEY) || "null");
+// Explain: Initialize dot as null. Initialize pinger as null. Initialize map as null.
 let dot = null;
 let pinger = null;
 
@@ -150,42 +191,52 @@ let pinger = null;
 
 let map = null;
 
+// Explain: Check typeof L !== "undefined". Initialize the map in the named HTML container. Create the map tile layer from the specified image service.
 if (typeof L !== "undefined") {
     map = L.map("map").setView([47.6205, -122.34], 13);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        // Explain: Start or continue the collection of structured values. Close the current block or callback. Handle the alternative case when the earlier condition fails.
         { attribution: "&copy; OpenStreetMap" }).addTo(map);
 }
 else {
+    // Explain: Find the HTML element that this code needs to read or update. Set box.style.display using "grid". Set box.style.placeItems using "center".
     const box = document.getElementById("map");
     box.style.display = "grid";
     box.style.placeItems = "center";
+    // Explain: Set plain visible text on box. Close the current block or callback. Define $ with inputs id.
     box.textContent = "Map unavailable";
 }
 
 /* ---------- small helpers ---------- */
 
 function $(id) {
+    // Explain: Find the HTML element that this code needs to read or update. Close the current block or callback. Define save with inputs none.
     return document.getElementById(id);
 }
 
 function save() {
+    // Explain: Save a serialized value in this browser for later visits. Close the current block or callback. Define clock with inputs ms.
     localStorage.setItem(KEY, JSON.stringify(walk));
 }
 
 function clock(ms) {
+    // Explain: Return new Date(ms).toLocaleTimeString([], { hour: "2-digit", minute: . Close the current block or callback. Define setRouteBox with inputs text, bad.
     return new Date(ms).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
 function setRouteBox(text, bad) {
+    // Explain: Keep box as $("routeBox"). Change the element classes that control its displayed state. Set plain visible text on box.
     const box = $("routeBox");
     box.className = bad ? "note bad" : "note";
     box.textContent = text;
+// Explain: Close the current block or callback. Read a saved value from this browser storage. Check savedZip.
 }
 
 /* ---------- the EMT search ---------- */
 
 const savedZip = localStorage.getItem(ZIP_KEY);
 if (savedZip)
+    // Explain: Call $ with the values shown here. Define whereToSearch with inputs none. Keep zip as $("zip").value.trim().
     $("zip").value = savedZip;
 
 function whereToSearch() {
@@ -193,208 +244,259 @@ function whereToSearch() {
        first. The last GPS position is the fallback. */
     const zip = $("zip").value.trim();
 
+    // Explain: Check /^\d{5}$/.test(zip. Save a serialized value in this browser for later visits. Return zip.
     if (/^\d{5}$/.test(zip)) {
         localStorage.setItem(ZIP_KEY, zip);
         return zip;
+    // Explain: Close the current block or callback. Check walk && walk.lat. Return walk.lat.toFixed(5) + ", " + walk.lon.toFixed(5).
     }
 
     if (walk && walk.lat)
         return walk.lat.toFixed(5) + ", " + walk.lon.toFixed(5);
 
+    // Explain: Return null. Close the current block or callback. Define emtSearchUrl with inputs where.
     return null;
 }
 
 function emtSearchUrl(where) {
+    // Explain: Return "https://www.google.com/maps/search/?api=1&query=" +. Encode text so it can be safely included in a URL component. Close the current block or callback.
     return "https://www.google.com/maps/search/?api=1&query=" +
         encodeURIComponent(EMT_QUERY + where);
     /* encodeURIComponent turns the spaces and the comma into characters a
        URL can carry. Without it the link breaks at the first space. */
 }
 
+// Explain: Define openEmtSearch with inputs none. Keep where as whereToSearch(). Check !where.
 function openEmtSearch() {
     const where = whereToSearch();
 
     if (!where) {
+        // Explain: Call setRouteBox with the values shown here. Set plain visible text on $("footRoute"). Return null.
         setRouteBox("Type your ZIP code, or allow location, so the search knows where to look.", true);
         $("footRoute").textContent = "No ZIP";
         return null;
+    // Explain: Close the current block or callback. Keep url as emtSearchUrl(where). Open the requested destination in a separate browsing context.
     }
 
     const url = emtSearchUrl(where);
     window.open(url, "_blank", "noopener");
     /* noopener stops the new tab from reaching back into this page. */
+    // Explain: Return url. Close the current block or callback. Define ping with inputs none.
     return url;
 }
 
 /* ---------- position ---------- */
 
 function ping() {
+    // Explain: Check !walk || walk.state !== "walking". Return from this function. Request one device location fix with success and failure callbacks.
     if (!walk || walk.state !== "walking")
         return;
     /* Tracking stops the moment the need ends. */
 
     navigator.geolocation.getCurrentPosition(p => {
+        // Explain: Set walk.lat using p.coords.latitude. Set walk.lon using p.coords.longitude. Set walk.seen using Date.now().
         walk.lat = p.coords.latitude;
         walk.lon = p.coords.longitude;
         walk.seen = Date.now();
+        // Explain: Call save with the values shown here. Call show with the values shown here. Check !map.
         save();
         show();
 
         if (!map)
+            // Explain: Return from this function. Check dot. Call map.removeLayer with the values shown here.
             return;
 
         if (dot)
             map.removeLayer(dot);
 
+        // Explain: Create a map circle or marker for the given coordinates. Start or continue the collection of structured values. Move and scale the map to the selected position or bounds.
         dot = L.circleMarker([walk.lat, walk.lon],
             { radius: 9, color: "#ffffff", fillOpacity: 0.85 }).addTo(map);
         map.setView([walk.lat, walk.lon], 15);
+    // Explain: Continue the surrounding expression with }, () => show(), { enableHighAccuracy: true, timeout: 8000 });. Close the current block or callback. Define show with inputs none.
     }, () => show(), { enableHighAccuracy: true, timeout: 8000 });
 }
 
 /* ---------- the one place that paints the state ---------- */
 
 function show() {
+    // Explain: Keep pill as $("statePill"). Keep box as $("state"). Check !walk.
     const pill = $("statePill");
     const box = $("state");
 
     if (!walk) {
+        // Explain: Set plain visible text on pill. Change the element classes that control its displayed state. Set plain visible text on box.
         pill.textContent = "Not started";
         pill.className = "signal-pill";
         box.textContent = "No walk running.";
+        // Explain: Set plain visible text on $("minutesLeft"). Set plain visible text on $("statState"). Return from this function.
         $("minutesLeft").textContent = "––";
         $("statState").textContent = "Not started";
         return;
+    // Explain: Close the current block or callback. Keep lateBy as Math.round((Date.now() - walk.eta) / 1000). Keep left as Math.max(0, Math.ceil(-lateBy / 60)).
     }
 
     const lateBy = Math.round((Date.now() - walk.eta) / 1000);
     const left = Math.max(0, Math.ceil(-lateBy / 60));
 
+    // Explain: Set plain visible text on $("statEta"). Set plain visible text on $("statSignal"). Set plain visible text on $("footPos").
     $("statEta").textContent = clock(walk.eta);
     $("statSignal").textContent = walk.seen ? clock(walk.seen) : "—";
     $("footPos").textContent = walk.lat
+        // Explain: Continue the conditional or combined expression from the previous line. Check walk.state === "arrived".
         ? walk.lat.toFixed(3) + ", " + walk.lon.toFixed(3)
         : "Unknown";
 
     if (walk.state === "arrived") {
+        // Explain: Set plain visible text on pill. Change the element classes that control its displayed state. Set plain visible text on $("minutesLeft").
         pill.textContent = "Arrived";
         pill.className = "signal-pill";
         $("minutesLeft").textContent = "OK";
+        // Explain: Set plain visible text on $("statState"). Set plain visible text on box. Return from this function.
         $("statState").textContent = "Arrived";
         box.textContent = walk.who + " arrived safely at " + walk.dest + ".";
         return;
+    // Explain: Close the current block or callback. Check walk.state === "help". Set plain visible text on pill.
     }
 
     if (walk.state === "help") {
         pill.textContent = "Help asked for";
+        // Explain: Change the element classes that control its displayed state. Set plain visible text on $("minutesLeft"). Set plain visible text on $("statState").
         pill.className = "signal-pill high";
         $("minutesLeft").textContent = "911";
         $("statState").textContent = "Help asked for";
+        // Explain: Set plain visible text on box. Return from this function. Close the current block or callback.
         box.textContent = "Help asked for by " + walk.who + ". Call 911, then call them.";
         return;
     }
 
+    // Explain: Check lateBy > GRACE_S. Set plain visible text on pill. Change the element classes that control its displayed state.
     if (lateBy > GRACE_S) {
         pill.textContent = "Late";
         pill.className = "signal-pill high";
+        // Explain: Set plain visible text on $("minutesLeft"). Set plain visible text on $("statState"). Set plain visible text on box.
         $("minutesLeft").textContent = Math.round(lateBy / 60) + "m";
         $("statState").textContent = "Late";
         box.textContent = Math.round(lateBy / 60) + " min late. Call " + walk.who + " now.";
+        // Explain: Return from this function. Close the current block or callback. Set plain visible text on pill.
         return;
     }
 
     pill.textContent = "Walking";
+    // Explain: Change the element classes that control its displayed state. Set plain visible text on $("minutesLeft"). Set plain visible text on $("statState").
     pill.className = "signal-pill";
     $("minutesLeft").textContent = left + "m";
     $("statState").textContent = "Walking";
+    // Explain: Set plain visible text on box. Close the current block or callback. Call $ with the values shown here.
     box.textContent = walk.who + " walks to " + walk.dest + ". Expected by " + clock(walk.eta) + ".";
 }
 
 /* ---------- buttons ---------- */
 
 $("start").onclick = () => {
+    // Explain: Keep mins as parseInt($("mins").value) || 15. Set walk using {. Set the who field to $("name").value.
     const mins = parseInt($("mins").value) || 15;
 
     walk = {
         who: $("name").value,
+        // Explain: Set the dest field to $("dest").value. Set the eta field to Date.now() + mins * 60000. Set the state field to "walking".
         dest: $("dest").value,
         eta: Date.now() + mins * 60000,
         /* Store the moment, not the length, so a reload cannot restart
            the clock. */
         state: "walking",
+        // Explain: Set the lat field to null. Set the lon field to null. Set the seen field to null.
         lat: null,
         lon: null,
         seen: null
+    // Explain: Close the current block or callback. Call save with the values shown here. Call ping with the values shown here.
     };
 
     save();
     ping();
 
+    // Explain: Check pinger. Cancel scheduled timer work. Schedule repeated work at the interval specified by this call.
     if (pinger)
         clearInterval(pinger);
 
     pinger = setInterval(ping, 30000);
+    // Explain: Call show with the values shown here. Keep url as openEmtSearch(). Check url.
     show();
 
     const url = openEmtSearch();
     if (url) {
+        // Explain: Set plain visible text on $("footRoute"). Keep box as $("routeBox"). Change the element classes that control its displayed state.
         $("footRoute").textContent = "Opened";
         const box = $("routeBox");
         box.className = "note";
+        // Explain: Set plain visible text on box. Create a new HTML element for the generated interface. Set again.href using url.
         box.textContent = "Route to the nearest EMT opened in a new tab. ";
 
         const again = document.createElement("a");
         again.href = url;
+        // Explain: Set again.target using "_blank". Set again.rel using "noopener". Set plain visible text on again.
         again.target = "_blank";
         again.rel = "noopener";
         again.textContent = "Open it again";
+        // Explain: Attach the generated content to its parent element. Close the current block or callback.
         box.appendChild(again);
         /* A pop-up blocker must never be the reason help is late, so the
            link stays on the page as well. */
     }
 };
 
+// Explain: Call $ with the values shown here. Check !walk. Return from this function.
 $("arrived").onclick = () => {
     if (!walk)
         return;
 
+    // Explain: Set walk.state using "arrived". Call save with the values shown here. Call show with the values shown here.
     walk.state = "arrived";
     save();
     show();
+// Explain: Close the current block or callback. Call $ with the values shown here. Check walk.
 };
 
 $("help").onclick = () => {
     if (walk) {
+        // Explain: Set walk.state using "help". Call save with the values shown here. Close the current block or callback.
         walk.state = "help";
         save();
     }
     /* The help button works with no walk running. An emergency does not
        wait for a form to be filled in. */
 
+    // Explain: Open the requested destination in a separate browsing context. Keep box as $("routeBox"). Change the element classes that control its displayed state.
     window.open(WA_911, "_blank", "noopener");
 
     const box = $("routeBox");
     box.className = "note bad";
+    // Explain: Set plain visible text on box. Create a new HTML element for the generated interface. Set plain visible text on line.
     box.textContent = "";
 
     const line = document.createElement("div");
     line.textContent = "Washington 911 information opened in a new tab.";
+    // Explain: Attach the generated content to its parent element. Create a new HTML element for the generated interface. Change the element classes that control its displayed state.
     box.appendChild(line);
 
     const call = document.createElement("a");
     call.className = "primary-btn emergency-btn";
+    // Explain: Set call.href using "tel:911". Set plain visible text on call. Attach the generated content to its parent element.
     call.href = "tel:911";
     call.textContent = "Call 911 now";
     box.appendChild(call);
     /* A web page does not dial. On a phone this link does. */
 
+    // Explain: Create a new HTML element for the generated interface. Set info.href using WA_911. Set info.target using "_blank".
     const info = document.createElement("a");
     info.href = WA_911;
     info.target = "_blank";
+    // Explain: Set info.rel using "noopener". Set plain visible text on info. Attach the generated content to its parent element.
     info.rel = "noopener";
     info.textContent = "911info.wa.gov";
     box.appendChild(info);
 
+    // Explain: Call show with the values shown here. Close the current block or callback. Schedule repeated work at the interval specified by this call.
     show();
 };
 
@@ -404,11 +506,13 @@ setInterval(show, 5000);
 /* Repaint every five seconds, even when nothing happens. This is what
    makes the card turn red by itself. */
 
+// Explain: Call show with the values shown here. Check walk && walk.state === "walking". Schedule repeated work at the interval specified by this call.
 show();
 
 if (walk && walk.state === "walking")
     pinger = setInterval(ping, 30000);
     </script>
     <script src="sound.js"></script>
+  <!-- Explain: Close body to finish the current structure. Close html to finish the current structure. -->
   </body>
 </html>

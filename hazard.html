@@ -1,34 +1,43 @@
+<!-- Explain: Use the HTML document parsing mode. Create the html structure. Create the head structure. -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">                                  <!-- read text as UTF-8 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- fit a phone -->
-<title>Community hazard reporting prototype | Lifeline</title>
-<meta name="description" content="See how Lifeline's community hazard prototype combines nearby reports of the same street problem into one clearer ticket.">
+<!-- Explain: Create the title structure. Declare page metadata name="description" content="See how Safeguard's community hazard pr. Declare page metadata name="robots" content="index,follow". -->
+<title>Community hazard reporting prototype | Safeguard</title>
+<meta name="description" content="See how Safeguard's community hazard prototype combines nearby reports of the same street problem into one clearer ticket.">
 <meta name="robots" content="index,follow">
+<!-- Explain: Declare page metadata name="theme-color" content="#101112". Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="Safeguard". -->
 <meta name="theme-color" content="#101112">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Lifeline">
-<meta property="og:title" content="Community hazard reporting prototype | Lifeline">
+<meta property="og:site_name" content="Safeguard">
+<!-- Explain: Declare page metadata property="og:title" content="Community hazard reporting prototype |. Declare page metadata property="og:description" content="A browser-based experiment for m. -->
+<meta property="og:title" content="Community hazard reporting prototype | Safeguard">
 <meta property="og:description" content="A browser-based experiment for merging duplicate community street-hazard reports.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">  <!-- map styles -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>          <!-- map program -->
+<!-- Explain: Load stylesheet site.css. Close head to finish the current structure. Create the body structure. -->
 <link rel="stylesheet" href="site.css">
 </head>
 <body class="tool" data-page="hazard">
 
+<!-- Explain: Create the main structure. Create the section structure. Add a for ← Main dashboard. -->
 <main class="shell">
 <section class="page-hero">
     <a class="back-home" href="index.html">← Main dashboard</a>
+    <!-- Explain: Add p for Support tool. Add h1 for Help your community notice a street hazard. Add p for Share what you found. When neighbours report the same problem . -->
     <p class="eyebrow">Support tool</p>
     <h1>Help your community notice a street hazard.</h1>
     <p class="lede">Share what you found. When neighbours report the same problem nearby, the prototype brings those reports together into one clearer ticket.</p>
+<!-- Explain: Close section to finish the current structure. Create the div structure. -->
 </section>
 
 <div class="split">
     <div class="panel">
     <!-- Left column: the form. -->
 
+        <!-- Explain: Add label for What is wrong. Create the select region cat. Add option for Pothole. -->
         <label for="cat">What is wrong</label>
         <!-- "for" ties the label to the field, so a tap on the words
              opens the drop-down and a screen reader speaks them. -->
@@ -36,13 +45,16 @@
         <select id="cat">
             <option value="pothole">Pothole</option>
             <!-- value is the code word; the text is for the person. -->
+            <!-- Explain: Add option for Street light out. Add option for Blocked sidewalk. Add option for Illegal dumping. -->
             <option value="light">Street light out</option>
             <option value="sidewalk">Blocked sidewalk</option>
             <option value="dumping">Illegal dumping</option>
+            <!-- Explain: Add option for Signal fault. Close select to finish the current structure. Add label for Anything to add. -->
             <option value="signal">Signal fault</option>
         </select>
 
         <label for="desc">Anything to add</label>
+        <!-- Explain: Create the textarea region desc. Add label for Photo. Create an input named photo with the specified type and constraints. -->
         <textarea id="desc" rows="3"></textarea>
         <!-- Free text. Three lines tall. -->
 
@@ -51,23 +63,28 @@
         <!-- accept limits the picker to pictures.
              capture="environment" asks a phone for the back camera. -->
 
+        <!-- Explain: Add p where for Place: not set. Tap the map or use your position. Add button gps for Use my position. Add button send for Send report. -->
         <p class="meta" id="where">Place: not set. Tap the map or use your position.</p>
         <!-- The script rewrites this line when a place is chosen. -->
 
         <button id="gps">Use my position</button>
         <button id="send">Send report</button>
+        <!-- Explain: Create the div region msg. Close div to finish the current structure. Create the div structure. -->
         <div id="msg"></div>
         <!-- Empty. The answer after a send goes here. -->
     </div>
 
     <div>
+        <!-- Explain: Create the div region map. Create the ul region list. Close div to finish the current structure. -->
         <div id="map"></div>
         <ul id="list"></ul>
         <!-- The ticket list, under the map. -->
     </div>
+<!-- Explain: Close div to finish the current structure. -->
 </div>
 
 <script>
+// Explain: Keep MERGE_M as 60. Keep KEY as "hazards.v1". Read a saved value from this browser storage.
 const MERGE_M = 60;
 /* The merge distance in metres. This one number is the policy of the
    whole app. A city with big blocks may want 100. */
@@ -79,6 +96,7 @@ let reports = JSON.parse(localStorage.getItem(KEY) || "[]");
 /* Load every report ever sent from this browser. "[]" means: if the
    drawer is empty, start with an empty list. */
 
+// Explain: Initialize place as null. Initialize pin as null. Initialize the map in the named HTML container.
 let place = null;
 /* The point the user has chosen. Null until they tap or use GPS. */
 
@@ -86,6 +104,7 @@ let pin = null;
 /* The marker that shows that point. We keep it so we can move it. */
 
 const map = L.map("map").setView([47.6205, -122.34], 13);
+// Explain: Create the map tile layer from the specified image service. Start or continue the collection of structured values. Keep layer as L.layerGroup().addTo(map).
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     { attribution: "&copy; OpenStreetMap" }).addTo(map);
 /* Same two lines as file 1: build the map, then fetch the pictures. */
@@ -94,6 +113,7 @@ const layer = L.layerGroup().addTo(map);
 /* A bag for the ticket circles. One call empties the bag, instead of
    removing each circle by hand. */
 
+// Explain: Call map.on with the values shown here. Define setPlace with inputs lat, lon, how. Set place using { lat: lat, lon: lon }.
 map.on("click", e => setPlace(e.latlng.lat, e.latlng.lng, "map tap"));
 /* A tap anywhere on the map sets the place. "e" carries the point the
    user touched. */
@@ -105,6 +125,7 @@ function setPlace(lat, lon, how) {
     place = { lat: lat, lon: lon };
     /* Remember it. */
 
+    // Explain: Check pin. Call map.removeLayer with the values shown here. Set pin using L.marker([lat, lon]).addTo(map).
     if (pin)
         map.removeLayer(pin);
     /* Take the old marker off, so there is never more than one. */
@@ -112,30 +133,36 @@ function setPlace(lat, lon, how) {
     pin = L.marker([lat, lon]).addTo(map);
     /* Drop the new marker. */
 
+    // Explain: Set plain visible text on document.getElementById("where"). Continue the text or argument value used by the surrounding expression. Close the current block or callback.
     document.getElementById("where").textContent =
         "Place set by " + how + ": " + lat.toFixed(5) + ", " + lon.toFixed(5);
     /* Tell the user where and how. Five decimals is about one metre;
        more digits are noise. */
 }
 
+// Explain: Define metres with inputs a, b. Keep R as 6371000. Keep dLat as (b.lat - a.lat) * Math.PI / 180.
 function metres(a, b) {
 /* Distance in metres. Same haversine as file 1. */
     const R = 6371000;
     const dLat = (b.lat - a.lat) * Math.PI / 180;
+    // Explain: Keep dLon as (b.lon - a.lon) * Math.PI / 180. Keep s as Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) *. Call Math.cos with the values shown here.
     const dLon = (b.lon - a.lon) * Math.PI / 180;
     const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) *
         Math.cos(b.lat * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+    // Explain: Take the square root to calculate a magnitude or distance term. Close the current block or callback. Define say with inputs text, bad.
     return 2 * R * Math.asin(Math.sqrt(s));
 }
 
 function say(text, bad) {
 /* Put one message in the box under the buttons. */
 
+    // Explain: Find the HTML element that this code needs to read or update. Continue the text or argument value used by the surrounding expression. Close the current block or callback.
     document.getElementById("msg").innerHTML =
         "<div class='note" + (bad ? " bad" : "") + "'>" + text + "</div>";
     /* If "bad" is true, add the class that makes the box red. */
 }
 
+// Explain: Define findTicket with inputs cat, point. Initialize best as null. Initialize bestD as MERGE_M.
 function findTicket(cat, point) {
 /* The heart of the app: is this fault already known?
    Answer: the ticket number of the nearest report of the same type
@@ -148,41 +175,49 @@ function findTicket(cat, point) {
     /* The distance to beat. It starts at the merge radius, so anything
        farther than 60 m can never win. */
 
+    // Explain: Run the callback for each item in the collection. Check r.cat !== cat. Return from this function.
     reports.forEach(r => {
         if (r.cat !== cat)
             return;
         /* A pothole never merges with a broken light. "return" here
            means "skip this one", not "stop". */
 
+        // Explain: Keep d as metres(point, r). Check d <= bestD. Set bestD using d.
         const d = metres(point, r);
         if (d <= bestD) {
             bestD = d;
             /* Raise the bar. */
 
+            // Explain: Set best using r.ticket. Close the current block or callback.
             best = r.ticket;
             /* Keep the ticket, not the report. Many reports share one
                ticket, and the ticket is what city staff work on. */
         }
     });
 
+    // Explain: Return best. Close the current block or callback. Find the HTML element that this code needs to read or update.
     return best;
 }
 
 document.getElementById("gps").onclick = () => {
+    // Explain: Request one device location fix with success and failure callbacks. Call setPlace with the values shown here. Move and scale the map to the selected position or bounds.
     navigator.geolocation.getCurrentPosition(p => {
         setPlace(p.coords.latitude, p.coords.longitude, "phone GPS");
         map.setView([p.coords.latitude, p.coords.longitude], 17);
         /* Zoom 17 is close enough to see which side of the street. */
+    // Explain: Continue the surrounding expression with }, () => say("Position refused. Tap the map instead.", true));. Close the current block or callback. Find the HTML element that this code needs to read or update.
     }, () => say("Position refused. Tap the map instead.", true));
     /* The second function runs if the user says no, or if GPS fails.
        Always give a way forward; never leave a dead end. */
 };
 
 document.getElementById("send").onclick = () => {
+    // Explain: Check !place. Call say with the values shown here. Return from this function.
     if (!place) {
         say("Set the place first.", true);
         return;
         /* Stop here. A report with no place is of no use to anybody. */
+    // Explain: Close the current block or callback. Find the HTML element that this code needs to read or update. Initialize ticket as findTicket(cat, place).
     }
 
     const cat = document.getElementById("cat").value;
@@ -191,6 +226,7 @@ document.getElementById("send").onclick = () => {
     let ticket = findTicket(cat, place);
     /* Look for a near twin. */
 
+    // Explain: Keep isNew as ticket === null. Check isNew. Set ticket using Date.now().
     const isNew = ticket === null;
     /* Remember the answer before we change "ticket". */
 
@@ -199,15 +235,18 @@ document.getElementById("send").onclick = () => {
     /* No twin, so open a ticket. The clock in milliseconds makes a
        number that never repeats, which is enough for a demo. */
 
+    // Explain: Call reports.push with the values shown here. Set the ticket field to ticket. Set the cat field to cat.
     reports.push({
         ticket: ticket,
         /* Every report of the same fault carries the same ticket. That
            single field is the whole merge. */
 
         cat: cat,
+        // Explain: Set the lat field to place.lat. Set the lon field to place.lon. Find the HTML element that this code needs to read or update.
         lat: place.lat,
         lon: place.lon,
         desc: document.getElementById("desc").value,
+        // Explain: Find the HTML element that this code needs to read or update. Set the at field to new Date().toISOString(). Close the current block or callback.
         photo: document.getElementById("photo").files.length > 0,
         /* Only true or false. The picture itself stays on the phone,
            because there is no server to hold it. */
@@ -216,6 +255,7 @@ document.getElementById("send").onclick = () => {
         /* The time, in a form that sorts correctly as text. */
     });
 
+    // Explain: Save a serialized value in this browser for later visits. Keep only items that satisfy the callback condition. Check isNew.
     localStorage.setItem(KEY, JSON.stringify(reports));
     /* Save the whole list back to the drawer. */
 
@@ -223,17 +263,20 @@ document.getElementById("send").onclick = () => {
     /* How many reports this ticket now holds. */
 
     if (isNew)
+        // Explain: Call say with the values shown here. Handle the alternative case when the earlier condition fails.
         say("New ticket opened.");
     else
         say("This fault is already known. The ticket now holds " + count + " reports.");
     /* This sentence is the moment that sells the app to a judge. */
 
+    // Explain: Find the HTML element that this code needs to read or update. Call draw with the values shown here. Close the current block or callback.
     document.getElementById("desc").value = "";
     /* Clear the note, ready for the next report. */
 
     draw();
 };
 
+// Explain: Define draw with inputs none. Keep groups as {}. Run the callback for each item in the collection.
 function draw() {
 /* Turn many reports into few tickets, then paint them. */
 
@@ -241,11 +284,13 @@ function draw() {
     /* An object used as a set of pigeonholes: ticket number -> totals. */
 
     reports.forEach(r => {
+        // Explain: Check !groups[r.ticket]. Set groups[r.ticket] using { cat: r.cat, lat: 0, lon: 0, n: 0, desc: "", photos: 0 }. Keep g as groups[r.ticket].
         if (!groups[r.ticket])
             groups[r.ticket] = { cat: r.cat, lat: 0, lon: 0, n: 0, desc: "", photos: 0 };
         /* First report of this ticket: open an empty pigeonhole. */
 
         const g = groups[r.ticket];
+        // Explain: Update g.n using 1. Update g.lat using r.lat. Update g.lon using r.lon.
         g.n += 1;
         /* Count it. */
 
@@ -253,15 +298,18 @@ function draw() {
         g.lon += r.lon;
         /* Add up the positions now; divide later to get the middle. */
 
+        // Explain: Check r.desc && !g.desc. Set g.desc using r.desc. Check r.photo.
         if (r.desc && !g.desc)
             g.desc = r.desc;
         /* Keep the first note only, so the row stays one line. */
 
         if (r.photo)
+            // Explain: Update g.photos using 1. Close the current block or callback. Find the HTML element that this code needs to read or update.
             g.photos += 1;
     });
 
     const list = document.getElementById("list");
+    // Explain: Clear the previous rendered contents before rebuilding them. Call layer.clearLayers with the values shown here. Reorder the collection using the comparator.
     list.innerHTML = "";
     layer.clearLayers();
     /* Wipe the old rows and the old circles. */
@@ -270,6 +318,7 @@ function draw() {
     /* Object.values throws the keys away and keeps the pigeonholes.
        b.n - a.n sorts big first, so the worst fault is at the top. */
 
+    // Explain: Run the callback for each item in the collection. Set g.lat using g.lat / g.n. Set g.lon using g.lon / g.n.
     rows.forEach(g => {
         g.lat = g.lat / g.n;
         g.lon = g.lon / g.n;
@@ -277,17 +326,21 @@ function draw() {
            point at the same pothole from ten angles give a better
            position than any one of them alone. */
 
+        // Explain: Create a new HTML element for the generated interface. Change the element classes that control its displayed state.
         const li = document.createElement("li");
         li.className = g.n >= 3 ? "many" : (g.n === 2 ? "two" : "");
         /* Three or more: red. Two: orange. One: grey. */
 
         const badge = document.createElement("span");
+        // Explain: Change the element classes that control its displayed state. Set plain visible text on badge. Create a new HTML element for the generated interface.
         badge.className = "count";
         badge.textContent = g.n;
         const nameEl = document.createElement("b");
+        // Explain: Set plain visible text on nameEl. Create a new HTML element for the generated interface. Change the element classes that control its displayed state.
         nameEl.textContent = g.cat;
         const metaEl = document.createElement("div");
         metaEl.className = "meta";
+        // Explain: Set plain visible text on metaEl. Attach the generated content to its parent element. Move and scale the map to the selected position or bounds.
         metaEl.textContent = (g.desc || "no note") + ", " + g.photos + " photo(s)";
         li.append(badge, " ", nameEl, metaEl);
         /* textContent, not innerHTML: text a participant types can never
@@ -296,21 +349,26 @@ function draw() {
            first thing a reader sees. */
 
         li.onclick = () => map.setView([g.lat, g.lon], 17);
+        // Explain: Attach the generated content to its parent element. Create a map circle or marker for the given coordinates. Start or continue the collection of structured values.
         list.appendChild(li);
 
         L.circleMarker([g.lat, g.lon],
             { radius: 6 + Math.min(g.n, 8) * 2, color: "#ffffff", fillOpacity: 0.28 })
+            // Explain: Call .addTo with the values shown here. Close the current block or callback.
             .addTo(layer).bindPopup(g.n + " report(s) of " + g.cat);
         /* The circle grows with the count. Math.min stops one hot spot
            from covering the map. */
     });
 }
 
+// Explain: Call draw with the values shown here.
 draw();
 /* First paint. */
 </script>
+<!-- Explain: Close main to finish the current structure. -->
 </main>
 <script src="nav.js"></script>
 <script src="sound.js"></script>
+<!-- Explain: Close body to finish the current structure. Close html to finish the current structure. -->
 </body>
 </html>
