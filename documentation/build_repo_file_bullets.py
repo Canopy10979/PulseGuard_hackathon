@@ -14,7 +14,7 @@ ENTRIES = [
     (".gitignore", "keeps machine-specific files and secrets out of GitHub", "This protects repository hygiene without affecting the website", ".env"),
     ("README.md", "explains how to run and evaluate the project", "This gives another developer enough context to open the prototype correctly", "# PulseGuard"),
     # Explain: Record a presentation value or source-reference entry.
-    ("about.html", "states the prototype's limits, privacy model, and evidence boundaries", "This keeps the safety claim focused on warning patterns instead of diagnosis", "<h1>What Safeguard can—and cannot—do.</h1>"),
+    ("about.html", "states the prototype's limits, privacy model, and evidence boundaries", "This keeps the safety claim focused on warning patterns instead of diagnosis", "<h1>What PulseGuard can—and cannot—do.</h1>"),
     ("app.js", "controls the five-second arming delay, drop alarm, sensors, and nearby-care prompt", "This file contains the main safety sequence rather than only changing page appearance", "const ARM_DELAY_S = 5;"),
     ("auth.js", "opens the prototype login and sign-up dialog", "The code makes the account interface interactive without pretending that a backend exists", "if (!authDialog.open) authDialog.showModal();"),
     # Explain: Record a presentation value or source-reference entry.
@@ -28,7 +28,7 @@ ENTRIES = [
     # Explain: Record a presentation value or source-reference entry.
     ("safewalk.html", "demonstrates a timed check-in and nearby emergency-care search", "It supports the broader goal of shortening the route to human help", "const GRACE_S = 300;"),
     ("script.js", "renders the older illustrative city-data dashboard", "Its data stays clearly separate from the live drop-tracker logic", "const CITIES = ["),
-    ("shelters.html", "ranks nearby AED, shelter, and hydrant records", "This supporting page shows how location could surface practical safety resources", "const NEAREST = 5;"),
+    ("shelters.html", "ranks nearby naloxones, shelter, and hydrant records", "This supporting page shows how location could surface practical safety resources", "const NEAREST = 5;"),
     # Explain: Record a presentation value or source-reference entry.
     ("site.css", "defines shared navigation, controls, dialogs, accessibility states, and mobile rules", "This keeps the interface consistent across all pages", ".care-dialog {"),
     ("sound.js", "plays optional quiet feedback for ordinary interface actions", "It deliberately uses click.mp3 separately from the loud warning alarm", 'const SOUND_FILE = "click.mp3";'),
@@ -45,9 +45,9 @@ BINARY_ENTRIES = [
     # Explain: Record a presentation value or source-reference entry.
     ("click.mp3", "contains the short sound used for ordinary interface feedback", "As a binary audio file, it has no readable source-code line number"),
     ("warning-alarm.mp3", "contains the loud warning recording used after a detected drop", "As a binary audio file, it has no readable source-code line number"),
-    ("documentation/Safeguard_Prompt_Aligned_Code_Presentation.docx", "stores the earlier prompt-aligned presentation", "A DOCX is a packaged binary document, so it has pages and paragraphs rather than source lines"),
+    ("documentation/PulseGuard_Prompt_Aligned_Code_Presentation.docx", "stores the earlier prompt-aligned presentation", "A DOCX is a packaged binary document, so it has pages and paragraphs rather than source lines"),
     # Explain: Record a presentation value or source-reference entry. End this collection of values.
-    ("documentation/Safeguard_Two_Minute_Code_Presentation.docx", "stores the earlier two-minute presentation", "A DOCX is a packaged binary document, so it has pages and paragraphs rather than source lines"),
+    ("documentation/PulseGuard_Two_Minute_Code_Presentation.docx", "stores the earlier two-minute presentation", "A DOCX is a packaged binary document, so it has pages and paragraphs rather than source lines"),
     ("documentation/PulseGuard_Code_Presentation.docx", "stores the current presentation deliverable", "A DOCX is a packaged binary document, so it has pages and paragraphs rather than source lines"),
 ]
 

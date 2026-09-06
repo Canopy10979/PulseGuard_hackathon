@@ -6,11 +6,11 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
-OUT = r"C:\Users\rishi\Downloads\public_safety_hackathon_site\public_safety_hackathon_final\documentation\Safeguard_Prompt_Aligned_Code_Presentation.docx"
+OUT = r"C:\Users\rishi\Downloads\public_safety_hackathon_site\public_safety_hackathon_final\documentation\PulseGuard_Prompt_Aligned_Code_Presentation.docx"
 
 # Explain: Assign script from the value shown here. Record a presentation value or source-reference entry.
 script = (
-    "Safeguard responds to the main prompt's central problem: a person may become unable to ask for help. "
+    "PulseGuard responds to the main prompt's central problem: a person may become unable to ask for help. "
     "The homepage offers immediate 911, bystander, substance-use, and drop-tracker choices without claiming to diagnose an overdose. "
     # Explain: Record a presentation value or source-reference entry.
     "The tracker waits five seconds after Start so the user can place the phone, then reads motion data. A hard drop plays the attached warning alarm for ten seconds or until Stop is pressed. "
@@ -34,11 +34,11 @@ files = [
     ("site.css", "Shared typography, controls, dialogs, focus states, and responsive rules", "Keeps high-stress actions readable and accessible"),
     ("styles.css", "Homepage layout, emergency cards, sequence, account dialog", "Presents manual and bystander choices with minimal text"),
     # Explain: Record a presentation value or source-reference entry.
-    ("about.html", "Working features, limitations, privacy, and unsupported claims", "Reinforces that Safeguard detects risk patterns, not substances"),
+    ("about.html", "Working features, limitations, privacy, and unsupported claims", "Reinforces that PulseGuard detects risk patterns, not substances"),
     ("risk-zones.html", "Privacy-thresholded response-planning map", "Supports community response without exposing individual events"),
     ("safewalk.html", "Timed check-in and nearby emergency-care search", "Demonstrates human follow-up and location-assisted help"),
     # Explain: Record a presentation value or source-reference entry.
-    ("shelters.html", "Nearby AED, shelter, and hydrant resource ranking", "Shortens the path to practical public-safety resources"),
+    ("shelters.html", "Nearby naloxones, shelter, and hydrant resource ranking", "Shortens the path to practical public-safety resources"),
     ("hazard.html", "Local hazard reports, map display, and duplicate merging", "Shows a supporting community-safety reporting pattern"),
     ("script.js", "Legacy illustrative city metrics and safe DOM rendering", "Keeps experimental data clearly separate from verified claims"),
 # Explain: End this collection of values. Assign doc from the value shown here. Assign sec from the value shown here.
@@ -74,7 +74,7 @@ for name, size in (("Heading 1", 17), ("Heading 2", 13)):
     # Explain: Set the font appearance for this text or style. Add the specified content or structure to the Word document.
     styles[name].font.color.rgb = RGBColor(0, 0, 0)
 
-doc.add_paragraph("Safeguard Code and Prompt Relevance", style="Title")
+doc.add_paragraph("PulseGuard Code and Prompt Relevance", style="Title")
 doc.add_paragraph("Two minute presentation script and file feature guide")
 # Explain: Add the specified content or structure to the Word document. Set paragraph spacing or pagination behavior.
 doc.add_heading("Presenter script", level=1)
@@ -142,9 +142,9 @@ for row in table.rows:
         # Explain: Apply tc_pr.append(borders) in the document-building sequence. Assign doc.core_properties.title from the value shown here. Assign doc.core_properties.subject from the value shown here.
         tc_pr.append(borders)
 
-doc.core_properties.title = "Safeguard Code and Prompt Relevance"
+doc.core_properties.title = "PulseGuard Code and Prompt Relevance"
 doc.core_properties.subject = "Two minute presentation and code file feature guide"
 # Explain: Assign doc.core_properties.author from the value shown here. Write the completed Word document to its output path. Apply print(OUT) in the document-building sequence.
-doc.core_properties.author = "Safeguard Team"
+doc.core_properties.author = "PulseGuard Team"
 doc.save(OUT)
 print(OUT)

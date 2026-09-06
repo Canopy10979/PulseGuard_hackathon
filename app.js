@@ -75,14 +75,14 @@ let accuracyCircle = null;
 const SETTLE_MS = 1500;
 const RECOVERY_MS = 2000;
 const RECOVERY_MS2 = 3;
-// Explain: Initialize recoverySince as null. Initialize aedRequest as 0. Initialize aedController as null.
+// Explain: Initialize recoverySince as null. Initialize naloxoneRequest as 0. Initialize naloxoneController as null.
 let recoverySince = null;
-let aedRequest = 0;
-let aedController = null;
-// Explain: Initialize aedOrigin as null. Initialize aedAttemptAt as 0. Initialize aedMarkers as [].
-let aedOrigin = null;
-let aedAttemptAt = 0;
-let aedMarkers = [];
+let naloxoneRequest = 0;
+let naloxoneController = null;
+// Explain: Initialize naloxoneOrigin as null. Initialize naloxoneAttemptAt as 0. Initialize naloxoneMarkers as [].
+let naloxoneOrigin = null;
+let naloxoneAttemptAt = 0;
+let naloxoneMarkers = [];
 // Explain: Initialize alarmPlayed as 0. Initialize alarmLastTime as 0. Initialize alertPhase as "idle".
 let alarmPlayed = 0;
 let alarmLastTime = 0;
@@ -247,11 +247,11 @@ function metresBetween(a, b) {
     const dLon = rad(b.lon - a.lon);
     const x = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
     return 6371000 * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
-// Explain: Close the current block or callback. Keep aedVenueCache as new Map(). Define insideBuilding with inputs point, geometry.
+// Explain: Close the current block or callback. Keep naloxoneVenueCache as new Map(). Define insideBuilding with inputs point, geometry.
 }
 
 // Venue information is cached in memory only; it expires after ten minutes.
-const aedVenueCache = new Map();
+const naloxoneVenueCache = new Map();
 function insideBuilding(point, geometry) {
     // Explain: Check !geometry || geometry.length < 4) return false;. Keep first as geometry[0], last = geometry[geometry.length - 1]. Check first.lat !== last.lat || first.lon !== last.lon) return false;.
     if (!geometry || geometry.length < 4) return false;
@@ -273,37 +273,37 @@ function insideBuilding(point, geometry) {
 function buildingFootprint(building) {
     const g = building.geometry;
     return (Math.max(...g.map(p => p.lat)) - Math.min(...g.map(p => p.lat))) *
-        // Explain: Transform each collection item into an output value. Close the current block or callback. Define aedAddress with inputs tags.
+        // Explain: Transform each collection item into an output value. Close the current block or callback. Define naloxoneAddress with inputs tags.
         (Math.max(...g.map(p => p.lon)) - Math.min(...g.map(p => p.lon)));
 }
-function aedAddress(tags) {
+function naloxoneAddress(tags) {
     // Explain: Keep only items that satisfy the callback condition. Close the current block or callback.
     const street = tags["addr:full"] || [tags["addr:housenumber"], tags["addr:street"] || tags["addr:place"]].filter(Boolean).join(" ");
     return street ? [street, tags["addr:city"], tags["addr:state"], tags["addr:postcode"]].filter(Boolean).join(", ") : "";
 }
-// Explain: Define aedPlaceDetails with inputs item, buildings. Keep tags as item.tags || {}. Keep only items that satisfy the callback condition.
-function aedPlaceDetails(item, buildings) {
+// Explain: Define naloxonePlaceDetails with inputs item, buildings. Keep tags as item.tags || {}. Keep only items that satisfy the callback condition.
+function naloxonePlaceDetails(item, buildings) {
     const tags = item.tags || {};
     // Only a containing outline supplies a building name; a nearby business is not evidence.
     const host = buildings.filter(b => b.tags?.building && insideBuilding(item, b.geometry))
-        // Explain: Reorder the collection using the comparator. Keep address as aedAddress(tags) || aedAddress(host?.tags || {}). Keep recordedName as /^(aed|mapped aed|defibrillator)$/i.test(tags.name || "") ? "".
+        // Explain: Reorder the collection using the comparator. Keep address as naloxoneAddress(tags) || naloxoneAddress(host?.tags || {}). Keep recordedName as /^(naloxone|mapped naloxone|naloxone)$/i.test(tags.name || "") ? "".
         .sort((a, b) => buildingFootprint(a) - buildingFootprint(b))[0];
-    const address = aedAddress(tags) || aedAddress(host?.tags || {});
-    const recordedName = /^(aed|mapped aed|defibrillator)$/i.test(tags.name || "") ? "" : tags.name;
-    // Explain: Keep name as host?.tags?.name || recordedName || address || "AED at " + ite. Keep notes as [tags["defibrillator:location"], tags.description]. Check recordedName && recordedName !== name) notes.unshift(recordedName);.
-    const name = host?.tags?.name || recordedName || address || "AED at " + item.lat.toFixed(5) + ", " + item.lon.toFixed(5);
-    const notes = [tags["defibrillator:location"], tags.description];
+    const address = naloxoneAddress(tags) || naloxoneAddress(host?.tags || {});
+    const recordedName = /^(naloxone|mapped naloxone|naloxone)$/i.test(tags.name || "") ? "" : tags.name;
+    // Explain: Keep name as host?.tags?.name || recordedName || address || "naloxones at " + ite. Keep notes as [tags["naloxone:location"], tags.description]. Check recordedName && recordedName !== name) notes.unshift(recordedName);.
+    const name = host?.tags?.name || recordedName || address || "naloxones at " + item.lat.toFixed(5) + ", " + item.lon.toFixed(5);
+    const notes = [tags["naloxone:location"], tags.description];
     if (recordedName && recordedName !== name) notes.unshift(recordedName);
     // Explain: Check tags.level !== undefined) notes.push("Level " + tags.level);. Keep only items that satisfy the callback condition. Set the source field to host?.tags?.name ? "Building matched from mapped outline" : re.
     if (tags.level !== undefined) notes.push("Level " + tags.level);
     return { name, address, directions: [...new Set(notes.filter(Boolean))].join(" · "),
-        source: host?.tags?.name ? "Building matched from mapped outline" : recordedName ? "Name recorded on AED map entry" : "Venue name not recorded" };
-// Explain: Close the current block or callback. Define resolveAedPlaces with inputs results, signal. Keep key as item => item.type + "/" + item.id + "/" + item.lat + "/" + ite.
+        source: host?.tags?.name ? "Building matched from mapped outline" : recordedName ? "Name recorded on naloxones map entry" : "Venue name not recorded" };
+// Explain: Close the current block or callback. Define resolveNaloxonePlaces with inputs results, signal. Keep key as item => item.type + "/" + item.id + "/" + item.lat + "/" + ite.
 }
-async function resolveAedPlaces(results, signal) {
+async function resolveNaloxonePlaces(results, signal) {
     const key = item => item.type + "/" + item.id + "/" + item.lat + "/" + item.lon;
     // Explain: Keep only items that satisfy the callback condition. Initialize buildings as [], complete = missing.length === 0. Check missing.length && !signal.aborted.
-    const missing = results.filter(item => (aedVenueCache.get(key(item))?.expires || 0) < Date.now());
+    const missing = results.filter(item => (naloxoneVenueCache.get(key(item))?.expires || 0) < Date.now());
     let buildings = [], complete = missing.length === 0;
     if (missing.length && !signal.aborted) {
         // Explain: Keep lookup as new AbortController(). Keep abort as () => lookup.abort(). Connect abort to its handler.
@@ -333,24 +333,24 @@ async function resolveAedPlaces(results, signal) {
             complete = true;
         // Explain: Handle an error from the preceding operation. Continue the surrounding expression with } finally {. Cancel scheduled timer work.
         } catch (_) {
-            // An unavailable name lookup must not discard the actual AED coordinates.
+            // An unavailable name lookup must not discard the actual naloxones coordinates.
         } finally {
             clearTimeout(limit);
             // Explain: Detach the event handler so tracking stops. Close the current block or callback.
             signal.removeEventListener("abort", abort);
         }
     }
-    // Explain: Transform each collection item into an output value. Keep cached as aedVenueCache.get(key(item)). Check cached && cached.expires > Date.now()) return cached.details;.
+    // Explain: Transform each collection item into an output value. Keep cached as naloxoneVenueCache.get(key(item)). Check cached && cached.expires > Date.now()) return cached.details;.
     const places = results.map(item => {
-        const cached = aedVenueCache.get(key(item));
+        const cached = naloxoneVenueCache.get(key(item));
         if (cached && cached.expires > Date.now()) return cached.details;
-        // Explain: Keep details as aedPlaceDetails(item, buildings). Check complete) aedVenueCache.set(key(item), { details, expires: Date.now() +. Return details.
-        const details = aedPlaceDetails(item, buildings);
-        if (complete) aedVenueCache.set(key(item), { details, expires: Date.now() + 600000 });
+        // Explain: Keep details as naloxonePlaceDetails(item, buildings). Check complete) naloxoneVenueCache.set(key(item), { details, expires: Date.now() +. Return details.
+        const details = naloxonePlaceDetails(item, buildings);
+        if (complete) naloxoneVenueCache.set(key(item), { details, expires: Date.now() + 600000 });
         return details;
-    // Explain: Close the current block or callback. Continue the surrounding expression with while (aedVenueCache.size > 128) aedVenueCache.delete(aedVenueCache. Return { places, complete }.
+    // Explain: Close the current block or callback. Continue the surrounding expression with while (naloxoneVenueCache.size > 128) naloxoneVenueCache.delete(naloxoneVenueCache. Return { places, complete }.
     });
-    while (aedVenueCache.size > 128) aedVenueCache.delete(aedVenueCache.keys().next().value);
+    while (naloxoneVenueCache.size > 128) naloxoneVenueCache.delete(naloxoneVenueCache.keys().next().value);
     return { places, complete };
 // Explain: Close the current block or callback. Define listNearestCare with inputs none. Check !place || Date.now() - place.at > 60000.
 }
@@ -358,49 +358,49 @@ async function resolveAedPlaces(results, signal) {
 async function listNearestCare() {
     if (!place || Date.now() - place.at > 60000) {
         // Explain: Set plain visible text on $("#placesStatus"). Call askPlace with the values shown here. Return from this function.
-        $("#placesStatus").textContent = "Getting a fresh location before finding AEDs…";
+        $("#placesStatus").textContent = "Getting a fresh location before finding naloxones…";
         askPlace();
         return;
-    // Explain: Close the current block or callback. Set aedAttemptAt using Date.now(). Keep origin as { ...place }.
+    // Explain: Close the current block or callback. Set naloxoneAttemptAt using Date.now(). Keep origin as { ...place }.
     }
-    aedAttemptAt = Date.now();
+    naloxoneAttemptAt = Date.now();
     const origin = { ...place };
-    // Explain: Keep request as ++aedRequest. Check aedController) aedController.abort();. Set aedController using new AbortController().
-    const request = ++aedRequest;
-    if (aedController) aedController.abort();
-    aedController = new AbortController();
-    // Explain: Keep controller as aedController. Schedule delayed work once the timeout expires. Set aedOrigin using origin.
-    const controller = aedController;
+    // Explain: Keep request as ++naloxoneRequest. Check naloxoneController) naloxoneController.abort();. Set naloxoneController using new AbortController().
+    const request = ++naloxoneRequest;
+    if (naloxoneController) naloxoneController.abort();
+    naloxoneController = new AbortController();
+    // Explain: Keep controller as naloxoneController. Schedule delayed work once the timeout expires. Set naloxoneOrigin using origin.
+    const controller = naloxoneController;
     const timeout = setTimeout(() => controller.abort(), 25000);
-    aedOrigin = origin;
-    // Explain: Call $ with the values shown here. Run the callback for each item in the collection. Set aedMarkers using [].
+    naloxoneOrigin = origin;
+    // Explain: Call $ with the values shown here. Run the callback for each item in the collection. Set naloxoneMarkers using [].
     $("#placesList").replaceChildren();
-    aedMarkers.forEach(marker => marker.remove());
-    aedMarkers = [];
-    // Explain: Set plain visible text on $("#placesStatus"). Run operations whose errors are handled below. Keep query as '[out:json][timeout:20];nwr["emergency"="defibrillator"](aroun.
-    $("#placesStatus").textContent = "Looking for mapped AEDs within 10 km…";
+    naloxoneMarkers.forEach(marker => marker.remove());
+    naloxoneMarkers = [];
+    // Explain: Set plain visible text on $("#placesStatus"). Run operations whose errors are handled below. Keep query as '[out:json][timeout:20];nwr["naloxone"="yes"](aroun.
+    $("#placesStatus").textContent = "Looking for mapped naloxones within 10 km…";
     try {
-        const query = '[out:json][timeout:20];nwr["emergency"="defibrillator"](around:10000,' + origin.lat + ',' + origin.lon + ');out center tags;';
+        const query = '[out:json][timeout:20];nwr["naloxone"="yes"](around:10000,' + origin.lat + ',' + origin.lon + ');out center tags;';
         // Explain: Keep response as await fetch("https://overpass-api.de/api/interpreter", {. Set the method field to "POST", body: new URLSearchParams({ data: query }), signal: co. Close the current block or callback.
         const response = await fetch("https://overpass-api.de/api/interpreter", {
             method: "POST", body: new URLSearchParams({ data: query }), signal: controller.signal
         });
-        // Explain: Check !response.ok) throw new Error("AED service unavailable");. Keep data as await response.json(). Check request !== aedRequest) return;.
-        if (!response.ok) throw new Error("AED service unavailable");
+        // Explain: Check !response.ok) throw new Error("naloxones service unavailable");. Keep data as await response.json(). Check request !== naloxoneRequest) return;.
+        if (!response.ok) throw new Error("naloxones service unavailable");
         const data = await response.json();
-        if (request !== aedRequest) return;
-        // Explain: Check data.remark) throw new Error("Incomplete AED response");. Transform each collection item into an output value. Continue the surrounding expression with ...item, lat: item.lat ?? item.center?.lat, lon: item.lon ?? item.c.
-        if (data.remark) throw new Error("Incomplete AED response");
+        if (request !== naloxoneRequest) return;
+        // Explain: Check data.remark) throw new Error("Incomplete naloxones response");. Transform each collection item into an output value. Continue the surrounding expression with ...item, lat: item.lat ?? item.center?.lat, lon: item.lon ?? item.c.
+        if (data.remark) throw new Error("Incomplete naloxones response");
         const results = (data.elements || []).map(item => ({
             ...item, lat: item.lat ?? item.center?.lat, lon: item.lon ?? item.center?.lon
         // Explain: Keep only items that satisfy the callback condition. Transform each collection item into an output value. Reorder the collection using the comparator.
         })).filter(item => Number.isFinite(item.lat) && Number.isFinite(item.lon))
             .map(item => ({ ...item, distance: metresBetween(origin, item) }))
             .sort((a, b) => a.distance - b.distance).slice(0, 5);
-        // Explain: Set plain visible text on $("#placesStatus"). Keep venues as await resolveAedPlaces(results, controller.signal). Check request !== aedRequest) return;.
-        $("#placesStatus").textContent = "Finding place names for the nearest AEDs…";
-        const venues = await resolveAedPlaces(results, controller.signal);
-        if (request !== aedRequest) return;
+        // Explain: Set plain visible text on $("#placesStatus"). Keep venues as await resolveNaloxonePlaces(results, controller.signal). Check request !== naloxoneRequest) return;.
+        $("#placesStatus").textContent = "Finding place names for the nearest naloxones…";
+        const venues = await resolveNaloxonePlaces(results, controller.signal);
+        if (request !== naloxoneRequest) return;
         // Explain: Run the callback for each item in the collection. Keep tags as item.tags || {}. Keep venue as venues.places[index].
         results.forEach((item, index) => {
             const tags = item.tags || {};
@@ -429,20 +429,20 @@ async function listNearestCare() {
             row.append(detail, source);
             $("#placesList").append(row);
             if (satelliteMap && typeof L !== "undefined") {
-                // Explain: Create a new HTML element for the generated interface. Set plain visible text on label. Call aedMarkers.push with the values shown here.
+                // Explain: Create a new HTML element for the generated interface. Set plain visible text on label. Call naloxoneMarkers.push with the values shown here.
                 const label = document.createElement("span");
                 label.textContent = (index + 1) + ". " + name + (venue.address ? " — " + venue.address : "") + (venue.directions ? " · " + venue.directions : "");
-                aedMarkers.push(L.marker([item.lat, item.lon]).bindPopup(label).addTo(satelliteMap));
+                naloxoneMarkers.push(L.marker([item.lat, item.lon]).bindPopup(label).addTo(satelliteMap));
             // Explain: Close the current block or callback. Set plain visible text on $("#placesStatus").
             }
         });
-        $("#placesStatus").textContent = results.length + " mapped AEDs within 10 km, closest first. OpenStreetMap records may be incomplete; availability is not verified. Updated " + new Date().toLocaleTimeString() + "." + (venues.complete ? "" : " Some place names could not load; AED coordinates are still shown.");
-    // Explain: Handle an error from the preceding operation. Check request !== aedRequest) return;. Set aedOrigin using null.
+        $("#placesStatus").textContent = results.length + " mapped naloxones within 10 km, closest first. OpenStreetMap records may be incomplete; availability is not verified. Updated " + new Date().toLocaleTimeString() + "." + (venues.complete ? "" : " Some place names could not load; naloxones coordinates are still shown.");
+    // Explain: Handle an error from the preceding operation. Check request !== naloxoneRequest) return;. Set naloxoneOrigin using null.
     } catch (error) {
-        if (request !== aedRequest) return;
-        aedOrigin = null;
+        if (request !== naloxoneRequest) return;
+        naloxoneOrigin = null;
         // Explain: Set plain visible text on $("#placesStatus"). Cancel scheduled timer work. Close the current block or callback.
-        $("#placesStatus").textContent = "AED locations could not load. Try Find nearest AEDs again. No example locations are substituted.";
+        $("#placesStatus").textContent = "naloxones locations could not load. Try Find nearest naloxones again. No example locations are substituted.";
     } finally { clearTimeout(timeout); }
 }
 
@@ -624,10 +624,10 @@ function startSensors() {
 
 function stopSensors() {
     session += 1;
-    // Explain: Update aedRequest using 1. Set aedOrigin using null. Check aedController) aedController.abort();.
-    aedRequest += 1;
-    aedOrigin = null;
-    if (aedController) aedController.abort();
+    // Explain: Update naloxoneRequest using 1. Set naloxoneOrigin using null. Check naloxoneController) naloxoneController.abort();.
+    naloxoneRequest += 1;
+    naloxoneOrigin = null;
+    if (naloxoneController) naloxoneController.abort();
     // Explain: Update locationRequest using 1. Cancel scheduled timer work.
     locationRequest += 1;
     clearInterval(armingTimer);
@@ -820,9 +820,9 @@ function showPosition(p) {
         satelliteMap.fitBounds(accuracyCircle.getBounds(), { maxZoom: 17, padding: [25, 25] });
     } else {
         $("#mapStatus").textContent += " Embedded map is unavailable. Use Open satellite map.";
-    // Explain: Close the current block or callback. Check (!aedOrigin && Date.now() - aedAttemptAt > 30000) || (aedOrigin && metr.
+    // Explain: Close the current block or callback. Check (!naloxoneOrigin && Date.now() - naloxoneAttemptAt > 30000) || (naloxoneOrigin && metr.
     }
-    if ((!aedOrigin && Date.now() - aedAttemptAt > 30000) || (aedOrigin && metresBetween(aedOrigin, place) > 100)) listNearestCare();
+    if ((!naloxoneOrigin && Date.now() - naloxoneAttemptAt > 30000) || (naloxoneOrigin && metresBetween(naloxoneOrigin, place) > 100)) listNearestCare();
 }
 
 // Explain: Define locationError with inputs error. Keep message as error.code === 1 ? "Location permission denied." :. Set error.code using == 3 ? "Location timed out. Try Refresh location." : "Loc.

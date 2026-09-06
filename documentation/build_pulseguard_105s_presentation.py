@@ -14,7 +14,7 @@ talk = [
     "The user starts monitoring from fall-detection.html line 64. app.js line 20 defines a five-second arming delay, giving the user time to set the phone down before motion readings begin.",
     # Explain: Record a presentation value or source-reference entry.
     "A hard movement creates an impact signal. app.js lines 75 and 80 call startDropAlarm. Line 19 sets the warning to ten seconds, while fall-detection.html line 143 loads the attached warning MP3 instead of the click sound.",
-    "The alarm is a local warning, not an emergency dispatch. Stopping it pauses and resets the audio, then app.js line 114 opens the care prompt. This keeps a dropped phone from automatically contacting anyone, matching the prompt's false-alarm safeguard.",
+    "The alarm is a local warning, not an emergency dispatch. Stopping it pauses and resets the audio, then app.js line 114 opens the care prompt. This keeps a dropped phone from automatically contacting anyone, matching the prompt's false-alarm pulseguard.",
     "If the user chooses Open map, openNearbyCare begins at app.js line 117. It asks for browser location and searches for nearby emergency medical services. Location is requested after the alarm, not before it.",
     # Explain: Record a presentation value or source-reference entry. End this collection of values. Assign files from the value shown here.
     "The other files support the same idea. nav.js line 11 centralizes navigation, auth.js line 24 opens the prototype account dialog, and the CSS keeps controls readable. Supporting pages show response zones, nearby resources, check-ins, and hazards without claiming a diagnosis.",

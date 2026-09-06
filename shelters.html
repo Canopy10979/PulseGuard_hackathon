@@ -5,15 +5,15 @@
 <!-- Explain: Declare page metadata charset="utf-8". Declare page metadata name="viewport" content="width=device-width, initial-scale=1". Create the title structure. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Find nearby AEDs and support sites | PulseGuard</title>
-<!-- Explain: Declare page metadata name="description" content="Use the PulseGuard support prototype to . Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
-<meta name="description" content="Use the PulseGuard support prototype to find nearby AEDs, shelters, and hydrants from your current location.">
+<title>Find nearby naloxones and support sites | pulseguard</title>
+<!-- Explain: Declare page metadata name="description" content="Use the pulseguard support prototype to . Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
+<meta name="description" content="Use the pulseguard support prototype to find nearby naloxones, shelters, and hydrants from your current location.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#101112">
-<!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="PulseGuard". Declare page metadata property="og:title" content="Find nearby AEDs and support sites | S. -->
+<!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="pulseguard". Declare page metadata property="og:title" content="Find nearby naloxones and support sites | S. -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="PulseGuard">
-<meta property="og:title" content="Find nearby AEDs and support sites | PulseGuard">
+<meta property="og:site_name" content="pulseguard">
+<meta property="og:title" content="Find nearby naloxones and support sites | pulseguard">
 <!-- Explain: Declare page metadata property="og:description" content="A location-based public-safety s. Load stylesheet https://unpkg.com/leaflet@1.9.4/dist/leaflet.css. -->
 <meta property="og:description" content="A location-based public-safety support tool using illustrative places.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -29,7 +29,7 @@
     <!-- Explain: Add p for Support tool. Add h1 for Find nearby equipment and support. Add p for Share your location when you are ready, then compare nearby AE. -->
     <p class="eyebrow">Support tool</p>
     <h1>Find nearby equipment and support.</h1>
-    <p class="lede">Share your location when you are ready, then compare nearby AEDs, shelters, and other support points. Listed places are illustrative, not a verified emergency register.</p>
+    <p class="lede">Share your location when you are ready, then compare nearby naloxones, shelters, and other support points. Listed places are illustrative, not a verified emergency register.</p>
 <!-- Explain: Close section to finish the current structure. Create the div structure. -->
 </section>
 <div class="split">
@@ -38,8 +38,8 @@
         <div class="panel">
             <label for="kind">Show</label>
             <select id="kind">
-                <!-- Explain: Add option for Defibrillators (AED). Add option for Shelters. Add option for Hydrants. -->
-                <option value="aed" selected>Defibrillators (AED)</option>
+                <!-- Explain: Add option for Naloxones. Add option for Shelters. Add option for Hydrants. -->
+                <option value="naloxone" selected>Naloxones</option>
                 <option value="shelter">Shelters</option>
                 <option value="hydrant">Hydrants</option>
                 <!-- Explain: Add option for Everything. Close select to finish the current structure. Add button locate for Share my location. -->
@@ -68,22 +68,22 @@ const SEED = [
     { id: 4, kind: "shelter", name: "Eastside community hall", lat: 47.6740, lon: -122.1215,
       status: "open", cap: 90, occ: 31, pets: false },
     // Explain: Start or continue the collection of structured values.
-    { id: 5, kind: "aed", name: "Transit station west lobby", lat: 47.6205, lon: -122.3493 },
-    { id: 6, kind: "aed", name: "City hall ground floor", lat: 47.6035, lon: -122.3300 },
-    { id: 7, kind: "aed", name: "Ferry terminal gate 2", lat: 47.6025, lon: -122.3390 },
+    { id: 5, kind: "naloxone", name: "Transit station west lobby", lat: 47.6205, lon: -122.3493 },
+    { id: 6, kind: "naloxone", name: "City hall ground floor", lat: 47.6035, lon: -122.3300 },
+    { id: 7, kind: "naloxone", name: "Ferry terminal gate 2", lat: 47.6025, lon: -122.3390 },
     // Explain: Start or continue the collection of structured values.
-    { id: 8, kind: "aed", name: "Public library main desk", lat: 47.6067, lon: -122.3325 },
-    { id: 9, kind: "aed", name: "University hospital entrance", lat: 47.6500, lon: -122.3080 },
-    { id: 10, kind: "aed", name: "Shopping centre food court", lat: 47.6710, lon: -122.1180 },
+    { id: 8, kind: "naloxone", name: "Public library main desk", lat: 47.6067, lon: -122.3325 },
+    { id: 9, kind: "naloxone", name: "University hospital entrance", lat: 47.6500, lon: -122.3080 },
+    { id: 10, kind: "naloxone", name: "Shopping centre food court", lat: 47.6710, lon: -122.1180 },
     // Explain: Start or continue the collection of structured values.
-    { id: 11, kind: "aed", name: "Community pool reception", lat: 47.6820, lon: -122.1290 },
-    { id: 12, kind: "aed", name: "High school gym entrance", lat: 47.6640, lon: -122.1420 },
-    { id: 13, kind: "aed", name: "Park and ride, level 1", lat: 47.6395, lon: -122.1290 },
+    { id: 11, kind: "naloxone", name: "Community pool reception", lat: 47.6820, lon: -122.1290 },
+    { id: 12, kind: "naloxone", name: "High school gym entrance", lat: 47.6640, lon: -122.1420 },
+    { id: 13, kind: "naloxone", name: "Park and ride, level 1", lat: 47.6395, lon: -122.1290 },
     // Explain: Start or continue the collection of structured values. Close the current block or callback. Keep NEAREST as 5.
     { id: 14, kind: "hydrant", name: "Hydrant 4412, Pine and 5th", lat: 47.6115, lon: -122.3355 }
 ];
 /* Every place above is invented for the demonstration. Before this page
-   is shown as fact, replace the list with verified AED locations from the
+   is shown as fact, replace the list with verified naloxones locations from the
    building owners or the county register. */
 
 const NEAREST = 5;
@@ -130,10 +130,10 @@ function metres(a, b) {
     return 2 * R * Math.asin(Math.sqrt(s));
 }
 
-// Explain: Define words with inputs row. Check row.kind !== "shelter". Return row.kind === "aed" ? "Defibrillator" : "Hydrant".
+// Explain: Define words with inputs row. Check row.kind !== "shelter". Return row.kind === "naloxone" ? "Naloxone" : "Hydrant".
 function words(row) {
     if (row.kind !== "shelter")
-        return row.kind === "aed" ? "Defibrillator" : "Hydrant";
+        return row.kind === "naloxone" ? "Naloxone" : "Hydrant";
     // Explain: Keep map as { open: "Open", limited: "Few beds left", full: "Full", closed. Return "Shelter, " + (map[row.status] || row.status). Close the current block or callback.
     const map = { open: "Open", limited: "Few beds left", full: "Full", closed: "Closed" };
     return "Shelter, " + (map[row.status] || row.status);

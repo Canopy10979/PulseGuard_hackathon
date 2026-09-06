@@ -11,7 +11,7 @@ from docx.shared import Inches, Pt, RGBColor
 OUT = r"C:\Users\rishi\Downloads\public_safety_hackathon_site\PulseGuard_Code_Presentation.docx"
 
 script = [
-    ("What the site does", "Safeguard is a small browser prototype for responding to a possible phone drop. The homepage keeps the main choices visible: open the drop tracker, call 911 in immediate danger, help another person, or contact SAMHSA for substance-use support. The language stays short because someone using a safety tool should not have to search through a sales pitch."),
+    ("What the site does", "PulseGuard is a small browser prototype for responding to a possible phone drop. The homepage keeps the main choices visible: open the drop tracker, call 911 in immediate danger, help another person, or contact SAMHSA for substance-use support. The language stays short because someone using a safety tool should not have to search through a sales pitch."),
     # Explain: Record a presentation value or source-reference entry.
     ("How the tracker works", "The user presses Start tracker, then app.js waits five seconds before it reads DeviceMotion data. This gives the person time to put the phone down. IMPACT_MS2 is set to 25, so a hard movement calls startDropAlarm. That function loops warning-alarm.mp3, displays a ten-second countdown, and keeps a large Stop button on screen."),
     ("Why the map comes second", "The site does not request location when the alarm begins. Only after the alarm stops does careDialog ask whether to open a map. If the user agrees, openNearbyCare requests browser geolocation and opens a Google Maps search for emergency medical services near the returned coordinates. It does not claim to identify or dispatch an EMT."),
@@ -65,7 +65,7 @@ styles["Heading 1"].font.size = Pt(17)
 styles["Heading 2"].font.size = Pt(13)
 
 # Explain: Add the specified content or structure to the Word document. Set the font appearance for this text or style.
-doc.add_paragraph("Safeguard Two Minute Code Presentation", style="Title")
+doc.add_paragraph("PulseGuard Two Minute Code Presentation", style="Title")
 p = doc.add_paragraph("Presenter script  Approximately 245 words")
 p.runs[0].font.color.rgb = RGBColor(90, 94, 99)
 
@@ -141,10 +141,10 @@ note = doc.add_paragraph()
 note.add_run("Safety boundary  ").bold = True
 note.add_run("This is a browser demonstration. It cannot dispatch responders, monitor in the background, or guarantee that a detected movement is an emergency.")
 
-doc.core_properties.title = "Safeguard Two Minute Code Presentation"
+doc.core_properties.title = "PulseGuard Two Minute Code Presentation"
 # Explain: Assign doc.core_properties.subject from the value shown here. Assign doc.core_properties.author from the value shown here. Write the completed Word document to its output path.
-doc.core_properties.subject = "Two minute explanation of the Safeguard phone drop tracker"
-doc.core_properties.author = "Safeguard Team"
+doc.core_properties.subject = "Two minute explanation of the PulseGuard phone drop tracker"
+doc.core_properties.author = "PulseGuard Team"
 doc.save(OUT)
 # Explain: Apply print(OUT) in the document-building sequence.
 print(OUT)

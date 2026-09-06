@@ -12,9 +12,9 @@ OUT = ROOT / "documentation" / "PulseGuard_Code_Presentation.docx"
 # Explain: Assign ITEMS from the value shown here. Record a presentation value or source-reference entry.
 ITEMS = [
     ("index.html", "shows safety choices", "Open drop tracker", "the homepage exposes the tracker"),
-    ("fall-detection.html", "holds tracker and care controls", "Find nearest care", "the page exposes the AED and hospital locator"),
+    ("fall-detection.html", "holds tracker and care controls", "Find nearest care", "the page exposes the naloxones and hospital locator"),
     # Explain: Record a presentation value or source-reference entry.
-    ("app.js", "runs detection and care lookup", "const [hospitals, aeds] = await Promise.all([", "Google Places searches both resource types together"),
+    ("app.js", "runs detection and care lookup", "const [hospitals, naloxones] = await Promise.all([", "Google Places searches both resource types together"),
     ("auth.js", "controls accounts", 'const authDialog = document.querySelector("#auth-dialog");', "JavaScript selects the account dialog"),
     ("nav.js", "creates shared navigation", "const SITE = [", "all page links begin in one central structure"),
     # Explain: Record a presentation value or source-reference entry.

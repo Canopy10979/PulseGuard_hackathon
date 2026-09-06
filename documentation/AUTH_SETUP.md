@@ -1,4 +1,4 @@
-# Connect Safeguard accounts
+# Connect PulseGuard accounts
 
 The two account boxes use Firebase Authentication through `auth-provider.js`. Actual authentication remains unavailable until the owner supplies a Firebase web configuration in `auth-config.js`.
 

@@ -5,15 +5,15 @@
   <!-- Explain: Declare page metadata charset="utf-8". Declare page metadata name="viewport" content="width=device-width,initial-scale=1". Create the title structure. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PulseGuard | Method, sources and limits</title>
-  <!-- Explain: Declare page metadata name="description" content="Read how the PulseGuard collapse-warning. Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
-  <meta name="description" content="Read how the PulseGuard collapse-warning prototype works, what data it uses, what stays private, and what the project cannot yet do.">
+  <title>pulseguard | Method, sources and limits</title>
+  <!-- Explain: Declare page metadata name="description" content="Read how the pulseguard collapse-warning. Declare page metadata name="robots" content="index,follow". Declare page metadata name="theme-color" content="#101112". -->
+  <meta name="description" content="Read how the pulseguard collapse-warning prototype works, what data it uses, what stays private, and what the project cannot yet do.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#101112">
-  <!-- Explain: Declare page metadata property="og:type" content="article". Declare page metadata property="og:site_name" content="PulseGuard". Declare page metadata property="og:title" content="PulseGuard method, sources and limits". -->
+  <!-- Explain: Declare page metadata property="og:type" content="article". Declare page metadata property="og:site_name" content="pulseguard". Declare page metadata property="og:title" content="pulseguard method, sources and limits". -->
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="PulseGuard">
-  <meta property="og:title" content="PulseGuard method, sources and limits">
+  <meta property="og:site_name" content="pulseguard">
+  <meta property="og:title" content="pulseguard method, sources and limits">
   <!-- Explain: Declare page metadata property="og:description" content="A plain-language account of the . Load stylesheet site.css. Close head to finish the current structure. -->
   <meta property="og:description" content="A plain-language account of the prototype's logic, evidence, privacy safeguards, and limitations.">
   <link rel="stylesheet" href="site.css">
@@ -24,10 +24,10 @@
 
 
     <section class="page-hero">
-      <!-- Explain: Add a for ← Main dashboard. Add p for Read this before you trust anything on the other pages. Add h1 for What PulseGuard can—and cannot—do. -->
+      <!-- Explain: Add a for ← Main dashboard. Add p for Read this before you trust anything on the other pages. Add h1 for What pulseguard can—and cannot—do. -->
       <a class="back-home" href="index.html">← Main dashboard</a>
       <p class="eyebrow">Read this before you trust anything on the other pages</p>
-      <h1>What PulseGuard can—and cannot—do.</h1>
+      <h1>What pulseguard can—and cannot—do.</h1>
       <!-- Explain: Add p for A plain-language account of the prototype’s logic, evidence, p. Close section to finish the current structure. Create the section structure. -->
       <p class="lede">A plain-language account of the prototype’s logic, evidence, privacy safeguards, and unfinished work.</p>
     </section>
@@ -41,9 +41,9 @@
         <li class="signal on">Recovery and stillness checks before the motion-triggered check-in.</li>
         <li class="signal on">Five seconds to respond, followed by ten seconds of warning sound.</li>
         <li class="signal on">Browser position, with accuracy shown in metres.</li>
-        <!-- Explain: Add li for A message written for a contact you saved, opened in your own . Add li for Saved contacts stay in this browser. Maps and AED searches use. Add li for No breathing or pulse sensing. This does not detect an overdose. -->
+        <!-- Explain: Add li for A message written for a contact you saved, opened in your own . Add li for Saved contacts stay in this browser. Maps and naloxones searches use. Add li for No breathing or pulse sensing. This does not detect an overdose. -->
         <li class="signal on">A message written for a contact you saved, opened in your own app.</li>
-        <li class="signal">Saved contacts stay in this browser. Maps and AED searches use third-party services.</li>
+        <li class="signal">Saved contacts stay in this browser. Maps and naloxones searches use third-party services.</li>
         <li class="signal">No breathing or pulse sensing. This does not detect an overdose.</li>
         <!-- Explain: Add li for No automatic call to 911 and no responder network. Add li for Dashboard figures are illustrative placeholders, not measureme. Close ul to finish the current structure. -->
         <li class="signal">No automatic call to 911 and no responder network.</li>
@@ -75,9 +75,9 @@
     <section class="card info">
       <div><p class="eyebrow">Data</p><h2>Sources</h2></div>
       <p class="muted">
-        <!-- Explain: Display the continuation text The tracker uses your browser’s current location and OpenStreetMap AED records. Display the continuation text It lists up to five mapped AEDs within 10 km, closest first by straight-line dista. Display the continuation text Access and availability may change. Satellite imagery comes from Esri and is not l. -->
-        The tracker uses your browser’s current location and OpenStreetMap AED records.
-        It lists up to five mapped AEDs within 10 km, closest first by straight-line distance.
+        <!-- Explain: Display the continuation text The tracker uses your browser’s current location and OpenStreetMap naloxones records. Display the continuation text It lists up to five mapped naloxones within 10 km, closest first by straight-line dista. Display the continuation text Access and availability may change. Satellite imagery comes from Esri and is not l. -->
+        The tracker uses your browser’s current location and OpenStreetMap naloxones records.
+        It lists up to five mapped naloxones within 10 km, closest first by straight-line distance.
         Access and availability may change. Satellite imagery comes from Esri and is not live footage.
         <!-- Explain: Display the continuation text The older dashboard figures and risk zones remain illustrative. Close p to finish the current structure. Create the table structure. -->
         The older dashboard figures and risk zones remain illustrative.
@@ -100,12 +100,12 @@
       <div><p class="eyebrow">Privacy</p><h2>What we hold and where</h2></div>
       <p class="muted">
         The contact name and number stay in the browser storage of the device, under the key
-        <!-- Explain: Create the code structure. Display the continuation text it or leave the page. The marker and accuracy circle show the latest reported fix. Display the continuation text are sent to the AED lookup service, and map tiles are requested from the imagery p. -->
+        <!-- Explain: Create the code structure. Display the continuation text it or leave the page. The marker and accuracy circle show the latest reported fix. Display the continuation text are sent to the naloxones lookup service, and map tiles are requested from the imagery p. -->
         <code>pulseguard.contact.v1</code>. Starting location access keeps a watch open until you stop
         it or leave the page. The marker and accuracy circle show the latest reported fix. Coordinates
-        are sent to the AED lookup service, and map tiles are requested from the imagery provider.
-        <!-- Explain: Display the continuation text Direction links open Google Maps. PulseGuard does not upload your saved contact to . Close p to finish the current structure. Close section to finish the current structure. -->
-        Direction links open Google Maps. PulseGuard does not upload your saved contact to these services.
+        are sent to the naloxones lookup service, and map tiles are requested from the imagery provider.
+        <!-- Explain: Display the continuation text Direction links open Google Maps. pulseguard does not upload your saved contact to . Close p to finish the current structure. Close section to finish the current structure. -->
+        Direction links open Google Maps. pulseguard does not upload your saved contact to these services.
       </p>
     </section>
 

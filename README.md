@@ -47,7 +47,7 @@ link is highlighted.
 | Detect | `fall-detection.html` | The detection demonstration. The core of the project |
 | Context | `risk-zones.html` | Response calls added up by 500 m zone |
 | Support tools | `safewalk.html` | A timed check-in for a walk home |
-| Support tools | `shelters.html` | Shelters and defibrillators, sorted by distance |
+| Support tools | `shelters.html` | Shelters and naloxones, sorted by distance |
 | Support tools | `hazard.html` | Photo reports that merge when they describe the same fault |
 | About | `about.html` | Method, sources and limits |
 
@@ -126,10 +126,10 @@ The mobile config/settings file was not supplied; browser defaults are named
 at the top of app.js. Accessible motion hardware is required for detection.
 
 Location uses watchPosition and shows accuracy and freshness. The nearest five
-mapped AEDs within 10 km come from OpenStreetMap via Overpass, ranked by
+mapped naloxones within 10 km come from OpenStreetMap via Overpass, ranked by
 straight-line distance. Fewer results stay fewer; availability is not verified.
-No Google API key is needed. Coordinates are sent to the map/AED providers.
+No Google API key is needed. Coordinates are sent to the map/naloxones providers.
 Use HTTPS or localhost, allow location, and keep the page open. Stop location
 and tracker ends the watch and motion session.
 
-AED results now match each coordinate to a containing OpenStreetMap building outline to show its mapped name and address. Indoor directions remain separate. Nearby businesses are never assumed to host an AED. Unnamed or unsupported building geometry falls back to the AED record, address or coordinates. Building names are cached in memory for ten minutes; failed lookups preserve the AED results. Google Maps directions still target the exact AED coordinates. Building hours are not substituted for AED access hours.
+naloxones results now match each coordinate to a containing OpenStreetMap building outline to show its mapped name and address. Indoor directions remain separate. Nearby businesses are never assumed to host an naloxones. Unnamed or unsupported building geometry falls back to the naloxones record, address or coordinates. Building names are cached in memory for ten minutes; failed lookups preserve the naloxones results. Google Maps directions still target the exact naloxones coordinates. Building hours are not substituted for naloxones access hours.

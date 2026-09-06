@@ -245,7 +245,7 @@
     },
     {
       "section": "Shared appearance and accessibility",
-      "title": "AED row typography and spacing",
+      "title": "naloxones row typography and spacing",
       "meaning": "Venue links are bold; addresses, indoor hints and metadata appear on separate muted lines.",
       "mission": "Helps someone identify the destination before reading the final directions.",
       "records": [
@@ -285,14 +285,14 @@
     },
     {
       "section": "Navigation and ordinary interface sound",
-      "title": "Safeguard brand and active page",
+      "title": "PulseGuard brand and active page",
       "meaning": "The brand is inserted as text. The matching navigation link is marked as the current page for assistive technology.",
       "mission": "Makes the service and the current location within it identifiable.",
       "records": [
         {
           "file": "nav.js",
           "line": 77,
-          "code": "    name.textContent = \"Safeguard\";",
+          "code": "    name.textContent = \"PulseGuard\";",
           "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         },
         {
@@ -406,7 +406,7 @@
         {
           "file": "index.html",
           "line": 8,
-          "code": "  <title>Safeguard | Help when someone cannot ask</title>",
+          "code": "  <title>PulseGuard | Help when someone cannot ask</title>",
           "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
@@ -432,7 +432,7 @@
         {
           "file": "index.html",
           "line": 32,
-          "code": "        <p class=\"lede\">Safeguard looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>",
+          "code": "        <p class=\"lede\">PulseGuard looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>",
           "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
@@ -540,7 +540,7 @@
         {
           "file": "index.html",
           "line": 160,
-          "code": "      <iframe title=\"Safeguard live location and motion tracker\" src=\"fall-detection.html?embedded=1\" allow=\"geolocation; accelerometer; gyroscope; autoplay\" loading=\"lazy\" style=\"width:100%;height:900px;border:0;border-radius:16px\"></iframe>",
+          "code": "      <iframe title=\"PulseGuard live location and motion tracker\" src=\"fall-detection.html?embedded=1\" allow=\"geolocation; accelerometer; gyroscope; autoplay\" loading=\"lazy\" style=\"width:100%;height:900px;border:0;border-radius:16px\"></iframe>",
           "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
@@ -704,7 +704,7 @@
         {
           "file": "auth-config.js",
           "line": 4,
-          "code": "window.SAFEGUARD_FIREBASE_CONFIG = null;",
+          "code": "window.PULSEGUARD_FIREBASE_CONFIG = null;",
           "sha256": "b2a7b8d3cd59473b1a0809e0b203c36c39f33d156c52903a1c645de4174664c2"
         },
         {
@@ -1092,7 +1092,7 @@
     {
       "section": "Motion tracker and response sequence",
       "title": "Complete tracker shutdown",
-      "meaning": "Shutdown cancels timers and sensor listeners, aborts outstanding AED work and clears the location watch. Leaving the page invokes it too.",
+      "meaning": "Shutdown cancels timers and sensor listeners, aborts outstanding naloxones work and clears the location watch. Leaving the page invokes it too.",
       "mission": "Limits monitoring to the session the person is using.",
       "records": [
         {
@@ -1110,7 +1110,7 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Fresh high accuracy location requests",
       "meaning": "The options request high accuracy, disallow a cached fix and set a fifteen-second timeout. The browser still controls permission and available accuracy.",
       "mission": "Supplies recent location context for human help.",
@@ -1130,7 +1130,7 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Continuously updated device location",
       "meaning": "watchPosition listens for updates. The session check ignores callbacks belonging to a stopped session.",
       "mission": "Keeps the marker relevant while preventing an old session from updating it.",
@@ -1150,7 +1150,7 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Location timestamp and accuracy",
       "meaning": "The position record retains coordinates, reported accuracy and time. A timer marks the fix stale rather than leaving it looking current.",
       "mission": "Makes uncertainty and freshness visible.",
@@ -1170,7 +1170,7 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Satellite imagery",
       "meaning": "Leaflet requests Esri satellite tiles for the map view. These images are a background, not live satellite video.",
       "mission": "Provides recognizable surroundings for the location marker.",
@@ -1184,7 +1184,7 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "User marker and accuracy circle",
       "meaning": "A marker shows the reported coordinates and a circle shows the device-reported accuracy radius.",
       "mission": "Avoids presenting an estimated position as an exact location.",
@@ -1204,7 +1204,7 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Location and map error messages",
       "meaning": "Separate handlers report geolocation errors and unavailable imagery. The coordinate text can still be useful when tiles fail.",
       "mission": "Keeps failure visible and preserves available location context.",
@@ -1224,15 +1224,15 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
-      "title": "Five nearest real mapped AED records",
-      "meaning": "Overpass finds defibrillator records within ten kilometres. The sort and slice retain up to five, closest first by straight-line distance.",
+      "section": "Live location satellite map and naloxones",
+      "title": "Five nearest real mapped naloxones records",
+      "meaning": "Overpass finds naloxone records within ten kilometres. The sort and slice retain up to five, closest first by straight-line distance.",
       "mission": "Reduces the search for nearby equipment without substituting example entries.",
       "records": [
         {
           "file": "app.js",
           "line": 383,
-          "code": "        const query = '[out:json][timeout:20];nwr[\"emergency\"=\"defibrillator\"](around:10000,' + origin.lat + ',' + origin.lon + ');out center tags;';",
+          "code": "        const query = '[out:json][timeout:20];nwr[\"emergency\"=\"naloxone\"](around:10000,' + origin.lat + ',' + origin.lon + ');out center tags;';",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         },
         {
@@ -1244,7 +1244,7 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Distance calculation",
       "meaning": "The haversine calculation converts coordinate separation into metres using an Earth-radius estimate.",
       "mission": "Ranks proximity; it does not calculate walking time or an accessible route.",
@@ -1264,9 +1264,9 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Actual venue name and street address",
-      "meaning": "Only a mapped building containing the AED coordinate can supply its building name. Address, recorded name or coordinates provide fallbacks.",
+      "meaning": "Only a mapped building containing the naloxones coordinate can supply its building name. Address, recorded name or coordinates provide fallbacks.",
       "mission": "Makes the destination recognizable without assigning an unrelated nearby business.",
       "records": [
         {
@@ -1278,13 +1278,13 @@
         {
           "file": "app.js",
           "line": 294,
-          "code": "    const name = host?.tags?.name || recordedName || address || \"AED at \" + item.lat.toFixed(5) + \", \" + item.lon.toFixed(5);",
+          "code": "    const name = host?.tags?.name || recordedName || address || \"naloxones at \" + item.lat.toFixed(5) + \", \" + item.lon.toFixed(5);",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         }
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Indoor directions kept beneath the venue",
       "meaning": "Recorded room, floor or restroom directions remain separate from the venue title and are inserted as plain text.",
       "mission": "Helps someone navigate the final part of the search.",
@@ -1292,7 +1292,7 @@
         {
           "file": "app.js",
           "line": 295,
-          "code": "    const notes = [tags[\"defibrillator:location\"], tags.description];",
+          "code": "    const notes = [tags[\"naloxone:location\"], tags.description];",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         },
         {
@@ -1304,10 +1304,10 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Batched building lookup and temporary cache",
       "meaning": "One additional request fetches building outlines. Successful results remain in memory for ten minutes; failed lookups can be retried.",
-      "mission": "Reduces repeated waiting without discarding AED coordinates when names fail.",
+      "mission": "Reduces repeated waiting without discarding naloxones coordinates when names fail.",
       "records": [
         {
           "file": "app.js",
@@ -1318,15 +1318,15 @@
         {
           "file": "app.js",
           "line": 349,
-          "code": "        if (complete) aedVenueCache.set(key(item), { details, expires: Date.now() + 600000 });",
+          "code": "        if (complete) naloxoneVenueCache.set(key(item), { details, expires: Date.now() + 600000 });",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         }
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
-      "title": "AED access hours and source limitations",
-      "meaning": "Each row shows distance, recorded AED access and AED hours. Missing values stay not recorded; building hours are not substituted.",
+      "section": "Live location satellite map and naloxones",
+      "title": "naloxones access hours and source limitations",
+      "meaning": "Each row shows distance, recorded naloxones access and naloxones hours. Missing values stay not recorded; building hours are not substituted.",
       "mission": "Avoids claiming equipment is accessible merely because a venue is named.",
       "records": [
         {
@@ -1338,9 +1338,9 @@
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
-      "title": "Directions to the precise AED pin",
-      "meaning": "The Google Maps link uses the AED coordinates, while the satellite marker uses those same coordinates and the resolved place label.",
+      "section": "Live location satellite map and naloxones",
+      "title": "Directions to the precise naloxones pin",
+      "meaning": "The Google Maps link uses the naloxones coordinates, while the satellite marker uses those same coordinates and the resolved place label.",
       "mission": "Keeps directions tied to the equipment instead of moving the destination to a building centre.",
       "records": [
         {
@@ -1352,13 +1352,13 @@
         {
           "file": "app.js",
           "line": 435,
-          "code": "                aedMarkers.push(L.marker([item.lat, item.lon]).bindPopup(label).addTo(satelliteMap));",
+          "code": "                naloxoneMarkers.push(L.marker([item.lat, item.lon]).bindPopup(label).addTo(satelliteMap));",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         }
       ]
     },
     {
-      "section": "Live location satellite map and AEDs",
+      "section": "Live location satellite map and naloxones",
       "title": "Refresh after movement and ignore old results",
       "meaning": "The first fix or movement beyond 100 metres triggers a lookup. A request counter prevents older responses from replacing a newer search.",
       "mission": "Keeps nearby resources aligned with the current location.",
@@ -1366,13 +1366,13 @@
         {
           "file": "app.js",
           "line": 825,
-          "code": "    if ((!aedOrigin && Date.now() - aedAttemptAt > 30000) || (aedOrigin && metresBetween(aedOrigin, place) > 100)) listNearestCare();",
+          "code": "    if ((!naloxoneOrigin && Date.now() - naloxoneAttemptAt > 30000) || (naloxoneOrigin && metresBetween(naloxoneOrigin, place) > 100)) listNearestCare();",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         },
         {
           "file": "app.js",
           "line": 391,
-          "code": "        if (request !== aedRequest) return;",
+          "code": "        if (request !== naloxoneRequest) return;",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         }
       ]
@@ -1414,7 +1414,7 @@
         {
           "file": "app.js",
           "line": 945,
-          "code": "    const message = \"Safeguard: no answer from this phone after a possible collapse. \" +",
+          "code": "    const message = \"PulseGuard: no answer from this phone after a possible collapse. \" +",
           "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
         },
         {
@@ -1454,7 +1454,7 @@
         {
           "file": "about.html",
           "line": 30,
-          "code": "      <h1>What Safeguard can\u2014and cannot\u2014do.</h1>",
+          "code": "      <h1>What PulseGuard can\u2014and cannot\u2014do.</h1>",
           "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
         },
         {
@@ -1494,7 +1494,7 @@
         {
           "file": "about.html",
           "line": 79,
-          "code": "        The tracker uses your browser\u2019s current location and OpenStreetMap AED records.",
+          "code": "        The tracker uses your browser\u2019s current location and OpenStreetMap naloxones records.",
           "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
         },
         {
@@ -1514,7 +1514,7 @@
         {
           "file": "about.html",
           "line": 108,
-          "code": "        Direction links open Google Maps. Safeguard does not upload your saved contact to these services.",
+          "code": "        Direction links open Google Maps. PulseGuard does not upload your saved contact to these services.",
           "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
         }
       ]
@@ -1597,7 +1597,7 @@
       "section": "Safewalk supporting page",
       "title": "ZIP or GPS based Maps search",
       "meaning": "The page opens a Google Maps text search based on a five-digit ZIP or a saved position. The search wording does not enforce a one-mile radius or verify an available EMT.",
-      "mission": "Offers a manual search aid with limits distinct from the tracker AED list.",
+      "mission": "Offers a manual search aid with limits distinct from the tracker naloxones list.",
       "records": [
         {
           "file": "safewalk.html",
@@ -1636,8 +1636,8 @@
     {
       "section": "Shelters and equipment supporting page",
       "title": "Illustrative resource data and category filter",
-      "meaning": "The page starts with example AED, shelter and hydrant entries. The selected category filters that local collection.",
-      "mission": "Demonstrates resource browsing; it is separate from live Overpass AED results.",
+      "meaning": "The page starts with example naloxones, shelter and hydrant entries. The selected category filters that local collection.",
+      "mission": "Demonstrates resource browsing; it is separate from live Overpass naloxones results.",
       "records": [
         {
           "file": "shelters.html",
@@ -1998,7 +1998,7 @@
     {
       "section": "Retained code and repository support",
       "title": "Optional Google key example",
-      "meaning": "The file is an example key setting for an earlier integration. The current tracker obtains AEDs through Overpass and does not require this key.",
+      "meaning": "The file is an example key setting for an earlier integration. The current tracker obtains naloxones through Overpass and does not require this key.",
       "mission": "Separates old setup material from the active map implementation.",
       "records": [
         {
