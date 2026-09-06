@@ -125,7 +125,7 @@ function buildNav() {
     const login = document.createElement("a");
     // Explain: Set login.href using "index.html#login". Set plain visible text on login. Create a new HTML element for the generated interface.
     login.href = "index.html#login";
-    login.textContent = "Log in";
+    login.textContent = "Sign in";
 
     const signup = document.createElement("a");
     // Explain: Change the element classes that control its displayed state. Set signup.href using "index.html#signup". Set plain visible text on signup.

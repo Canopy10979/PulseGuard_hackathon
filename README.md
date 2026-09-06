@@ -7,7 +7,7 @@ server.
 ## What it is
 
 A phone watches for a sudden movement followed by stillness. If both
-happen, it asks whether you are all right. If nobody answers in 20 s, it
+happen, it asks whether you are all right. If nobody answers in 5 s, it
 writes a message with your position and your reasons, and opens your own
 messaging app so a person can send it.
 
@@ -17,8 +17,9 @@ messaging app so a person can send it.
 - It does not detect an overdose. It detects movement, then stillness.
 - It does not sense breathing, pulse or oxygen.
 - It does not call 911 and it does not notify any responder network.
-- It has no account system. Nothing is uploaded, because there is no
-  server.
+- Google and email/password authentication require Firebase configuration.
+  See [account setup](documentation/AUTH_SETUP.md). Account credentials go
+  to Firebase when configured; map providers receive location coordinates.
 - The dashboard figures and the risk zones are illustrative data written
   for the demonstration. No number on this site is a measurement.
 
@@ -74,7 +75,7 @@ judge asks.
 | Sudden movement | 30 | acceleration above 25 m/s², about 2.5 g |
 | Orientation change | 20 | more than 45 degrees of tilt after the impact |
 | Stillness | 25 | within 1.5 m/s² of rest for 8 s |
-| No answer | 15 | the 20 s countdown ends |
+| No answer | 15 | the 5 s countdown ends |
 | Position obtained | 10 | the browser gives a position |
 
 Two signals are needed before a countdown starts. One signal alone is a
@@ -111,8 +112,8 @@ label on screen.
 - The CSV reader handles quoted fields but not embedded line breaks.
 - The support tools keep their data in the browser of one device, so a
   second laptop sees only the starter data.
-- There is no login. A mock sign-in was left out on purpose, because a
-  fake one that looks real is worse than none.
+- Sign-in and sign-up have separate forms and Google options. Live account
+  access remains unavailable until the owner configures Firebase Authentication.
 
 ## Current Safeguard tracker
 

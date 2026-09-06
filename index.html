@@ -98,56 +98,73 @@
     <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="account-title">
       <div class="auth-card">
         <div class="auth-heading">
-          <!-- Explain: Add h2 account-title for Account. Add button for ×. Close div to finish the current structure. -->
-          <h2 id="account-title">Account</h2>
+          <!-- Explain: Add h2 account-title for Welcome back. Add button for ×. Close div to finish the current structure. -->
+          <h2 id="account-title">Welcome back</h2>
           <button class="auth-close" type="button" aria-label="Close account window">×</button>
         </div>
-        <!-- Explain: Create the div structure. Add button login-tab for Log in. Add button signup-tab for Sign up. -->
+        <!-- Explain: Create the div structure. Add button login-tab for Sign in. Add button signup-tab for Sign up. -->
         <div class="auth-tabs" role="tablist" aria-label="Account options">
-          <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-auth-tab="login">Log in</button>
-          <button class="auth-tab" id="signup-tab" type="button" role="tab" aria-selected="false" aria-controls="signup-form" data-auth-tab="signup">Sign up</button>
-        <!-- Explain: Close div to finish the current structure. Create the form region login-form. Add label for Email. -->
+          <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-auth-tab="login">Sign in</button>
+          <button class="auth-tab" id="signup-tab" type="button" role="tab" aria-selected="false" aria-controls="signup-form" data-auth-tab="signup" tabindex="-1">Sign up</button>
+        <!-- Explain: Close div to finish the current structure. Add p auth-status for . Create the div region account-session. -->
         </div>
-
-        <form class="auth-form" id="login-form" aria-labelledby="login-tab">
+        <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
+        <div id="account-session" class="account-session" hidden>
+          <!-- Explain: Add p account-user for . Add button signout-button for Sign out. Close div to finish the current structure. -->
+          <p id="account-user"></p>
+          <button id="signout-button" class="secondary-btn" type="button">Sign out</button>
+        </div>
+        <!-- Explain: Create the form region login-form. Add h3 login-heading for Sign in to Safeguard. Add button for Sign in with Google. -->
+        <form class="auth-form auth-box" id="login-form" aria-labelledby="login-heading">
+          <h3 id="login-heading">Sign in to Safeguard</h3>
+          <button class="google-auth" type="button" data-google="login">Sign in with Google</button>
+          <!-- Explain: Add p for or use your email. Add label for Email. Create an input named login-email with the specified type and constraints. -->
+          <p class="auth-divider">or use your email</p>
           <label for="login-email">Email</label>
-          <!-- Explain: Create an input named login-email with the specified type and constraints. Add label for Password. Create an input named login-password with the specified type and constraints. -->
-          <input id="login-email" name="email" type="email" autocomplete="email" required>
+          <input id="login-email" name="email" type="email" autocomplete="username" required>
+          <!-- Explain: Add label for Password. Create an input named login-password with the specified type and constraints. Add button for Sign in. -->
           <label for="login-password">Password</label>
           <input id="login-password" name="password" type="password" autocomplete="current-password" required>
-          <!-- Explain: Add button for Log in. Close form to finish the current structure. Create the form region signup-form. -->
-          <button class="primary" type="submit">Log in</button>
+          <button class="primary" type="submit">Sign in</button>
+          <!-- Explain: Add p login-status for . Close form to finish the current structure. Create the form region signup-form. -->
+          <p id="login-status" class="auth-status" role="status" aria-live="polite"></p>
         </form>
-
-        <form class="auth-form" id="signup-form" aria-labelledby="signup-tab" hidden>
-          <!-- Explain: Add label for Name. Create an input named signup-name with the specified type and constraints. Add label for Email. -->
-          <label for="signup-name">Name</label>
-          <input id="signup-name" name="name" type="text" autocomplete="name" required>
+        <form class="auth-form auth-box" id="signup-form" aria-labelledby="signup-heading" hidden>
+          <!-- Explain: Add h3 signup-heading for Create your account. Add button for Sign up with Google. Add p for or sign up with your email. -->
+          <h3 id="signup-heading">Create your account</h3>
+          <button class="google-auth" type="button" data-google="signup">Sign up with Google</button>
+          <p class="auth-divider">or sign up with your email</p>
+          <!-- Explain: Add label for First name. Create an input named signup-first-name with the specified type and constraints. Add label for Last name. -->
+          <label for="signup-first-name">First name</label>
+          <input id="signup-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="100" required>
+          <label for="signup-last-name">Last name</label>
+          <!-- Explain: Create an input named signup-last-name with the specified type and constraints. Add label for Email. Create an input named signup-email with the specified type and constraints. -->
+          <input id="signup-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="100" required>
           <label for="signup-email">Email</label>
-          <!-- Explain: Create an input named signup-email with the specified type and constraints. Add label for Password. Create an input named signup-password with the specified type and constraints. -->
           <input id="signup-email" name="email" type="email" autocomplete="email" required>
-          <label for="signup-password">Password</label>
+          <!-- Explain: Add label for Create a password. Create an input named signup-password with the specified type and constraints. Add button for Sign up. -->
+          <label for="signup-password">Create a password</label>
           <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
-          <!-- Explain: Add button for Create account. Close form to finish the current structure. Add p auth-status for Nothing is sent or saved. -->
-          <button class="primary" type="submit">Create account</button>
+          <button class="primary" type="submit">Sign up</button>
+          <!-- Explain: Add p signup-status for . Close form to finish the current structure. Close div to finish the current structure. -->
+          <p id="signup-status" class="auth-status" role="status" aria-live="polite"></p>
         </form>
-        <p class="auth-status" id="auth-status" aria-live="polite">Nothing is sent or saved.</p>
-      <!-- Explain: Close div to finish the current structure. Close dialog to finish the current structure. Create the section region live-tracker. -->
       </div>
+    <!-- Explain: Close dialog to finish the current structure. Create the section region live-tracker. Add p for Here with you. -->
     </dialog>
     <section id="live-tracker" class="container" aria-labelledby="live-tracker-title">
-      <!-- Explain: Add p for Here with you. Add h2 live-tracker-title for Your tracker and nearby AEDs. Add p for Start when you are ready. Your position stays visible while th. -->
       <p class="eyebrow">Here with you</p>
+      <!-- Explain: Add h2 live-tracker-title for Your tracker and nearby AEDs. Add p for Start when you are ready. Your position stays visible while th. Create the iframe structure. -->
       <h2 id="live-tracker-title">Your tracker and nearby AEDs</h2>
       <p>Start when you are ready. Your position stays visible while this page is open.</p>
-      <!-- Explain: Create the iframe structure. Add a for Open the tracker on its own page. Close section to finish the current structure. -->
       <iframe title="Safeguard live location and motion tracker" src="fall-detection.html?embedded=1" allow="geolocation; accelerometer; gyroscope; autoplay" loading="lazy" style="width:100%;height:900px;border:0;border-radius:16px"></iframe>
+      <!-- Explain: Add a for Open the tracker on its own page. Close section to finish the current structure. Close main to finish the current structure. -->
       <a href="fall-detection.html">Open the tracker on its own page</a>
     </section>
-  <!-- Explain: Close main to finish the current structure. -->
   </main>
   <script src="nav.js"></script>
   <script src="sound.js"></script>
+  <script src="auth-config.js"></script>
   <script src="auth.js"></script>
   <script>
     // Accept size changes only from this page's same-origin tracker frame.

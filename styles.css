@@ -821,6 +821,23 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; l
 .auth-status { color: var(--muted); font-size: .82rem; margin: 14px 0 0; }
 @media (max-width: 800px) {
   .choice-grid, .sequence-list, .local-facts { grid-template-columns: 1fr; }
-  /* Explain: Style .choice-card .primary-btn, .choice-card .secondary-btn, .status-car...; set width to 100%. End this style rule or responsive section. */
+  /* Explain: Style .choice-card .primary-btn, .choice-card .secondary-btn, .status-car...; set width to 100%. End this style rule or responsive section. Style .auth-dialog; set max height to calc(100dvh - 32px); set overflow y to auto. */
   .choice-card .primary-btn, .choice-card .secondary-btn, .status-card .primary-btn { width: 100%; }
 }
+
+/* Separate account boxes retain the shared site palette. */
+.auth-dialog { max-height: calc(100dvh - 32px); overflow-y: auto; }
+/* Explain: Style .auth-form[hidden], .account-session[hidden]; set layout mode to none !important. Style .auth-box; set background appearance to #171a1e; set border appearance to 1px solid #54595d; set inner spacing to 18px. Style .auth-box h3; set outer spacing to 0 0 8px; set text size to 1.3rem. */
+.auth-form[hidden], .account-session[hidden] { display: none !important; }
+.auth-box { background: #171a1e; border: 1px solid #54595d; padding: 18px; }
+.auth-box h3 { margin: 0 0 8px; font-size: 1.3rem; }
+/* Explain: Style .auth-box .google-auth; set background appearance to #fff; set text color to #1f1f1f; set border appearance to 1px solid #747775; set corner rounding to 4px; set minimum height to 44px; set inner spacing to 10px 14px; set font to 500 14px Arial, sans-serif. Style .auth-divider; set text alignment to center; set text color to var(--muted); set outer spacing to 8px 0; set text size to .82rem. Style .auth-box input; set minimum width to 0; set minimum height to 42px. */
+.auth-box .google-auth { background: #fff; color: #1f1f1f; border: 1px solid #747775; border-radius: 4px; min-height: 44px; padding: 10px 14px; font: 500 14px Arial, sans-serif; }
+.auth-divider { text-align: center; color: var(--muted); margin: 8px 0; font-size: .82rem; }
+.auth-box input { min-width: 0; min-height: 42px; }
+/* Explain: Style .auth-box button:disabled; set pointer appearance to wait; set transparency to .6. Style .auth-status:empty; set layout mode to none. Style .auth-status; set overflow wrap to anywhere. */
+.auth-box button:disabled { cursor: wait; opacity: .6; }
+.auth-status:empty { display: none; }
+.auth-status { overflow-wrap: anywhere; }
+/* Explain: Style .account-session; set border appearance to 1px solid #54595d; set inner spacing to 14px; set margin bottom to 14px. */
+.account-session { border: 1px solid #54595d; padding: 14px; margin-bottom: 14px; }
