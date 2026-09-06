@@ -5,15 +5,15 @@
   <!-- Explain: Declare page metadata charset="utf-8". Declare page metadata name="viewport" content="width=device-width,initial-scale=1". Create the title structure. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Safeguard | Help when someone cannot ask</title>
-  <!-- Explain: Declare page metadata name="description" content="Safeguard is a King County hackathon pr. Declare page metadata name="robots" content="index,follow,max-image-preview:large". Declare page metadata name="theme-color" content="#101418". -->
-  <meta name="description" content="Safeguard is a King County hackathon prototype that checks for possible life-threatening unresponsiveness and helps a person reach human support.">
+  <title>PulseGuard | Help when someone cannot ask</title>
+  <!-- Explain: Declare page metadata name="description" content="PulseGuard is a King County hackathon pr. Declare page metadata name="robots" content="index,follow,max-image-preview:large". Declare page metadata name="theme-color" content="#101418". -->
+  <meta name="description" content="PulseGuard is a King County hackathon prototype that checks for possible life-threatening unresponsiveness and helps a person reach human support.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#101418">
-  <!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="Safeguard". Declare page metadata property="og:title" content="Safeguard | Help when someone cannot ask". -->
+  <!-- Explain: Declare page metadata property="og:type" content="website". Declare page metadata property="og:site_name" content="PulseGuard". Declare page metadata property="og:title" content="PulseGuard | Help when someone cannot ask". -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Safeguard">
-  <meta property="og:title" content="Safeguard | Help when someone cannot ask">
+  <meta property="og:site_name" content="PulseGuard">
+  <meta property="og:title" content="PulseGuard | Help when someone cannot ask">
   <!-- Explain: Declare page metadata property="og:description" content="A transparent emergency-support . Declare page metadata name="twitter:card" content="summary". Load stylesheet site.css. -->
   <meta property="og:description" content="A transparent emergency-support prototype for possible life-threatening unresponsiveness.">
   <meta name="twitter:card" content="summary">
@@ -24,14 +24,14 @@
 <body data-page="home">
   <!-- Explain: Create the main structure. Create the section structure. Create the div structure. -->
   <main>
-    <section class="hero container safeguard-hero">
+    <section class="hero container pulseguard-hero">
       <div class="hero-copy">
-        <!-- Explain: Add p for Hackathon prototype · King County, Washington. Add h1 for Help for the moment someone cannot ask. Add p for Safeguard looks for more than one sign of a possible collapse,. -->
+        <!-- Explain: Add p for Hackathon prototype · King County, Washington. Add h1 for Help for the moment someone cannot ask. Add p for PulseGuard looks for more than one sign of a possible collapse,. -->
         <p class="eyebrow">Hackathon prototype · King County, Washington</p>
         <h1>Help for the moment someone cannot ask.</h1>
-        <p class="lede">Safeguard looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>
-        <!-- Explain: Add p for Safeguard does not diagnose an overdose. This browser demo rea. Close div to finish the current structure. Create the aside structure. -->
-        <p class="disclaimer">Safeguard does not diagnose an overdose. This browser demo reads motion and orientation only; it does not monitor breathing, run in the background, or call anyone automatically.</p>
+        <p class="lede">PulseGuard looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>
+        <!-- Explain: Add p for PulseGuard does not diagnose an overdose. This browser demo rea. Close div to finish the current structure. Create the aside structure. -->
+        <p class="disclaimer">PulseGuard does not diagnose an overdose. This browser demo reads motion and orientation only; it does not monitor breathing, run in the background, or call anyone automatically.</p>
       </div>
       <aside class="status-card" aria-labelledby="status-title">
         <!-- Explain: Add span for . Add p for Current status. Add h2 status-title for Protection is off. -->
@@ -114,9 +114,9 @@
           <p id="account-user"></p>
           <button id="signout-button" class="secondary-btn" type="button">Sign out</button>
         </div>
-        <!-- Explain: Create the form region login-form. Add h3 login-heading for Sign in to Safeguard. Add button for Sign in with Google. -->
+        <!-- Explain: Create the form region login-form. Add h3 login-heading for Sign in to PulseGuard. Add button for Sign in with Google. -->
         <form class="auth-form auth-box" id="login-form" aria-labelledby="login-heading">
-          <h3 id="login-heading">Sign in to Safeguard</h3>
+          <h3 id="login-heading">Sign in to PulseGuard</h3>
           <button class="google-auth" type="button" data-google="login">Sign in with Google</button>
           <!-- Explain: Add p for or use your email. Add label for Email. Create an input named login-email with the specified type and constraints. -->
           <p class="auth-divider">or use your email</p>
@@ -157,7 +157,7 @@
       <!-- Explain: Add h2 live-tracker-title for Your tracker and nearby AEDs. Add p for Start when you are ready. Your position stays visible while th. Create the iframe structure. -->
       <h2 id="live-tracker-title">Your tracker and nearby AEDs</h2>
       <p>Start when you are ready. Your position stays visible while this page is open.</p>
-      <iframe title="Safeguard live location and motion tracker" src="fall-detection.html?embedded=1" allow="geolocation; accelerometer; gyroscope; autoplay" loading="lazy" style="width:100%;height:900px;border:0;border-radius:16px"></iframe>
+      <iframe title="PulseGuard live location and motion tracker" src="fall-detection.html?embedded=1" allow="geolocation; accelerometer; gyroscope; autoplay" loading="lazy" style="width:100%;height:900px;border:0;border-radius:16px"></iframe>
       <!-- Explain: Add a for Open the tracker on its own page. Close section to finish the current structure. Close main to finish the current structure. -->
       <a href="fall-detection.html">Open the tracker on its own page</a>
     </section>
@@ -172,8 +172,8 @@
     window.addEventListener("message", event => {
       const frame = document.querySelector("#live-tracker iframe");
       if (event.origin !== location.origin || event.source !== frame.contentWindow) return;
-      // Explain: Check event.data?.type === "safeguard-tracker-height" && Number.isFinite(even. Set frame.style.height using Math.max(600, Math.min(900, event.data.height)) + "px". Close the current block or callback.
-      if (event.data?.type === "safeguard-tracker-height" && Number.isFinite(event.data.height))
+      // Explain: Check event.data?.type === "pulseguard-tracker-height" && Number.isFinite(even. Set frame.style.height using Math.max(600, Math.min(900, event.data.height)) + "px". Close the current block or callback.
+      if (event.data?.type === "pulseguard-tracker-height" && Number.isFinite(event.data.height))
         frame.style.height = Math.max(600, Math.min(900, event.data.height)) + "px";
     });
   </script>

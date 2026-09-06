@@ -14,7 +14,7 @@ function showAuthForm(name) {
     // Explain: Set loginForm.hidden using !showLogin. Set signupForm.hidden using showLogin. Set plain visible text on document.querySelector("#account-title").
     loginForm.hidden = !showLogin;
     signupForm.hidden = showLogin;
-    document.querySelector("#account-title").textContent = showLogin ? "Welcome back" : "Join Safeguard";
+    document.querySelector("#account-title").textContent = showLogin ? "Welcome back" : "Join PulseGuard";
     // Explain: Run the callback for each item in the collection. Keep selected as tab.dataset.authTab === name. Change the element classes that control its displayed state.
     authTabs.forEach(tab => {
         const selected = tab.dataset.authTab === name;
@@ -135,7 +135,7 @@ async function submitAccount(kind, google = false) {
         }
         showAccount(result.user);
         // Explain: Set plain visible text on status. Call form.reset with the values shown here. Set plain visible text on } catch (error) { status.
-        status.textContent = profileSaved ? "You are signed in. Welcome to Safeguard." : "Your account was created and you are signed in, but your name could not be saved.";
+        status.textContent = profileSaved ? "You are signed in. Welcome to PulseGuard." : "Your account was created and you are signed in, but your name could not be saved.";
         form.reset();
     } catch (error) { status.textContent = authError(error); }
     // Explain: Continue the surrounding expression with finally {. Find the HTML element that this code needs to read or update. Call setAuthBusy with the values shown here.
@@ -174,9 +174,9 @@ document.querySelector("#signout-button").addEventListener("click", async () => 
     } catch (error) { authStatus.textContent = authError(error); }
     finally { setAuthBusy(false); }
 });
-// Explain: Define prepareIdentity with inputs none. Keep config as window.SAFEGUARD_FIREBASE_CONFIG. Check !config || !["apiKey", "authDomain", "projectId", "appId"].every(key =>.
+// Explain: Define prepareIdentity with inputs none. Keep config as window.PULSEGUARD_FIREBASE_CONFIG. Check !config || !["apiKey", "authDomain", "projectId", "appId"].every(key =>.
 async function prepareIdentity() {
-    const config = window.SAFEGUARD_FIREBASE_CONFIG;
+    const config = window.PULSEGUARD_FIREBASE_CONFIG;
     if (!config || !["apiKey", "authDomain", "projectId", "appId"].every(key => typeof config[key] === "string" && config[key].trim())) {
         // Explain: Set plain visible text on authStatus. Return from this function. Close the current block or callback.
         authStatus.textContent = "Account sign-in is not available yet. You can still use the tracker.";

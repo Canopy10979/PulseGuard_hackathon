@@ -1,4 +1,4 @@
-/* Safeguard — collapse warning prototype.
+/* PulseGuard — collapse warning prototype.
  *
  * What this file does and does not do:
  *   It reads the accelerometer and orientation sensors of the device.
@@ -938,11 +938,11 @@ function prepareAlert() {
     const person = contact();
     const where = place && Date.now() - place.at <= 60000
         ? place.lat.toFixed(5) + ", " + place.lon.toFixed(5) + " (accuracy " + place.acc + " m)"
-        // Explain: Continue the conditional or combined expression from the previous line. Transform each collection item into an output value. Keep message as "Safeguard: no answer from this phone after a possible collaps.
+        // Explain: Continue the conditional or combined expression from the previous line. Transform each collection item into an output value. Keep message as "PulseGuard: no answer from this phone after a possible collaps.
         : "no recent position available";
     const reasons = Object.keys(fired).map(key => SIGNALS[key].text).join("; ");
 
-    const message = "Safeguard: no answer from this phone after a possible collapse. " +
+    const message = "PulseGuard: no answer from this phone after a possible collapse. " +
         // Explain: Continue the text or argument value used by the surrounding expression. Continue the surrounding expression with (simulated ? " THIS IS A DEMONSTRATION, not a real emergency." : "");. Keep box as $("#preparedBox").
         "Position: " + where + ". Signals: " + reasons + ". Confidence: " + score() + " points." +
         (simulated ? " THIS IS A DEMONSTRATION, not a real emergency." : "");
@@ -1049,12 +1049,12 @@ setMode("Press Start tracker. Motion and location access will be requested befor
 
 if (new URLSearchParams(location.search).has("embedded")) {
     document.querySelectorAll("header, .back-home").forEach(element => element.hidden = true);
-// Explain: Close the current block or callback. Check window.parent !== window && new URLSearchParams(location.search).has("e. Continue the surrounding expression with new ResizeObserver(() => parent.postMessage({ type: "safeguard-trac.
+// Explain: Close the current block or callback. Check window.parent !== window && new URLSearchParams(location.search).has("e. Continue the surrounding expression with new ResizeObserver(() => parent.postMessage({ type: "pulseguard-trac.
 }
 
 // Keep the embedded tracker at its content height so the dashboard has one scroll.
 if (window.parent !== window && new URLSearchParams(location.search).has("embedded")) {
-    new ResizeObserver(() => parent.postMessage({ type: "safeguard-tracker-height", height: document.documentElement.scrollHeight }, location.origin)).observe(document.body);
+    new ResizeObserver(() => parent.postMessage({ type: "pulseguard-tracker-height", height: document.documentElement.scrollHeight }, location.origin)).observe(document.body);
 // Explain: Close the current block or callback. Connect error to its handler. Connect waiting to its handler.
 }
 

@@ -768,9 +768,9 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; l
 .section-heading h2, .alert-copy h2 { border-bottom: 1px solid #54595d; padding-bottom: 7px; }
 .city-row { cursor: default; }
 
-/* Safeguard homepage: fewer decisions, larger actions, clearer status. */
-/* Explain: Style .safeguard-hero; set cross-axis alignment to start; set padding bottom to 46px. Style .status-card; set background appearance to #202122; set border appearance to 1px solid #54595d; set inner spacing to 24px. Style .status-card h2; set outer spacing to 4px 0 8px. */
-.safeguard-hero { align-items: start; padding-bottom: 46px; }
+/* PulseGuard homepage: fewer decisions, larger actions, clearer status. */
+/* Explain: Style .pulseguard-hero; set cross-axis alignment to start; set padding bottom to 46px. Style .status-card; set background appearance to #202122; set border appearance to 1px solid #54595d; set inner spacing to 24px. Style .status-card h2; set outer spacing to 4px 0 8px. */
+.pulseguard-hero { align-items: start; padding-bottom: 46px; }
 .status-card { background: #202122; border: 1px solid #54595d; padding: 24px; }
 .status-card h2 { margin: 4px 0 8px; }
 /* Explain: Style .status-card p; set text color to var(--muted). Style .status-dot; set layout mode to block; set width to 12px; set height to 12px; set corner rounding to 50%; set background appearance to #a2a9b1; set margin bottom to 18px. Style .emergency-choice, .how-it-works, .drive-sober; set padding top to 34px; set padding bottom to 34px. */

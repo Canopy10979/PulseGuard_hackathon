@@ -115,7 +115,7 @@ label on screen.
 - Sign-in and sign-up have separate forms and Google options. Live account
   access remains unavailable until the owner configures Firebase Authentication.
 
-## Current Safeguard tracker
+## Current PulseGuard tracker
 
 The homepage embeds fall-detection.html without replacing the dashboard design.
 The tracker adapts the supplied mobile screen: possible impact, settling,

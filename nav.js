@@ -74,7 +74,7 @@ function buildNav() {
 
     const name = document.createElement("span");
     // Explain: Set plain visible text on name. Attach the generated content to its parent element.
-    name.textContent = "Safeguard";
+    name.textContent = "PulseGuard";
 
     brand.append(mark, name);
     inner.appendChild(brand);
@@ -196,7 +196,7 @@ function buildTrialBanner() {
     banner.className = "mode-banner bad container";
     /* container keeps the banner inside the same column as the page
        content instead of running edge to edge. */
-    banner.textContent = "Supporting experiment. This page is not part of the main Safeguard " +
+    banner.textContent = "Supporting experiment. This page is not part of the main PulseGuard " +
         "pitch, its data stays in this browser, and it is kept in the site to show the team's " +
         // Explain: Continue the text or argument value used by the surrounding expression. Find the HTML element that this code needs to read or update. Check hero.
         "earlier work.";
