@@ -9,8 +9,8 @@ OUT = ROOT / "documentation" / "PulseGuard_Code_Presentation.docx"
 # file, short purpose, exact source fragment, what that fragment proves
 ITEMS = [
     ("index.html", "shows safety choices", "Open drop tracker", "the homepage exposes the tracker"),
-    ("fall-detection.html", "holds tracker controls", "Start tracker", "the user starts monitoring"),
-    ("app.js", "runs detection and escalation", "const ARM_DELAY_S = 5;", "the sensor waits five seconds before arming"),
+    ("fall-detection.html", "holds tracker and care controls", "Find nearest care", "the page exposes the AED and hospital locator"),
+    ("app.js", "runs detection and care lookup", "const [hospitals, aeds] = await Promise.all([", "Google Places searches both resource types together"),
     ("auth.js", "controls accounts", 'const authDialog = document.querySelector("#auth-dialog");', "JavaScript selects the account dialog"),
     ("nav.js", "creates shared navigation", "const SITE = [", "all page links begin in one central structure"),
     ("sound.js", "handles ordinary interface audio", 'const SOUND_FILE = "click.mp3";', "click feedback stays separate from the warning alarm"),
