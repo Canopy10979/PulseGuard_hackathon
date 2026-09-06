@@ -43,787 +43,784 @@ html {
 body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
-  /* Explain: Continue the style value background:. Continue the style value radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), tran. Continue the style value linear-gradient(180deg, #000000 0%, #0a0a0a 55%, #000000 100%);. */
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 24%),
-    linear-gradient(180deg, #000000 0%, #0a0a0a 55%, #000000 100%);
-  /* Explain: set text color to var(--text). End this style rule or responsive section. Style img. */
+  /* Explain: set background appearance to var(--page-background). set text color to var(--text). End this style rule or responsive section. */
+  background: var(--page-background);
   color: var(--text);
 }
 
+/* Explain: Style img. set maximum width to 100%. set layout mode to block. */
 img {
-  /* Explain: set maximum width to 100%. set layout mode to block. End this style rule or responsive section. */
   max-width: 100%;
   display: block;
+/* Explain: End this style rule or responsive section. Style button. set font to inherit. */
 }
 
-/* Explain: Style button. set font to inherit. set border appearance to 0. */
 button {
   font: inherit;
+  /* Explain: set border appearance to 0. set pointer appearance to pointer. End this style rule or responsive section. */
   border: 0;
-  /* Explain: set pointer appearance to pointer. End this style rule or responsive section. Style .container. */
   cursor: pointer;
 }
 
+/* Explain: Style .container. set width to min(1180px, calc(100% - 32px)). set outer spacing to 0 auto. */
 .container {
-  /* Explain: set width to min(1180px, calc(100% - 32px)). set outer spacing to 0 auto. End this style rule or responsive section. */
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
+/* Explain: End this style rule or responsive section. Style .topbar. set positioning mode to sticky. */
 }
 
-/* Explain: Style .topbar. set positioning mode to sticky. set top to 0. */
 .topbar {
   position: sticky;
+  /* Explain: set top to 0. set stacking order to 20. set backdrop filter to blur(16px). */
   top: 0;
-  /* Explain: set stacking order to 20. set backdrop filter to blur(16px). set background appearance to rgba(0, 0, 0, 0.72). */
   z-index: 20;
   backdrop-filter: blur(16px);
+  /* Explain: set background appearance to rgba(0, 0, 0, 0.72). set border bottom to 1px solid var(--line). End this style rule or responsive section. */
   background: rgba(0, 0, 0, 0.72);
-  /* Explain: set border bottom to 1px solid var(--line). End this style rule or responsive section. Style .nav. */
   border-bottom: 1px solid var(--line);
 }
 
+/* Explain: Style .nav. set layout mode to flex. set cross-axis alignment to center. */
 .nav {
-  /* Explain: set layout mode to flex. set cross-axis alignment to center. set main-axis distribution to space-between. */
   display: flex;
   align-items: center;
+  /* Explain: set main-axis distribution to space-between. set minimum height to 82px. set spacing between children to 24px. */
   justify-content: space-between;
-  /* Explain: set minimum height to 82px. set spacing between children to 24px. End this style rule or responsive section. */
   min-height: 82px;
   gap: 24px;
+/* Explain: End this style rule or responsive section. Style .brand. set layout mode to flex. */
 }
 
-/* Explain: Style .brand. set layout mode to flex. set cross-axis alignment to center. */
 .brand {
-  display: flex;
-  align-items: center;
-  /* Explain: set spacing between children to 12px. End this style rule or responsive section. Style .brand-mark. */
-  gap: 12px;
-}
-
-.brand-mark {
-  /* Explain: set width to 40px. set height to 40px. set corner rounding to 12px. */
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  /* Explain: set layout mode to grid. set place items to center. set background appearance to #ffffff. */
-  display: grid;
-  place-items: center;
-  background: #ffffff;
-  /* Explain: set text color to #000000. set text weight to 800. End this style rule or responsive section. */
-  color: #000000;
-  font-weight: 800;
-}
-
-/* Explain: Style .brand-title. set text weight to 700. set line spacing to 1.1. */
-.brand-title {
-  font-weight: 700;
-  line-height: 1.1;
-/* Explain: End this style rule or responsive section. Style .brand-subtitle. set text color to var(--muted). */
-}
-
-.brand-subtitle {
-  color: var(--muted);
-  /* Explain: set text size to 0.72rem. End this style rule or responsive section. Style .menu. */
-  font-size: 0.72rem;
-}
-
-.menu {
-  /* Explain: set layout mode to flex. set cross-axis alignment to center. set spacing between children to 28px. */
-  display: flex;
-  align-items: center;
-  gap: 28px;
-/* Explain: End this style rule or responsive section. Style .menu a. set text color to var(--muted). */
-}
-
-.menu a {
-  color: var(--muted);
-  /* Explain: set text decoration to none. set text size to 0.95rem. End this style rule or responsive section. */
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-/* Explain: Continue the style value .primary-btn,. Style .secondary-btn. set layout mode to inline-block. */
-.primary-btn,
-.secondary-btn {
-  display: inline-block;
-  /* Explain: set corner rounding to 12px. set inner spacing to 0.9rem 1.2rem. set text weight to 600. */
-  border-radius: 12px;
-  padding: 0.9rem 1.2rem;
-  font-weight: 600;
-  /* Explain: set text decoration to none. set animated property transitions to transform 0.2s ease, opacity 0.2s ease. End this style rule or responsive section. */
-  text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-/* Explain: Style .primary-btn. set background appearance to #ffffff. set text color to #000000. */
-.primary-btn {
-  background: #ffffff;
-  color: #000000;
-  /* Explain: set shadow to var(--shadow). End this style rule or responsive section. Style .secondary-btn. */
-  box-shadow: var(--shadow);
-}
-
-.secondary-btn {
-  /* Explain: set background appearance to rgba(148, 163, 184, 0.08). set text color to var(--text). set border appearance to 1px solid rgba(148, 163, 184, 0.18). */
-  background: rgba(148, 163, 184, 0.08);
-  color: var(--text);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-/* Explain: End this style rule or responsive section. set primary btn to hover,. Style .secondary-btn:hover. */
-}
-
-.primary-btn:hover,
-.secondary-btn:hover {
-  /* Explain: set visual transform to translateY(-1px). set transparency to 0.97. End this style rule or responsive section. */
-  transform: translateY(-1px);
-  opacity: 0.97;
-}
-
-/* Explain: Style .hero. set layout mode to grid. set grid column widths to 1.1fr 0.9fr. */
-.hero {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  /* Explain: set cross-axis alignment to center. set spacing between children to 28px 36px. set inner spacing to 36px 0 20px. */
-  align-items: center;
-  gap: 28px 36px;
-  padding: 36px 0 20px;
-/* Explain: End this style rule or responsive section. Style .eyebrow. set layout mode to inline-block. */
-}
-
-.eyebrow {
-  display: inline-block;
-  /* Explain: set outer spacing to 0 0 16px. set text size to 0.75rem. set spacing between letters to 0.12em. */
-  margin: 0 0 16px;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  /* Explain: set text transform to uppercase. set text color to var(--blue). set text weight to 700. */
-  text-transform: uppercase;
-  color: var(--blue);
-  font-weight: 700;
-/* Explain: End this style rule or responsive section. Style .hero-copy h1. set outer spacing to 0. */
-}
-
-.hero-copy h1 {
-  margin: 0;
-  /* Explain: set text size to clamp(2.2rem, 4.2vw, 3.6rem). set line spacing to 1.05. set spacing between letters to -0.05em. */
-  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
-  line-height: 1.05;
-  letter-spacing: -0.05em;
-/* Explain: End this style rule or responsive section. Style .lede. set margin top to 14px. */
-}
-
-.lede {
-  margin-top: 14px;
-  /* Explain: set maximum width to 620px. set text size to 1rem. set line spacing to 1.6. */
-  max-width: 620px;
-  font-size: 1rem;
-  line-height: 1.6;
-  /* Explain: set text color to var(--muted). End this style rule or responsive section. Style .hero-actions. */
-  color: var(--muted);
-}
-
-.hero-actions {
-  /* Explain: set layout mode to flex. set whether flex items wrap to wrap. set spacing between children to 12px. */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  /* Explain: set margin top to 22px. End this style rule or responsive section. Style .mini-stats. */
-  margin-top: 22px;
-}
-
-.mini-stats {
-  /* Explain: set list markers to none. set grid column to 1 / -1. set layout mode to grid. */
-  list-style: none;
-  grid-column: 1 / -1;
-  display: grid;
-  /* Explain: set grid column widths to repeat(6, minmax(0, 1fr)). set spacing between children to 12px. set inner spacing to 0. */
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 12px;
-  padding: 0;
-  /* Explain: set outer spacing to 4px 0 0. End this style rule or responsive section. Style .mini-stats li. */
-  margin: 4px 0 0;
-}
-
-.mini-stats li {
-  /* Explain: set background appearance to rgba(148, 163, 184, 0.04). set border appearance to 1px solid var(--line). set corner rounding to 18px. */
-  background: rgba(148, 163, 184, 0.04);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  /* Explain: set inner spacing to 16px 14px. set minimum height to 92px. End this style rule or responsive section. */
-  padding: 16px 14px;
-  min-height: 92px;
-}
-
-/* Explain: Style .mini-stats strong. set layout mode to block. set text size to 1.28rem. */
-.mini-stats strong {
-  display: block;
-  font-size: 1.28rem;
-  /* Explain: set margin bottom to 6px. End this style rule or responsive section. Style .mini-stats span. */
-  margin-bottom: 6px;
-}
-
-.mini-stats span {
-  /* Explain: set text color to var(--muted). set text size to 0.78rem. End this style rule or responsive section. */
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-
-/* Explain: Style .hero-panel. set layout mode to flex. set main-axis distribution to center. */
-.hero-panel {
-  display: flex;
-  justify-content: center;
-/* Explain: End this style rule or responsive section. Style .signal-card. set width to min(100%, 470px). */
-}
-
-.signal-card {
-  width: min(100%, 470px);
-  /* Explain: set background appearance to linear-gradient(180deg, #131313, #070707). set border appearance to 1px solid rgba(148, 163, 184, 0.18). set corner rounding to 26px. */
-  background: linear-gradient(180deg, #131313, #070707);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: 26px;
-  /* Explain: set inner spacing to 22px 24px. set shadow to var(--shadow). End this style rule or responsive section. */
-  padding: 22px 24px;
-  box-shadow: var(--shadow);
-}
-
-/* Explain: Continue the style value .signal-header,. Style .signal-footer. set layout mode to flex. */
-.signal-header,
-.signal-footer {
-  display: flex;
-  /* Explain: set cross-axis alignment to center. set main-axis distribution to space-between. set spacing between children to 12px. */
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-/* Explain: End this style rule or responsive section. Style .signal-label. set text color to var(--muted). */
-}
-
-.signal-label {
-  color: var(--muted);
-  /* Explain: set text weight to 600. End this style rule or responsive section. Style .signal-pill. */
-  font-weight: 600;
-}
-
-.signal-pill {
-  /* Explain: set layout mode to inline-flex. set cross-axis alignment to center. set main-axis distribution to center. */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  /* Explain: set corner rounding to 999px. set inner spacing to 0.4rem 0.7rem. set text size to 0.72rem. */
-  border-radius: 999px;
-  padding: 0.4rem 0.7rem;
-  font-size: 0.72rem;
-  /* Explain: set text weight to 700. set spacing between letters to 0.05em. set text transform to uppercase. */
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-/* Explain: End this style rule or responsive section. Style .signal-pill.high. set background appearance to var(--red-soft). */
-}
-
-.signal-pill.high {
-  background: var(--red-soft);
-  /* Explain: set text color to #ffffff. End this style rule or responsive section. Style .signal-number. */
-  color: #ffffff;
-}
-
-.signal-number {
-  /* Explain: set margin top to 14px. set text size to clamp(2.6rem, 5vw, 3.8rem). set text weight to 800. */
-  margin-top: 14px;
-  font-size: clamp(2.6rem, 5vw, 3.8rem);
-  font-weight: 800;
-  /* Explain: set spacing between letters to -0.05em. End this style rule or responsive section. Style .signal-subtitle. */
-  letter-spacing: -0.05em;
-}
-
-.signal-subtitle {
-  /* Explain: set text color to var(--muted). set margin bottom to 18px. End this style rule or responsive section. */
-  color: var(--muted);
-  margin-bottom: 18px;
-}
-
-/* Explain: Style .chart-bars. set layout mode to flex. set cross-axis alignment to end. */
-.chart-bars {
-  display: flex;
-  align-items: end;
-  /* Explain: set spacing between children to 12px. set height to 108px. set inner spacing to 16px 12px 8px. */
-  gap: 12px;
-  height: 108px;
-  padding: 16px 12px 8px;
-  /* Explain: set corner rounding to 16px. set background appearance to linear-gradient(180deg, rgba(103, 199, 255, 0.0. set border appearance to 1px solid rgba(148, 163, 184, 0.12). */
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(103, 199, 255, 0.08), rgba(148, 163, 184, 0.02));
-  border: 1px solid rgba(148, 163, 184, 0.12);
-/* Explain: End this style rule or responsive section. Style .chart-bars span. set flex to 1. */
-}
-
-.chart-bars span {
-  flex: 1;
-  /* Explain: set corner rounding to 999px 999px 0 0. set background appearance to linear-gradient(180deg, #ffffff, #6a6a6a). set shadow to 0 10px 25px rgba(255, 255, 255, 0.08). */
-  border-radius: 999px 999px 0 0;
-  background: linear-gradient(180deg, #ffffff, #6a6a6a);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08);
-/* Explain: End this style rule or responsive section. Style .signal-footer. set margin top to 14px. */
-}
-
-.signal-footer {
-  margin-top: 14px;
-/* Explain: End this style rule or responsive section. Style .signal-footer small. set layout mode to block. */
-}
-
-.signal-footer small {
-  display: block;
-  /* Explain: set text color to var(--muted). set margin bottom to 4px. End this style rule or responsive section. */
-  color: var(--muted);
-  margin-bottom: 4px;
-}
-
-/* Explain: Style .metrics. set layout mode to grid. set grid column widths to repeat(3, minmax(0, 1fr)). */
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  /* Explain: set spacing between children to 16px. set inner spacing to 12px 0 24px. End this style rule or responsive section. */
-  gap: 16px;
-  padding: 12px 0 24px;
-}
-
-/* Explain: Style .metric-card. set background appearance to rgba(148, 163, 184, 0.04). set border appearance to 1px solid var(--line). */
-.metric-card {
-  background: rgba(148, 163, 184, 0.04);
-  border: 1px solid var(--line);
-  /* Explain: set corner rounding to 22px. set inner spacing to 24px. set text color to inherit. */
-  border-radius: 22px;
-  padding: 24px;
-  color: inherit;
-  /* Explain: set text decoration to none. set layout mode to block. End this style rule or responsive section. */
-  text-decoration: none;
-  display: block;
-}
-
-/* Explain: Style a.metric-card:hover. set border color to rgba(255, 255, 255, 0.45). End this style rule or responsive section. */
-a.metric-card:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-}
-
-/* Explain: Style .metric-card h3. set outer spacing to 10px 0 6px. set text size to 1.4rem. */
-.metric-card h3 {
-  margin: 10px 0 6px;
-  font-size: 1.4rem;
-/* Explain: End this style rule or responsive section. Style .metric-card p. set outer spacing to 0 0 20px. */
-}
-
-.metric-card p {
-  margin: 0 0 20px;
-  /* Explain: set text color to var(--muted). set line spacing to 1.6. End this style rule or responsive section. */
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* Explain: Style .metric-card strong. set text size to 1.6rem. set text weight to 800. */
-.metric-card strong {
-  font-size: 1.6rem;
-  font-weight: 800;
-/* Explain: End this style rule or responsive section. Style .card-kicker. set text color to var(--muted). */
-}
-
-.card-kicker {
-  color: var(--muted);
-  /* Explain: set text size to 0.76rem. set text transform to uppercase. set spacing between letters to 0.1em. */
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  /* Explain: set text weight to 700. End this style rule or responsive section. Style .accent-red. */
-  font-weight: 700;
-}
-
-.accent-red {
-  /* Explain: set border top to 3px solid var(--red). End this style rule or responsive section. Style .accent-amber. */
-  border-top: 3px solid var(--red);
-}
-
-.accent-amber {
-  /* Explain: set border top to 3px solid var(--amber). End this style rule or responsive section. Style .accent-blue. */
-  border-top: 3px solid var(--amber);
-}
-
-.accent-blue {
-  /* Explain: set border top to 3px solid var(--blue). End this style rule or responsive section. Style .city-section. */
-  border-top: 3px solid var(--blue);
-}
-
-.city-section {
-  /* Explain: set inner spacing to 32px 0 10px. End this style rule or responsive section. Style .section-heading. */
-  padding: 32px 0 10px;
-}
-
-.section-heading {
-  /* Explain: set layout mode to flex. set cross-axis alignment to end. set main-axis distribution to space-between. */
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  /* Explain: set spacing between children to 18px. set margin bottom to 18px. End this style rule or responsive section. */
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-/* Explain: Style .section-heading h2. set outer spacing to 0. set text size to clamp(2rem, 3vw, 3rem). */
-.section-heading h2 {
-  margin: 0;
-  font-size: clamp(2rem, 3vw, 3rem);
-  /* Explain: set spacing between letters to -0.04em. End this style rule or responsive section. Style .legend. */
-  letter-spacing: -0.04em;
-}
-
-.legend {
-  /* Explain: set layout mode to flex. set whether flex items wrap to wrap. set spacing between children to 14px. */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  /* Explain: set text color to var(--muted). set text size to 0.82rem. End this style rule or responsive section. */
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-/* Explain: Style .dot. set width to 10px. set height to 10px. */
-.dot {
-  width: 10px;
-  height: 10px;
-  /* Explain: set layout mode to inline-block. set corner rounding to 50%. set margin right to 8px. */
-  display: inline-block;
-  border-radius: 50%;
-  margin-right: 8px;
-/* Explain: End this style rule or responsive section. Style .high-dot; set background appearance to var(--red). Style .medium-dot; set background appearance to var(--amber). */
-}
-
-.high-dot { background: var(--red); }
-.medium-dot { background: var(--amber); }
-/* Explain: Style .low-dot; set background appearance to var(--green). Style .city-table. set layout mode to grid. */
-.low-dot { background: var(--green); }
-
-.city-table {
-  display: grid;
-  /* Explain: set spacing between children to 12px. End this style rule or responsive section. Style .city-row. */
-  gap: 12px;
-}
-
-.city-row {
-  /* Explain: set layout mode to grid. set grid column widths to minmax(120px, 1.1fr) minmax(180px, 2fr) minmax(. set spacing between children to 18px. */
-  display: grid;
-  grid-template-columns: minmax(120px, 1.1fr) minmax(180px, 2fr) minmax(110px, 1fr) minmax(110px, 1fr) minmax(120px, 1fr);
-  gap: 18px;
-  /* Explain: set cross-axis alignment to center. set inner spacing to 18px 20px. set border appearance to 1px solid var(--line). */
-  align-items: center;
-  padding: 18px 20px;
-  border: 1px solid var(--line);
-  /* Explain: set corner rounding to 18px. set background appearance to rgba(148, 163, 184, 0.03). set text color to inherit. */
-  border-radius: 18px;
-  background: rgba(148, 163, 184, 0.03);
-  color: inherit;
-  /* Explain: set text decoration to none. set pointer appearance to pointer. End this style rule or responsive section. */
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Explain: Style a.city-row:hover. set border color to rgba(255, 255, 255, 0.45). End this style rule or responsive section. */
-a.city-row:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-}
-
-/* Explain: Style .city-name. set text weight to 700. set text size to 1.06rem. */
-.city-name {
-  font-weight: 700;
-  font-size: 1.06rem;
-/* Explain: End this style rule or responsive section. Style .bar-wrap. set layout mode to flex. */
-}
-
-.bar-wrap {
   display: flex;
   /* Explain: set cross-axis alignment to center. set spacing between children to 12px. End this style rule or responsive section. */
   align-items: center;
   gap: 12px;
 }
 
-/* Explain: Style .city-bar. set positioning mode to relative. set flex to 1. */
-.city-bar {
-  position: relative;
-  flex: 1;
-  /* Explain: set height to 10px. set corner rounding to 999px. set overflow handling to hidden. */
-  height: 10px;
-  border-radius: 999px;
-  overflow: hidden;
-  /* Explain: set background appearance to rgba(148, 163, 184, 0.12). End this style rule or responsive section. Style .city-bar span. */
-  background: rgba(148, 163, 184, 0.12);
-}
-
-.city-bar span {
-  /* Explain: set positioning mode to absolute. set inset to 0 auto 0 0. set corner rounding to inherit. */
-  position: absolute;
-  inset: 0 auto 0 0;
-  border-radius: inherit;
-  /* Explain: set background appearance to linear-gradient(90deg, #ffffff, #757575). End this style rule or responsive section. Style .bar-meta. */
-  background: linear-gradient(90deg, #ffffff, #757575);
-}
-
-.bar-meta {
-  /* Explain: set text color to var(--muted). set text size to 0.76rem. End this style rule or responsive section. */
-  color: var(--muted);
-  font-size: 0.76rem;
-}
-
-/* Explain: Style .city-row .metric. set text weight to 600. End this style rule or responsive section. */
-.city-row .metric {
-  font-weight: 600;
-}
-
-/* Explain: Style .city-row .trend. set text weight to 700. End this style rule or responsive section. */
-.city-row .trend {
-  font-weight: 700;
-}
-
-/* Explain: Style .trend.up. set text color to #ffffff. set text weight to 700. */
-.trend.up {
-  color: #ffffff;
-  font-weight: 700;
-/* Explain: End this style rule or responsive section. Style .trend.down. set text color to #8f8f8f. */
-}
-
-.trend.down {
-  color: #8f8f8f;
-/* Explain: End this style rule or responsive section. Style .alert-panel. set margin top to 32px. */
-}
-
-.alert-panel {
-  margin-top: 32px;
-  /* Explain: set margin bottom to 72px. set layout mode to grid. set grid column widths to 1.1fr 0.9fr. */
-  margin-bottom: 72px;
+/* Explain: Style .brand-mark. set width to 40px. set height to 40px. */
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  /* Explain: set corner rounding to 12px. set layout mode to grid. set place items to center. */
+  border-radius: 12px;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  /* Explain: set spacing between children to 22px. set inner spacing to 26px 28px. set background appearance to rgba(13, 13, 13, 0.9). */
-  gap: 22px;
-  padding: 26px 28px;
-  background: rgba(13, 13, 13, 0.9);
-  /* Explain: set border appearance to 1px solid var(--line). set corner rounding to 24px. End this style rule or responsive section. */
-  border: 1px solid var(--line);
-  border-radius: 24px;
+  place-items: center;
+  /* Explain: set background appearance to #ffffff. set text color to #000000. set text weight to 800. */
+  background: #ffffff;
+  color: #000000;
+  font-weight: 800;
+/* Explain: End this style rule or responsive section. Style .brand-title. set text weight to 700. */
 }
 
-/* Explain: Style .alert-copy h2. set outer spacing to 0 0 12px. set text size to clamp(2rem, 3vw, 2.8rem). */
-.alert-copy h2 {
-  margin: 0 0 12px;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  /* Explain: set spacing between letters to -0.05em. End this style rule or responsive section. Style .alert-copy p. */
+.brand-title {
+  font-weight: 700;
+  /* Explain: set line spacing to 1.1. End this style rule or responsive section. Style .brand-subtitle. */
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  /* Explain: set text color to var(--muted). set text size to 0.72rem. End this style rule or responsive section. */
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+/* Explain: Style .menu. set layout mode to flex. set cross-axis alignment to center. */
+.menu {
+  display: flex;
+  align-items: center;
+  /* Explain: set spacing between children to 28px. End this style rule or responsive section. Style .menu a. */
+  gap: 28px;
+}
+
+.menu a {
+  /* Explain: set text color to var(--muted). set text decoration to none. set text size to 0.95rem. */
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+/* Explain: End this style rule or responsive section. Continue the style value .primary-btn,. Style .secondary-btn. */
+}
+
+.primary-btn,
+.secondary-btn {
+  /* Explain: set layout mode to inline-block. set corner rounding to 12px. set inner spacing to 0.9rem 1.2rem. */
+  display: inline-block;
+  border-radius: 12px;
+  padding: 0.9rem 1.2rem;
+  /* Explain: set text weight to 600. set text decoration to none. set animated property transitions to transform 0.2s ease, opacity 0.2s ease. */
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+/* Explain: End this style rule or responsive section. Style .primary-btn. set background appearance to #ffffff. */
+}
+
+.primary-btn {
+  background: #ffffff;
+  /* Explain: set text color to #000000. set shadow to var(--shadow). End this style rule or responsive section. */
+  color: #000000;
+  box-shadow: var(--shadow);
+}
+
+/* Explain: Style .secondary-btn. set background appearance to rgba(148, 163, 184, 0.08). set text color to var(--text). */
+.secondary-btn {
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--text);
+  /* Explain: set border appearance to 1px solid rgba(148, 163, 184, 0.18). End this style rule or responsive section. set primary btn to hover,. */
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.primary-btn:hover,
+/* Explain: Style .secondary-btn:hover. set visual transform to translateY(-1px). set transparency to 0.97. */
+.secondary-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.97;
+/* Explain: End this style rule or responsive section. Style .hero. set layout mode to grid. */
+}
+
+.hero {
+  display: grid;
+  /* Explain: set grid column widths to 1.1fr 0.9fr. set cross-axis alignment to center. set spacing between children to 28px 36px. */
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 28px 36px;
+  /* Explain: set inner spacing to 36px 0 20px. End this style rule or responsive section. Style .eyebrow. */
+  padding: 36px 0 20px;
+}
+
+.eyebrow {
+  /* Explain: set layout mode to inline-block. set outer spacing to 0 0 16px. set text size to 0.75rem. */
+  display: inline-block;
+  margin: 0 0 16px;
+  font-size: 0.75rem;
+  /* Explain: set spacing between letters to 0.12em. set text transform to uppercase. set text color to var(--blue). */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  /* Explain: set text weight to 700. End this style rule or responsive section. Style .hero-copy h1. */
+  font-weight: 700;
+}
+
+.hero-copy h1 {
+  /* Explain: set outer spacing to 0. set text size to clamp(2.2rem, 4.2vw, 3.6rem). set line spacing to 1.05. */
+  margin: 0;
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+  line-height: 1.05;
+  /* Explain: set spacing between letters to -0.05em. End this style rule or responsive section. Style .lede. */
   letter-spacing: -0.05em;
 }
 
-.alert-copy p {
-  /* Explain: set text color to var(--muted). set line spacing to 1.7. set outer spacing to 0. */
+.lede {
+  /* Explain: set margin top to 14px. set maximum width to 620px. set text size to 1rem. */
+  margin-top: 14px;
+  max-width: 620px;
+  font-size: 1rem;
+  /* Explain: set line spacing to 1.6. set text color to var(--muted). End this style rule or responsive section. */
+  line-height: 1.6;
   color: var(--muted);
-  line-height: 1.7;
-  margin: 0;
-/* Explain: End this style rule or responsive section. Style .alert-list. set layout mode to grid. */
 }
 
-.alert-list {
+/* Explain: Style .hero-actions. set layout mode to flex. set whether flex items wrap to wrap. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  /* Explain: set spacing between children to 12px. set margin top to 22px. End this style rule or responsive section. */
+  gap: 12px;
+  margin-top: 22px;
+}
+
+/* Explain: Style .mini-stats. set list markers to none. set grid column to 1 / -1. */
+.mini-stats {
+  list-style: none;
+  grid-column: 1 / -1;
+  /* Explain: set layout mode to grid. set grid column widths to repeat(6, minmax(0, 1fr)). set spacing between children to 12px. */
   display: grid;
-  /* Explain: set spacing between children to 12px. End this style rule or responsive section. Style .alert-item. */
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  /* Explain: set inner spacing to 0. set outer spacing to 4px 0 0. End this style rule or responsive section. */
+  padding: 0;
+  margin: 4px 0 0;
+}
+
+/* Explain: Style .mini-stats li. set background appearance to rgba(148, 163, 184, 0.04). set border appearance to 1px solid var(--line). */
+.mini-stats li {
+  background: rgba(148, 163, 184, 0.04);
+  border: 1px solid var(--line);
+  /* Explain: set corner rounding to 18px. set inner spacing to 16px 14px. set minimum height to 92px. */
+  border-radius: 18px;
+  padding: 16px 14px;
+  min-height: 92px;
+/* Explain: End this style rule or responsive section. Style .mini-stats strong. set layout mode to block. */
+}
+
+.mini-stats strong {
+  display: block;
+  /* Explain: set text size to 1.28rem. set margin bottom to 6px. End this style rule or responsive section. */
+  font-size: 1.28rem;
+  margin-bottom: 6px;
+}
+
+/* Explain: Style .mini-stats span. set text color to var(--muted). set text size to 0.78rem. */
+.mini-stats span {
+  color: var(--muted);
+  font-size: 0.78rem;
+/* Explain: End this style rule or responsive section. Style .hero-panel. set layout mode to flex. */
+}
+
+.hero-panel {
+  display: flex;
+  /* Explain: set main-axis distribution to center. End this style rule or responsive section. Style .signal-card. */
+  justify-content: center;
+}
+
+.signal-card {
+  /* Explain: set width to min(100%, 470px). set background appearance to linear-gradient(180deg, #131313, #070707). set border appearance to 1px solid rgba(148, 163, 184, 0.18). */
+  width: min(100%, 470px);
+  background: linear-gradient(180deg, #131313, #070707);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  /* Explain: set corner rounding to 26px. set inner spacing to 22px 24px. set shadow to var(--shadow). */
+  border-radius: 26px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+/* Explain: End this style rule or responsive section. Continue the style value .signal-header,. Style .signal-footer. */
+}
+
+.signal-header,
+.signal-footer {
+  /* Explain: set layout mode to flex. set cross-axis alignment to center. set main-axis distribution to space-between. */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Explain: set spacing between children to 12px. End this style rule or responsive section. Style .signal-label. */
   gap: 12px;
 }
 
-.alert-item {
-  /* Explain: set layout mode to grid. set grid column widths to 86px 1fr. set spacing between children to 14px. */
-  display: grid;
-  grid-template-columns: 86px 1fr;
-  gap: 14px;
-  /* Explain: set cross-axis alignment to center. set inner spacing to 16px 18px. set corner rounding to 16px. */
-  align-items: center;
-  padding: 16px 18px;
-  border-radius: 16px;
-  /* Explain: set background appearance to rgba(148, 163, 184, 0.04). set border appearance to 1px solid var(--line). End this style rule or responsive section. */
-  background: rgba(148, 163, 184, 0.04);
-  border: 1px solid var(--line);
+.signal-label {
+  /* Explain: set text color to var(--muted). set text weight to 600. End this style rule or responsive section. */
+  color: var(--muted);
+  font-weight: 600;
 }
 
-/* Explain: Style .time. set layout mode to inline-flex. set cross-axis alignment to center. */
-.time {
+/* Explain: Style .signal-pill. set layout mode to inline-flex. set cross-axis alignment to center. */
+.signal-pill {
   display: inline-flex;
   align-items: center;
-  /* Explain: set main-axis distribution to center. set minimum height to 42px. set corner rounding to 12px. */
+  /* Explain: set main-axis distribution to center. set corner rounding to 999px. set inner spacing to 0.4rem 0.7rem. */
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  /* Explain: set text size to 0.72rem. set text weight to 700. set spacing between letters to 0.05em. */
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  /* Explain: set text transform to uppercase. End this style rule or responsive section. Style .signal-pill.high. */
+  text-transform: uppercase;
+}
+
+.signal-pill.high {
+  /* Explain: set background appearance to var(--red-soft). set text color to #ffffff. End this style rule or responsive section. */
+  background: var(--red-soft);
+  color: #ffffff;
+}
+
+/* Explain: Style .signal-number. set margin top to 14px. set text size to clamp(2.6rem, 5vw, 3.8rem). */
+.signal-number {
+  margin-top: 14px;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  /* Explain: set text weight to 800. set spacing between letters to -0.05em. End this style rule or responsive section. */
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+/* Explain: Style .signal-subtitle. set text color to var(--muted). set margin bottom to 18px. */
+.signal-subtitle {
+  color: var(--muted);
+  margin-bottom: 18px;
+/* Explain: End this style rule or responsive section. Style .chart-bars. set layout mode to flex. */
+}
+
+.chart-bars {
+  display: flex;
+  /* Explain: set cross-axis alignment to end. set spacing between children to 12px. set height to 108px. */
+  align-items: end;
+  gap: 12px;
+  height: 108px;
+  /* Explain: set inner spacing to 16px 12px 8px. set corner rounding to 16px. set background appearance to linear-gradient(180deg, rgba(103, 199, 255, 0.0. */
+  padding: 16px 12px 8px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(103, 199, 255, 0.08), rgba(148, 163, 184, 0.02));
+  /* Explain: set border appearance to 1px solid rgba(148, 163, 184, 0.12). End this style rule or responsive section. Style .chart-bars span. */
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.chart-bars span {
+  /* Explain: set flex to 1. set corner rounding to 999px 999px 0 0. set background appearance to linear-gradient(180deg, #ffffff, #6a6a6a). */
+  flex: 1;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(180deg, #ffffff, #6a6a6a);
+  /* Explain: set shadow to 0 10px 25px rgba(255, 255, 255, 0.08). End this style rule or responsive section. Style .signal-footer. */
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08);
+}
+
+.signal-footer {
+  /* Explain: set margin top to 14px. End this style rule or responsive section. Style .signal-footer small. */
+  margin-top: 14px;
+}
+
+.signal-footer small {
+  /* Explain: set layout mode to block. set text color to var(--muted). set margin bottom to 4px. */
+  display: block;
+  color: var(--muted);
+  margin-bottom: 4px;
+/* Explain: End this style rule or responsive section. Style .metrics. set layout mode to grid. */
+}
+
+.metrics {
+  display: grid;
+  /* Explain: set grid column widths to repeat(3, minmax(0, 1fr)). set spacing between children to 16px. set inner spacing to 12px 0 24px. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 12px 0 24px;
+/* Explain: End this style rule or responsive section. Style .metric-card. set background appearance to rgba(148, 163, 184, 0.04). */
+}
+
+.metric-card {
+  background: rgba(148, 163, 184, 0.04);
+  /* Explain: set border appearance to 1px solid var(--line). set corner rounding to 22px. set inner spacing to 24px. */
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 24px;
+  /* Explain: set text color to inherit. set text decoration to none. set layout mode to block. */
+  color: inherit;
+  text-decoration: none;
+  display: block;
+/* Explain: End this style rule or responsive section. Style a.metric-card:hover. set border color to rgba(255, 255, 255, 0.45). */
+}
+
+a.metric-card:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+/* Explain: End this style rule or responsive section. Style .metric-card h3. set outer spacing to 10px 0 6px. */
+}
+
+.metric-card h3 {
+  margin: 10px 0 6px;
+  /* Explain: set text size to 1.4rem. End this style rule or responsive section. Style .metric-card p. */
+  font-size: 1.4rem;
+}
+
+.metric-card p {
+  /* Explain: set outer spacing to 0 0 20px. set text color to var(--muted). set line spacing to 1.6. */
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.6;
+/* Explain: End this style rule or responsive section. Style .metric-card strong. set text size to 1.6rem. */
+}
+
+.metric-card strong {
+  font-size: 1.6rem;
+  /* Explain: set text weight to 800. End this style rule or responsive section. Style .card-kicker. */
+  font-weight: 800;
+}
+
+.card-kicker {
+  /* Explain: set text color to var(--muted). set text size to 0.76rem. set text transform to uppercase. */
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  /* Explain: set spacing between letters to 0.1em. set text weight to 700. End this style rule or responsive section. */
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+/* Explain: Style .accent-red. set border top to 3px solid var(--red). End this style rule or responsive section. */
+.accent-red {
+  border-top: 3px solid var(--red);
+}
+
+/* Explain: Style .accent-amber. set border top to 3px solid var(--amber). End this style rule or responsive section. */
+.accent-amber {
+  border-top: 3px solid var(--amber);
+}
+
+/* Explain: Style .accent-blue. set border top to 3px solid var(--blue). End this style rule or responsive section. */
+.accent-blue {
+  border-top: 3px solid var(--blue);
+}
+
+/* Explain: Style .city-section. set inner spacing to 32px 0 10px. End this style rule or responsive section. */
+.city-section {
+  padding: 32px 0 10px;
+}
+
+/* Explain: Style .section-heading. set layout mode to flex. set cross-axis alignment to end. */
+.section-heading {
+  display: flex;
+  align-items: end;
+  /* Explain: set main-axis distribution to space-between. set spacing between children to 18px. set margin bottom to 18px. */
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+/* Explain: End this style rule or responsive section. Style .section-heading h2. set outer spacing to 0. */
+}
+
+.section-heading h2 {
+  margin: 0;
+  /* Explain: set text size to clamp(2rem, 3vw, 3rem). set spacing between letters to -0.04em. End this style rule or responsive section. */
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: -0.04em;
+}
+
+/* Explain: Style .legend. set layout mode to flex. set whether flex items wrap to wrap. */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  /* Explain: set spacing between children to 14px. set text color to var(--muted). set text size to 0.82rem. */
+  gap: 14px;
+  color: var(--muted);
+  font-size: 0.82rem;
+/* Explain: End this style rule or responsive section. Style .dot. set width to 10px. */
+}
+
+.dot {
+  width: 10px;
+  /* Explain: set height to 10px. set layout mode to inline-block. set corner rounding to 50%. */
+  height: 10px;
+  display: inline-block;
+  border-radius: 50%;
+  /* Explain: set margin right to 8px. End this style rule or responsive section. Style .high-dot; set background appearance to var(--red). */
+  margin-right: 8px;
+}
+
+.high-dot { background: var(--red); }
+/* Explain: Style .medium-dot; set background appearance to var(--amber). Style .low-dot; set background appearance to var(--green). Style .city-table. */
+.medium-dot { background: var(--amber); }
+.low-dot { background: var(--green); }
+
+.city-table {
+  /* Explain: set layout mode to grid. set spacing between children to 12px. End this style rule or responsive section. */
+  display: grid;
+  gap: 12px;
+}
+
+/* Explain: Style .city-row. set layout mode to grid. set grid column widths to minmax(120px, 1.1fr) minmax(180px, 2fr) minmax(. */
+.city-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1.1fr) minmax(180px, 2fr) minmax(110px, 1fr) minmax(110px, 1fr) minmax(120px, 1fr);
+  /* Explain: set spacing between children to 18px. set cross-axis alignment to center. set inner spacing to 18px 20px. */
+  gap: 18px;
+  align-items: center;
+  padding: 18px 20px;
+  /* Explain: set border appearance to 1px solid var(--line). set corner rounding to 18px. set background appearance to rgba(148, 163, 184, 0.03). */
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(148, 163, 184, 0.03);
+  /* Explain: set text color to inherit. set text decoration to none. set pointer appearance to pointer. */
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+/* Explain: End this style rule or responsive section. Style a.city-row:hover. set border color to rgba(255, 255, 255, 0.45). */
+}
+
+a.city-row:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+/* Explain: End this style rule or responsive section. Style .city-name. set text weight to 700. */
+}
+
+.city-name {
+  font-weight: 700;
+  /* Explain: set text size to 1.06rem. End this style rule or responsive section. Style .bar-wrap. */
+  font-size: 1.06rem;
+}
+
+.bar-wrap {
+  /* Explain: set layout mode to flex. set cross-axis alignment to center. set spacing between children to 12px. */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+/* Explain: End this style rule or responsive section. Style .city-bar. set positioning mode to relative. */
+}
+
+.city-bar {
+  position: relative;
+  /* Explain: set flex to 1. set height to 10px. set corner rounding to 999px. */
+  flex: 1;
+  height: 10px;
+  border-radius: 999px;
+  /* Explain: set overflow handling to hidden. set background appearance to rgba(148, 163, 184, 0.12). End this style rule or responsive section. */
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+/* Explain: Style .city-bar span. set positioning mode to absolute. set inset to 0 auto 0 0. */
+.city-bar span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  /* Explain: set corner rounding to inherit. set background appearance to linear-gradient(90deg, #ffffff, #757575). End this style rule or responsive section. */
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffffff, #757575);
+}
+
+/* Explain: Style .bar-meta. set text color to var(--muted). set text size to 0.76rem. */
+.bar-meta {
+  color: var(--muted);
+  font-size: 0.76rem;
+/* Explain: End this style rule or responsive section. Style .city-row .metric. set text weight to 600. */
+}
+
+.city-row .metric {
+  font-weight: 600;
+/* Explain: End this style rule or responsive section. Style .city-row .trend. set text weight to 700. */
+}
+
+.city-row .trend {
+  font-weight: 700;
+/* Explain: End this style rule or responsive section. Style .trend.up. set text color to #ffffff. */
+}
+
+.trend.up {
+  color: #ffffff;
+  /* Explain: set text weight to 700. End this style rule or responsive section. Style .trend.down. */
+  font-weight: 700;
+}
+
+.trend.down {
+  /* Explain: set text color to #8f8f8f. End this style rule or responsive section. Style .alert-panel. */
+  color: #8f8f8f;
+}
+
+.alert-panel {
+  /* Explain: set margin top to 32px. set margin bottom to 72px. set layout mode to grid. */
+  margin-top: 32px;
+  margin-bottom: 72px;
+  display: grid;
+  /* Explain: set grid column widths to 1.1fr 0.9fr. set spacing between children to 22px. set inner spacing to 26px 28px. */
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 22px;
+  padding: 26px 28px;
+  /* Explain: set background appearance to rgba(13, 13, 13, 0.9). set border appearance to 1px solid var(--line). set corner rounding to 24px. */
+  background: rgba(13, 13, 13, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+/* Explain: End this style rule or responsive section. Style .alert-copy h2. set outer spacing to 0 0 12px. */
+}
+
+.alert-copy h2 {
+  margin: 0 0 12px;
+  /* Explain: set text size to clamp(2rem, 3vw, 2.8rem). set spacing between letters to -0.05em. End this style rule or responsive section. */
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  letter-spacing: -0.05em;
+}
+
+/* Explain: Style .alert-copy p. set text color to var(--muted). set line spacing to 1.7. */
+.alert-copy p {
+  color: var(--muted);
+  line-height: 1.7;
+  /* Explain: set outer spacing to 0. End this style rule or responsive section. Style .alert-list. */
+  margin: 0;
+}
+
+.alert-list {
+  /* Explain: set layout mode to grid. set spacing between children to 12px. End this style rule or responsive section. */
+  display: grid;
+  gap: 12px;
+}
+
+/* Explain: Style .alert-item. set layout mode to grid. set grid column widths to 86px 1fr. */
+.alert-item {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  /* Explain: set spacing between children to 14px. set cross-axis alignment to center. set inner spacing to 16px 18px. */
+  gap: 14px;
+  align-items: center;
+  padding: 16px 18px;
+  /* Explain: set corner rounding to 16px. set background appearance to rgba(148, 163, 184, 0.04). set border appearance to 1px solid var(--line). */
+  border-radius: 16px;
+  background: rgba(148, 163, 184, 0.04);
+  border: 1px solid var(--line);
+/* Explain: End this style rule or responsive section. Style .time. set layout mode to inline-flex. */
+}
+
+.time {
+  display: inline-flex;
+  /* Explain: set cross-axis alignment to center. set main-axis distribution to center. set minimum height to 42px. */
+  align-items: center;
   justify-content: center;
   min-height: 42px;
+  /* Explain: set corner rounding to 12px. set background appearance to rgba(255, 255, 255, 0.1). set text color to #ffffff. */
   border-radius: 12px;
-  /* Explain: set background appearance to rgba(255, 255, 255, 0.1). set text color to #ffffff. set text weight to 700. */
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+  /* Explain: set text weight to 700. End this style rule or responsive section. Style .alert-item strong. */
   font-weight: 700;
-/* Explain: End this style rule or responsive section. Style .alert-item strong. set layout mode to block. */
 }
 
 .alert-item strong {
+  /* Explain: set layout mode to block. set margin bottom to 4px. End this style rule or responsive section. */
   display: block;
-  /* Explain: set margin bottom to 4px. End this style rule or responsive section. Style .alert-item small. */
   margin-bottom: 4px;
 }
 
+/* Explain: Style .alert-item small. set text color to var(--muted). End this style rule or responsive section. */
 .alert-item small {
-  /* Explain: set text color to var(--muted). End this style rule or responsive section. Apply the following rules only when (max-width: 1100px). */
   color: var(--muted);
 }
 
+/* Explain: Apply the following rules only when (max-width: 1100px). Style .mini-stats. set grid column widths to repeat(3, minmax(0, 1fr)). */
 @media (max-width: 1100px) {
-  /* Explain: Style .mini-stats. set grid column widths to repeat(3, minmax(0, 1fr)). End this style rule or responsive section. */
   .mini-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Explain: End this style rule or responsive section. Apply the following rules only when (max-width: 900px). */
   }
-/* Explain: End this style rule or responsive section. Apply the following rules only when (max-width: 900px). Continue the style value .hero,. */
 }
 
 @media (max-width: 900px) {
+  /* Explain: Continue the style value .hero,. Style .alert-panel. set grid column widths to 1fr. */
   .hero,
-  /* Explain: Style .alert-panel. set grid column widths to 1fr. End this style rule or responsive section. */
   .alert-panel {
     grid-template-columns: 1fr;
+  /* Explain: End this style rule or responsive section. Style .mini-stats. set grid column widths to repeat(3, minmax(0, 1fr)). */
   }
 
-  /* Explain: Style .mini-stats. set grid column widths to repeat(3, minmax(0, 1fr)). End this style rule or responsive section. */
   .mini-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Explain: End this style rule or responsive section. Style .metrics. set grid column widths to 1fr. */
   }
 
-  /* Explain: Style .metrics. set grid column widths to 1fr. End this style rule or responsive section. */
   .metrics {
     grid-template-columns: 1fr;
+  /* Explain: End this style rule or responsive section. Style .menu. set layout mode to none. */
   }
 
-  /* Explain: Style .menu. set layout mode to none. End this style rule or responsive section. */
   .menu {
     display: none;
+  /* Explain: End this style rule or responsive section. Apply the following rules only when (max-width: 640px). */
   }
-/* Explain: End this style rule or responsive section. Apply the following rules only when (max-width: 640px). Style .nav. */
 }
 
 @media (max-width: 640px) {
+  /* Explain: Style .nav. set main-axis distribution to center. set inner spacing to 16px 0. */
   .nav {
-    /* Explain: set main-axis distribution to center. set inner spacing to 16px 0. End this style rule or responsive section. */
     justify-content: center;
     padding: 16px 0;
+  /* Explain: End this style rule or responsive section. Style .topbar. set positioning mode to relative. */
   }
 
-  /* Explain: Style .topbar. set positioning mode to relative. End this style rule or responsive section. */
   .topbar {
     position: relative;
+  /* Explain: End this style rule or responsive section. Continue the style value .primary-btn,. Style .secondary-btn. */
   }
 
-  /* Explain: Continue the style value .primary-btn,. Style .secondary-btn. set width to 100%. */
   .primary-btn,
   .secondary-btn {
+    /* Explain: set width to 100%. End this style rule or responsive section. Style .hero-actions. */
     width: 100%;
-  /* Explain: End this style rule or responsive section. Style .hero-actions. set flex layout direction to column. */
   }
 
   .hero-actions {
+    /* Explain: set flex layout direction to column. End this style rule or responsive section. Style .mini-stats. */
     flex-direction: column;
-  /* Explain: End this style rule or responsive section. Style .mini-stats. set grid column widths to repeat(2, minmax(0, 1fr)). */
   }
 
   .mini-stats {
+    /* Explain: set grid column widths to repeat(2, minmax(0, 1fr)). End this style rule or responsive section. Style .city-row. */
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  /* Explain: End this style rule or responsive section. Style .city-row. set grid column widths to 1fr. */
   }
 
   .city-row {
+    /* Explain: set grid column widths to 1fr. set inner spacing to 18px 16px. End this style rule or responsive section. */
     grid-template-columns: 1fr;
-    /* Explain: set inner spacing to 18px 16px. End this style rule or responsive section. Style .section-heading. */
     padding: 18px 16px;
   }
 
+  /* Explain: Style .section-heading. set cross-axis alignment to start. set flex layout direction to column. */
   .section-heading {
-    /* Explain: set cross-axis alignment to start. set flex layout direction to column. End this style rule or responsive section. */
     align-items: start;
     flex-direction: column;
+  /* Explain: End this style rule or responsive section. Style :root; set   panel to rgba(25,27,29,.94); set   panel strong to #1d1f21. */
   }
-/* Explain: End this style rule or responsive section. Style :root; set   panel to rgba(25,27,29,.94); set   panel strong to #1d1f21. Style body; set typeface to -apple-system, BlinkMacSystemFont, "Segoe UI", . */
 }
 
 /* Home-page extensions of the shared editorial dark theme. */
 :root { --panel: rgba(25,27,29,.94); --panel-strong: #1d1f21; }
+/* Explain: Style body; set typeface to -apple-system, BlinkMacSystemFont, "Segoe UI", . Style h1, h2, h3; set typeface to Georgia, "Times New Roman", serif; set text weight to 500; set spacing between letters to -.018em !important. Style .signal-card, .mini-stats li, .metric-card, .city-row, .alert-panel; set corner rounding to 4px. */
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-/* Explain: Style h1, h2, h3; set typeface to Georgia, "Times New Roman", serif; set text weight to 500; set spacing between letters to -.018em !important. Style .signal-card, .mini-stats li, .metric-card, .city-row, .alert-panel; set corner rounding to 4px. Style .signal-card; set background appearance to linear-gradient(180deg, #1d1f21, #151718). */
 h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; letter-spacing: -.018em !important; }
 .signal-card, .mini-stats li, .metric-card, .city-row, .alert-panel { border-radius: 4px; }
+/* Explain: Style .signal-card; set background appearance to linear-gradient(180deg, #1d1f21, #151718). Style .hero; set grid column widths to 1.2fr .8fr; set padding top to 40px. Style .signal-card, .mini-stats li, .metric-card, .city-row, .alert-panel. */
 .signal-card { background: linear-gradient(180deg, #1d1f21, #151718); }
 
 /* Homepage components use the same restrained, reference-page grammar. */
-/* Explain: Style .hero; set grid column widths to 1.2fr .8fr; set padding top to 40px. Style .signal-card, .mini-stats li, .metric-card, .city-row, .alert-panel. set background appearance to #202122. */
 .hero { grid-template-columns: 1.2fr .8fr; padding-top: 40px; }
 .signal-card, .mini-stats li, .metric-card, .city-row, .alert-panel {
+  /* Explain: set background appearance to #202122. set border color to #54595d. set corner rounding to 2px. */
   background: #202122;
-  /* Explain: set border color to #54595d. set corner rounding to 2px. set shadow to none. */
   border-color: #54595d;
   border-radius: 2px;
+  /* Explain: set shadow to none. End this style rule or responsive section. Style .signal-card; set background appearance to #202122. */
   box-shadow: none;
-/* Explain: End this style rule or responsive section. Style .signal-card; set background appearance to #202122. Style .chart-bars; set corner rounding to 2px; set background appearance to #27292d. */
 }
 .signal-card { background: #202122; }
+/* Explain: Style .chart-bars; set corner rounding to 2px; set background appearance to #27292d. Style .primary-btn, .secondary-btn; set corner rounding to 2px. Style .primary-btn; set background appearance to #3366cc; set text color to #fff; set shadow to none. */
 .chart-bars { border-radius: 2px; background: #27292d; }
-/* Explain: Style .primary-btn, .secondary-btn; set corner rounding to 2px. Style .primary-btn; set background appearance to #3366cc; set text color to #fff; set shadow to none. Style .secondary-btn; set background appearance to #27292d; set border color to #54595d. */
 .primary-btn, .secondary-btn { border-radius: 2px; }
 .primary-btn { background: #3366cc; color: #fff; box-shadow: none; }
+/* Explain: Style .secondary-btn; set background appearance to #27292d; set border color to #54595d. Style .section-heading h2, .alert-copy h2; set border bottom to 1px solid #54595d; set padding bottom to 7px. Style .city-row; set pointer appearance to default. */
 .secondary-btn { background: #27292d; border-color: #54595d; }
-/* Explain: Style .section-heading h2, .alert-copy h2; set border bottom to 1px solid #54595d; set padding bottom to 7px. Style .city-row; set pointer appearance to default. Style .safeguard-hero; set cross-axis alignment to start; set padding bottom to 46px. */
 .section-heading h2, .alert-copy h2 { border-bottom: 1px solid #54595d; padding-bottom: 7px; }
 .city-row { cursor: default; }
 
 /* Safeguard homepage: fewer decisions, larger actions, clearer status. */
+/* Explain: Style .safeguard-hero; set cross-axis alignment to start; set padding bottom to 46px. Style .status-card; set background appearance to #202122; set border appearance to 1px solid #54595d; set inner spacing to 24px. Style .status-card h2; set outer spacing to 4px 0 8px. */
 .safeguard-hero { align-items: start; padding-bottom: 46px; }
-/* Explain: Style .status-card; set background appearance to #202122; set border appearance to 1px solid #54595d; set inner spacing to 24px. Style .status-card h2; set outer spacing to 4px 0 8px. Style .status-card p; set text color to var(--muted). */
 .status-card { background: #202122; border: 1px solid #54595d; padding: 24px; }
 .status-card h2 { margin: 4px 0 8px; }
+/* Explain: Style .status-card p; set text color to var(--muted). Style .status-dot; set layout mode to block; set width to 12px; set height to 12px; set corner rounding to 50%; set background appearance to #a2a9b1; set margin bottom to 18px. Style .emergency-choice, .how-it-works, .drive-sober; set padding top to 34px; set padding bottom to 34px. */
 .status-card p { color: var(--muted); }
-/* Explain: Style .status-dot; set layout mode to block; set width to 12px; set height to 12px; set corner rounding to 50%; set background appearance to #a2a9b1; set margin bottom to 18px. Style .emergency-choice, .how-it-works, .drive-sober; set padding top to 34px; set padding bottom to 34px. Style .compact-heading; set margin bottom to 20px. */
 .status-dot { display: block; width: 12px; height: 12px; border-radius: 50%; background: #a2a9b1; margin-bottom: 18px; }
 .emergency-choice, .how-it-works, .drive-sober { padding-top: 34px; padding-bottom: 34px; }
+/* Explain: Style .compact-heading; set margin bottom to 20px. Style .choice-grid; set layout mode to grid; set grid column widths to repeat(3, 1fr); set spacing between children to 14px. Style .choice-card; set background appearance to #202122; set border appearance to 1px solid #54595d; set inner spacing to 22px; set layout mode to flex; set flex layout direction to column; set cross-axis alignment to flex-start. */
 .compact-heading { margin-bottom: 20px; }
-/* Explain: Style .choice-grid; set layout mode to grid; set grid column widths to repeat(3, 1fr); set spacing between children to 14px. Style .choice-card; set background appearance to #202122; set border appearance to 1px solid #54595d; set inner spacing to 22px; set layout mode to flex; set flex layout direction to column; set cross-axis alignment to flex-start. Style .choice-card h3; set text size to 1.45rem; set outer spacing to 8px 0. */
 .choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .choice-card { background: #202122; border: 1px solid #54595d; padding: 22px; display: flex; flex-direction: column; align-items: flex-start; }
+/* Explain: Style .choice-card h3; set text size to 1.45rem; set outer spacing to 8px 0. Style .choice-card p; set text color to var(--muted); set flex to 1. Style .choice-card small; set layout mode to block; set margin top to 8px. */
 .choice-card h3 { font-size: 1.45rem; margin: 8px 0; }
-/* Explain: Style .choice-card p; set text color to var(--muted); set flex to 1. Style .choice-card small; set layout mode to block; set margin top to 8px. Style .danger-choice; set border top to 3px solid var(--emergency). */
 .choice-card p { color: var(--muted); flex: 1; }
 .choice-card small { display: block; margin-top: 8px; }
+/* Explain: Style .danger-choice; set border top to 3px solid var(--emergency). Style .sequence-list; set list markers to none; set inner spacing to 0; set outer spacing to 22px 0 14px; set layout mode to grid; set grid column widths to repeat(4, 1fr); set border top to 1px solid #54595d. Style .sequence-list li; set inner spacing to 16px 16px 0 0. */
 .danger-choice { border-top: 3px solid var(--emergency); }
-/* Explain: Style .sequence-list; set list markers to none; set inner spacing to 0; set outer spacing to 22px 0 14px; set layout mode to grid; set grid column widths to repeat(4, 1fr); set border top to 1px solid #54595d. Style .sequence-list li; set inner spacing to 16px 16px 0 0. Style .sequence-list strong, .sequence-list span; set layout mode to block. */
 .sequence-list { list-style: none; padding: 0; margin: 22px 0 14px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #54595d; }
 .sequence-list li { padding: 16px 16px 0 0; }
+/* Explain: Style .sequence-list strong, .sequence-list span; set layout mode to block. Style .sequence-list strong; set typeface to Georgia, serif; set text size to 1.18rem; set margin bottom to 6px. Style .sequence-list span; set text color to var(--muted); set text size to .9rem. */
 .sequence-list strong, .sequence-list span { display: block; }
-/* Explain: Style .sequence-list strong; set typeface to Georgia, serif; set text size to 1.18rem; set margin bottom to 6px. Style .sequence-list span; set text color to var(--muted); set text size to .9rem. Style .drive-sober; set border top to 1px solid #54595d; set border bottom to 1px solid #54595d. */
 .sequence-list strong { font-family: Georgia, serif; font-size: 1.18rem; margin-bottom: 6px; }
 .sequence-list span { color: var(--muted); font-size: .9rem; }
+/* Explain: Style .drive-sober; set border top to 1px solid #54595d; set border bottom to 1px solid #54595d. Style .drive-sober h2, .how-it-works h2; set text size to clamp(1.8rem, 3vw, 2.4rem); set outer spacing to 0 0 12px. Style .local-facts; set layout mode to grid; set grid column widths to 1fr 1fr; set spacing between children to 18px; set margin top to 20px. */
 .drive-sober { border-top: 1px solid #54595d; border-bottom: 1px solid #54595d; }
-/* Explain: Style .drive-sober h2, .how-it-works h2; set text size to clamp(1.8rem, 3vw, 2.4rem); set outer spacing to 0 0 12px. Style .local-facts; set layout mode to grid; set grid column widths to 1fr 1fr; set spacing between children to 18px; set margin top to 20px. Style .local-facts p; set outer spacing to 0; set text color to var(--muted). */
 .drive-sober h2, .how-it-works h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 0 0 12px; }
 .local-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 20px; }
+/* Explain: Style .local-facts p; set outer spacing to 0; set text color to var(--muted). Style .source-links; set layout mode to flex; set whether flex items wrap to wrap; set spacing between children to 8px 16px; set margin top to 20px; set text size to .82rem. Style .auth-dialog; set width to min(420px, calc(100% - 32px)); set inner spacing to 0; set border appearance to 0; set background appearance to transparent; set text color to var(--text). */
 .local-facts p { margin: 0; color: var(--muted); }
-/* Explain: Style .source-links; set layout mode to flex; set whether flex items wrap to wrap; set spacing between children to 8px 16px; set margin top to 20px; set text size to .82rem. Style .auth-dialog; set width to min(420px, calc(100% - 32px)); set inner spacing to 0; set border appearance to 0; set background appearance to transparent; set text color to var(--text). Style .auth-dialog::backdrop; set background appearance to rgba(0, 0, 0, .72). */
 .source-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 20px; font-size: .82rem; }
 .auth-dialog { width: min(420px, calc(100% - 32px)); padding: 0; border: 0; background: transparent; color: var(--text); }
+/* Explain: Style .auth-dialog::backdrop; set background appearance to rgba(0, 0, 0, .72). Style .auth-card; set background appearance to #202122; set border appearance to 1px solid #72777d; set inner spacing to 20px. Style .auth-heading; set layout mode to flex; set cross-axis alignment to center; set main-axis distribution to space-between; set spacing between children to 20px. */
 .auth-dialog::backdrop { background: rgba(0, 0, 0, .72); }
-/* Explain: Style .auth-card; set background appearance to #202122; set border appearance to 1px solid #72777d; set inner spacing to 20px. Style .auth-heading; set layout mode to flex; set cross-axis alignment to center; set main-axis distribution to space-between; set spacing between children to 20px. Style .auth-heading h2; set outer spacing to 0; set text size to 1.7rem. */
 .auth-card { background: #202122; border: 1px solid #72777d; padding: 20px; }
 .auth-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+/* Explain: Style .auth-heading h2; set outer spacing to 0; set text size to 1.7rem. Style .auth-close; set border appearance to 0; set background appearance to transparent; set text color to var(--muted); set text size to 1.6rem; set inner spacing to 0 4px. Style .auth-tabs; set layout mode to grid; set grid column widths to 1fr 1fr; set border bottom to 1px solid #54595d; set margin bottom to 18px. */
 .auth-heading h2 { margin: 0; font-size: 1.7rem; }
-/* Explain: Style .auth-close; set border appearance to 0; set background appearance to transparent; set text color to var(--muted); set text size to 1.6rem; set inner spacing to 0 4px. Style .auth-tabs; set layout mode to grid; set grid column widths to 1fr 1fr; set border bottom to 1px solid #54595d; set margin bottom to 18px. Style .auth-tab; set background appearance to transparent; set border appearance to 0; set border bottom to 3px solid transparent; set text color to var(--muted); set inner spacing to 10px. */
 .auth-close { border: 0; background: transparent; color: var(--muted); font-size: 1.6rem; padding: 0 4px; }
 .auth-tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #54595d; margin-bottom: 18px; }
+/* Explain: Style .auth-tab; set background appearance to transparent; set border appearance to 0; set border bottom to 3px solid transparent; set text color to var(--muted); set inner spacing to 10px. Style .auth-tab.active; set border bottom color to #36c; set text color to #fff. Style .auth-form; set layout mode to grid; set spacing between children to 8px. */
 .auth-tab { background: transparent; border: 0; border-bottom: 3px solid transparent; color: var(--muted); padding: 10px; }
-/* Explain: Style .auth-tab.active; set border bottom color to #36c; set text color to #fff. Style .auth-form; set layout mode to grid; set spacing between children to 8px. Style .auth-form label; set margin top to 4px. */
 .auth-tab.active { border-bottom-color: #36c; color: #fff; }
 .auth-form { display: grid; gap: 8px; }
+/* Explain: Style .auth-form label; set margin top to 4px. Style .auth-form input; set width to 100%. Style .auth-form button; set margin top to 10px. */
 .auth-form label { margin-top: 4px; }
-/* Explain: Style .auth-form input; set width to 100%. Style .auth-form button; set margin top to 10px. Style .auth-status; set text color to var(--muted); set text size to .82rem; set outer spacing to 14px 0 0. */
 .auth-form input { width: 100%; }
 .auth-form button { margin-top: 10px; }
+/* Explain: Style .auth-status; set text color to var(--muted); set text size to .82rem; set outer spacing to 14px 0 0. Apply the following rules only when (max-width: 800px). Style .choice-grid, .sequence-list, .local-facts; set grid column widths to 1fr. */
 .auth-status { color: var(--muted); font-size: .82rem; margin: 14px 0 0; }
-/* Explain: Apply the following rules only when (max-width: 800px). Style .choice-grid, .sequence-list, .local-facts; set grid column widths to 1fr. Style .choice-card .primary-btn, .choice-card .secondary-btn, .status-car...; set width to 100%. */
 @media (max-width: 800px) {
   .choice-grid, .sequence-list, .local-facts { grid-template-columns: 1fr; }
+  /* Explain: Style .choice-card .primary-btn, .choice-card .secondary-btn, .status-car...; set width to 100%. End this style rule or responsive section. */
   .choice-card .primary-btn, .choice-card .secondary-btn, .status-card .primary-btn { width: 100%; }
-/* Explain: End this style rule or responsive section. */
 }
