@@ -1,0 +1,1923 @@
+{
+  "revision": "c123754144367fdf4a01e6a5870be6f502294515",
+  "feature_count": 100,
+  "spoken_words": 197,
+  "features": [
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Teal navy and charcoal page background",
+      "meaning": "The gradient variable defines the colors. The body rules apply it across pages and the homepage. The older black variable in styles.css is not the current body background.",
+      "mission": "A consistent dark background supports reading the controls; it does not detect danger.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 12,
+          "code": "    --page-background: radial-gradient(ellipse at 12% 0%, rgba(43, 112, 126, .24), transparent 52%),",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "site.css",
+          "line": 1090,
+          "code": "body { background: var(--page-background); background-attachment: fixed; min-height: 100vh; }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "styles.css",
+          "line": 47,
+          "code": "  background: var(--page-background);",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Dark cards and borders",
+      "meaning": "The shared selector targets tool cards. The homepage rule supplies charcoal fill, a thin gray border and padding around each choice.",
+      "mission": "Separates actions visually so a person can find the next step.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 1118,
+          "code": ".card, body.tool .panel, body.tool ul.rows li, .cat-card {",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "styles.css",
+          "line": 783,
+          "code": ".choice-card { background: #202122; border: 1px solid #54595d; padding: 22px; display: flex; flex-direction: column; align-items: flex-start; }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Body text and serif headings",
+      "meaning": "System fonts display body text; Georgia displays headings. The heading rule uses medium weight and tighter spacing.",
+      "mission": "Readable hierarchy supports quick scanning during a check-in.",
+      "records": [
+        {
+          "file": "styles.css",
+          "line": 745,
+          "code": "body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        },
+        {
+          "file": "styles.css",
+          "line": 746,
+          "code": "h1, h2, h3 { font-family: Georgia, \"Times New Roman\", serif; font-weight: 500; letter-spacing: -.018em !important; }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Readable shared page width",
+      "meaning": "The shared rule caps these containers at 960 pixels and leaves 40 pixels of viewport space. Homepage styles.css later sets its container width separately.",
+      "mission": "Keeps the interface within the screen and avoids overly long reading lines.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 1092,
+          "code": ".container, .shell, .site-nav .inner, .site-footer .inner { width: min(960px, calc(100% - 40px)); }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Homepage content width",
+      "meaning": "The homepage container can grow to 1180 pixels while retaining 16-pixel side margins on a narrow screen.",
+      "mission": "Uses the available screen while keeping content away from its edges.",
+      "records": [
+        {
+          "file": "styles.css",
+          "line": 67,
+          "code": "  width: min(1180px, calc(100% - 32px));",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Main and secondary buttons",
+      "meaning": "Primary actions use blue with white text; secondary actions use charcoal and a gray border. Later rules override the old white primary-button fill.",
+      "mission": "Makes the principal action easier to distinguish.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 1130,
+          "code": ".button.primary, button.primary { background: #3366cc; color: white; }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "styles.css",
+          "line": 765,
+          "code": ".primary-btn { background: #3366cc; color: #fff; box-shadow: none; }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        },
+        {
+          "file": "styles.css",
+          "line": 767,
+          "code": ".secondary-btn { background: #27292d; border-color: #54595d; }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Emergency choice accent",
+      "meaning": "The emergency color variable supplies the red upper border on the immediate-danger card.",
+      "mission": "Visually distinguishes the manual emergency choice from general support.",
+      "records": [
+        {
+          "file": "styles.css",
+          "line": 29,
+          "code": "  --emergency: #ff3b30;",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        },
+        {
+          "file": "styles.css",
+          "line": 789,
+          "code": ".danger-choice { border-top: 3px solid var(--emergency); }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Mobile cards and sequence layout",
+      "meaning": "At 800 pixels or narrower, the three listed grids become single columns. This rule does not change the separate hero grid.",
+      "mission": "Keeps important choices readable on a phone.",
+      "records": [
+        {
+          "file": "styles.css",
+          "line": 822,
+          "code": "@media (max-width: 800px) {",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        },
+        {
+          "file": "styles.css",
+          "line": 823,
+          "code": "  .choice-grid, .sequence-list, .local-facts { grid-template-columns: 1fr; }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Mobile navigation and map size",
+      "meaning": "Navigation can scroll horizontally on narrow screens. The satellite map becomes 280 pixels tall below 600 pixels.",
+      "mission": "Preserves navigation and location context on smaller displays.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 1147,
+          "code": "    .site-nav .groups { overflow-x: auto; flex-wrap: nowrap; width: 100%; padding-bottom: 4px; }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "site.css",
+          "line": 1172,
+          "code": "@media (max-width: 600px) { #satelliteMap { height: 280px; } }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Keyboard focus and skip link",
+      "meaning": "The focus rule draws an outline. The skip link jumps to main content and becomes visible when focused.",
+      "mission": "Lets keyboard users reach and operate the safety controls.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 467,
+          "code": "    outline: 3px solid var(--blue);",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "nav.js",
+          "line": 53,
+          "code": "    skip.href = \"#main-content\";",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        },
+        {
+          "file": "site.css",
+          "line": 1074,
+          "code": ".skip-link:focus { top: 1rem; }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Responsive browser viewport",
+      "meaning": "The viewport meta tag tells the browser to use the device width and an initial scale of one.",
+      "mission": "Allows responsive CSS to use the actual phone viewport.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 7,
+          "code": "  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "Dialog overlay and readable controls",
+      "meaning": "The care dialog has a bounded width and internal padding. The account backdrop dims the page behind its modal.",
+      "mission": "Keeps a prompt distinct from the surrounding page.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 1131,
+          "code": ".care-dialog { width: min(430px, calc(100% - 32px)); padding: 24px; background: #202122; color: var(--text); border: 1px solid var(--line); }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "styles.css",
+          "line": 805,
+          "code": ".auth-dialog::backdrop { background: rgba(0, 0, 0, .72); }",
+          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+        }
+      ]
+    },
+    {
+      "section": "Shared appearance and accessibility",
+      "title": "AED row typography and spacing",
+      "meaning": "Venue links are bold; addresses, indoor hints and metadata appear on separate muted lines.",
+      "mission": "Helps someone identify the destination before reading the final directions.",
+      "records": [
+        {
+          "file": "site.css",
+          "line": 1169,
+          "code": ".places-list a { color: var(--blue); font-weight: 700; }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        },
+        {
+          "file": "site.css",
+          "line": 1171,
+          "code": ".places-list small { display: block; margin-top: 3px; color: var(--muted); }",
+          "sha256": "f54fbf1f16bd7d8cdef4c9835937c6b69ba5772bbe0fa20ed3cbe29beb9483e6"
+        }
+      ]
+    },
+    {
+      "section": "Navigation and ordinary interface sound",
+      "title": "Home tracker and About navigation",
+      "meaning": "The shared navigation records define Home, Drop tracker and Method and limits. buildNav and buildFooter read the same records.",
+      "mission": "Provides consistent routes to the core monitoring flow.",
+      "records": [
+        {
+          "file": "nav.js",
+          "line": 12,
+          "code": "const SITE = [",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        },
+        {
+          "file": "nav.js",
+          "line": 25,
+          "code": "            { id: \"detect\", href: \"fall-detection.html\", label: \"Drop tracker\" }",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        }
+      ]
+    },
+    {
+      "section": "Navigation and ordinary interface sound",
+      "title": "Safeguard brand and active page",
+      "meaning": "The brand is inserted as text. The matching navigation link is marked as the current page for assistive technology.",
+      "mission": "Makes the service and the current location within it identifiable.",
+      "records": [
+        {
+          "file": "nav.js",
+          "line": 77,
+          "code": "    name.textContent = \"Safeguard\";",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        },
+        {
+          "file": "nav.js",
+          "line": 109,
+          "code": "                a.setAttribute(\"aria-current\", \"page\");",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        }
+      ]
+    },
+    {
+      "section": "Navigation and ordinary interface sound",
+      "title": "Shared footer",
+      "meaning": "This function constructs the footer from the shared site map and adds its explanatory text.",
+      "mission": "Keeps navigation available after a person reaches the end of a page.",
+      "records": [
+        {
+          "file": "nav.js",
+          "line": 151,
+          "code": "function buildFooter() {",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        }
+      ]
+    },
+    {
+      "section": "Navigation and ordinary interface sound",
+      "title": "Labels for supporting experiments",
+      "meaning": "Safewalk, shelters and hazard are listed as earlier experiments. Their banner is generated separately from the main tracker.",
+      "mission": "Helps distinguish supporting demonstrations from the core detection sequence.",
+      "records": [
+        {
+          "file": "nav.js",
+          "line": 42,
+          "code": "const TRIAL = [\"safewalk\", \"shelters\", \"hazard\"];",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        },
+        {
+          "file": "nav.js",
+          "line": 188,
+          "code": "function buildTrialBanner() {",
+          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+        }
+      ]
+    },
+    {
+      "section": "Navigation and ordinary interface sound",
+      "title": "Click and hover feedback",
+      "meaning": "The ordinary interface uses click.mp3, with louder click playback and quieter mouse-hover playback. This is separate from the warning MP3.",
+      "mission": "Provides interaction feedback without representing an emergency signal.",
+      "records": [
+        {
+          "file": "sound.js",
+          "line": 9,
+          "code": "const SOUND_FILE = \"click.mp3\";",
+          "sha256": "9b566cfe2e08e65564445b40f0cc915073acb4241283e2167ba2a7222c88766a"
+        },
+        {
+          "file": "sound.js",
+          "line": 87,
+          "code": "        playClick(0.5);",
+          "sha256": "9b566cfe2e08e65564445b40f0cc915073acb4241283e2167ba2a7222c88766a"
+        },
+        {
+          "file": "sound.js",
+          "line": 109,
+          "code": "    playClick(0.18);",
+          "sha256": "9b566cfe2e08e65564445b40f0cc915073acb4241283e2167ba2a7222c88766a"
+        }
+      ]
+    },
+    {
+      "section": "Navigation and ordinary interface sound",
+      "title": "Hover throttling and touch behavior",
+      "meaning": "Hover sounds are limited to mouse events and spaced by at least 120 milliseconds. Touch does not get an extra hover sound.",
+      "mission": "Reduces distracting repeated feedback.",
+      "records": [
+        {
+          "file": "sound.js",
+          "line": 10,
+          "code": "const HOVER_GAP_MS = 120;",
+          "sha256": "9b566cfe2e08e65564445b40f0cc915073acb4241283e2167ba2a7222c88766a"
+        },
+        {
+          "file": "sound.js",
+          "line": 92,
+          "code": "    if (ev.pointerType !== \"mouse\")",
+          "sha256": "9b566cfe2e08e65564445b40f0cc915073acb4241283e2167ba2a7222c88766a"
+        }
+      ]
+    },
+    {
+      "section": "Navigation and ordinary interface sound",
+      "title": "Remembered sound preference",
+      "meaning": "The toggle saves the ordinary click-sound preference in the browser. It does not mute the separate warning media element.",
+      "mission": "Gives users control over routine feedback while preserving the warning flow.",
+      "records": [
+        {
+          "file": "sound.js",
+          "line": 132,
+          "code": "        localStorage.setItem(MUTE_KEY, muted ? \"1\" : \"0\");",
+          "sha256": "9b566cfe2e08e65564445b40f0cc915073acb4241283e2167ba2a7222c88766a"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Page title and sharing description",
+      "meaning": "The title identifies the tab and the Open Graph description supplies sharing metadata.",
+      "mission": "Explains the purpose before someone opens the tracker.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 8,
+          "code": "  <title>Safeguard | Help when someone cannot ask</title>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "index.html",
+          "line": 18,
+          "code": "  <meta property=\"og:description\" content=\"A transparent emergency-support prototype for possible life-threatening unresponsiveness.\">",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Headline and purpose",
+      "meaning": "The heading introduces the problem; the paragraph describes multiple signals, a response check and preparation of human help.",
+      "mission": "States the notice, verify and help sequence in plain language.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 31,
+          "code": "        <h1>Help for the moment someone cannot ask.</h1>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "index.html",
+          "line": 32,
+          "code": "        <p class=\"lede\">Safeguard looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Protection status and tracker jump",
+      "meaning": "The homepage status card initially says protection is off. Its link scrolls to the tracker; this heading is static and does not mirror the iframe state.",
+      "mission": "Encourages deliberate activation rather than implying protection starts automatically.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 40,
+          "code": "        <h2 id=\"status-title\">Protection is off</h2>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "index.html",
+          "line": 43,
+          "code": "        <a class=\"primary-btn\" href=\"#live-tracker\">Open drop tracker</a>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Immediate danger and bystander choices",
+      "meaning": "Each card includes a real tel:911 link for the user to open. The page does not automatically dial.",
+      "mission": "Provides a direct manual route when help is already needed.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 52,
+          "code": "        <article class=\"choice-card danger-choice\"><p class=\"card-kicker\">Immediate danger</p><h3>I need help</h3><p>If you may have overdosed, cannot breathe normally, or feel seriously unwell, call 911.</p><a class=\"primary-btn emergency-btn\" href=\"tel:911\">Call 911</a></article>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "index.html",
+          "line": 53,
+          "code": "        <article class=\"choice-card\"><p class=\"card-kicker\">Bystander</p><h3>Help someone else</h3><p>If they cannot wake or are not breathing normally, call 911 now. You do not need to identify the substance first.</p><a class=\"secondary-btn\" href=\"tel:911\">Call 911 for them</a></article>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Treatment support link",
+      "meaning": "The support card links to the displayed national helpline using a telephone URI.",
+      "mission": "Offers a separate human support path alongside urgent choices.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 55,
+          "code": "        <article class=\"choice-card\"><p class=\"card-kicker\">Drug or alcohol support</p><h3>I want help</h3><p>Free, confidential treatment referrals are available 24/7.</p><a class=\"secondary-btn\" href=\"tel:18006624357\">Call the national helpline</a><small>1-800-662-HELP (4357)</small></article>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Four step explanation and future modes",
+      "meaning": "The ordered list presents Notice, Verify, Ask and Prepare. The following note identifies future modes as unimplemented.",
+      "mission": "Communicates the intended sequence while bounding current capabilities.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 64,
+          "code": "      <ol class=\"sequence-list\">",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "index.html",
+          "line": 72,
+          "code": "      <p class=\"microcopy\">Future breathing, smartwatch, scheduled, and always-on modes are concepts only and are not implemented in this website.</p>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Driving prevention and official source links",
+      "meaning": "This section presents prevention text, local contextual figures and links to the named external sources. It is content, not a live collision-data feed.",
+      "mission": "Supports prevention and points readers to source material.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 78,
+          "code": "      <h2 id=\"drive-title\">If a substance may affect you, leave the keys behind.</h2>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "index.html",
+          "line": 86,
+          "code": "      <div class=\"source-links\" aria-label=\"Official sources\">",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Embedded live tracker",
+      "meaning": "The homepage embeds fall-detection.html and permits its location, motion and audio capabilities. The message guard accepts size changes only from that same-origin frame.",
+      "mission": "Keeps the working tracker available from the homepage without trusting arbitrary window messages.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 144,
+          "code": "      <iframe title=\"Safeguard live location and motion tracker\" src=\"fall-detection.html?embedded=1\" allow=\"geolocation; accelerometer; gyroscope; autoplay\" loading=\"lazy\" style=\"width:100%;height:900px;border:0;border-radius:16px\"></iframe>",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "index.html",
+          "line": 157,
+          "code": "      if (event.origin !== location.origin || event.source !== frame.contentWindow) return;",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Login and signup forms",
+      "meaning": "The HTML defines the form and the script switches which form is visible when a tab is selected.",
+      "mission": "Demonstrates account navigation; it does not enable a protected account.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 112,
+          "code": "        <form class=\"auth-form\" id=\"login-form\" aria-labelledby=\"login-tab\">",
+          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+        },
+        {
+          "file": "auth.js",
+          "line": 13,
+          "code": "    loginForm.hidden = !showLogin;",
+          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+        },
+        {
+          "file": "auth.js",
+          "line": 15,
+          "code": "    signupForm.hidden = showLogin;",
+          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Account opening and closing",
+      "meaning": "showModal opens the selected account form; the close button dismisses it. Hash links also select the form.",
+      "mission": "Keeps an optional account demonstration separate from monitoring.",
+      "records": [
+        {
+          "file": "auth.js",
+          "line": 31,
+          "code": "    if (!authDialog.open) authDialog.showModal();",
+          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+        },
+        {
+          "file": "auth.js",
+          "line": 49,
+          "code": "authClose.addEventListener(\"click\", () => authDialog.close());",
+          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account demonstration",
+      "title": "Account submission boundary",
+      "meaning": "Submission reports that no account was created and clears password inputs. The handler prevents normal form submission.",
+      "mission": "Avoids claiming an account or remote protection service has been activated.",
+      "records": [
+        {
+          "file": "auth.js",
+          "line": 64,
+          "code": "        authStatus.textContent = \"Accounts are not connected yet. Nothing was sent or saved.\";",
+          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+        },
+        {
+          "file": "auth.js",
+          "line": 67,
+          "code": "            input.value = \"\";",
+          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Start and stop control",
+      "meaning": "The button is connected to armTracker, which starts a session or stops an existing one.",
+      "mission": "Makes monitoring a deliberate user action.",
+      "records": [
+        {
+          "file": "fall-detection.html",
+          "line": 79,
+          "code": "        <button id=\"armTrackerBtn\" class=\"button primary\" type=\"button\">Start tracker</button>",
+          "sha256": "04da8b87fcccbf8f8eee989edd29c10aeac6319ecb878b577df9588b1a5efbde"
+        },
+        {
+          "file": "app.js",
+          "line": 996,
+          "code": "$(\"#armTrackerBtn\").addEventListener(\"click\", armTracker);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Motion permission and arming delay",
+      "meaning": "The tracker waits five seconds before accepting measurements and refuses a denied permission result.",
+      "mission": "Gives the user time to position the device before looking for warning signs.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 22,
+          "code": "const ARM_DELAY_S = 5;        /* time to put the phone down after pressing Start */",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 707,
+          "code": "        if (answers.some(answer => answer !== \"granted\")) throw new Error(\"Motion permission was not granted.\");",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Real sensor event listeners",
+      "meaning": "The two listeners connect browser sensor events to the measurement handlers while tracking is active.",
+      "mission": "Supplies actual movement observations when supported by the device.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 588,
+          "code": "    window.addEventListener(\"devicemotion\", onMotion);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 589,
+          "code": "    window.addEventListener(\"deviceorientation\", onOrientation);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Invalid measurement rejection",
+      "meaning": "The handler rejects missing or non-finite axes and ignores measurements when the tracker is off.",
+      "mission": "Avoids interpreting absent sensor data as evidence.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 515,
+          "code": "    if (!sensorsOn || !a || ![a.x, a.y, a.z].every(Number.isFinite))",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Impact magnitude and threshold",
+      "meaning": "Squaring and summing the three axes produces acceleration magnitude including gravity. The threshold is 25 metres per second squared.",
+      "mission": "Recognizes a possible drop, without determining whether a person collapsed.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 526,
+          "code": "    const mag = Math.sqrt(a.x * a.x + a.y * a.y + a.z * a.z);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 16,
+          "code": "const IMPACT_MS2 = 25;        /* about 2.5 g. Walking peaks near 15. */",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Settling and recovery cancellation",
+      "meaning": "After 1.5 seconds of settling, movement beyond the recovery threshold cancels the pending drop event.",
+      "mission": "Reduces premature prompts when movement resumes.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 75,
+          "code": "const SETTLE_MS = 1500;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 544,
+          "code": "    if (Math.abs(mag - 9.81) > RECOVERY_MS2) {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Recovery interval and stillness",
+      "meaning": "A two-second recovery observation precedes eight seconds of stillness in the browser flow.",
+      "mission": "Adds observation before asking the person to respond.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 76,
+          "code": "const RECOVERY_MS = 2000;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 18,
+          "code": "const STILL_MS = 8000;        /* how long that stillness must last */",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Orientation as a supporting signal",
+      "meaning": "The handler adds absolute beta and gamma changes; its following condition requires a recent impact and a large change.",
+      "mission": "Adds movement context without claiming to measure body posture.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 577,
+          "code": "    const change = Math.abs(ev.beta - lastTilt.beta) + Math.abs(ev.gamma - lastTilt.gamma);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Two motion signals with required stillness",
+      "meaning": "Only motion-related keys enter the signal count. The check also requires stillness; location alone cannot trigger the check-in.",
+      "mission": "Implements corroboration before the responsiveness question.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 100,
+          "code": "    return [\"impact\", \"orientation\", \"stillness\"].filter(key => fired[key]).length;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 502,
+          "code": "    if (!fired.stillness || signalCount() < MIN_SIGNALS)",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Signal points and visible status",
+      "meaning": "The list marks observed signals and displays their weighted points. These points are not a calibrated medical probability.",
+      "mission": "Makes the recorded observations visible for review.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 472,
+          "code": "        li.className = fired[key] ? \"signal on\" : \"signal\";",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 480,
+          "code": "    $(\"#confidence\").textContent = score() + \" points\";",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Sensor watchdog and fallback",
+      "meaning": "The watchdog notices missing readings and attempts the Generic Sensor accelerometer when available. Unsupported hardware still cannot supply motion data.",
+      "mission": "Makes a missing measurement source visible instead of implying active protection.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 25,
+          "code": "const SENSOR_TIMEOUT_MS = 4000;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 601,
+          "code": "                    accelerometer = new window.Accelerometer({ frequency: 30 });",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Five second response prompt",
+      "meaning": "openAlert starts the cancelable question using the five-second constant and updates its visible countdown.",
+      "mission": "Directly implements the verify-responsiveness stage.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 20,
+          "code": "const COUNTDOWN_S = 5;       /* seconds to answer before the alert is prepared */",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 864,
+          "code": "function openAlert() {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "I am okay cancellation",
+      "meaning": "The I am okay button calls closeAlert, which clears the countdown and resets the pending observations.",
+      "mission": "Lets a responsive person stop escalation.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 1014,
+          "code": "$(\"#okayBtn\").addEventListener(\"click\", closeAlert);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 903,
+          "code": "function closeAlert() {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Unanswered prompt",
+      "meaning": "Expiry records no reply; the following statements prepare the message and start the warning sequence.",
+      "mission": "Connects an unanswered check-in to a visible next step.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 888,
+          "code": "            fired.noReply = true;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Supplied warning MP3 and duration",
+      "meaning": "The media element loads warning-alarm.mp3 with looping enabled. The JavaScript constant limits warning playback to ten seconds unless stopped.",
+      "mission": "Draws local attention after the five-second question goes unanswered.",
+      "records": [
+        {
+          "file": "fall-detection.html",
+          "line": 206,
+          "code": "  <audio id=\"alarmSound\" src=\"warning-alarm.mp3\" preload=\"auto\" playsinline loop></audio>",
+          "sha256": "04da8b87fcccbf8f8eee989edd29c10aeac6319ecb878b577df9588b1a5efbde"
+        },
+        {
+          "file": "app.js",
+          "line": 21,
+          "code": "const DROP_ALARM_S = 10;      /* alarm length after a hard phone drop */",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Playback time rather than elapsed wall time",
+      "meaning": "The timer accumulates media progress; buffering does not consume the allowance. Playback clears element mute and uses full application volume.",
+      "mission": "Avoids reporting a full warning when the recording was blocked or stalled.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 149,
+          "code": "        if (now >= alarmLastTime) alarmPlayed += now - alarmLastTime;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 182,
+          "code": "    audio.volume = 1;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Audio failure and explicit retry",
+      "meaning": "The failure handler shows permission or media errors. Retry requests playback again and reloads media after a media error.",
+      "mission": "Makes unsuccessful sound playback actionable.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 160,
+          "code": "function audioFailure(error) {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 174,
+          "code": "    if (audio.error) {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 1026,
+          "code": "$(\"#retryAudioBtn\").addEventListener(\"click\", () => {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Marker and button alarm test",
+      "meaning": "Both test controls use the five-second countdown followed by the warning. The prepared text identifies the sequence as a demonstration.",
+      "mission": "Allows a repeatable demonstration without physically dropping a device.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 193,
+          "code": "function testFromMarker() {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 813,
+          "code": "            markerAction.addEventListener(\"click\", testFromMarker);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Stop warning and nearby care prompt",
+      "meaning": "The stop control pauses the warning. Ending or stopping it displays the nearby-care dialog.",
+      "mission": "Returns control to the user and offers a route to nearby resources.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 1017,
+          "code": "$(\"#stopAlarmBtn\").addEventListener(\"click\", stopDropAlarm);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 225,
+          "code": "    if (!$(\"#careDialog\").open) $(\"#careDialog\").showModal();",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Motion tracker and response sequence",
+      "title": "Complete tracker shutdown",
+      "meaning": "Shutdown cancels timers and sensor listeners, aborts outstanding AED work and clears the location watch. Leaving the page invokes it too.",
+      "mission": "Limits monitoring to the session the person is using.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 625,
+          "code": "function stopSensors() {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 1033,
+          "code": "window.addEventListener(\"pagehide\", stopSensors);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Fresh high accuracy location requests",
+      "meaning": "The options request high accuracy, disallow a cached fix and set a fifteen-second timeout. The browser still controls permission and available accuracy.",
+      "mission": "Supplies recent location context for human help.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 26,
+          "code": "const LOCATION_OPTIONS = { enableHighAccuracy: true, maximumAge: 0, timeout: 15000 };",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 856,
+          "code": "    navigator.geolocation.getCurrentPosition(p => {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Continuously updated device location",
+      "meaning": "watchPosition listens for updates. The session check ignores callbacks belonging to a stopped session.",
+      "mission": "Keeps the marker relevant while preventing an old session from updating it.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 843,
+          "code": "    locationWatch = navigator.geolocation.watchPosition(p => {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 844,
+          "code": "        if (run === session) showPosition(p);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Location timestamp and accuracy",
+      "meaning": "The position record retains coordinates, reported accuracy and time. A timer marks the fix stale rather than leaving it looking current.",
+      "mission": "Makes uncertainty and freshness visible.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 763,
+          "code": "    place = { lat: c.latitude, lon: c.longitude, acc: Math.ceil(c.accuracy), at: p.timestamp };",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 782,
+          "code": "    locationExpiry = setTimeout(() => {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Satellite imagery",
+      "meaning": "Leaflet requests Esri satellite tiles for the map view. These images are a background, not live satellite video.",
+      "mission": "Provides recognizable surroundings for the location marker.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 794,
+          "code": "            L.tileLayer(\"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\", {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "User marker and accuracy circle",
+      "meaning": "A marker shows the reported coordinates and a circle shows the device-reported accuracy radius.",
+      "mission": "Avoids presenting an estimated position as an exact location.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 809,
+          "code": "            locationMarker = L.circleMarker(point, { radius: 7, color: \"white\", fillColor: \"#3366cc\", fillOpacity: 1 }).addTo(satelliteMap);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 816,
+          "code": "            accuracyCircle = L.circle(point, { radius: place.acc, color: \"#69b7ff\", fillOpacity: 0.12 }).addTo(satelliteMap);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Location and map error messages",
+      "meaning": "Separate handlers report geolocation errors and unavailable imagery. The coordinate text can still be useful when tiles fail.",
+      "mission": "Keeps failure visible and preserves available location context.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 829,
+          "code": "function locationError(error) {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 797,
+          "code": "            }).on(\"tileerror\", () => {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Five nearest real mapped AED records",
+      "meaning": "Overpass finds defibrillator records within ten kilometres. The sort and slice retain up to five, closest first by straight-line distance.",
+      "mission": "Reduces the search for nearby equipment without substituting example entries.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 383,
+          "code": "        const query = '[out:json][timeout:20];nwr[\"emergency\"=\"defibrillator\"](around:10000,' + origin.lat + ',' + origin.lon + ');out center tags;';",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 399,
+          "code": "            .sort((a, b) => a.distance - b.distance).slice(0, 5);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Distance calculation",
+      "meaning": "The haversine calculation converts coordinate separation into metres using an Earth-radius estimate.",
+      "mission": "Ranks proximity; it does not calculate walking time or an accessible route.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 243,
+          "code": "function metresBetween(a, b) {",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 249,
+          "code": "    return 6371000 * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Actual venue name and street address",
+      "meaning": "Only a mapped building containing the AED coordinate can supply its building name. Address, recorded name or coordinates provide fallbacks.",
+      "mission": "Makes the destination recognizable without assigning an unrelated nearby business.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 288,
+          "code": "    const host = buildings.filter(b => b.tags?.building && insideBuilding(item, b.geometry))",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 294,
+          "code": "    const name = host?.tags?.name || recordedName || address || \"AED at \" + item.lat.toFixed(5) + \", \" + item.lon.toFixed(5);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Indoor directions kept beneath the venue",
+      "meaning": "Recorded room, floor or restroom directions remain separate from the venue title and are inserted as plain text.",
+      "mission": "Helps someone navigate the final part of the search.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 295,
+          "code": "    const notes = [tags[\"defibrillator:location\"], tags.description];",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 423,
+          "code": "            locationDetail.textContent = [venue.address !== name ? venue.address : \"\", venue.directions].filter(Boolean).join(\" \u00b7 \");",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Batched building lookup and temporary cache",
+      "meaning": "One additional request fetches building outlines. Successful results remain in memory for ten minutes; failed lookups can be retried.",
+      "mission": "Reduces repeated waiting without discarding AED coordinates when names fail.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 323,
+          "code": "            const venueQuery = '[out:json][timeout:6];(' + boxes.join(\"\") + ');out geom tags;';",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 349,
+          "code": "        if (complete) aedVenueCache.set(key(item), { details, expires: Date.now() + 600000 });",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "AED access hours and source limitations",
+      "meaning": "Each row shows distance, recorded AED access and AED hours. Missing values stay not recorded; building hours are not substituted.",
+      "mission": "Avoids claiming equipment is accessible merely because a venue is named.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 419,
+          "code": "            detail.textContent = Math.round(item.distance) + \" m straight-line \u00b7 Access: \" + (tags.access || \"not recorded\") + \" \u00b7 Hours: \" + (tags.opening_hours || \"not recorded\");",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Directions to the precise AED pin",
+      "meaning": "The Google Maps link uses the AED coordinates, while the satellite marker uses those same coordinates and the resolved place label.",
+      "mission": "Keeps directions tied to the equipment instead of moving the destination to a building centre.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 413,
+          "code": "            link.href = \"https://www.google.com/maps/dir/?api=1&destination=\" + encodeURIComponent(item.lat + \",\" + item.lon);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 435,
+          "code": "                aedMarkers.push(L.marker([item.lat, item.lon]).bindPopup(label).addTo(satelliteMap));",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Live location satellite map and AEDs",
+      "title": "Refresh after movement and ignore old results",
+      "meaning": "The first fix or movement beyond 100 metres triggers a lookup. A request counter prevents older responses from replacing a newer search.",
+      "mission": "Keeps nearby resources aligned with the current location.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 825,
+          "code": "    if ((!aedOrigin && Date.now() - aedAttemptAt > 30000) || (aedOrigin && metresBetween(aedOrigin, place) > 100)) listNearestCare();",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 391,
+          "code": "        if (request !== aedRequest) return;",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Trusted contact and prepared message",
+      "title": "Save contact locally",
+      "meaning": "The saved name and phone number are serialized under the contact key in this browser.",
+      "mission": "Prepares a chosen human contact without uploading that contact to map services.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 1009,
+          "code": "    localStorage.setItem(CONTACT_KEY, JSON.stringify({ name: name, phone: phone }));",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Trusted contact and prepared message",
+      "title": "Load contact with a safe empty fallback",
+      "meaning": "The contact reader parses the saved record; surrounding error handling returns null if it cannot be used.",
+      "mission": "Allows the interface to explain a missing contact instead of inventing a recipient.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 921,
+          "code": "        const saved = JSON.parse(localStorage.getItem(CONTACT_KEY) || \"null\");",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Trusted contact and prepared message",
+      "title": "Message includes position and signals",
+      "meaning": "The prepared text describes the event and includes only a recent position; otherwise it says a recent position is unavailable.",
+      "mission": "Gives a responder context while making missing location explicit.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 945,
+          "code": "    const message = \"Safeguard: no answer from this phone after a possible collapse. \" +",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 939,
+          "code": "    const where = place && Date.now() - place.at <= 60000",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "Trusted contact and prepared message",
+      "title": "Human reviewed SMS and missing contact notice",
+      "meaning": "A saved recipient gets an encoded SMS link. Without one, the panel asks for a contact. Nothing is sent automatically.",
+      "mission": "Shortens the steps to ask for help while preserving human review.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 973,
+          "code": "        link.href = \"sms:\" + person.phone + \"?body=\" + encodeURIComponent(message);",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        },
+        {
+          "file": "app.js",
+          "line": 985,
+          "code": "        warn.textContent = \"No contact saved, so there is nobody to message. Save one above.\";",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    },
+    {
+      "section": "About page",
+      "title": "Current capabilities and limits",
+      "meaning": "The About page describes what the browser demonstrates and the capabilities it does not provide.",
+      "mission": "Supports informed use of the project rather than an unsupported guarantee.",
+      "records": [
+        {
+          "file": "about.html",
+          "line": 30,
+          "code": "      <h1>What Safeguard can\u2014and cannot\u2014do.</h1>",
+          "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
+        },
+        {
+          "file": "about.html",
+          "line": 49,
+          "code": "        <li class=\"signal\">No automatic call to 911 and no responder network.</li>",
+          "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
+        }
+      ]
+    },
+    {
+      "section": "About page",
+      "title": "Detection explanation",
+      "meaning": "The prose describes settling, recovery, stillness and the response sequence, and distinguishes signal points from medical probability.",
+      "mission": "Explains how warning observations lead to verification.",
+      "records": [
+        {
+          "file": "about.html",
+          "line": 59,
+          "code": "        A sudden movement above 2.5 g begins a possible drop. After a short settling period,",
+          "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
+        },
+        {
+          "file": "about.html",
+          "line": 63,
+          "code": "        The displayed points describe recorded signals; they are not a medical probability.",
+          "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
+        }
+      ]
+    },
+    {
+      "section": "About page",
+      "title": "Map sources and illustrative data status",
+      "meaning": "The source section identifies live map records and imagery. Its table also labels older dashboard sources as not yet retrieved.",
+      "mission": "Keeps map support separate from unverified legacy figures.",
+      "records": [
+        {
+          "file": "about.html",
+          "line": 79,
+          "code": "        The tracker uses your browser\u2019s current location and OpenStreetMap AED records.",
+          "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
+        },
+        {
+          "file": "about.html",
+          "line": 87,
+          "code": "        <thead><tr><th>Page</th><th>Figure</th><th>Intended source</th><th>Retrieved</th></tr></thead>",
+          "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
+        }
+      ]
+    },
+    {
+      "section": "About page",
+      "title": "Privacy and third party services",
+      "meaning": "The privacy text states that direction links use Google Maps and the saved contact is not uploaded to those services.",
+      "mission": "Explains where location support connects to external providers.",
+      "records": [
+        {
+          "file": "about.html",
+          "line": 108,
+          "code": "        Direction links open Google Maps. Safeguard does not upload your saved contact to these services.",
+          "sha256": "98a2c35e351b616821a9d5bda7b46d372ee20a0f3b4ecacdd8a1bb96b8393643"
+        }
+      ]
+    },
+    {
+      "section": "Safewalk supporting page",
+      "title": "Walk details and expected arrival",
+      "meaning": "Name, destination and duration fields define a walk. The script stores an absolute arrival timestamp, so reloads do not restart the clock.",
+      "mission": "Demonstrates a timed safety session rather than motion detection.",
+      "records": [
+        {
+          "file": "safewalk.html",
+          "line": 147,
+          "code": "          <input type=\"number\" id=\"mins\" value=\"15\" min=\"1\" max=\"240\" />",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        },
+        {
+          "file": "safewalk.html",
+          "line": 404,
+          "code": "        eta: Date.now() + mins * 60000,",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        }
+      ]
+    },
+    {
+      "section": "Safewalk supporting page",
+      "title": "Walk persistence and position updates",
+      "meaning": "The session is stored locally and position checks run every thirty seconds while the walking-state guard allows them.",
+      "mission": "Maintains the demonstration session and its latest reported position.",
+      "records": [
+        {
+          "file": "safewalk.html",
+          "line": 219,
+          "code": "    localStorage.setItem(KEY, JSON.stringify(walk));",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        },
+        {
+          "file": "safewalk.html",
+          "line": 422,
+          "code": "    pinger = setInterval(ping, 30000);",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        }
+      ]
+    },
+    {
+      "section": "Safewalk supporting page",
+      "title": "Arrival cancellation",
+      "meaning": "The arrival button changes the state, saves it and refreshes the display. The position handler returns for a non-walking state.",
+      "mission": "Provides an explicit completion check-in.",
+      "records": [
+        {
+          "file": "safewalk.html",
+          "line": 454,
+          "code": "    walk.state = \"arrived\";",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        }
+      ]
+    },
+    {
+      "section": "Safewalk supporting page",
+      "title": "Late state and remaining time",
+      "meaning": "The display compares the current time with arrival time and marks the walk late after a five-minute grace period.",
+      "mission": "Prompts a human follow-up; it does not contact a responder.",
+      "records": [
+        {
+          "file": "safewalk.html",
+          "line": 176,
+          "code": "const GRACE_S = 300;             /* five minutes late before the alarm */",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        },
+        {
+          "file": "safewalk.html",
+          "line": 374,
+          "code": "    if (lateBy > GRACE_S) {",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        }
+      ]
+    },
+    {
+      "section": "Safewalk supporting page",
+      "title": "ZIP or GPS based Maps search",
+      "meaning": "The page opens a Google Maps text search based on a five-digit ZIP or a saved position. The search wording does not enforce a one-mile radius or verify an available EMT.",
+      "mission": "Offers a manual search aid with limits distinct from the tracker AED list.",
+      "records": [
+        {
+          "file": "safewalk.html",
+          "line": 180,
+          "code": "const EMT_QUERY = \"EMTs within a one-mile radius of \";",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        },
+        {
+          "file": "safewalk.html",
+          "line": 264,
+          "code": "        encodeURIComponent(EMT_QUERY + where);",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        }
+      ]
+    },
+    {
+      "section": "Safewalk supporting page",
+      "title": "Help state and manual emergency link",
+      "meaning": "The help control records the state when a walk exists, opens Washington 911 information and creates a telephone link.",
+      "mission": "Gives the user an immediate manual action without claiming automatic dispatch.",
+      "records": [
+        {
+          "file": "safewalk.html",
+          "line": 463,
+          "code": "        walk.state = \"help\";",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        },
+        {
+          "file": "safewalk.html",
+          "line": 485,
+          "code": "    call.href = \"tel:911\";",
+          "sha256": "9044fa3590f41e7c289e07e9141f57cf2a7ae6d50789e7afdce45d1d8d4d3538"
+        }
+      ]
+    },
+    {
+      "section": "Shelters and equipment supporting page",
+      "title": "Illustrative resource data and category filter",
+      "meaning": "The page starts with example AED, shelter and hydrant entries. The selected category filters that local collection.",
+      "mission": "Demonstrates resource browsing; it is separate from live Overpass AED results.",
+      "records": [
+        {
+          "file": "shelters.html",
+          "line": 59,
+          "code": "const SEED = [",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        },
+        {
+          "file": "shelters.html",
+          "line": 179,
+          "code": "        rows = rows.filter(r => r.kind === kind);",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        }
+      ]
+    },
+    {
+      "section": "Shelters and equipment supporting page",
+      "title": "Five closest example resources",
+      "meaning": "When position is available, example records are sorted by straight-line distance and limited to five.",
+      "mission": "Illustrates proximity sorting without verifying those sample resources.",
+      "records": [
+        {
+          "file": "shelters.html",
+          "line": 182,
+          "code": "        rows.sort((a, b) => metres(me, a) - metres(me, b));",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        },
+        {
+          "file": "shelters.html",
+          "line": 184,
+          "code": "        rows = rows.slice(0, NEAREST);",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        }
+      ]
+    },
+    {
+      "section": "Shelters and equipment supporting page",
+      "title": "Location request and refusal fallback",
+      "meaning": "This older page requests location on opening as well as from its button. Refusal leaves a clearly unsorted example list.",
+      "mission": "Avoids describing unknown proximity as nearest.",
+      "records": [
+        {
+          "file": "shelters.html",
+          "line": 315,
+          "code": "useLocation(false);",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        },
+        {
+          "file": "shelters.html",
+          "line": 300,
+          "code": "        say(\"Location refused, so these are not the nearest to you. Press the button to try again.\", true);",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        }
+      ]
+    },
+    {
+      "section": "Shelters and equipment supporting page",
+      "title": "Walking directions and map selection",
+      "meaning": "The route link opens directions and a row click centres the map. Clicking the route avoids triggering the row handler.",
+      "mission": "Demonstrates a connection between a listed place and a map action.",
+      "records": [
+        {
+          "file": "shelters.html",
+          "line": 227,
+          "code": "        route.href = routeUrl(row);",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        },
+        {
+          "file": "shelters.html",
+          "line": 244,
+          "code": "                map.setView([row.lat, row.lon], 16);",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        }
+      ]
+    },
+    {
+      "section": "Shelters and equipment supporting page",
+      "title": "Shelter occupancy and editable status",
+      "meaning": "The display calculates example spare capacity and cycles a shelter status when clicked. Changes are saved locally, not shared.",
+      "mission": "Illustrates resource status handling without presenting it as live capacity.",
+      "records": [
+        {
+          "file": "shelters.html",
+          "line": 210,
+          "code": "            text += \", \" + (row.cap - row.occ) + \" of \" + row.cap + \" places free\";",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        },
+        {
+          "file": "shelters.html",
+          "line": 248,
+          "code": "                row.status = next(row.status);",
+          "sha256": "a52d62ec605203cebfe1ebe8bc5f14dd01edd5396f57ea4629435f591be10958"
+        }
+      ]
+    },
+    {
+      "section": "Hazard reporting supporting page",
+      "title": "Category description and photo selection",
+      "meaning": "The form collects a category and note. The stored photo value is only a boolean saying a file was selected; the image is not uploaded.",
+      "mission": "Demonstrates a report structure with a limited local attachment indicator.",
+      "records": [
+        {
+          "file": "hazard.html",
+          "line": 45,
+          "code": "        <select id=\"cat\">",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        },
+        {
+          "file": "hazard.html",
+          "line": 250,
+          "code": "        photo: document.getElementById(\"photo\").files.length > 0,",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        }
+      ]
+    },
+    {
+      "section": "Hazard reporting supporting page",
+      "title": "Choose a place on the map or through GPS",
+      "meaning": "Both map taps and a successful browser position call the same place setter.",
+      "mission": "Ensures a report has a location that a person can review.",
+      "records": [
+        {
+          "file": "hazard.html",
+          "line": 117,
+          "code": "map.on(\"click\", e => setPlace(e.latlng.lat, e.latlng.lng, \"map tap\"));",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        },
+        {
+          "file": "hazard.html",
+          "line": 205,
+          "code": "        setPlace(p.coords.latitude, p.coords.longitude, \"phone GPS\");",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        }
+      ]
+    },
+    {
+      "section": "Hazard reporting supporting page",
+      "title": "Merge nearby reports of the same category",
+      "meaning": "The matching search is limited to sixty metres and skips reports of another category.",
+      "mission": "Reduces duplicate local tickets without treating different hazards as one.",
+      "records": [
+        {
+          "file": "hazard.html",
+          "line": 88,
+          "code": "const MERGE_M = 60;",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        },
+        {
+          "file": "hazard.html",
+          "line": 180,
+          "code": "        if (r.cat !== cat)",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        }
+      ]
+    },
+    {
+      "section": "Hazard reporting supporting page",
+      "title": "Local ticket storage",
+      "meaning": "A new ticket uses the current timestamp; the reports array is saved in this browser. No city submission occurs.",
+      "mission": "Demonstrates report organization rather than a working municipal network.",
+      "records": [
+        {
+          "file": "hazard.html",
+          "line": 234,
+          "code": "        ticket = Date.now();",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        },
+        {
+          "file": "hazard.html",
+          "line": 259,
+          "code": "    localStorage.setItem(KEY, JSON.stringify(reports));",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        }
+      ]
+    },
+    {
+      "section": "Hazard reporting supporting page",
+      "title": "Ranked tickets and proportional map markers",
+      "meaning": "Tickets with more reports appear first and get larger circles, with the size increase capped at eight reports.",
+      "mission": "Makes repeated local reports easier to notice without proving severity.",
+      "records": [
+        {
+          "file": "hazard.html",
+          "line": 317,
+          "code": "    const rows = Object.values(groups).sort((a, b) => b.n - a.n);",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        },
+        {
+          "file": "hazard.html",
+          "line": 356,
+          "code": "            { radius: 6 + Math.min(g.n, 8) * 2, color: \"#ffffff\", fillOpacity: 0.28 })",
+          "sha256": "b0f3c4cefbb6e3a6a46f43555e22322db4ee367337e770d6be1a3f3d16f21d39"
+        }
+      ]
+    },
+    {
+      "section": "Risk zones supporting page",
+      "title": "Illustrative events and CSV import",
+      "meaning": "The initial map uses generated events. Selecting a CSV reads it locally as text and replaces the event collection after parsing.",
+      "mission": "Demonstrates area planning while identifying the source of its input.",
+      "records": [
+        {
+          "file": "risk-zones.html",
+          "line": 404,
+          "code": "events = demoData();",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        },
+        {
+          "file": "risk-zones.html",
+          "line": 392,
+          "code": "    reader.readAsText(file);",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        }
+      ]
+    },
+    {
+      "section": "Risk zones supporting page",
+      "title": "CSV column and row checks",
+      "meaning": "The importer requires recognized latitude and longitude headers and skips values that are not numbers. It is a basic parser, not a complete data validation system.",
+      "mission": "Prevents a missing-column file from being treated as usable evidence.",
+      "records": [
+        {
+          "file": "risk-zones.html",
+          "line": 338,
+          "code": "        if (iLat < 0 || iLon < 0) {",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        },
+        {
+          "file": "risk-zones.html",
+          "line": 355,
+          "code": "            if (isNaN(lat) || isNaN(lon))",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        }
+      ]
+    },
+    {
+      "section": "Risk zones supporting page",
+      "title": "Group events into geographic bins",
+      "meaning": "Rounding divided coordinates creates angular bins. The bins are approximate geography, not exact equal-sized ground squares.",
+      "mission": "Supports broad planning rather than identifying a specific person.",
+      "records": [
+        {
+          "file": "risk-zones.html",
+          "line": 193,
+          "code": "        const key = Math.round(e.lat / CELL) + \":\" + Math.round(e.lon / CELL);",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        }
+      ]
+    },
+    {
+      "section": "Risk zones supporting page",
+      "title": "Weighted outcomes and top fifteen zones",
+      "meaning": "Calls, naloxone, transport and death receive different demonstration weights. Sorted results are limited to fifteen.",
+      "mission": "Shows one possible resource-prioritization rule, not a validated risk model.",
+      "records": [
+        {
+          "file": "risk-zones.html",
+          "line": 130,
+          "code": "const WEIGHT = { call: 1, naloxone: 3, transport: 5, death: 12 };",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        },
+        {
+          "file": "risk-zones.html",
+          "line": 235,
+          "code": "    return kept.slice(0, TOP_N);",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        }
+      ]
+    },
+    {
+      "section": "Risk zones supporting page",
+      "title": "Suppress low counts",
+      "meaning": "The filter excludes bins with fewer than five calls and the interface reports the number suppressed.",
+      "mission": "Adds a privacy precaution without guaranteeing anonymity.",
+      "records": [
+        {
+          "file": "risk-zones.html",
+          "line": 218,
+          "code": "    const kept = all.filter(z => z.calls >= MIN_CALLS);",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        }
+      ]
+    },
+    {
+      "section": "Risk zones supporting page",
+      "title": "Zone table and fixed radius map circles",
+      "meaning": "Selecting a table row centres the map; each circle uses a fixed 250-metre radius, while opacity reflects the score.",
+      "mission": "Links the ranking to broad map context without implying precise case locations.",
+      "records": [
+        {
+          "file": "risk-zones.html",
+          "line": 258,
+          "code": "        tr.onclick = () => map.setView([z.lat, z.lon], 14);",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        },
+        {
+          "file": "risk-zones.html",
+          "line": 263,
+          "code": "            radius: 250,",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        }
+      ]
+    },
+    {
+      "section": "Risk zones supporting page",
+      "title": "Return to generated example data",
+      "meaning": "The reset handler creates illustrative events again and updates the mode banner before redrawing.",
+      "mission": "Keeps imported data and generated examples distinguishable.",
+      "records": [
+        {
+          "file": "risk-zones.html",
+          "line": 395,
+          "code": "document.getElementById(\"demo\").onclick = () => {",
+          "sha256": "3f31e0fe7fa22c562f0949ec5e81c64fc5b9ea0cda9a53e0372a7ef1bb321a14"
+        }
+      ]
+    },
+    {
+      "section": "Retained code and repository support",
+      "title": "Older dashboard renderer",
+      "meaning": "This retained file contains hand-entered city figures and an illustrative label. The current index.html does not load script.js.",
+      "mission": "Documents existing code without presenting dormant figures as a live homepage feature.",
+      "records": [
+        {
+          "file": "script.js",
+          "line": 24,
+          "code": "const CITIES = [",
+          "sha256": "880f5b1ba3c5e5745738bccdfa2283bcf14147ab145a6962fbca7c22caa713b7"
+        },
+        {
+          "file": "script.js",
+          "line": 109,
+          "code": "        tag.textContent = \"Illustrative\";",
+          "sha256": "880f5b1ba3c5e5745738bccdfa2283bcf14147ab145a6962fbca7c22caa713b7"
+        }
+      ]
+    },
+    {
+      "section": "Retained code and repository support",
+      "title": "Crawler access",
+      "meaning": "These directives permit compliant crawlers to read the published site; they do not guarantee indexing.",
+      "mission": "Supports public discoverability rather than emergency response.",
+      "records": [
+        {
+          "file": "robots.txt",
+          "line": 1,
+          "code": "User-agent: *",
+          "sha256": "4b30d1f4cc26ba7aff4f22061da99faa50f354f2ad3722191bd395f0d831c281"
+        },
+        {
+          "file": "robots.txt",
+          "line": 2,
+          "code": "Allow: /",
+          "sha256": "4b30d1f4cc26ba7aff4f22061da99faa50f354f2ad3722191bd395f0d831c281"
+        }
+      ]
+    },
+    {
+      "section": "Retained code and repository support",
+      "title": "Optional Google key example",
+      "meaning": "The file is an example key setting for an earlier integration. The current tracker obtains AEDs through Overpass and does not require this key.",
+      "mission": "Separates old setup material from the active map implementation.",
+      "records": [
+        {
+          "file": "config.example.js",
+          "line": 4,
+          "code": "window.PULSEGUARD_GOOGLE_MAPS_KEY = \"YOUR_BROWSER_RESTRICTED_KEY\";",
+          "sha256": "4155ea17c329eb4f2a50ef1dd01e543ea06dc2bf036cb31ee272c3101d97da5e"
+        }
+      ]
+    },
+    {
+      "section": "Retained code and repository support",
+      "title": "Code explanation comments",
+      "meaning": "This comment explains the nearby cache lifetime. Comments help a reader understand code but do not run; the statements establish actual behavior.",
+      "mission": "Supports inspection and maintenance without changing detection.",
+      "records": [
+        {
+          "file": "app.js",
+          "line": 253,
+          "code": "// Venue information is cached in memory only; it expires after ten minutes.",
+          "sha256": "5f344a5a5b4613220307cfb520ac419af2a9fa0e52aa93d20251d9629b73ebe6"
+        }
+      ]
+    }
+  ]
+}
