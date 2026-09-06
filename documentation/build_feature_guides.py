@@ -65,11 +65,11 @@ feature('Safeguard brand and active page', [('nav.js','name.textContent = "Safeg
 feature('Shared footer', [('nav.js','function buildFooter()')], 'This function constructs the footer from the shared site map and adds its explanatory text.', 'Keeps navigation available after a person reaches the end of a page.')
 feature('Labels for supporting experiments', [('nav.js','const TRIAL = ['),('nav.js','function buildTrialBanner()')], 'Safewalk, shelters and hazard are listed as earlier experiments. Their banner is generated separately from the main tracker.', 'Helps distinguish supporting demonstrations from the core detection sequence.')
 feature('Click and hover feedback', [('sound.js','const SOUND_FILE = "click.mp3";'),('sound.js','playClick(0.5);'),('sound.js','playClick(0.18);')], 'The ordinary interface uses click.mp3, with louder click playback and quieter mouse-hover playback. This is separate from the warning MP3.', 'Provides interaction feedback without representing an emergency signal.')
-# Explain: Assign feature('Hover throttling and touch behavior', [('sound.js','c... from the value shown here. Apply feature('Remembered sound preference', [('sound.js','localStorage.setItem(MUTE_KEY... in the document-building sequence. Apply section('Homepage and account demonstration') in the document-building sequence.
+# Explain: Assign feature('Hover throttling and touch behavior', [('sound.js','c... from the value shown here. Apply feature('Remembered sound preference', [('sound.js','localStorage.setItem(MUTE_KEY... in the document-building sequence. Apply section('Homepage and account access') in the document-building sequence.
 feature('Hover throttling and touch behavior', [('sound.js','const HOVER_GAP_MS = 120;'),('sound.js','if (ev.pointerType !== "mouse")')], 'Hover sounds are limited to mouse events and spaced by at least 120 milliseconds. Touch does not get an extra hover sound.', 'Reduces distracting repeated feedback.')
 feature('Remembered sound preference', [('sound.js','localStorage.setItem(MUTE_KEY, muted ? "1" : "0");')], 'The toggle saves the ordinary click-sound preference in the browser. It does not mute the separate warning media element.', 'Gives users control over routine feedback while preserving the warning flow.')
 
-section('Homepage and account demonstration')
+section('Homepage and account access')
 # Explain: Assign feature('Page title and sharing description', [('index.html','... from the value shown here. Assign feature('Headline and purpose', [('index.html','<h1>Help for t... from the value shown here. Assign feature('Protection status and tracker jump', [('index.html','... from the value shown here.
 feature('Page title and sharing description', [('index.html','<title>Safeguard'),('index.html','<meta property="og:description"')], 'The title identifies the tab and the Open Graph description supplies sharing metadata.', 'Explains the purpose before someone opens the tracker.')
 feature('Headline and purpose', [('index.html','<h1>Help for the moment'),('index.html','<p class="lede">Safeguard looks')], 'The heading introduces the problem; the paragraph describes multiple signals, a response check and preparation of human help.', 'States the notice, verify and help sequence in plain language.')
@@ -81,10 +81,14 @@ feature('Four step explanation and future modes', [('index.html','<ol class="seq
 # Explain: Assign feature('Driving prevention and official source links', [('ind... from the value shown here. Assign feature('Embedded live tracker', [('index.html','<iframe title from the value shown here. Assign feature('Login and signup forms', [('index.html','<form class from the value shown here.
 feature('Driving prevention and official source links', [('index.html','<h2 id="drive-title">'),('index.html','<div class="source-links"')], 'This section presents prevention text, local contextual figures and links to the named external sources. It is content, not a live collision-data feed.', 'Supports prevention and points readers to source material.')
 feature('Embedded live tracker', [('index.html','<iframe title="Safeguard'),('index.html','if (event.origin !== location.origin')], 'The homepage embeds fall-detection.html and permits its location, motion and audio capabilities. The message guard accepts size changes only from that same-origin frame.', 'Keeps the working tracker available from the homepage without trusting arbitrary window messages.')
-feature('Login and signup forms', [('index.html','<form class="auth-form" id="login-form"'),('auth.js','loginForm.hidden = !showLogin;'),('auth.js','signupForm.hidden = showLogin;')], 'The HTML defines the form and the script switches which form is visible when a tab is selected.', 'Demonstrates account navigation; it does not enable a protected account.')
-# Explain: Apply feature('Account opening and closing', [('auth.js','if (!authDialog.open) authDial... in the document-building sequence. Assign feature('Account submission boundary', [('auth.js','authStatus... from the value shown here. Apply section('Motion tracker and response sequence') in the document-building sequence.
-feature('Account opening and closing', [('auth.js','if (!authDialog.open) authDialog.showModal();'),('auth.js','authClose.addEventListener')], 'showModal opens the selected account form; the close button dismisses it. Hash links also select the form.', 'Keeps an optional account demonstration separate from monitoring.')
-feature('Account submission boundary', [('auth.js','authStatus.textContent = "Accounts are not connected yet.'),('auth.js','input.value = "";')], 'Submission reports that no account was created and clears password inputs. The handler prevents normal form submission.', 'Avoids claiming an account or remote protection service has been activated.')
+feature('Separate sign in and sign up boxes', [('index.html','<form class="auth-form auth-box" id="login-form"'),('auth.js','loginForm.hidden = !showLogin;'),('auth.js','signupForm.hidden = showLogin;')], 'Each flow has its own bordered form and Google button. Switching tabs hides the other form, including its fields and status.', 'Keeps the chosen account action clear without combining sign-in and registration fields.')
+feature('Account opening and closing', [('auth.js','if (!authDialog.open) authDialog.showModal();'),('auth.js','authClose.addEventListener')], 'showModal opens the selected account form; the close button dismisses it. Hash links also select the form.', 'Keeps account access separate from monitoring.')
+feature('Email authentication and password handling', [('auth.js','const result = google ? await identity.google()'),('auth-provider.js','login: (email, password)'),('auth-provider.js','signup: (email, password)')], 'When configured, the provider signs in existing users or creates email accounts with Firebase. Password fields are cleared after each completed attempt and are never saved by the UI. The public Firebase configuration is currently missing, so real authentication is unavailable.', 'Supports authenticated account access without claiming that an unconfigured form has signed anyone in.')
+
+feature('Requested sign in fields', [('index.html','<input id="login-email"'),('index.html','<input id="login-password"')], 'The sign-in box contains only Email and Password inputs, plus its separate Google and submit buttons.', 'Avoids asking returning users to repeat registration details.')
+feature('Requested sign up fields', [('index.html','<input id="signup-first-name"'),('index.html','<input id="signup-last-name"'),('index.html','<label for="signup-password">Create a password')], 'Registration contains First name, Last name, Email and Create a password. The provider saves the joined names as the Firebase display name after successful email account creation.', 'Collects a readable account identity without changing the saved emergency contact.')
+feature('Google sign in and Google sign up', [('index.html','data-google="login"'),('index.html','data-google="signup"'),('auth-provider.js','google: () => signInWithPopup')], 'Each box has its own Google option. Both use the Google account chooser; Firebase creates an account on first authentication and signs in a returning user afterward. The Google flow does not require the email form fields. It awaits the owner’s Firebase setup.', 'Provides an alternative account path without collecting the Google password on this page.')
+feature('Authentication configuration and session', [('auth-config.js','window.SAFEGUARD_FIREBASE_CONFIG = null;'),('auth-provider.js','await setPersistence(auth, browserSessionPersistence);'),('auth.js','await identity.signout();')], 'The null configuration keeps authentication unavailable until the owner supplies public web identifiers and enables providers. Once configured, Firebase verifies credentials, keeps the browser session and supports sign-out. Tracker contacts are not synced.', 'Makes account state explicit and keeps it separate from active monitoring.')
 
 section('Motion tracker and response sequence')
 # Explain: Assign feature('Start and stop control', [('fall-detection.html','<bu... from the value shown here. Assign feature('Motion permission and arming delay', [('app.js','cons... from the value shown here. Apply feature('Real sensor event listeners', [('app.js','window.addEventListener("device... in the document-building sequence.
@@ -202,7 +206,7 @@ feature('Code explanation comments', [('app.js','// Venue information is cached 
 TALK = [
 # Explain: Record a presentation value or source-reference entry.
 ('0 to 15 seconds', 'Safeguard helps people notice possible danger, check responsiveness, and reach human help. The homepage presents emergency choices, support links, and the tracker. About explains the method, sources, and privacy.', [('index.html','<h1>Help for the moment'),('about.html','<h1>What Safeguard can')]),
-('15 to 30 seconds', 'In site dot CSS, line twelve defines the teal and navy gradient. Shared styles organize cards, buttons, and keyboard focus. Mobile rules stack choices. Navigation connects the pages, while account forms remain demonstrations.', [('site.css','--page-background: radial-gradient'),('styles.css','.choice-grid, .sequence-list, .local-facts { grid-template-columns: 1fr; }')]),
+('15 to 30 seconds', 'In site dot CSS, line twelve defines the teal and navy gradient. Shared styles organize cards, buttons, and keyboard focus. Mobile rules stack choices. Navigation connects the pages, while account setup awaits configuration.', [('site.css','--page-background: radial-gradient'),('styles.css','.choice-grid, .sequence-list, .local-facts { grid-template-columns: 1fr; }')]),
 ('30 to 47 seconds', 'In app dot JavaScript, motion readings identify a possible drop. Settling, recovery, and stillness checks reduce premature prompts. Two motion signals are required. A five-second question lets the person cancel before the warning begins.', [('app.js','const IMPACT_MS2 = 25;'),('app.js','if (!fired.stillness || signalCount() < MIN_SIGNALS)'),('app.js','const COUNTDOWN_S = 5;')]),
 # Explain: Record a presentation value or source-reference entry.
 ('47 to 62 seconds', 'The attached MP3 then plays for ten seconds of actual playback. The marker offers the same test. A saved contact receives a prepared message through the messaging app; a person still presses send.', [('app.js','const DROP_ALARM_S = 10;'),('app.js','link.href = "sms:"')]),
@@ -227,94 +231,95 @@ def new_document(mission=False):
     existing=SRC/'documentation'/('PulseGuard_Code_Mission_References.docx' if mission else 'PulseGuard_Code_Presentation.docx')
     doc=Document(existing)
     for child in list(doc._element.body):
-        # Explain: Run the following block when child.tag!=qn('w:sectPr'):doc._element.body.remove(child). Assign page from the value shown here. Assign page.page_width from the value shown here.
+        # Explain: Run the following block when child.tag!=qn('w:sectPr'):doc._element.body.remove(child). Repeat the following work for rel_id, relationship in list(doc.part.rels.items()). Run the following block when relationship.reltype == RT.HYPERLINK: doc.part.drop_rel(rel_id).
         if child.tag!=qn('w:sectPr'):doc._element.body.remove(child)
     # Remove obsolete links left behind by the previous guide's cleared body.
     for rel_id, relationship in list(doc.part.rels.items()):
         if relationship.reltype == RT.HYPERLINK: doc.part.drop_rel(rel_id)
+    # Explain: Assign page from the value shown here. Assign page.page_width from the value shown here. Assign page.top_margin from the value shown here.
     page=doc.sections[0]
     page.page_width=Inches(8.5);page.page_height=Inches(11)
-    # Explain: Assign page.top_margin from the value shown here. Assign page.left_margin from the value shown here. Repeat the following work for name,size,font in [('Normal',11,'Aptos'),('Title',23,'Georgia'),('Heading 1',.
     page.top_margin=page.bottom_margin=Inches(.65)
+    # Explain: Assign page.left_margin from the value shown here. Repeat the following work for name,size,font in [('Normal',11,'Aptos'),('Title',23,'Georgia'),('Heading 1',. Set the font appearance for this text or style.
     page.left_margin=page.right_margin=Inches(.75)
     for name,size,font in [('Normal',11,'Aptos'),('Title',23,'Georgia'),('Heading 1',16,'Georgia'),('Heading 2',12,'Aptos')]:
-        # Explain: Set the font appearance for this text or style. Set paragraph spacing or pagination behavior. Assign footer from the value shown here.
         style=doc.styles[name];style.font.name=font;style.font.size=Pt(size);style.font.color.rgb=RGBColor(0,0,0)
+        # Explain: Set paragraph spacing or pagination behavior. Assign footer from the value shown here. Set a Word XML attribute controlling document formatting.
         style.paragraph_format.space_after=Pt(5);style.paragraph_format.line_spacing=1.05
     footer=page.footer.paragraphs[0];footer.clear();footer.alignment=2
-    # Explain: Set a Word XML attribute controlling document formatting. Return doc to the caller. Define the helper cite.
     field=OxmlElement('w:fldSimple');field.set(qn('w:instr'),'PAGE');footer._p.append(field)
+    # Explain: Return doc to the caller. Define the helper cite. Apply add_link(paragraph,f"({record['file']}, line {record['line']})",f"https://github.c... in the document-building sequence.
     return doc
 
 def cite(paragraph, record):
-    # Explain: Apply add_link(paragraph,f"({record['file']}, line {record['line']})",f"https://github.c... in the document-building sequence. Define the helper add_talk. Assign words from the value shown here.
     add_link(paragraph,f"({record['file']}, line {record['line']})",f"https://github.com/Canopy10979/PulseGuard_hackathon/blob/{REV}/{record['file']}#L{record['line']}")
 
+# Explain: Define the helper add_talk. Assign words from the value shown here. Add the specified content or structure to the Word document.
 def add_talk(doc):
     words=len(re.findall(r"\S+",' '.join(t[1] for t in TALK)))
-    # Explain: Add the specified content or structure to the Word document. Repeat the following work for timing,text,refs in TALK.
     doc.add_heading('Presentation for one minute forty seconds',1)
+    # Explain: Add the specified content or structure to the Word document. Repeat the following work for timing,text,refs in TALK.
     doc.add_paragraph(f'Read only the six spoken paragraphs. The {words}-word script takes about 100 seconds at {round(words*60/100)} words per minute. Timing marks and source cues are not spoken; rehearse once to adjust pauses.')
     for timing,text,refs in TALK:
-        # Explain: Add the specified content or structure to the Word document. Assign p.add_run(timing+' ').bold from the value shown here.
         p=doc.add_paragraph();p.paragraph_format.keep_with_next=True
+        # Explain: Assign p.add_run(timing+' ').bold from the value shown here. Add the specified content or structure to the Word document. Assign p.add_run('Source cues ').italic from the value shown here.
         p.add_run(timing+'  ').bold=True;p.add_run(text)
         p=doc.add_paragraph();p.paragraph_format.space_after=Pt(9)
-        # Explain: Assign p.add_run('Source cues ').italic from the value shown here. Repeat the following work for i,args in enumerate(refs). Run the following block when i:p.add_run(' ').
         p.add_run('Source cues  ').italic=True
+        # Explain: Repeat the following work for i,args in enumerate(refs). Run the following block when i:p.add_run(' '). Apply cite(p,ref(*args)) in the document-building sequence.
         for i,args in enumerate(refs):
             if i:p.add_run('  ')
-            # Explain: Apply cite(p,ref(*args)) in the document-building sequence. Add the specified content or structure to the Word document. Define the helper build.
             cite(p,ref(*args))
+    # Explain: Add the specified content or structure to the Word document. Define the helper build. Assign records from the value shown here.
     doc.add_page_break()
 
 def build():
-    # Explain: Assign records from the value shown here. Repeat the following work for item in FEATURES. Assign item['records'] from the value shown here.
     records=[]
+    # Explain: Repeat the following work for item in FEATURES. Assign item['records'] from the value shown here. Apply records.extend(item['records']) in the document-building sequence.
     for item in FEATURES:
         item['records']=[ref(*args) for args in item['refs']]
-        # Explain: Apply records.extend(item['records']) in the document-building sequence. Repeat the following work for mission,filename in [(False,'PulseGuard_Code_Presentation'),(True,'PulseGuard. Assign doc from the value shown here.
         records.extend(item['records'])
+    # Explain: Repeat the following work for mission,filename in [(False,'PulseGuard_Code_Presentation'),(True,'PulseGuard. Assign doc from the value shown here. Assign title from the value shown here.
     for mission,filename in [(False,'PulseGuard_Code_Presentation'),(True,'PulseGuard_Code_Mission_References')]:
         doc=new_document(mission)
-        # Explain: Assign title from the value shown here. Add the specified content or structure to the Word document.
         title='Safeguard Website Features and Mission' if mission else 'Safeguard Website Feature Code Guide'
+        # Explain: Add the specified content or structure to the Word document.
         doc.add_paragraph(title,'Title')
         doc.add_paragraph('A short presentation followed by a feature reference for all seven website pages, shared styles and scripts, and retained supporting code. Each feature names its file, quotes exact physical source lines, and explains what those lines do.'+(' The reference also connects each feature to the mission.' if mission else ''))
-        # Explain: Add the specified content or structure to the Word document. Apply add_talk(doc) in the document-building sequence. Run the following block when mission.
         doc.add_paragraph('Source snapshot '+REV[:12]+'. Line counts include comments and blank lines. Linked references open the exact GitHub revision. The full reference is for questions and review; reading every code line aloud would exceed one minute forty seconds.')
+        # Explain: Apply add_talk(doc) in the document-building sequence. Run the following block when mission. Add the specified content or structure to the Word document.
         add_talk(doc)
         if mission:
-            # Explain: Add the specified content or structure to the Word document.
             doc.add_heading('Mission statement',1)
+            # Explain: Add the specified content or structure to the Word document. Assign groups from the value shown here.
             doc.add_paragraph('Goal: recognize danger, verify responsiveness, and shorten the time before help is requested.')
             doc.add_paragraph('Source: the supplied message.txt. Direct monitoring, interface support and older experiments contribute differently; the explanations below distinguish them.')
-        # Explain: Assign groups from the value shown here. Repeat the following work for item in FEATURES:groups.setdefault(item['section'],[]).append(item). Repeat the following work for name,items in groups.items().
         groups=OrderedDict()
+        # Explain: Repeat the following work for item in FEATURES:groups.setdefault(item['section'],[]).append(item). Repeat the following work for name,items in groups.items(). Add the specified content or structure to the Word document.
         for item in FEATURES:groups.setdefault(item['section'],[]).append(item)
         for name,items in groups.items():
-            # Explain: Add the specified content or structure to the Word document. Repeat the following work for item in items.
             doc.add_heading(name,1)
+            # Explain: Repeat the following work for item in items. Add the specified content or structure to the Word document. Repeat the following work for record in item['records'].
             for item in items:
                 doc.add_heading(item['title'],2)
-                # Explain: Repeat the following work for record in item['records']. Add the specified content or structure to the Word document.
                 for record in item['records']:
+                    # Explain: Add the specified content or structure to the Word document. Set the font appearance for this text or style.
                     p=doc.add_paragraph();p.paragraph_format.keep_with_next=True;cite(p,record)
                     p=doc.add_paragraph();p.paragraph_format.keep_with_next=True
-                    # Explain: Set the font appearance for this text or style. Add the specified content or structure to the Word document. Run the following block when mission.
                     r=p.add_run(record['code'].strip());r.font.name='Consolas';r.font.size=Pt(9)
+                # Explain: Add the specified content or structure to the Word document. Run the following block when mission. Set paragraph spacing or pagination behavior.
                 p=doc.add_paragraph();p.add_run('What this does  ').bold=True;p.add_run(item['meaning'])
                 if mission:
-                    # Explain: Set paragraph spacing or pagination behavior. Add the specified content or structure to the Word document. Assign doc.core_properties.title from the value shown here.
                     p.paragraph_format.keep_with_next=True
+                    # Explain: Add the specified content or structure to the Word document. Assign doc.core_properties.title from the value shown here. Write the completed Word document to its output path.
                     p=doc.add_paragraph();p.add_run('Mission relevance  ').bold=True;p.add_run(item['mission'])
         doc.core_properties.title=title
-        # Explain: Write the completed Word document to its output path. Apply shutil.copy2(output,SRC/'documentation'/(filename+'.docx')) in the document-building sequence. Assign manifest from the value shown here.
         output=ROOT/(filename+'_Updated.docx');doc.save(output)
+        # Explain: Apply shutil.copy2(output,SRC/'documentation'/(filename+'.docx')) in the document-building sequence. Assign manifest from the value shown here. Record a presentation value or source-reference entry.
         shutil.copy2(output,SRC/'documentation'/(filename+'.docx'))
     manifest={'revision':REV,'feature_count':len(FEATURES),'spoken_words':len(re.findall(r'\S+',' '.join(t[1] for t in TALK))), 'features':[{k:v for k,v in f.items() if k!='refs'} for f in FEATURES]}
-    # Explain: Record a presentation value or source-reference entry. Assign print(json.dumps({'features':len(FEATURES),'exact_line_referen... from the value shown here. Run the following block when __name__=='__main__':build().
     (SRC/'documentation/feature_reference_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
+    # Explain: Assign print(json.dumps({'features':len(FEATURES),'exact_line_referen... from the value shown here. Run the following block when __name__=='__main__':build().
     print(json.dumps({'features':len(FEATURES),'exact_line_references':len(records),'spoken_words':manifest['spoken_words'],'revision':REV},indent=2))
 
 if __name__=='__main__':build()

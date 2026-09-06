@@ -1,6 +1,6 @@
 {
-  "revision": "c123754144367fdf4a01e6a5870be6f502294515",
-  "feature_count": 100,
+  "revision": "f1adb61dcefbe19a3179a1fb2b5fc58724986610",
+  "feature_count": 104,
   "spoken_words": 197,
   "features": [
     {
@@ -25,7 +25,7 @@
           "file": "styles.css",
           "line": 47,
           "code": "  background: var(--page-background);",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -45,7 +45,7 @@
           "file": "styles.css",
           "line": 783,
           "code": ".choice-card { background: #202122; border: 1px solid #54595d; padding: 22px; display: flex; flex-direction: column; align-items: flex-start; }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -59,13 +59,13 @@
           "file": "styles.css",
           "line": 745,
           "code": "body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         },
         {
           "file": "styles.css",
           "line": 746,
           "code": "h1, h2, h3 { font-family: Georgia, \"Times New Roman\", serif; font-weight: 500; letter-spacing: -.018em !important; }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -93,7 +93,7 @@
           "file": "styles.css",
           "line": 67,
           "code": "  width: min(1180px, calc(100% - 32px));",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -113,13 +113,13 @@
           "file": "styles.css",
           "line": 765,
           "code": ".primary-btn { background: #3366cc; color: #fff; box-shadow: none; }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         },
         {
           "file": "styles.css",
           "line": 767,
           "code": ".secondary-btn { background: #27292d; border-color: #54595d; }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -133,13 +133,13 @@
           "file": "styles.css",
           "line": 29,
           "code": "  --emergency: #ff3b30;",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         },
         {
           "file": "styles.css",
           "line": 789,
           "code": ".danger-choice { border-top: 3px solid var(--emergency); }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -153,13 +153,13 @@
           "file": "styles.css",
           "line": 822,
           "code": "@media (max-width: 800px) {",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         },
         {
           "file": "styles.css",
           "line": 823,
           "code": "  .choice-grid, .sequence-list, .local-facts { grid-template-columns: 1fr; }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -199,7 +199,7 @@
           "file": "nav.js",
           "line": 53,
           "code": "    skip.href = \"#main-content\";",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         },
         {
           "file": "site.css",
@@ -219,7 +219,7 @@
           "file": "index.html",
           "line": 7,
           "code": "  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
@@ -239,7 +239,7 @@
           "file": "styles.css",
           "line": 805,
           "code": ".auth-dialog::backdrop { background: rgba(0, 0, 0, .72); }",
-          "sha256": "d27e8dbbe877c81dfe97c17e32e69fddc9ea427d8269b1e53984d45b0d1a6397"
+          "sha256": "f86c073d0a8b0d0909aec5dded909fe92227b90a78c452633ba3c1be27e733bd"
         }
       ]
     },
@@ -273,13 +273,13 @@
           "file": "nav.js",
           "line": 12,
           "code": "const SITE = [",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         },
         {
           "file": "nav.js",
           "line": 25,
           "code": "            { id: \"detect\", href: \"fall-detection.html\", label: \"Drop tracker\" }",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         }
       ]
     },
@@ -293,13 +293,13 @@
           "file": "nav.js",
           "line": 77,
           "code": "    name.textContent = \"Safeguard\";",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         },
         {
           "file": "nav.js",
           "line": 109,
           "code": "                a.setAttribute(\"aria-current\", \"page\");",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         }
       ]
     },
@@ -313,7 +313,7 @@
           "file": "nav.js",
           "line": 151,
           "code": "function buildFooter() {",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         }
       ]
     },
@@ -327,13 +327,13 @@
           "file": "nav.js",
           "line": 42,
           "code": "const TRIAL = [\"safewalk\", \"shelters\", \"hazard\"];",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         },
         {
           "file": "nav.js",
           "line": 188,
           "code": "function buildTrialBanner() {",
-          "sha256": "6251578630ad1a6e339c13ec7ebf389bd1fd51e8b6be4315b9e306ad1f529295"
+          "sha256": "2eee1edd03c65d1c8b03dc6eb171bc48379a4f2ffa81911fa566e9f4134e661c"
         }
       ]
     },
@@ -398,7 +398,7 @@
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Page title and sharing description",
       "meaning": "The title identifies the tab and the Open Graph description supplies sharing metadata.",
       "mission": "Explains the purpose before someone opens the tracker.",
@@ -407,18 +407,18 @@
           "file": "index.html",
           "line": 8,
           "code": "  <title>Safeguard | Help when someone cannot ask</title>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "index.html",
           "line": 18,
           "code": "  <meta property=\"og:description\" content=\"A transparent emergency-support prototype for possible life-threatening unresponsiveness.\">",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Headline and purpose",
       "meaning": "The heading introduces the problem; the paragraph describes multiple signals, a response check and preparation of human help.",
       "mission": "States the notice, verify and help sequence in plain language.",
@@ -427,18 +427,18 @@
           "file": "index.html",
           "line": 31,
           "code": "        <h1>Help for the moment someone cannot ask.</h1>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "index.html",
           "line": 32,
           "code": "        <p class=\"lede\">Safeguard looks for more than one sign of a possible collapse, checks whether the person can respond, and prepares a way to reach human help.</p>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Protection status and tracker jump",
       "meaning": "The homepage status card initially says protection is off. Its link scrolls to the tracker; this heading is static and does not mirror the iframe state.",
       "mission": "Encourages deliberate activation rather than implying protection starts automatically.",
@@ -447,18 +447,18 @@
           "file": "index.html",
           "line": 40,
           "code": "        <h2 id=\"status-title\">Protection is off</h2>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "index.html",
           "line": 43,
           "code": "        <a class=\"primary-btn\" href=\"#live-tracker\">Open drop tracker</a>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Immediate danger and bystander choices",
       "meaning": "Each card includes a real tel:911 link for the user to open. The page does not automatically dial.",
       "mission": "Provides a direct manual route when help is already needed.",
@@ -467,18 +467,18 @@
           "file": "index.html",
           "line": 52,
           "code": "        <article class=\"choice-card danger-choice\"><p class=\"card-kicker\">Immediate danger</p><h3>I need help</h3><p>If you may have overdosed, cannot breathe normally, or feel seriously unwell, call 911.</p><a class=\"primary-btn emergency-btn\" href=\"tel:911\">Call 911</a></article>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "index.html",
           "line": 53,
           "code": "        <article class=\"choice-card\"><p class=\"card-kicker\">Bystander</p><h3>Help someone else</h3><p>If they cannot wake or are not breathing normally, call 911 now. You do not need to identify the substance first.</p><a class=\"secondary-btn\" href=\"tel:911\">Call 911 for them</a></article>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Treatment support link",
       "meaning": "The support card links to the displayed national helpline using a telephone URI.",
       "mission": "Offers a separate human support path alongside urgent choices.",
@@ -487,12 +487,12 @@
           "file": "index.html",
           "line": 55,
           "code": "        <article class=\"choice-card\"><p class=\"card-kicker\">Drug or alcohol support</p><h3>I want help</h3><p>Free, confidential treatment referrals are available 24/7.</p><a class=\"secondary-btn\" href=\"tel:18006624357\">Call the national helpline</a><small>1-800-662-HELP (4357)</small></article>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Four step explanation and future modes",
       "meaning": "The ordered list presents Notice, Verify, Ask and Prepare. The following note identifies future modes as unimplemented.",
       "mission": "Communicates the intended sequence while bounding current capabilities.",
@@ -501,18 +501,18 @@
           "file": "index.html",
           "line": 64,
           "code": "      <ol class=\"sequence-list\">",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "index.html",
           "line": 72,
           "code": "      <p class=\"microcopy\">Future breathing, smartwatch, scheduled, and always-on modes are concepts only and are not implemented in this website.</p>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Driving prevention and official source links",
       "meaning": "This section presents prevention text, local contextual figures and links to the named external sources. It is content, not a live collision-data feed.",
       "mission": "Supports prevention and points readers to source material.",
@@ -521,99 +521,203 @@
           "file": "index.html",
           "line": 78,
           "code": "      <h2 id=\"drive-title\">If a substance may affect you, leave the keys behind.</h2>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "index.html",
           "line": 86,
           "code": "      <div class=\"source-links\" aria-label=\"Official sources\">",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Embedded live tracker",
       "meaning": "The homepage embeds fall-detection.html and permits its location, motion and audio capabilities. The message guard accepts size changes only from that same-origin frame.",
       "mission": "Keeps the working tracker available from the homepage without trusting arbitrary window messages.",
       "records": [
         {
           "file": "index.html",
-          "line": 144,
+          "line": 160,
           "code": "      <iframe title=\"Safeguard live location and motion tracker\" src=\"fall-detection.html?embedded=1\" allow=\"geolocation; accelerometer; gyroscope; autoplay\" loading=\"lazy\" style=\"width:100%;height:900px;border:0;border-radius:16px\"></iframe>",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "index.html",
-          "line": 157,
+          "line": 174,
           "code": "      if (event.origin !== location.origin || event.source !== frame.contentWindow) return;",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
-      "title": "Login and signup forms",
-      "meaning": "The HTML defines the form and the script switches which form is visible when a tab is selected.",
-      "mission": "Demonstrates account navigation; it does not enable a protected account.",
+      "section": "Homepage and account access",
+      "title": "Separate sign in and sign up boxes",
+      "meaning": "Each flow has its own bordered form and Google button. Switching tabs hides the other form, including its fields and status.",
+      "mission": "Keeps the chosen account action clear without combining sign-in and registration fields.",
       "records": [
         {
           "file": "index.html",
-          "line": 112,
-          "code": "        <form class=\"auth-form\" id=\"login-form\" aria-labelledby=\"login-tab\">",
-          "sha256": "8f8cdf4e804d35c365803990b15428423c092f73a87634f9e3025fa0bd7f0a73"
-        },
-        {
-          "file": "auth.js",
-          "line": 13,
-          "code": "    loginForm.hidden = !showLogin;",
-          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+          "line": 118,
+          "code": "        <form class=\"auth-form auth-box\" id=\"login-form\" aria-labelledby=\"login-heading\">",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
         },
         {
           "file": "auth.js",
           "line": 15,
+          "code": "    loginForm.hidden = !showLogin;",
+          "sha256": "ca21c692fae1599df0fd8ffb9bf01771f3de8d37cdd509401fcf7459fb35d89e"
+        },
+        {
+          "file": "auth.js",
+          "line": 16,
           "code": "    signupForm.hidden = showLogin;",
-          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+          "sha256": "ca21c692fae1599df0fd8ffb9bf01771f3de8d37cdd509401fcf7459fb35d89e"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
+      "section": "Homepage and account access",
       "title": "Account opening and closing",
       "meaning": "showModal opens the selected account form; the close button dismisses it. Hash links also select the form.",
-      "mission": "Keeps an optional account demonstration separate from monitoring.",
+      "mission": "Keeps account access separate from monitoring.",
       "records": [
         {
           "file": "auth.js",
           "line": 31,
           "code": "    if (!authDialog.open) authDialog.showModal();",
-          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+          "sha256": "ca21c692fae1599df0fd8ffb9bf01771f3de8d37cdd509401fcf7459fb35d89e"
         },
         {
           "file": "auth.js",
-          "line": 49,
+          "line": 55,
           "code": "authClose.addEventListener(\"click\", () => authDialog.close());",
-          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+          "sha256": "ca21c692fae1599df0fd8ffb9bf01771f3de8d37cdd509401fcf7459fb35d89e"
         }
       ]
     },
     {
-      "section": "Homepage and account demonstration",
-      "title": "Account submission boundary",
-      "meaning": "Submission reports that no account was created and clears password inputs. The handler prevents normal form submission.",
-      "mission": "Avoids claiming an account or remote protection service has been activated.",
+      "section": "Homepage and account access",
+      "title": "Email authentication and password handling",
+      "meaning": "When configured, the provider signs in existing users or creates email accounts with Firebase. Password fields are cleared after each completed attempt and are never saved by the UI. The public Firebase configuration is currently missing, so real authentication is unavailable.",
+      "mission": "Supports authenticated account access without claiming that an unconfigured form has signed anyone in.",
       "records": [
         {
           "file": "auth.js",
-          "line": 64,
-          "code": "        authStatus.textContent = \"Accounts are not connected yet. Nothing was sent or saved.\";",
-          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+          "line": 128,
+          "code": "        const result = google ? await identity.google() : await identity[kind](form.elements.email.value.trim(), form.elements.password.value);",
+          "sha256": "ca21c692fae1599df0fd8ffb9bf01771f3de8d37cdd509401fcf7459fb35d89e"
+        },
+        {
+          "file": "auth-provider.js",
+          "line": 18,
+          "code": "        login: (email, password) => signInWithEmailAndPassword(auth, email, password),",
+          "sha256": "e5439695abe74743cd4d9de5681e9de01d15fb20362d895a72634290f9a46bfc"
+        },
+        {
+          "file": "auth-provider.js",
+          "line": 19,
+          "code": "        signup: (email, password) => createUserWithEmailAndPassword(auth, email, password),",
+          "sha256": "e5439695abe74743cd4d9de5681e9de01d15fb20362d895a72634290f9a46bfc"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account access",
+      "title": "Requested sign in fields",
+      "meaning": "The sign-in box contains only Email and Password inputs, plus its separate Google and submit buttons.",
+      "mission": "Avoids asking returning users to repeat registration details.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 124,
+          "code": "          <input id=\"login-email\" name=\"email\" type=\"email\" autocomplete=\"username\" required>",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
+        },
+        {
+          "file": "index.html",
+          "line": 127,
+          "code": "          <input id=\"login-password\" name=\"password\" type=\"password\" autocomplete=\"current-password\" required>",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account access",
+      "title": "Requested sign up fields",
+      "meaning": "Registration contains First name, Last name, Email and Create a password. The provider saves the joined names as the Firebase display name after successful email account creation.",
+      "mission": "Collects a readable account identity without changing the saved emergency contact.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 139,
+          "code": "          <input id=\"signup-first-name\" name=\"firstName\" type=\"text\" autocomplete=\"given-name\" maxlength=\"100\" required>",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
+        },
+        {
+          "file": "index.html",
+          "line": 142,
+          "code": "          <input id=\"signup-last-name\" name=\"lastName\" type=\"text\" autocomplete=\"family-name\" maxlength=\"100\" required>",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
+        },
+        {
+          "file": "index.html",
+          "line": 146,
+          "code": "          <label for=\"signup-password\">Create a password</label>",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account access",
+      "title": "Google sign in and Google sign up",
+      "meaning": "Each box has its own Google option. Both use the Google account chooser; Firebase creates an account on first authentication and signs in a returning user afterward. The Google flow does not require the email form fields. It awaits the owner\u2019s Firebase setup.",
+      "mission": "Provides an alternative account path without collecting the Google password on this page.",
+      "records": [
+        {
+          "file": "index.html",
+          "line": 120,
+          "code": "          <button class=\"google-auth\" type=\"button\" data-google=\"login\">Sign in with Google</button>",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
+        },
+        {
+          "file": "index.html",
+          "line": 135,
+          "code": "          <button class=\"google-auth\" type=\"button\" data-google=\"signup\">Sign up with Google</button>",
+          "sha256": "d31dce2f008c62e6c6a0fd52bc89cb01cff4edb37ef1db5ce5e1df0754af11a2"
+        },
+        {
+          "file": "auth-provider.js",
+          "line": 17,
+          "code": "        google: () => signInWithPopup(auth, google),",
+          "sha256": "e5439695abe74743cd4d9de5681e9de01d15fb20362d895a72634290f9a46bfc"
+        }
+      ]
+    },
+    {
+      "section": "Homepage and account access",
+      "title": "Authentication configuration and session",
+      "meaning": "The null configuration keeps authentication unavailable until the owner supplies public web identifiers and enables providers. Once configured, Firebase verifies credentials, keeps the browser session and supports sign-out. Tracker contacts are not synced.",
+      "mission": "Makes account state explicit and keeps it separate from active monitoring.",
+      "records": [
+        {
+          "file": "auth-config.js",
+          "line": 4,
+          "code": "window.SAFEGUARD_FIREBASE_CONFIG = null;",
+          "sha256": "b2a7b8d3cd59473b1a0809e0b203c36c39f33d156c52903a1c645de4174664c2"
+        },
+        {
+          "file": "auth-provider.js",
+          "line": 9,
+          "code": "    await setPersistence(auth, browserSessionPersistence);",
+          "sha256": "e5439695abe74743cd4d9de5681e9de01d15fb20362d895a72634290f9a46bfc"
         },
         {
           "file": "auth.js",
-          "line": 67,
-          "code": "            input.value = \"\";",
-          "sha256": "b9dabd06c8f63f42adaca0db0490fec3b60a980a3472c53e478e9f9987a38fed"
+          "line": 168,
+          "code": "        await identity.signout();",
+          "sha256": "ca21c692fae1599df0fd8ffb9bf01771f3de8d37cdd509401fcf7459fb35d89e"
         }
       ]
     },
