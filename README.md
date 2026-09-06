@@ -130,3 +130,5 @@ straight-line distance. Fewer results stay fewer; availability is not verified.
 No Google API key is needed. Coordinates are sent to the map/AED providers.
 Use HTTPS or localhost, allow location, and keep the page open. Stop location
 and tracker ends the watch and motion session.
+
+AED results now match each coordinate to a containing OpenStreetMap building outline to show its mapped name and address. Indoor directions remain separate. Nearby businesses are never assumed to host an AED. Unnamed or unsupported building geometry falls back to the AED record, address or coordinates. Building names are cached in memory for ten minutes; failed lookups preserve the AED results. Google Maps directions still target the exact AED coordinates. Building hours are not substituted for AED access hours.
